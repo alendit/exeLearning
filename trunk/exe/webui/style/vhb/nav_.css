@@ -1,0 +1,136 @@
+/* ==========================================
+Copyright University of Auckland 2004
+Created by Brent Simpson, brent.simpson@auckland.ac.nz
+Centre for Flexible and Distance Learning
+============================================= */
+
+#header {
+    color: #006699;
+    background-color: #transparent;
+    height: 100px;
+    padding-left: 20px;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+#navcontainer {
+   z-index:1000;
+   width: 220px;
+   float: left;
+   margin-top: 50px;
+   text-align:left;
+   font: .9em;
+   border: 1px solid #FFF;
+}
+
+#navcontainer ul {
+   margin-left: 0px;
+   padding-left: 0px;
+   margin-top: 0px;
+   list-style-type: none;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+#navcontainer a {
+   display: block;
+   padding: 4px 0px 4px 18px;
+   border-bottom: 1px solid #ffffff;
+}
+
+#navcontainer a:link, #navlist a:visited {
+   color: #000000;
+   background-color:#003366;
+   text-decoration: none;
+   width: 180px;
+}
+
+#navcontainer a:hover {
+   color: #4d4d4d;
+   background-color:#EEEEEE;
+}
+
+/* Hide from IE5-mac. Only IE-win sees this. Fixes the peek-a-boo bug!!! */
+* html #navcontainer {
+margin-right: 10px;
+}
+
+* html p {
+height: 1%;
+margin-left: 0;
+}
+/* End hide from IE5/mac */
+
+
+/* nodes with children get expandable icon */
+.withChild {
+ background-position: 2px 9px;
+}
+
+#active.withChild {
+padding: 4px 0px 4px 18px;
+background-color: #ffffff;
+color: #000000;
+}
+
+#active.withoutChild {
+padding: 4px 0px 4px 18px;
+background-color:#003366;
+color: #ffffff;
+}
+
+/* subnav is for displaying sections and units */
+
+#subnav a {
+background-color: #003366;
+width: 190px;
+border: 0 !important;
+padding: 4px 0px 4px 30px;
+}
+
+#subnav a:hover {
+color: #ffffff;
+background-color: #003366;
+padding: 4px 0 4px 30px;
+width: 190px;
+}	
+
+#subnav #active {
+background-color: #ffffff;
+color: #000000;
+width: 190px;
+padding: 4px 0 4px 30px;
+}	
+
+#subnav .withoutChild  div {
+padding-left: 12px;
+width:190px;
+}
+
+#subnav .withoutChild #active {
+width:180px;
+margin-left: 0px;
+padding-left: 40px;
+}
+
+#subnav .withoutChild div a:hover {
+width:178px;
+margin-left: -12px;
+padding-left: 42px;
+}
+	
+/* MAIN CONTENT STYLES */
+#container {
+border-top: 0px solid #CCC;
+position:absolute;
+}
+
+#main {
+	padding: 18px;
+	margin: 0px 10px 10px 180px;
+	margin-left: 220px;
+	margin-top: 30px;
+	text-align:left;
+	width: 72%;
+	
+	
+}
