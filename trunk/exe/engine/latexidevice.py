@@ -61,9 +61,9 @@ class LatexIdevice(Idevice):
         self.images           = {}
         self.icon             = u"inter"
         self.count            = 1
-        self.kpsefound       = False
+        self.kpsefound       = True
         self.latexpath         = G.application.config.latexpath
-        self.message          = u"Please set path to kpsewhich"
+        self.message          = u""
 
 
     @staticmethod
