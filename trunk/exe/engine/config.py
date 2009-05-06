@@ -42,7 +42,7 @@ class Config:
     # Class attributes
     optionNames = {
         'system': ('webDir', 'xulDir', 'port', 'dataDir', 
-                   'configDir', 'localeDir', 'browserPath'),
+                   'configDir', 'localeDir', 'browserPath', 'latexpath'),
         'user': ('locale',),
     }
 
@@ -105,6 +105,8 @@ class Config:
         if not (self.xulDir/'scripts').isdir() \
            and (self.xulDir/'xului').isdir():
             self.xulDir /= 'xului'
+        # Latex distribution path if environment wasn't set properly
+        self.latexpath = ""
         # Find where the config file will be saved
         self.__setConfigPath()
         # Fill in any undefined config options with our defaults

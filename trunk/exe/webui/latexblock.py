@@ -70,6 +70,12 @@ class LatexBlock(Block):
         if 'title'+self.id in request.args \
         and not is_cancel:
             self.idevice.title = request.args['title'+self.id][0]
+        if 'kpse' + self.id in request.args and not is_cancel:
+            self.idevice.latexpath = \
+                request.args['kpse' + self.id][0]
+            self.idevice.message = ''
+            self.idevice.kpsefound = True
+            self.idevice.set_env()
             
         if 'loadSource'+self.id in request.args:
             # If they've hit "load" instead of "the tick"
@@ -77,6 +83,8 @@ class LatexBlock(Block):
             self.idevice.loadSource()
             # disable Undo once an article has been loaded: 
             self.idevice.undo = False
+            if not self.idevice.kpsefound:
+                self.idevice.message = u"Please set the path to kpsewhich"
         else:
             # If they hit "the tick" instead of "load"
             Block.process(self, request)
@@ -84,13 +92,10 @@ class LatexBlock(Block):
             or request.args[u"action"][0] != u"delete"):
                 # If the text has been changed
                 self.articleElement.process(request)
-            if "action" in request.args \
-            and request.args["action"][0] == "done":
-                # remove the undo flag in order to reenable it next time:
-                if hasattr(self.idevice,'undo'): 
-                    del self.idevice.undo
-        
-            
+        if ("action" in request.args and request.args["action"][0] == "done" or not self.idevice.edit):
+            if hasattr(self.idevice, 'undo'):
+                del self.idevice.undo
+           
     def renderEdit(self, style):
         """
         Returns an XHTML string with the form elements for editing this block
@@ -99,6 +104,10 @@ class LatexBlock(Block):
         
 
         html  = u"<div class=\"iDevice\"><br/>\n"
+        print self.idevice.message
+        if self.idevice.message != "":
+            html += common.editModeHeading(self.idevice.message)
+            html += common.textInput("kpse" + self.id, self.idevice.latexpath) + "<br/><br/>"
         html += common.textInput("title" + self.id, self.idevice.title) + "<br/><br/>"
 
         this_package = None

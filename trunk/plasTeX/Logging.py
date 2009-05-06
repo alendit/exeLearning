@@ -5,7 +5,7 @@ from logging import *
 from plasTeX.Config import config as _config
 
 MAX_WIDTH = 75
-LOG_FORMAT = '[%(name)s] hello %(levelname)s: %(message)s'
+LOG_FORMAT = '[%(name)s] %(levelname)s: %(message)s'
 STATUS_FORMAT = '%(message)s'
 ROOT_LOG_FORMAT = '%(levelname)s: %(message)s'
 
@@ -23,11 +23,12 @@ addLevelName(DEBUG5, 'DEBUG-5')
 
 
 _StreamHandler = StreamHandler
+_Logger = Logger
 
-class _Logger(Logger):
+class Logger(_Logger):
 
     def __init__(self, name='', *args, **kwargs):
-        Logger.__init__(self, name, *args, **kwargs)
+        _Logger.__init__(self, name, *args, **kwargs)
         self.propagate = 0
         try: level = eval(_config['logging'][name])
         except: level = None
@@ -143,9 +144,9 @@ class StatusHandler(StreamHandler):
             self.handleError(record)
 
 
-setLoggerClass(_Logger)
+setLoggerClass(Logger)
 
-root = _Logger()
+root = Logger()
 
 _loggers = {None:root}
 

@@ -34,6 +34,7 @@ from exe.engine.field         import TextAreaField
 from exe.engine.translate     import lateTranslate
 from exe.engine.path          import Path, TempDirPath
 from exe.engine.resource      import Resource
+from exe                      import globals as G
 
 
 import logging
@@ -60,6 +61,9 @@ class LatexIdevice(Idevice):
         self.images           = {}
         self.icon             = u"inter"
         self.count            = 1
+        self.kpsefound       = False
+        self.latexpath         = G.application.config.latexpath
+        self.message          = u"Please set path to kpsewhich"
 
 
     @staticmethod
@@ -74,6 +78,7 @@ class LatexIdevice(Idevice):
         os.chdir(tempdir)
         document = TeXDocument(config = texConfig)
         tex = TeX.TeX(document, file = file)
+        tex.disableLogging()
         Renderer().render(tex.parse())
         os.chdir(cwd)
 
@@ -83,14 +88,14 @@ class LatexIdevice(Idevice):
         Load the article from Wikipedia
         """
         tempdir = tempfile.mkdtemp()
-        #try:
-        LatexIdevice.__convertSource(self.source, tempdir)
-        #except Exception, e:
-        #    print e
-        #    self.source = "File not found"
-        #    return -1
-        print tempdir
-        print self.source
+        try:
+            LatexIdevice.__convertSource(self.source, tempdir)
+        except OSError, e:
+            print e
+            self.source = "File not found"
+            return -1
+        except exception.WindowsError:
+            self.kpsefound = False
         # self.count is a dirty hack to use the same texConfig without
         # reloading
         path = os.path.join(tempdir, "index" + str(self.count) + ".html")
@@ -202,6 +207,10 @@ class LatexIdevice(Idevice):
                 return self.article
 
         return None
+
+
+    def set_env(self):
+        os.putenv('PATH', self.latexpath)
 
     def getRichTextFields(self):
         """
