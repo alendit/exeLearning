@@ -54,6 +54,7 @@ SHOCKWAVE_FILES    = "Shockwave Director Files (.dcr)"
 QUICKTIME_FILES    = "Quicktime Files (.mov, .qt, .mpg, .mp3, .mp4, .mpeg)"
 WINDOWSMEDIA_FILES = "Windows Media Player Files (.avi, .wmv, .wm, .asf, .asx, .wmx, .wvx)"
 REALMEDIA_AUDIO    = "RealMedia Audio Files (.rm, .ra, .ram, .mp3)"
+SELECT_KPSE        = "Select kpsewhich"
 
 
 
@@ -629,6 +630,20 @@ function addFile(blockId) {
         path.value = fp.file.path;
     }
 }
+
+function addKpsepath(blockId) {
+    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+    var nsIFilePicker = Components.interfaces.nsIFilePicker;
+    var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+    fp.init(window, SELECT_KPSE, nsIFilePicker.modeOpen);
+    fp.appendFilter("kpsewhich", "kpsewhich");
+    var res = fp.show();
+    if (res == nsIFilePicker.returnOK) {
+        var path  = document.getElementById('kpse'+blockId);
+        path.value = fp.file.path;
+    }
+}
+
 
 function uploadFile(blockId) {
     netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");

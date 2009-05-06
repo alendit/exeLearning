@@ -22,8 +22,7 @@
 Converts latex source file into html
 """
 
-import re
-import os
+import re, os, sys, subprocess
 import tempfile
 from plasTeX                  import TeX, TeXDocument
 from plasTeX.Config           import config as texConfig
@@ -61,9 +60,27 @@ class LatexIdevice(Idevice):
         self.images           = {}
         self.icon             = u"inter"
         self.count            = 1
-        self.kpsefound       = True
-        self.latexpath         = G.application.config.latexpath
-        self.message          = u""
+        self.kpseInstruc_ = _("Enter path to kpse on your system. Usualy it is in bin-directory of your latex installation")
+        self.latexpath        = G.application.config.configParser.get('user', 'latexpath')
+        self.set_env()
+        #testing if we've got kpsewhich in out path
+        self.testKpsewhich()
+
+
+    def testKpsewhich(self):
+        """
+        Tests if we've got kpsewhich, sets kpsefound and message
+        accordingly
+        """
+
+        try:
+            subprocess.Popen(['kpsewhich'], 
+                stdout=subprocess.PIPE).communicate()
+            self.kpsefound = True
+            self.message = ""
+        except OSError, e:
+            self.kpsefound = False
+            self.message = "Please set path to your latex binaries (kpsewhich)"
 
 
     @staticmethod
@@ -87,6 +104,8 @@ class LatexIdevice(Idevice):
         """
         Load the article from Wikipedia
         """
+        if not self.kpsefound:
+            return -1
         tempdir = tempfile.mkdtemp()
         try:
             LatexIdevice.__convertSource(self.source, tempdir)
@@ -210,7 +229,19 @@ class LatexIdevice(Idevice):
 
 
     def set_env(self):
-        os.putenv('PATH', self.latexpath)
+        oldpath = os.environ['PATH']
+        if sys.platform == 'win32':
+            separator = ";"
+        else:
+            separator = ":"
+        os.environ['PATH'] += separator + self.latexpath 
+        self.testKpsewhich()
+        if not self.kpsefound:
+            os.environ['PATH'] = oldpath
+        else:
+            G.application.config.latexpath = self.latexpath
+            G.application.config.configParser.set('user', 'latexpath',
+                    self.latexpath)
 
     def getRichTextFields(self):
         """

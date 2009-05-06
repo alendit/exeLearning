@@ -39,6 +39,7 @@ exe/engine/linuxconfig.py
 exe/engine/translate.py
 exe/engine/error.py
 exe/engine/standaloneconfig.py
+exe/engine/latexidevice.py
 exe/engine/rssidevice.py
 exe/engine/multichoiceidevice.py
 exe/engine/idevice.py
@@ -78,6 +79,7 @@ exe/webui/multiselectblock.py
 exe/webui/authoringpage.py
 exe/webui/genericblock.py
 exe/webui/testquestionelement.py
+exe/webui/latexblock.py
 exe/webui/webserver.py
 exe/webui/renderable.py
 exe/webui/preferencespage.py

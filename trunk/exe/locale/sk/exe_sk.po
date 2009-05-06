@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EXE Learning\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 21:20+0200\n"
+"POT-Creation-Date: 2009-05-06 16:52+0200\n"
 "PO-Revision-Date: 2008-05-19 06:31+1200\n"
 "Last-Translator: Martin Struhar <modjo@atlas.sk>\n"
 "Language-Team: Slovak <rhorvath@truni.sk>\n"
@@ -144,15 +144,21 @@ msgstr ""
 "Je to lepšie, ako by mali byť všetky slová označené na konci cvičenia.\n"
 "</p>"
 
+#: exe/engine/latexidevice.py:52
+msgid ""
+"<p>Latex import idevice allows you to importa latex source file and convert it in HTML\n"
+"</p>"
+msgstr ""
+
 #: exe/engine/field.py:3000
 msgid "<p>Select symbols from the text editor below or enter LATEX manually to create mathematical formula. To preview your LATEX as it will display use the &lt;Preview&gt; button below.</p>"
 msgstr "<p>Pokiaľ chcete vytvoriť matematickú rovnicu, vyberte symboly z textového editoru alebo vložte LATEX manuálne. Každý symbol sa zobrazí v náhľade pomocou jazyka LATEX, náhľad zobrazíte pomocí tlačítka &lt;Náhľad&gt;  nižšie.</p>"
 
-#: exe/engine/idevicestore.py:290
+#: exe/engine/idevicestore.py:293
 msgid "<p>Teachers should keep the following in mind when using this iDevice: </p><ol><li>Think about the number of different types of activity planned for your resource that will be visually signalled in the content. Avoid using too many different types or classification of activities otherwise learner may become confused. Usually three or four different types are more than adequate for a teaching resource.</li><li>From a visual design perspective, avoid having two iDevices immediately following each other without any text in between. If this is required, rather collapse two questions or events into one iDevice. </li><li>Think about activities where the perceived benefit of doing the activity outweighs the time and effort it will take to complete the activity. </li></ol>"
 msgstr "<p>Učitelia by mali pri používaní iDevice myslieť na následujúce: </p><ol><li> Premýšľajte nad množstvom rôznych plánovaných aktivít, ktoré budú v obsahu vizuálne označené. Vyhnite sa príliš veľkému množstvu rôznych typov či triedení aktivít, pretože to môže zmiasť študentov. Obvykle tri až štyri rôzne typy presahujú adekvátnosť výukových zdrojov.</li><li> Z obrazového hľadiska sa vyvarujte dvom ihneď po sebe nasledujúcim iDevice bez vloženého textu medzi nimi. Pokiaľ je to možné, radšej zhrnite dve otázky či prípady do jedného iDevice.</li><li>Uvažujte nad aktivitami, u ktorých očakávaný prínos preváži nad časom a úsilím nutným pre dokončenie týchto aktivít.</li></ol>"
 
-#: exe/engine/idevicestore.py:285
+#: exe/engine/idevicestore.py:288
 msgid ""
 "<p>The Reading Activity will primarily \n"
 "be used to check a learner's comprehension of a given text. This can be done \n"
@@ -184,7 +190,7 @@ msgstr ""
 "zmeny vykonané v eXe súbore nebudú prenášené do Wikipedie. </p>\n"
 "<p>Obsah Wikipedie je licencovaný GNU Free Documentation License.</p>"
 
-#: exe/engine/idevicestore.py:394
+#: exe/engine/idevicestore.py:397
 msgid ""
 "<p>The reading activity, as the name \n"
 "suggests, should ask the learner to perform some form of activity. This activity \n"
@@ -250,9 +256,9 @@ msgstr ""
 msgid "Actions"
 msgstr "Akcie"
 
-#: exe/engine/idevicestore.py:330 exe/engine/idevicestore.py:369
-#: exe/engine/idevicestore.py:377 exe/engine/idevicestore.py:438
-#: exe/engine/idevicestore.py:475 exe/engine/idevicestore.py:483
+#: exe/engine/idevicestore.py:333 exe/engine/idevicestore.py:372
+#: exe/engine/idevicestore.py:380 exe/engine/idevicestore.py:441
+#: exe/engine/idevicestore.py:478 exe/engine/idevicestore.py:486
 #: exe/webui/questionelement.py:100
 msgid "Activity"
 msgstr "Aktivity"
@@ -328,7 +334,8 @@ msgstr "Pridať ďalšiu možnosť"
 msgid "Add another question"
 msgstr "Pridať ďalšiu otázku"
 
-#: exe/webui/importpdfpage.py:93 exe/webui/pdfblock.py:85
+#: exe/webui/importpdfpage.py:93 exe/webui/latexblock.py:125
+#: exe/webui/pdfblock.py:85
 #, fuzzy
 msgid "Add file"
 msgstr "Pridať súbory"
@@ -341,7 +348,7 @@ msgstr "Pridať súbory"
 msgid "Add images"
 msgstr "Pridať obrázky"
 
-#: exe/engine/glossaryidevice.py:48
+#: exe/engine/glossaryidevice.py:49
 msgid "Add your terms and definitions"
 msgstr ""
 
@@ -417,7 +424,7 @@ msgstr ""
 "</ul>\n"
 " "
 
-#: exe/engine/idevicestore.py:372 exe/engine/idevicestore.py:478
+#: exe/engine/idevicestore.py:375 exe/engine/idevicestore.py:481
 msgid ""
 "An activity can be defined as a task or set of tasks a learner must\n"
 "complete. Provide a clear statement of the task and consider any conditions\n"
@@ -439,7 +446,7 @@ msgstr "Kód Applet-u:"
 msgid "Applet Type"
 msgstr "Typ Applet-u:"
 
-#: exe/engine/wikipediaidevice.py:65
+#: exe/engine/wikipediaidevice.py:65 exe/engine/latexidevice.py:58
 msgid "Article"
 msgstr "Článok"
 
@@ -597,7 +604,7 @@ msgstr "Doplňovací text"
 msgid "Comma-separated list of pages to import"
 msgstr ""
 
-#: exe/webui/feedbackblock.py:96
+#: exe/webui/feedbackblock.py:98
 msgid "Comment"
 msgstr ""
 
@@ -696,7 +703,7 @@ msgstr ""
 "inštrukcií pre aktivitu, ktorá by mala študentov naviesť \n"
 "k vyriešeniu prezentovanej dilemy. "
 
-#: exe/engine/idevicestore.py:365 exe/engine/idevicestore.py:471
+#: exe/engine/idevicestore.py:368 exe/engine/idevicestore.py:474
 msgid ""
 "Describe the prerequisite knowledge learners should have to effectively\n"
 "complete this learning."
@@ -704,7 +711,7 @@ msgstr ""
 "Opíšte, aké vstupné poznatky majú študenti (žiaci) mať, aby mohli efektívne\n"
 "dokončiť výučbu."
 
-#: exe/engine/idevicestore.py:331 exe/engine/idevicestore.py:439
+#: exe/engine/idevicestore.py:334 exe/engine/idevicestore.py:442
 msgid ""
 "Describe the tasks related to the reading learners should undertake. \n"
 "This helps demonstrate relevance for learners."
@@ -712,7 +719,7 @@ msgstr ""
 "Opíšte, aké úlohy budú musieť študenti (žiaci) podstúpiť. \n"
 "Má pomôcť preukázať dôležitosť pre študentov (žiakov)."
 
-#: exe/engine/idevicestore.py:378 exe/engine/idevicestore.py:484
+#: exe/engine/idevicestore.py:381 exe/engine/idevicestore.py:487
 msgid "Describe the tasks the learners should complete."
 msgstr "Charakterizujte úlohy, ktoré má študent (žiak) vyplniť."
 
@@ -794,7 +801,7 @@ msgstr ""
 "%s"
 
 #: exe/export/imsexport.py:358 exe/export/websiteexport.py:88
-#: exe/export/scormexport.py:493
+#: exe/export/scormexport.py:496
 #, python-format
 msgid ""
 "EXPORT FAILED!\n"
@@ -825,8 +832,9 @@ msgstr "Buď váš idevice/generic.data súbor alebo balíček, ktorý načítav
 msgid "Email Address"
 msgstr ""
 
-#: exe/webui/multimediablock.py:103 exe/webui/rssblock.py:120
-#: exe/webui/wikipediablock.py:159 exe/webui/editorpane.py:332
+#: exe/webui/latexblock.py:133 exe/webui/multimediablock.py:103
+#: exe/webui/rssblock.py:120 exe/webui/wikipediablock.py:159
+#: exe/webui/editorpane.py:332
 msgid "Emphasis"
 msgstr "Zvýraznenie"
 
@@ -859,6 +867,7 @@ msgid "Enter a hint here. If you do not want to provide a hint, leave this field
 msgstr "Sem vložte tip. Ak nechcete tip poskytnúť, nechajte toto pole prázdne."
 
 #: exe/engine/wikipediaidevice.py:73 exe/engine/wikipediaidevice.py:336
+#: exe/engine/latexidevice.py:372
 msgid ""
 "Enter a phrase or term you wish to search \n"
 "within Wikipedia."
@@ -922,7 +931,7 @@ msgstr ""
 msgid "Enter any feedback you wish to provide the learner with-in the feedback field. This field can be left blank."
 msgstr "Vložte spätnú väzbu, ktorú si želáte poskytnúť, do poľa «spätná väzba». Toto pole môže zostať prázdne."
 
-#: exe/webui/feedbackblock.py:92
+#: exe/webui/feedbackblock.py:94
 msgid "Enter default subject of feedback"
 msgstr ""
 
@@ -933,6 +942,10 @@ msgstr ""
 #: exe/webui/editorpane.py:143
 msgid "Enter instructions for completion here"
 msgstr "Sem vložte pokyny pre vyplnenie"
+
+#: exe/engine/latexidevice.py:63
+msgid "Enter path to kpse on your system. Usualy it is in bin-directory of your latex installation"
+msgstr ""
 
 #: exe/webui/importpdfpage.py:91
 msgid "Enter path to pdf you want to import"
@@ -970,7 +983,7 @@ msgstr ""
 "Tlačítkom \"Pridať ďalšiu voľbu\" vytvoríte ďalšiu voľbu. \n"
 "Zmazať položku môžete kliknutím na červené \"X\" vedľa odpovede, ktorú si želáte odstrániť."
 
-#: exe/engine/idevicestore.py:327 exe/engine/idevicestore.py:435
+#: exe/engine/idevicestore.py:330 exe/engine/idevicestore.py:438
 msgid ""
 "Enter the details of the reading including reference details. The \n"
 "referencing style used will depend on the preference of your faculty or \n"
@@ -1101,7 +1114,7 @@ msgstr "Lož"
 #: exe/engine/truefalseidevice.py:125 exe/engine/clozeidevice.py:129
 #: exe/engine/clozeidevice.py:280 exe/engine/feedbackidevice.py:45
 #: exe/engine/feedbackidevice.py:229 exe/engine/pdfidevice.py:255
-#: exe/engine/idevicestore.py:334 exe/engine/idevicestore.py:442
+#: exe/engine/idevicestore.py:337 exe/engine/idevicestore.py:445
 #: exe/webui/common.py:249 exe/webui/element.py:2055
 #: exe/webui/clozeblock.py:164 exe/webui/editorelement.py:148
 #: exe/webui/editorpane.py:251 exe/webui/questionelement.py:104
@@ -1116,12 +1129,12 @@ msgstr ""
 "Tlačítko spätnej väzby sa neobjaví, pokiaľ \n"
 "nebudú do tohoto poľa vložené žiadne dáta."
 
-#: exe/webui/feedbackblock.py:88 exe/webui/feedbackblock.py:91
+#: exe/webui/feedbackblock.py:88 exe/webui/feedbackblock.py:92
 #, fuzzy
 msgid "Feedback on "
 msgstr "Spätná väzba"
 
-#: exe/webui/feedbackblock.py:118
+#: exe/webui/feedbackblock.py:121
 #, fuzzy
 msgid "Feedback to "
 msgstr "Spätná väzba"
@@ -1232,7 +1245,7 @@ msgstr "Skryť / Zobraziť slovo"
 
 #: exe/engine/field.py:3154 exe/engine/field.py:3220
 #: exe/engine/truefalseidevice.py:53 exe/engine/truefalseidevice.py:128
-#: exe/engine/hintidevice.py:44 exe/webui/element.py:2273
+#: exe/engine/hintidevice.py:45 exe/webui/element.py:2273
 #: exe/webui/truefalseelement.py:146 exe/webui/truefalseelement.py:156
 msgid "Hint"
 msgstr "Tip"
@@ -1243,7 +1256,8 @@ msgstr "Domov"
 
 #: exe/webui/galleryblock.py:362 exe/webui/genericblock.py:83
 #: exe/webui/genericblock.py:109 exe/webui/block.py:299
-#: exe/webui/pdfblock.py:118 exe/webui/multichoiceblock.py:154
+#: exe/webui/pdfblock.py:118 exe/webui/hintblock.py:99
+#: exe/webui/multichoiceblock.py:154
 msgid "IDevice Icon"
 msgstr "Ikona prostriedku iDevice"
 
@@ -1359,6 +1373,10 @@ msgstr "Menovka:"
 msgid "Large"
 msgstr "Veľké"
 
+#: exe/engine/latexidevice.py:50
+msgid "Latex import"
+msgstr ""
+
 #: exe/engine/hintidevice.py:40
 msgid ""
 "Leave a commentary for\n"
@@ -1375,7 +1393,8 @@ msgstr "Vľavo"
 msgid "Licensed under the"
 msgstr "Licencované pod"
 
-#: exe/webui/rssblock.py:110 exe/webui/wikipediablock.py:152
+#: exe/webui/latexblock.py:126 exe/webui/rssblock.py:110
+#: exe/webui/wikipediablock.py:152
 msgid "Load"
 msgstr "Nahrať"
 
@@ -1450,7 +1469,7 @@ msgstr "Meno"
 msgid "New iDevice"
 msgstr "Nový prostriedok iDevice"
 
-#: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:337
+#: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:340
 #: exe/export/websitepage.py:202 exe/export/ipodpage.py:116
 msgid "Next"
 msgstr "Ďalej"
@@ -1471,8 +1490,9 @@ msgstr "Ukážka nedostupná. Nebolo možné zmenšiť obrázok."
 msgid "No Thumbnail Available. Could not shrink original image."
 msgstr "Ukážka nedostupná. Nebolo možné zmenšiť originálny obrázok."
 
-#: exe/webui/multimediablock.py:100 exe/webui/rssblock.py:114
-#: exe/webui/wikipediablock.py:156 exe/webui/editorpane.py:335
+#: exe/webui/latexblock.py:130 exe/webui/multimediablock.py:100
+#: exe/webui/rssblock.py:114 exe/webui/wikipediablock.py:156
+#: exe/webui/editorpane.py:335
 msgid "No emphasis"
 msgstr "Žiadne zvýraznenie"
 
@@ -1488,12 +1508,12 @@ msgstr "«nič»"
 msgid "OK"
 msgstr "OK"
 
-#: exe/engine/idevicestore.py:341 exe/engine/idevicestore.py:350
-#: exe/engine/idevicestore.py:447 exe/engine/idevicestore.py:456
+#: exe/engine/idevicestore.py:344 exe/engine/idevicestore.py:353
+#: exe/engine/idevicestore.py:450 exe/engine/idevicestore.py:459
 msgid "Objectives"
 msgstr "Ciele"
 
-#: exe/engine/idevicestore.py:344 exe/engine/idevicestore.py:450
+#: exe/engine/idevicestore.py:347 exe/engine/idevicestore.py:453
 msgid ""
 "Objectives describe the expected outcomes of the learning and should\n"
 "define what the learners will be able to do when they have completed the\n"
@@ -1631,12 +1651,12 @@ msgstr "Poľský článok vo formáte Wikipedia"
 msgid "Portugese Wikipedia Article"
 msgstr "Portugalský článok vo formáte Wikipedia"
 
-#: exe/engine/idevicestore.py:354 exe/engine/idevicestore.py:364
-#: exe/engine/idevicestore.py:460 exe/engine/idevicestore.py:470
+#: exe/engine/idevicestore.py:357 exe/engine/idevicestore.py:367
+#: exe/engine/idevicestore.py:463 exe/engine/idevicestore.py:473
 msgid "Preknowledge"
 msgstr "Vstupné poznatky"
 
-#: exe/engine/idevicestore.py:357 exe/engine/idevicestore.py:463
+#: exe/engine/idevicestore.py:360 exe/engine/idevicestore.py:466
 msgid ""
 "Prerequisite knowledge refers to the knowledge learners should already\n"
 "have in order to be able to effectively complete the learning. Examples of\n"
@@ -1659,7 +1679,7 @@ msgstr "Ukážka"
 msgid "Preview directory %s is a file, cannot replace it"
 msgstr "Adresár s ukážkami %s už existuje, nedá sa nahradiť"
 
-#: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:336
+#: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:339
 #: exe/export/websitepage.py:194 exe/export/ipodpage.py:110
 msgid "Previous"
 msgstr "Predošlý"
@@ -1768,13 +1788,13 @@ msgid "Read the paragraph below and fill in the missing words."
 msgstr "Prečítajte si doleuvedený odstavec a vyplňte chýbajúce slová."
 
 #: exe/engine/genericidevice.py:306 exe/engine/feedbackidevice.py:239
-#: exe/engine/pdfidevice.py:265 exe/engine/idevicestore.py:246
-#: exe/engine/idevicestore.py:282
+#: exe/engine/pdfidevice.py:265 exe/engine/idevicestore.py:249
+#: exe/engine/idevicestore.py:285
 msgid "Reading Activity"
 msgstr "Aktivita „Čítanie“"
 
 #: exe/engine/genericidevice.py:304 exe/engine/feedbackidevice.py:237
-#: exe/engine/pdfidevice.py:263 exe/engine/idevicestore.py:391
+#: exe/engine/pdfidevice.py:263 exe/engine/idevicestore.py:394
 msgid "Reading Activity 0.11"
 msgstr "Aktivita „Čítanie“ 0.11"
 
@@ -1852,6 +1872,10 @@ msgstr "ODOSLAŤ ODPOVEDE"
 msgid "Save"
 msgstr "Uložiť"
 
+#: exe/webui/latexblock.py:113
+msgid "Search"
+msgstr ""
+
 #: exe/engine/package.py:290
 msgid "Section"
 msgstr "Kapitola"
@@ -1908,6 +1932,7 @@ msgid "Select pass rate: "
 msgstr "Zvoľte hranicu úspešnosti:"
 
 #: exe/engine/wikipediaidevice.py:71 exe/engine/wikipediaidevice.py:334
+#: exe/engine/latexidevice.py:370
 msgid ""
 "Select the appropriate language version \n"
 "of Wikipedia to search and enter search term."
@@ -1986,8 +2011,9 @@ msgstr "Slovínsky článok vo formáte Wikipedia"
 msgid "Small"
 msgstr "Malý"
 
-#: exe/webui/multimediablock.py:101 exe/webui/rssblock.py:115
-#: exe/webui/wikipediablock.py:157 exe/webui/editorpane.py:336
+#: exe/webui/latexblock.py:131 exe/webui/multimediablock.py:101
+#: exe/webui/rssblock.py:115 exe/webui/wikipediablock.py:157
+#: exe/webui/editorpane.py:336
 msgid "Some emphasis"
 msgstr "Čiastočné zvýraznenie"
 
@@ -2037,7 +2063,11 @@ msgstr "Odoslať odpoveď"
 msgid "Swedish Wikipedia Article"
 msgstr "Šwédsky článok vo formáte Wikipedia"
 
-#: exe/engine/idevicestore.py:399
+#: exe/engine/latexidevice.py:51
+msgid "TUM"
+msgstr ""
+
+#: exe/engine/idevicestore.py:402
 msgid "Teachers should keep the following in mind when using this iDevice: <ol><li>Think about the number of different types of activity planned for your resource that will be visually signalled in the content. Avoid using too many different types or classification of activities otherwise learner may become confused. Usually three or four different types are more than adequate for a teaching resource.</li><li>From a visual design perspective, avoid having two iDevices immediately following each other without any text in between. If this is required, rather collapse two questions or events into one iDevice. </li><li>Think about activities where the perceived benefit of doing the activity outweighs the time and effort it will take to complete the activity. </li></ol>"
 msgstr "Učitelia by pri použití tohoto iDevice mali brať do úvahy: <ol><li> Premýšľajte nad množstvom rôznych zamýšľaných aktivít, ktoré budú v obsahu vizuálne označené. Vyhnite sa príliš veľkému množstvu rôznych typov či klasifikácií aktivít, pretože to môže viesť k zmäteniu študentov. Obvykle stačia tri až štyri rôzne typy na jednu výukovú jednotku.</li><li> Pre prehľadnosť sa vždy snažte vkladať medzi dve iDevice text. Pokiaľ to ale nejde, radšej zhrnite dve otázky či prípady do jedného iDevice.</li><li> Berte do úvahy aktivity, u ktorých predpokladaný efekt prevažuje nad časom a úsilím, ktoré sú nutné na ich dokončenie.</li></ol>"
 
@@ -2045,7 +2075,7 @@ msgstr "Učitelia by pri použití tohoto iDevice mali brať do úvahy: <ol><li>
 msgid "Technical University Munich"
 msgstr ""
 
-#: exe/engine/glossaryidevice.py:57
+#: exe/engine/glossaryidevice.py:58
 msgid "Term"
 msgstr ""
 
@@ -2190,7 +2220,7 @@ msgstr ""
 "Tie ale v eXe nenájdete. Užívatelia si tiež musia na prehrávanie flashu nainštalovať \n"
 "prehrávač zo stránok http://www.macromedia.com."
 
-#: exe/engine/hintidevice.py:122 exe/engine/freetextidevice.py:124
+#: exe/engine/hintidevice.py:123 exe/engine/freetextidevice.py:124
 msgid "This is a free text field general learning content can be entered."
 msgstr "Toto je pole pre zadanie prostého textu všeobecného vzdelávacieho obsahu."
 
@@ -2302,7 +2332,7 @@ msgstr ""
 "Vložte spätnú väzbu, ktorú \n"
 "chcete študentovi poskytnúť."
 
-#: exe/engine/idevicestore.py:351 exe/engine/idevicestore.py:457
+#: exe/engine/idevicestore.py:354 exe/engine/idevicestore.py:460
 msgid "Type the learning objectives for this resource."
 msgstr "Zadajte vzdelávacie ciele pre tento zdroj."
 
@@ -2321,6 +2351,7 @@ msgid "URL:"
 msgstr "URL:"
 
 #: exe/engine/wikipediaidevice.py:99 exe/engine/wikipediaidevice.py:133
+#: exe/engine/latexidevice.py:160
 #, python-format
 msgid "Unable to download from %s <br/>Please check the spelling and connection and try again."
 msgstr "Nedá sa stiahnuť z %s <br/>Prekontrolujte, prosím, zadaný text a tiež pripojenie a skúste to znovu."
@@ -2333,6 +2364,11 @@ msgstr "Nedá sa načítať RSS kanál %s <br/>Prekontrolujte, prosím, zadaný 
 #: twisted/persisted/styles.py:437
 msgid "Unable to merge: duplicate Java Applet resource names exist (including: \""
 msgstr "Nie je možné spojiť: duplicitné meno prostriedku typu Java applet (vrátane: \""
+
+#: exe/engine/latexidevice.py:128
+#, python-format
+msgid "Unable to read file: %s."
+msgstr ""
 
 #: exe/webui/block.py:218
 msgid "Undo Edits"
@@ -2351,9 +2387,9 @@ msgstr "jednotka"
 #: exe/engine/multichoiceidevice.py:61 exe/engine/attachmentidevice.py:44
 #: exe/engine/clozeidevice.py:47 exe/engine/casestudyidevice.py:198
 #: exe/engine/freetextidevice.py:39 exe/engine/externalurlidevice.py:39
-#: exe/engine/idevicestore.py:284 exe/engine/idevicestore.py:343
-#: exe/engine/idevicestore.py:371 exe/engine/idevicestore.py:393
-#: exe/engine/idevicestore.py:449 exe/engine/idevicestore.py:477
+#: exe/engine/idevicestore.py:287 exe/engine/idevicestore.py:346
+#: exe/engine/idevicestore.py:374 exe/engine/idevicestore.py:396
+#: exe/engine/idevicestore.py:452 exe/engine/idevicestore.py:480
 #: exe/engine/flashmovieidevice.py:40 exe/idevices/exampleidevice.py:40
 msgid "University of Auckland"
 msgstr "University of Auckland"
@@ -2379,7 +2415,7 @@ msgstr ""
 msgid "Upload"
 msgstr "Upload"
 
-#: exe/engine/idevicestore.py:335 exe/engine/idevicestore.py:443
+#: exe/engine/idevicestore.py:338 exe/engine/idevicestore.py:446
 msgid ""
 "Use feedback to provide a summary of the points covered in the reading, \n"
 "or as a starting point for further analysis of the reading by posing a question \n"
@@ -2411,7 +2447,7 @@ msgstr ""
 "Tento iDevice nemá žiadne zvýraznenie, hoci sa dá text obmedzene formátovať prostredníctvom \n"
 "editačných tlačidiel pri políčku."
 
-#: exe/engine/hintidevice.py:45
+#: exe/engine/hintidevice.py:46
 msgid ""
 "Use this field to leave a\n"
 "comment for people who works on this package with you. \n"
@@ -2426,7 +2462,7 @@ msgstr ""
 msgid "Use this pulldown to select whether or not  the iDevice should have any formatting  applied to it to distinguish it; ie. a border and an icon."
 msgstr "V tomto zozname vyberte, či má byť pre iDevice použité nejaké rozlišovacie formátovanie, napr. okraj a ikona."
 
-#: exe/engine/idevicestore.py:326 exe/engine/idevicestore.py:434
+#: exe/engine/idevicestore.py:329 exe/engine/idevicestore.py:437
 msgid "What to read"
 msgstr "Čo treba čítať"
 
@@ -2494,7 +2530,7 @@ msgstr "článok"
 msgid "blank for original size"
 msgstr "prázdne pre originálnu veľkosť"
 
-#: exe/export/imsexport.py:207 exe/export/scormexport.py:292
+#: exe/export/imsexport.py:207 exe/export/scormexport.py:295
 msgid "eXe"
 msgstr "eXe"
 
@@ -2512,7 +2548,7 @@ msgstr "Projekt eXe"
 msgid "file %s has no parentNode"
 msgstr "súbor %s nemá „parentNode“ (rodičovský uzol)"
 
-#: exe/engine/wikipediaidevice.py:288
+#: exe/engine/wikipediaidevice.py:288 exe/engine/latexidevice.py:324
 msgid "http://en.wikipedia.org/"
 msgstr "http://en.wikipedia.org/"
 

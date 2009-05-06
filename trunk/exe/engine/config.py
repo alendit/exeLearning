@@ -42,8 +42,8 @@ class Config:
     # Class attributes
     optionNames = {
         'system': ('webDir', 'xulDir', 'port', 'dataDir', 
-                   'configDir', 'localeDir', 'browserPath', 'latexpath'),
-        'user': ('locale',),
+                   'configDir', 'localeDir', 'browserPath', ),
+        'user': ('locale', 'latexpath'),
     }
 
     def __init__(self):

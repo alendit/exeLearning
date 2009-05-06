@@ -21,7 +21,7 @@
 LatexBlock processes LatexIdevice to HTML
 """
 
-import re
+import re, os
 import logging
 from exe.webui.block   import Block
 from exe.webui         import common
@@ -52,6 +52,7 @@ class LatexBlock(Block):
             self.idevice.undo = True
 
 
+
     def process(self, request):
         """
         Process the request arguments from the web server to see if any
@@ -71,10 +72,11 @@ class LatexBlock(Block):
         and not is_cancel:
             self.idevice.title = request.args['title'+self.id][0]
         if 'kpse' + self.id in request.args and not is_cancel:
-            self.idevice.latexpath = \
+            path = \
                 request.args['kpse' + self.id][0]
-            self.idevice.message = ''
-            self.idevice.kpsefound = True
+            if not os.path.isdir(path):
+                path = os.path.dirname(path)
+            self.idevice.latexpath = path
             self.idevice.set_env()
             
         if 'loadSource'+self.id in request.args:
@@ -83,8 +85,6 @@ class LatexBlock(Block):
             self.idevice.loadSource()
             # disable Undo once an article has been loaded: 
             self.idevice.undo = False
-            if not self.idevice.kpsefound:
-                self.idevice.message = u"Please set the path to kpsewhich"
         else:
             # If they hit "the tick" instead of "load"
             Block.process(self, request)
@@ -107,7 +107,13 @@ class LatexBlock(Block):
         print self.idevice.message
         if self.idevice.message != "":
             html += common.editModeHeading(self.idevice.message)
-            html += common.textInput("kpse" + self.id, self.idevice.latexpath) + "<br/><br/>"
+            html += common.elementInstruc(self.idevice.kpseInstruc_)
+            html += common.textInput("kpse" + self.id, self.idevice.latexpath)
+            html += u'<input type="button" onclick="addKpsepath(\'%s\')"' % self.id
+            html += u"value=\"%s\"/>\n" % _(u"Search")
+            html += u"<br/><br/>\n"
+ 
+
         html += common.textInput("title" + self.id, self.idevice.title) + "<br/><br/>"
 
         this_package = None
