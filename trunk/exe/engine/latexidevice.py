@@ -98,7 +98,7 @@ class LatexIdevice(Idevice):
         #tex.disableLogging()
         #Renderer().render(tex.parse())
         #os.chdir(cwd)
-        command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "plastex")
+        command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plastex")
         command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % \
             (tempdir, file)
         if sys.platform == 'win32':
