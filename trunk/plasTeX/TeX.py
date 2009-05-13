@@ -22,15 +22,15 @@ from plasTeX import TeXDocument
 from plasTeX.Base.TeX.Primitives import MathShift
 from plasTeX import ParameterCommand, Macro
 from plasTeX import glue, muglue, mudimen, dimen, number
-from plasTeX import Logging
+from plasTeX.Logging import getLogger, disableLogging
 
 # Only export the TeX class
 __all__ = ['TeX']
 
-log = Logging.getLogger('latex')
-status = Logging.getLogger('status')
-tokenlog = Logging.getLogger('parse.tokens')
-digestlog = Logging.getLogger('parse.digest')
+log = getLogger()
+status = getLogger('status')
+tokenlog = getLogger('parse.tokens')
+digestlog = getLogger('parse.digest')
 _type = type
 
 class bufferediter(object):
@@ -221,7 +221,7 @@ class TeX(object):
     @staticmethod
     def disableLogging():
         """ Turn off logging """
-        Logging.disableLogging()
+        disableLogging()
 
     def itertokens(self):
         """ 

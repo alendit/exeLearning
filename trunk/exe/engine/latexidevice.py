@@ -54,7 +54,7 @@ class LatexIdevice(Idevice):
                          u"", u"")
         self.emphasis         = Idevice.NoEmphasis
         self.group            = Idevice.Content
-        self.source           = u""
+        self.source           = u"/home/alt/Desktop/projektleiter.tex"
         self.article          = TextAreaField(x_(u"Article"))
         self.article.idevice  = self
         self.images           = {}
@@ -88,16 +88,53 @@ class LatexIdevice(Idevice):
         """
         Converts specified file into HTML code
         """
-        texConfig['files']['split-level'] = -10
-        texConfig['files']['filename'] = u'index$num(0).html'
-        texConfig['general']['theme'] = 'minimal'
-        cwd = os.getcwd()
-        os.chdir(tempdir)
-        document = TeXDocument(config = texConfig)
-        tex = TeX.TeX(document, file = file)
-        tex.disableLogging()
-        Renderer().render(tex.parse())
-        os.chdir(cwd)
+        #texConfig['files']['split-level'] = -10
+        #texConfig['files']['filename'] = u'index$num(0).html'
+        #texConfig['general']['theme'] = 'minimal'
+        #cwd = os.getcwd()
+        #os.chdir(tempdir)
+        #document = TeXDocument(config = texConfig)
+        #tex = TeX.TeX(document, file = file)
+        #tex.disableLogging()
+        #Renderer().render(tex.parse())
+        #os.chdir(cwd)
+        command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "plastex")
+        command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % \
+            (tempdir, file)
+        if sys.platform == 'win32':
+            subprocess.Popen(['cmd /c %s \n echo "Press ^C to continue" \n copy con'],stdout=subprocess.PIPE).communicate()
+        else:
+            LatexIdevice.__linux_plastex(command_line)
+
+    @staticmethod
+    def __linux_plastex(command_line):
+        try:
+            import gtk
+        except:
+            print "You need to install the python gtk bindings"
+            sys.exit(1)
+  
+        # import vte
+        try:
+            import vte
+        except:
+            error = gtk.MessageDialog (None, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+                'You need to install python bindings for libvte')
+            print error
+        
+  
+        command_line += 'read ; exit \n'
+        v = vte.Terminal ()
+        v.connect ("child-exited", lambda term: window.destroy()) 
+        v.fork_command()
+        v.feed_child(command_line)
+        window = gtk.Window()
+        window.add(v)
+        window.connect('delete-event', lambda window, event: gtk.main_quit())
+        window.connect('destroy', lambda window: gtk.main_quit())
+        window.show_all()
+        gtk.main()
+
 
         
     def loadSource(self):
@@ -113,8 +150,6 @@ class LatexIdevice(Idevice):
             print e
             self.source = "File not found"
             return -1
-        except exception.WindowsError:
-            self.kpsefound = False
         # self.count is a dirty hack to use the same texConfig without
         # reloading
         path = os.path.join(tempdir, "index" + str(self.count) + ".html")
@@ -175,7 +210,9 @@ class LatexIdevice(Idevice):
                 imageTag['src'].split('/')[-1]))
             imageName = os.path.basename(imageSrc) 
             # Search if we've already got this image
-            if imageName not in self.images:
+            if not os.path.exists(imageName):
+                log.error("Image file %s not found" % imageName)
+            elif imageName not in self.images:
                 new_image = Path(imageSrc)
                 new_resource = Resource(self, new_image)
                 if new_resource._storageName != imageName:

@@ -5,7 +5,7 @@ from DOM import Element, Text, Node, DocumentFragment, Document
 from Tokenizer import Token, BeginGroup, EndGroup, Other
 from plasTeX import Logging
 
-log = Logging.getLogger('latex')
+log = Logging.getLogger()
 status = Logging.getLogger('status')
 deflog = Logging.getLogger('parse.definitions')
 

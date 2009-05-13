@@ -21,9 +21,8 @@ addLevelName(DEBUG3, 'DEBUG-3')
 addLevelName(DEBUG4, 'DEBUG-4')
 addLevelName(DEBUG5, 'DEBUG-5')
 
-
-_StreamHandler = StreamHandler
 _Logger = Logger
+_StreamHandler = StreamHandler
 
 class Logger(_Logger):
 
