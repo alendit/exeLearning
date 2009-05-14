@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX
+END
+Paragraphs.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Paragraphs.py
+END
+Floats.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Floats.py
+END
+Math.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Math.py
+END
+allkeys.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/allkeys.txt
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/__init__.py
+END
+Arrays.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Arrays.py
+END
+Lengths.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Lengths.py
+END
+Tabbing.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Tabbing.py
+END
+Declarations.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Declarations.py
+END
+Verbatim.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Verbatim.py
+END
+Bibliography.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Bibliography.py
+END
+Definitions.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Definitions.py
+END
+Alignment.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Alignment.py
+END
+Footnotes.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Footnotes.py
+END
+Breaking.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Breaking.py
+END
+Environments.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Environments.py
+END
+Space.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Space.py
+END
+ent.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/ent.xml
+END
+Lists.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Lists.py
+END
+Pictures.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Pictures.py
+END
+Files.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Files.py
+END
+Sectioning.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Sectioning.py
+END
+Quotations.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Quotations.py
+END
+Index.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Index.py
+END
+FontSelection.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/FontSelection.py
+END
+Document.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Document.py
+END
+Packages.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Packages.py
+END
+Characters.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Characters.py
+END
+Boxes.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Boxes.py
+END
+Accents.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Accents.py
+END
+pyuca.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/pyuca.py
+END
+Entities.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Entities.py
+END
+Numbering.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Numbering.py
+END
+Crossref.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Crossref.py
+END
+Sentences.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/exeLearning/!svn/ver/51/branches/latex/plasTeX/Base/LaTeX/Sentences.py
+END

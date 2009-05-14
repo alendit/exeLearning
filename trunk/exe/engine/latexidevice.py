@@ -24,9 +24,6 @@ Converts latex source file into html
 
 import re, os, sys, subprocess
 import tempfile
-from plasTeX                  import TeX, TeXDocument
-from plasTeX.Config           import config as texConfig
-from plasTeX.Renderers.XHTML  import Renderer
 from exe.engine.beautifulsoup import BeautifulSoup
 from exe.engine.idevice       import Idevice
 from exe.engine.field         import TextAreaField
@@ -54,7 +51,7 @@ class LatexIdevice(Idevice):
                          u"", u"")
         self.emphasis         = Idevice.NoEmphasis
         self.group            = Idevice.Content
-        self.source           = u"/home/alt/Desktop/projektleiter.tex"
+        self.source           = u""
         self.article          = TextAreaField(x_(u"Article"))
         self.article.idevice  = self
         self.images           = {}
@@ -85,19 +82,19 @@ class LatexIdevice(Idevice):
 
     @staticmethod
     def __convertSource(file, tempdir):
-        """
-        Converts specified file into HTML code
-        """
-        if sys.platform == 'win32':
-            command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plasexe", "plastex.exe")
-            command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % \
-            (tempdir, file)
-            subprocess.Popen(['cmd /c %s \n echo "Press ^C to continue" \n copy con' % command_line],stdout=subprocess.PIPE).communicate()
-        else:
-            command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plastex")
-            command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % \
-            (tempdir, file)
-            LatexIdevice.__linux_plastex(command_line)
+		"""
+		Converts latex source using plastex script
+		"""
+		
+		if sys.platform == 'win32':
+			command_line = "cmd /c \"\"%s\" " % os.path.join(G.application.config.webDir, "scripts", "plastexwin", "plastexwin.exe")
+			command_line += "\"%s\" \"%s\" " % (file, tempdir)
+			command_line += "&& echo Press \^C to conitnue \""
+			os.system(command_line)
+		else:
+			command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plastexlin")
+			command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % (tempdir, file)
+			LatexIdevice.__linux_plastex(command_line)
 
     @staticmethod
     def __linux_plastex(command_line):
@@ -203,7 +200,7 @@ class LatexIdevice(Idevice):
                 imageTag['src'].split('/')[-1]))
             imageName = os.path.basename(imageSrc) 
             # Search if we've already got this image
-            if not os.path.exists(imageName):
+            if not os.path.exists(imageSrc):
                 log.error("Image file %s not found" % imageName)
             elif imageName not in self.images:
                 new_image = Path(imageSrc)
