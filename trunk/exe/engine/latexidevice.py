@@ -88,22 +88,15 @@ class LatexIdevice(Idevice):
         """
         Converts specified file into HTML code
         """
-        #texConfig['files']['split-level'] = -10
-        #texConfig['files']['filename'] = u'index$num(0).html'
-        #texConfig['general']['theme'] = 'minimal'
-        #cwd = os.getcwd()
-        #os.chdir(tempdir)
-        #document = TeXDocument(config = texConfig)
-        #tex = TeX.TeX(document, file = file)
-        #tex.disableLogging()
-        #Renderer().render(tex.parse())
-        #os.chdir(cwd)
-        command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plastex")
-        command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % \
-            (tempdir, file)
         if sys.platform == 'win32':
-            subprocess.Popen(['cmd /c %s \n echo "Press ^C to continue" \n copy con'],stdout=subprocess.PIPE).communicate()
+            command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plasexe", "plastex.exe")
+            command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % \
+            (tempdir, file)
+            subprocess.Popen(['cmd /c %s \n echo "Press ^C to continue" \n copy con' % command_line],stdout=subprocess.PIPE).communicate()
         else:
+            command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plastex")
+            command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % \
+            (tempdir, file)
             LatexIdevice.__linux_plastex(command_line)
 
     @staticmethod

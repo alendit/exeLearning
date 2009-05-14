@@ -636,7 +636,7 @@ function addKpsepath(blockId) {
     var nsIFilePicker = Components.interfaces.nsIFilePicker;
     var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
     fp.init(window, SELECT_KPSE, nsIFilePicker.modeOpen);
-    fp.appendFilter("kpsewhich", "kpsewhich");
+    fp.appendFilter("kpsewhich", "kpsewhich.exe");
     var res = fp.show();
     if (res == nsIFilePicker.returnOK) {
         var path  = document.getElementById('kpse'+blockId);
