@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exe_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 21:20+0200\n"
+"POT-Creation-Date: 2009-05-06 16:52+0200\n"
 "PO-Revision-Date: 2008-12-07 16:57+0000\n"
 "Last-Translator: Carles Ferrando Garcia <carles.ferrando@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-doc@lists.kde.org>\n"
@@ -136,15 +136,21 @@ msgid ""
 "exercise.</p>"
 msgstr "<p>Si marqueu aquesta opció, cada paraula serà marcada com l'estudiant l'escriu, tanmateix totes les paraules seran marcades al final de l'exercici.</p>"
 
+#: exe/engine/latexidevice.py:52
+msgid ""
+"<p>Latex import idevice allows you to importa latex source file and convert it in HTML\n"
+"</p>"
+msgstr ""
+
 #: exe/engine/field.py:3000
 msgid "<p>Select symbols from the text editor below or enter LATEX manually to create mathematical formula. To preview your LATEX as it will display use the &lt;Preview&gt; button below.</p>"
 msgstr "<p>Seleccioneu símbols des de l'editor de text o entreu LATEX manualment per crear la formula matemàtica. Per veure com el vostre LATEX és mostrat empreu el botó &lt;Vista prèvia&gt;  de sota.</p>"
 
-#: exe/engine/idevicestore.py:290
+#: exe/engine/idevicestore.py:293
 msgid "<p>Teachers should keep the following in mind when using this iDevice: </p><ol><li>Think about the number of different types of activity planned for your resource that will be visually signalled in the content. Avoid using too many different types or classification of activities otherwise learner may become confused. Usually three or four different types are more than adequate for a teaching resource.</li><li>From a visual design perspective, avoid having two iDevices immediately following each other without any text in between. If this is required, rather collapse two questions or events into one iDevice. </li><li>Think about activities where the perceived benefit of doing the activity outweighs the time and effort it will take to complete the activity. </li></ol>"
 msgstr "<p>Els professors haurien de tindre en ment el següent mentre empren aquest iDevice:</p><ol><li>Pensa en planejar un nombre diferent d'activitats per fer el contingut visualment atractiu. Utilitzar massa diferents tipus d'activitats pot confondre a l'estudiant. Normalment tres o quatre tipus diferents són adequats per aprendre un recurs.</li><li> Des d'una perspectiva de disseny visual tindre dos iDevices seguits immediatament sense text entre mig és lleig. Si us calen dos iDevices ajunteu dos qüestions dins el mateix iDevice </li><li>Penseu en activitats que siguen percebudes com atractives i beneficioses , tant com invertir temps i esforç en completar-les.</li></ol>"
 
-#: exe/engine/idevicestore.py:285
+#: exe/engine/idevicestore.py:288
 msgid ""
 "<p>The Reading Activity will primarily \n"
 "be used to check a learner's comprehension of a given text. This can be done \n"
@@ -174,7 +180,7 @@ msgstr ""
 " actualització. Així mateix , els canvis fets a l'article en eXe no seran actualitzats a la Viquipèdia. \n"
 " </p><p> El contingut de la Viquipèdia està cobert per la llicència de documentació lliure GNU FDL.</p> "
 
-#: exe/engine/idevicestore.py:394
+#: exe/engine/idevicestore.py:397
 msgid ""
 "<p>The reading activity, as the name \n"
 "suggests, should ask the learner to perform some form of activity. This activity \n"
@@ -242,9 +248,9 @@ msgstr ""
 msgid "Actions"
 msgstr "Accions "
 
-#: exe/engine/idevicestore.py:330 exe/engine/idevicestore.py:369
-#: exe/engine/idevicestore.py:377 exe/engine/idevicestore.py:438
-#: exe/engine/idevicestore.py:475 exe/engine/idevicestore.py:483
+#: exe/engine/idevicestore.py:333 exe/engine/idevicestore.py:372
+#: exe/engine/idevicestore.py:380 exe/engine/idevicestore.py:441
+#: exe/engine/idevicestore.py:478 exe/engine/idevicestore.py:486
 #: exe/webui/questionelement.py:100
 msgid "Activity"
 msgstr "Activitat"
@@ -320,7 +326,8 @@ msgstr "Afegir una altra opció"
 msgid "Add another question"
 msgstr "Afegir un altra pregunta."
 
-#: exe/webui/importpdfpage.py:93 exe/webui/pdfblock.py:85
+#: exe/webui/importpdfpage.py:93 exe/webui/latexblock.py:125
+#: exe/webui/pdfblock.py:85
 #, fuzzy
 msgid "Add file"
 msgstr "Afegir arxius."
@@ -333,7 +340,7 @@ msgstr "Afegir arxius."
 msgid "Add images"
 msgstr "Afegir imatges."
 
-#: exe/engine/glossaryidevice.py:48
+#: exe/engine/glossaryidevice.py:49
 msgid "Add your terms and definitions"
 msgstr ""
 
@@ -407,7 +414,7 @@ msgstr ""
 "</ul>\n"
 " "
 
-#: exe/engine/idevicestore.py:372 exe/engine/idevicestore.py:478
+#: exe/engine/idevicestore.py:375 exe/engine/idevicestore.py:481
 msgid ""
 "An activity can be defined as a task or set of tasks a learner must\n"
 "complete. Provide a clear statement of the task and consider any conditions\n"
@@ -429,7 +436,7 @@ msgstr "Codi de l'aplicació:"
 msgid "Applet Type"
 msgstr "Tipus d'aplicació"
 
-#: exe/engine/wikipediaidevice.py:65
+#: exe/engine/wikipediaidevice.py:65 exe/engine/latexidevice.py:58
 msgid "Article"
 msgstr "Article"
 
@@ -587,7 +594,7 @@ msgstr "Text amb buits"
 msgid "Comma-separated list of pages to import"
 msgstr ""
 
-#: exe/webui/feedbackblock.py:96
+#: exe/webui/feedbackblock.py:98
 msgid "Comment"
 msgstr ""
 
@@ -685,7 +692,7 @@ msgstr ""
 " proporcionat. Aquestes poden ser en forma de preguntes o instruccions \n"
 " amb les quals l'alumne pot resoldre el dilema presentat."
 
-#: exe/engine/idevicestore.py:365 exe/engine/idevicestore.py:471
+#: exe/engine/idevicestore.py:368 exe/engine/idevicestore.py:474
 msgid ""
 "Describe the prerequisite knowledge learners should have to effectively\n"
 "complete this learning."
@@ -693,7 +700,7 @@ msgstr ""
 "Descriu els coneixements requerits pels alumnes \n"
 " que haurien de tindre per completar aquest aprenentatge. "
 
-#: exe/engine/idevicestore.py:331 exe/engine/idevicestore.py:439
+#: exe/engine/idevicestore.py:334 exe/engine/idevicestore.py:442
 msgid ""
 "Describe the tasks related to the reading learners should undertake. \n"
 "This helps demonstrate relevance for learners."
@@ -701,7 +708,7 @@ msgstr ""
 "Descriu les tasques que els alumnes haurien d'aprendre.\n"
 " Aquesta ajuda mostra la rellevància per als alumnes."
 
-#: exe/engine/idevicestore.py:378 exe/engine/idevicestore.py:484
+#: exe/engine/idevicestore.py:381 exe/engine/idevicestore.py:487
 msgid "Describe the tasks the learners should complete."
 msgstr "Descriu les tasques que els alumnes haurien de completar."
 
@@ -783,7 +790,7 @@ msgstr ""
 "%s"
 
 #: exe/export/imsexport.py:358 exe/export/websiteexport.py:88
-#: exe/export/scormexport.py:493
+#: exe/export/scormexport.py:496
 #, python-format
 msgid ""
 "EXPORT FAILED!\n"
@@ -814,8 +821,9 @@ msgstr "Els  idevices del vostre arxiu generic.data o paquet que estau carregant
 msgid "Email Address"
 msgstr ""
 
-#: exe/webui/multimediablock.py:103 exe/webui/rssblock.py:120
-#: exe/webui/wikipediablock.py:159 exe/webui/editorpane.py:332
+#: exe/webui/latexblock.py:133 exe/webui/multimediablock.py:103
+#: exe/webui/rssblock.py:120 exe/webui/wikipediablock.py:159
+#: exe/webui/editorpane.py:332
 msgid "Emphasis"
 msgstr "Èmfasis"
 
@@ -848,6 +856,7 @@ msgid "Enter a hint here. If you do not want to provide a hint, leave this field
 msgstr "Escriviu una pista ací. Si no voleu  donar cap pista, deixeu en blanc aquest camp."
 
 #: exe/engine/wikipediaidevice.py:73 exe/engine/wikipediaidevice.py:336
+#: exe/engine/latexidevice.py:372
 msgid ""
 "Enter a phrase or term you wish to search \n"
 "within Wikipedia."
@@ -914,7 +923,7 @@ msgstr ""
 msgid "Enter any feedback you wish to provide the learner with-in the feedback field. This field can be left blank."
 msgstr "Escriviu qualsevol realimentació que vulgueu proporcionar a l'alumne dins del camp realimentació. Podeu deixar aquest  camp buit."
 
-#: exe/webui/feedbackblock.py:92
+#: exe/webui/feedbackblock.py:94
 msgid "Enter default subject of feedback"
 msgstr ""
 
@@ -925,6 +934,10 @@ msgstr ""
 #: exe/webui/editorpane.py:143
 msgid "Enter instructions for completion here"
 msgstr "Entreu les instruccions per completar l'exercici ací"
+
+#: exe/engine/latexidevice.py:63
+msgid "Enter path to kpse on your system. Usualy it is in bin-directory of your latex installation"
+msgstr ""
 
 #: exe/webui/importpdfpage.py:91
 msgid "Enter path to pdf you want to import"
@@ -962,7 +975,7 @@ msgstr ""
 "Podeu afegir opcions prement el botó \"Afegir un altra opció\". Podeu esborrar opcions \n"
 "prement la \"X\" roja al costat de la opció."
 
-#: exe/engine/idevicestore.py:327 exe/engine/idevicestore.py:435
+#: exe/engine/idevicestore.py:330 exe/engine/idevicestore.py:438
 msgid ""
 "Enter the details of the reading including reference details. The \n"
 "referencing style used will depend on the preference of your faculty or \n"
@@ -1092,7 +1105,7 @@ msgstr "Fals"
 #: exe/engine/truefalseidevice.py:125 exe/engine/clozeidevice.py:129
 #: exe/engine/clozeidevice.py:280 exe/engine/feedbackidevice.py:45
 #: exe/engine/feedbackidevice.py:229 exe/engine/pdfidevice.py:255
-#: exe/engine/idevicestore.py:334 exe/engine/idevicestore.py:442
+#: exe/engine/idevicestore.py:337 exe/engine/idevicestore.py:445
 #: exe/webui/common.py:249 exe/webui/element.py:2055
 #: exe/webui/clozeblock.py:164 exe/webui/editorelement.py:148
 #: exe/webui/editorpane.py:251 exe/webui/questionelement.py:104
@@ -1107,12 +1120,12 @@ msgstr ""
 "El botó d'alimentació no apareixerà si la \n"
 " data no la poses en aquest camp."
 
-#: exe/webui/feedbackblock.py:88 exe/webui/feedbackblock.py:91
+#: exe/webui/feedbackblock.py:88 exe/webui/feedbackblock.py:92
 #, fuzzy
 msgid "Feedback on "
 msgstr "Realimentació"
 
-#: exe/webui/feedbackblock.py:118
+#: exe/webui/feedbackblock.py:121
 #, fuzzy
 msgid "Feedback to "
 msgstr "Realimentació"
@@ -1223,7 +1236,7 @@ msgstr "Amaga/Mostra la paraula"
 
 #: exe/engine/field.py:3154 exe/engine/field.py:3220
 #: exe/engine/truefalseidevice.py:53 exe/engine/truefalseidevice.py:128
-#: exe/engine/hintidevice.py:44 exe/webui/element.py:2273
+#: exe/engine/hintidevice.py:45 exe/webui/element.py:2273
 #: exe/webui/truefalseelement.py:146 exe/webui/truefalseelement.py:156
 msgid "Hint"
 msgstr "Pista"
@@ -1234,7 +1247,8 @@ msgstr "Inici"
 
 #: exe/webui/galleryblock.py:362 exe/webui/genericblock.py:83
 #: exe/webui/genericblock.py:109 exe/webui/block.py:299
-#: exe/webui/pdfblock.py:118 exe/webui/multichoiceblock.py:154
+#: exe/webui/pdfblock.py:118 exe/webui/hintblock.py:99
+#: exe/webui/multichoiceblock.py:154
 msgid "IDevice Icon"
 msgstr "Icona iDevice"
 
@@ -1350,6 +1364,10 @@ msgstr "Etiqueta:"
 msgid "Large"
 msgstr "Gran"
 
+#: exe/engine/latexidevice.py:50
+msgid "Latex import"
+msgstr ""
+
 #: exe/engine/hintidevice.py:40
 msgid ""
 "Leave a commentary for\n"
@@ -1366,7 +1384,8 @@ msgstr "Esquerre"
 msgid "Licensed under the"
 msgstr "Llicenciat sota la "
 
-#: exe/webui/rssblock.py:110 exe/webui/wikipediablock.py:152
+#: exe/webui/latexblock.py:126 exe/webui/rssblock.py:110
+#: exe/webui/wikipediablock.py:152
 msgid "Load"
 msgstr "Carregar"
 
@@ -1441,7 +1460,7 @@ msgstr "Nom"
 msgid "New iDevice"
 msgstr "Nou iDevice"
 
-#: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:337
+#: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:340
 #: exe/export/websitepage.py:202 exe/export/ipodpage.py:116
 msgid "Next"
 msgstr "Següent"
@@ -1462,8 +1481,9 @@ msgstr "No s'ha trobat la icona de la imatge. No es pot contraure la imatge."
 msgid "No Thumbnail Available. Could not shrink original image."
 msgstr "No s'ha trobat la icona de la imatge. No es pot contraure la imatge original."
 
-#: exe/webui/multimediablock.py:100 exe/webui/rssblock.py:114
-#: exe/webui/wikipediablock.py:156 exe/webui/editorpane.py:335
+#: exe/webui/latexblock.py:130 exe/webui/multimediablock.py:100
+#: exe/webui/rssblock.py:114 exe/webui/wikipediablock.py:156
+#: exe/webui/editorpane.py:335
 msgid "No emphasis"
 msgstr "Cap èmfasi"
 
@@ -1479,12 +1499,12 @@ msgstr "Cap"
 msgid "OK"
 msgstr "D'acord"
 
-#: exe/engine/idevicestore.py:341 exe/engine/idevicestore.py:350
-#: exe/engine/idevicestore.py:447 exe/engine/idevicestore.py:456
+#: exe/engine/idevicestore.py:344 exe/engine/idevicestore.py:353
+#: exe/engine/idevicestore.py:450 exe/engine/idevicestore.py:459
 msgid "Objectives"
 msgstr "Objectius"
 
-#: exe/engine/idevicestore.py:344 exe/engine/idevicestore.py:450
+#: exe/engine/idevicestore.py:347 exe/engine/idevicestore.py:453
 msgid ""
 "Objectives describe the expected outcomes of the learning and should\n"
 "define what the learners will be able to do when they have completed the\n"
@@ -1624,12 +1644,12 @@ msgstr "Article polonès de la viquipèdia"
 msgid "Portugese Wikipedia Article"
 msgstr "Article portuguès de la viquipèdia."
 
-#: exe/engine/idevicestore.py:354 exe/engine/idevicestore.py:364
-#: exe/engine/idevicestore.py:460 exe/engine/idevicestore.py:470
+#: exe/engine/idevicestore.py:357 exe/engine/idevicestore.py:367
+#: exe/engine/idevicestore.py:463 exe/engine/idevicestore.py:473
 msgid "Preknowledge"
 msgstr "Coneixements previs"
 
-#: exe/engine/idevicestore.py:357 exe/engine/idevicestore.py:463
+#: exe/engine/idevicestore.py:360 exe/engine/idevicestore.py:466
 msgid ""
 "Prerequisite knowledge refers to the knowledge learners should already\n"
 "have in order to be able to effectively complete the learning. Examples of\n"
@@ -1652,7 +1672,7 @@ msgstr "Vista prèvia"
 msgid "Preview directory %s is a file, cannot replace it"
 msgstr "La carpeta de vistes prèvies %s és un arxiu, no pot ser reemplaçat"
 
-#: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:336
+#: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:339
 #: exe/export/websitepage.py:194 exe/export/ipodpage.py:110
 msgid "Previous"
 msgstr "Anterior"
@@ -1762,13 +1782,13 @@ msgid "Read the paragraph below and fill in the missing words."
 msgstr "Llegeix el paràgraf de sota i completa amb les paraules perdudes."
 
 #: exe/engine/genericidevice.py:306 exe/engine/feedbackidevice.py:239
-#: exe/engine/pdfidevice.py:265 exe/engine/idevicestore.py:246
-#: exe/engine/idevicestore.py:282
+#: exe/engine/pdfidevice.py:265 exe/engine/idevicestore.py:249
+#: exe/engine/idevicestore.py:285
 msgid "Reading Activity"
 msgstr "Activitat de llegir"
 
 #: exe/engine/genericidevice.py:304 exe/engine/feedbackidevice.py:237
-#: exe/engine/pdfidevice.py:263 exe/engine/idevicestore.py:391
+#: exe/engine/pdfidevice.py:263 exe/engine/idevicestore.py:394
 msgid "Reading Activity 0.11"
 msgstr "Activitat de llegir 0.11"
 
@@ -1845,6 +1865,10 @@ msgstr "ENVIAR RESPOSTES"
 msgid "Save"
 msgstr "Desar"
 
+#: exe/webui/latexblock.py:113
+msgid "Search"
+msgstr ""
+
 #: exe/engine/package.py:290
 msgid "Section"
 msgstr "Secció"
@@ -1901,6 +1925,7 @@ msgid "Select pass rate: "
 msgstr "Seleccioneu l'índex d'èxit:"
 
 #: exe/engine/wikipediaidevice.py:71 exe/engine/wikipediaidevice.py:334
+#: exe/engine/latexidevice.py:370
 msgid ""
 "Select the appropriate language version \n"
 "of Wikipedia to search and enter search term."
@@ -1979,8 +2004,9 @@ msgstr "Article eslovè de la viquipèdia"
 msgid "Small"
 msgstr "Menut"
 
-#: exe/webui/multimediablock.py:101 exe/webui/rssblock.py:115
-#: exe/webui/wikipediablock.py:157 exe/webui/editorpane.py:336
+#: exe/webui/latexblock.py:131 exe/webui/multimediablock.py:101
+#: exe/webui/rssblock.py:115 exe/webui/wikipediablock.py:157
+#: exe/webui/editorpane.py:336
 msgid "Some emphasis"
 msgstr "Alguna èmfasi"
 
@@ -2030,7 +2056,11 @@ msgstr "Envia la Resposta"
 msgid "Swedish Wikipedia Article"
 msgstr "Article suec de la viquipèdia "
 
-#: exe/engine/idevicestore.py:399
+#: exe/engine/latexidevice.py:51
+msgid "TUM"
+msgstr ""
+
+#: exe/engine/idevicestore.py:402
 msgid "Teachers should keep the following in mind when using this iDevice: <ol><li>Think about the number of different types of activity planned for your resource that will be visually signalled in the content. Avoid using too many different types or classification of activities otherwise learner may become confused. Usually three or four different types are more than adequate for a teaching resource.</li><li>From a visual design perspective, avoid having two iDevices immediately following each other without any text in between. If this is required, rather collapse two questions or events into one iDevice. </li><li>Think about activities where the perceived benefit of doing the activity outweighs the time and effort it will take to complete the activity. </li></ol>"
 msgstr "Els mestres haurien de tindre en ment el següent quan utilitzen aquest iDevice:<ol><li> Pensa en el nombre d'activitats diferents dissenyades per al recurs. Pensa que massa tipus d'activitats poden confondre al estudiant. Normalment tres o quatre són adequades per aprendre un recurs.</li><li>Des d'un perspectiva de disseny evita dos iDevices junts sense text entre mig. Si et calen dos iDevices pots fusionar les qüestions dels dos en un únic iDevice.</li><li> Pensa en activitats atractives el benefici de les quals siga ben visible per fer l'activitat i per invertir temps i esforç en arribar fins el final.</li></ol>"
 
@@ -2038,7 +2068,7 @@ msgstr "Els mestres haurien de tindre en ment el següent quan utilitzen aquest 
 msgid "Technical University Munich"
 msgstr ""
 
-#: exe/engine/glossaryidevice.py:57
+#: exe/engine/glossaryidevice.py:58
 msgid "Term"
 msgstr ""
 
@@ -2178,7 +2208,7 @@ msgstr ""
 " per qualsevol tercera part (Ex: en Linux ffmpeg ). Aquests codificadors no són subministrats per eXe. \n"
 " Els usuaris també hauran de baixar-se Flash 8 des de http://www.macromedia.com/ per executar el vídeo."
 
-#: exe/engine/hintidevice.py:122 exe/engine/freetextidevice.py:124
+#: exe/engine/hintidevice.py:123 exe/engine/freetextidevice.py:124
 msgid "This is a free text field general learning content can be entered."
 msgstr "Aquest és un camp de text lliure sobre el contingut d'aprenentatge que pots omplir."
 
@@ -2289,7 +2319,7 @@ msgstr ""
 "Escriu la realimentació que vols \n"
 "proporcionar a l'estudiant."
 
-#: exe/engine/idevicestore.py:351 exe/engine/idevicestore.py:457
+#: exe/engine/idevicestore.py:354 exe/engine/idevicestore.py:460
 msgid "Type the learning objectives for this resource."
 msgstr "Escriu els objectius d'aprenentatge per a aquest recurs."
 
@@ -2307,6 +2337,7 @@ msgid "URL:"
 msgstr "URL:"
 
 #: exe/engine/wikipediaidevice.py:99 exe/engine/wikipediaidevice.py:133
+#: exe/engine/latexidevice.py:160
 #, python-format
 msgid "Unable to download from %s <br/>Please check the spelling and connection and try again."
 msgstr "No es pot baixar des de %s <br/> Si-us-plau comproveu que heu escrit bé , mireu la connexió i torneu a provar."
@@ -2319,6 +2350,11 @@ msgstr "No es pot baixar l'alimentació RSS des de  %s <br/> Si-us-plau comprove
 #: twisted/persisted/styles.py:437
 msgid "Unable to merge: duplicate Java Applet resource names exist (including: \""
 msgstr "No habilitat per combinar: Existeix un recurs duplicat de l'aplicació de Java. (including:\""
+
+#: exe/engine/latexidevice.py:128
+#, python-format
+msgid "Unable to read file: %s."
+msgstr ""
 
 #: exe/webui/block.py:218
 msgid "Undo Edits"
@@ -2337,9 +2373,9 @@ msgstr "Apartat"
 #: exe/engine/multichoiceidevice.py:61 exe/engine/attachmentidevice.py:44
 #: exe/engine/clozeidevice.py:47 exe/engine/casestudyidevice.py:198
 #: exe/engine/freetextidevice.py:39 exe/engine/externalurlidevice.py:39
-#: exe/engine/idevicestore.py:284 exe/engine/idevicestore.py:343
-#: exe/engine/idevicestore.py:371 exe/engine/idevicestore.py:393
-#: exe/engine/idevicestore.py:449 exe/engine/idevicestore.py:477
+#: exe/engine/idevicestore.py:287 exe/engine/idevicestore.py:346
+#: exe/engine/idevicestore.py:374 exe/engine/idevicestore.py:396
+#: exe/engine/idevicestore.py:452 exe/engine/idevicestore.py:480
 #: exe/engine/flashmovieidevice.py:40 exe/idevices/exampleidevice.py:40
 msgid "University of Auckland"
 msgstr "Universitat d'Auckland"
@@ -2366,7 +2402,7 @@ msgstr ""
 msgid "Upload"
 msgstr "Càrrega"
 
-#: exe/engine/idevicestore.py:335 exe/engine/idevicestore.py:443
+#: exe/engine/idevicestore.py:338 exe/engine/idevicestore.py:446
 msgid ""
 "Use feedback to provide a summary of the points covered in the reading, \n"
 "or as a starting point for further analysis of the reading by posing a question \n"
@@ -2398,7 +2434,7 @@ msgstr ""
 "Aquest iDevice té cap èmfasi aplicada tot i que el formatatge limitat pot ser aplicat \n"
 " al text a través dels botons que editen el text associats amb el camp."
 
-#: exe/engine/hintidevice.py:45
+#: exe/engine/hintidevice.py:46
 msgid ""
 "Use this field to leave a\n"
 "comment for people who works on this package with you. \n"
@@ -2413,7 +2449,7 @@ msgstr ""
 msgid "Use this pulldown to select whether or not  the iDevice should have any formatting  applied to it to distinguish it; ie. a border and an icon."
 msgstr "Utilitzeu aquest botó per seleccionar o no si voleu modificar el format per distingir-lo. Ex: Vora d'una icona."
 
-#: exe/engine/idevicestore.py:326 exe/engine/idevicestore.py:434
+#: exe/engine/idevicestore.py:329 exe/engine/idevicestore.py:437
 msgid "What to read"
 msgstr "Que llegir"
 
@@ -2480,7 +2516,7 @@ msgstr "article"
 msgid "blank for original size"
 msgstr "espai per la mida original"
 
-#: exe/export/imsexport.py:207 exe/export/scormexport.py:292
+#: exe/export/imsexport.py:207 exe/export/scormexport.py:295
 msgid "eXe"
 msgstr "eXe"
 
@@ -2498,7 +2534,7 @@ msgstr "Projecte eXe"
 msgid "file %s has no parentNode"
 msgstr "l'arxiu %s no té node pare"
 
-#: exe/engine/wikipediaidevice.py:288
+#: exe/engine/wikipediaidevice.py:288 exe/engine/latexidevice.py:324
 msgid "http://en.wikipedia.org/"
 msgstr "http://en.wikipedia.org/"
 

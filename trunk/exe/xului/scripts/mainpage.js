@@ -511,6 +511,22 @@ function filePrint3_openPrintWin(tempPrintDir, tempExportedDir, webPrintDir) {
 } // function filePrint3_openPrintWin()
 
 
+function handoutPrint() {
+   // for fuction description look at filePrint comments
+   netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect")
+   var tmpdir_suffix = ""
+   var tmpdir_prefix = "eXeTempPrintDir_"
+   nevow_clientToServerEvent('makeTempPrintDir', this, '', tmpdir_suffix, 
+                              tmpdir_prefix, 'handoutPrint2')
+}
+
+function handoutPrint2(tempPrintDir, printDir_warnings) {
+   if (printDir_warnings.length > 0) {
+      alert(printDir_warnings)
+   }
+   exportPackage('printHandout', tempPrintDir, "filePrint3_openPrintWin");
+}
+
 
 // Quit the application
 function fileQuit() {
@@ -620,7 +636,7 @@ function exportPackage(exportType, exportDir, printCallback) {
 
     var nsIFilePicker = Components.interfaces.nsIFilePicker;
     var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
-    if (exportType == 'webSite' || exportType == 'singlePage' || exportType == 'printSinglePage' || exportType == 'ipod' || exportType == 'presentation' ) {
+    if (exportType == 'webSite' || exportType == 'singlePage' || exportType == 'printSinglePage' || exportType == 'ipod' || exportType == 'presentation' || exportType == 'printHandout') {
         if (exportDir == '') {
             fp.init(window, SELECT_THE_PARENT_FOLDER_FOR_EXPORT_,
                          nsIFilePicker.modeGetFolder);

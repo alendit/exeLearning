@@ -28,11 +28,14 @@ from exe.engine.field   import TextAreaField
 log = logging.getLogger(__name__)
 
 # ===========================================================================
+
+NOEXPORT, PRESENTATION, HANDOUT = "1", "2", "3" 
+
 class FreeTextIdevice(Idevice):
     """
     FreeTextIdevice: just has a block of text
     """
-    persistenceVersion = 9
+    persistenceVersion = 10
 
     def __init__(self, content=""):
         Idevice.__init__(self, x_(u"Free Text"), 
@@ -52,7 +55,7 @@ text through the text editing buttons associated with the field."""),
         if content:
             self.edit = False
         # determines if the element is exported to presentation
-        self.presentable = 'False' 
+        self.exportType = NOEXPORT
 
    
     def getResourcesField(self, this_resource):
@@ -159,6 +162,7 @@ x_(u"This is a free text field general learning content can be entered."),
         Attach the idevice to the TextAreaField for tinyMCE image embedding:
         """
         self.content.idevice = self
+
     def upgradeToVersion8(self):
         """
         Attach presentable to idevice
@@ -172,6 +176,13 @@ x_(u"This is a free text field general learning content can be entered."),
         Adds group to idevice
         """
         self.group = Idevice.Content
+    
+
+    def upgradeToVersion10(self):
+        """
+        Additional options for export
+        """
+        self.exportType = NOEXPORT
  
    
 # ===========================================================================

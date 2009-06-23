@@ -53,6 +53,8 @@ class GlossaryBlock(Block):
 
         is_cancel = common.requestHasCancel(request)
 
+        if "title"+self.id in request.args:
+            self.idevice.title = request.args["title"+self.id][0]
         if ("addTerm" + self.id) in request.args:
             self.idevice.addTerm()
             self.idevice.edit = True
@@ -91,7 +93,15 @@ class GlossaryBlock(Block):
         Returns an XHTML string for previewing this block
         """
         lettersDict = {}
+        broken = []
+        count = 0
         for element in self.termElements:
+            count += 1
+            log.debug(len(element.termElement.field.content))
+            if len(element.termElement.field.content) == 0:
+                broken.append(str(count))
+                log.debug("THIS IS BROKEN " + str(count))
+                continue
             leadLetter = element.termElement.field.content[0].upper()
             if leadLetter in lettersDict:
                 lettersDict[leadLetter] += element.renderPreview()
@@ -101,6 +111,9 @@ class GlossaryBlock(Block):
         sortedLetters.sort()
 
         html = u'<a id="glossary_start"></a>'
+        if len(broken) > 0:
+            log.debug(", ".join(broken)) 
+            html += common.editModeHeading(_('Terms number %s are not entered)' % ", ".join(broken)))
         html += u"<div class=\"iDevice "
         html += u"emphasis"+unicode(self.idevice.emphasis)+"\" "
         html += u"ondblclick=\"submitLink('edit',"+self.id+", 0);\">\n"
@@ -141,7 +154,13 @@ class GlossaryBlock(Block):
         Returns an XHTML string for viewing this block
         """
         lettersDict = {}
+        broken = []
+        count = 0
         for element in self.termElements:
+            count += 1
+            if len(element.termElement.field.content) == 0:
+                broken.append(str(count))
+                continue
             leadLetter = element.termElement.field.content[0].upper()
             if leadLetter in lettersDict:
                 lettersDict[leadLetter] += element.renderPreview()
@@ -151,6 +170,9 @@ class GlossaryBlock(Block):
         sortedLetters.sort()
 
         html = u'<a id="glossary_start"></a>'
+        if broken:
+            html += common.editModeHeading("Terms number %s are not entered)" % ", ".join(broken))
+ 
         html += u'<div class="iDevice '
         html += u'emphasis'+unicode(self.idevice.emphasis)+'">\n'
         html += u'<img alt="" class="iDevice_icon" '

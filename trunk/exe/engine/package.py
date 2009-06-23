@@ -275,7 +275,7 @@ class Package(Persistable):
     Package represents the collection of resources the user is editing
     i.e. the "package".
     """
-    persistenceVersion = 11
+    persistenceVersion = 12
     nonpersistant      = ['resourceDir', 'filename']
     # Name is used in filenames and urls (saving and navigating)
     _name              = '' 
@@ -319,6 +319,7 @@ class Package(Persistable):
         self.scolinks      = False
         self.license       = "None"
         self.footer        = ""
+        self.sourcerefs    = {}
 
         # Temporary directory to hold resources in
         self.resourceDir = TempDirPath()
@@ -872,6 +873,12 @@ class Package(Persistable):
         Authors email for feedback
         """
         self._email = ""
+
+    def upgradeToVersion12(self):
+        """
+        Source references added
+        """
+        self.sourcerefs = {}
 
 
 # ===========================================================================

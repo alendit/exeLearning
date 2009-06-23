@@ -1,83 +1,0 @@
-10
-
-dir
-53
-https://seelabvirt04.informatik.tu-muenchen.de/svn/exeLearning/branches/latex/plasTeX/Renderers
-https://seelabvirt04.informatik.tu-muenchen.de/svn/exeLearning
-
-
-
-2009-04-22T16:29:15.607790Z
-51
-vorona
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-f5d2e7b3-c27f-4468-8514-63515c50af47
-
-DocBook
-dir
-
-Text
-dir
-
-__init__.py
-file
-
-
-
-
-2009-04-22T16:29:48.122419Z
-56faec9b331d7be1902c18683f5e73dc
-2009-04-22T16:29:15.607790Z
-51
-vorona
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-21161
-
-S5
-dir
-
-ManPage
-dir
-
-PageTemplate
-dir
-
-XHTML
-dir
-
-ZPT
-dir
-

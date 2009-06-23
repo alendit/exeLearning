@@ -54,7 +54,10 @@ class FeedbackBlock(Block):
             for element in self.elements:
                 element.process(request)
         if "address" + self.id in request.args and not is_cancel:
-            self.idevice.address = request.args["address" + self.id][0]
+            if request.args["address" + self.id][0] == self.package.email:
+                self.idevice.address = ""
+            else:
+                self.idevice.address = request.args["address" + self.id][0]
         if "subject" + self.id in request.args and not is_cancel:
             self.idevice.subject = request.args["subject" + self.id][0]
         if "comment" + self.id in request.args and not is_cancel:
@@ -115,7 +118,8 @@ class FeedbackBlock(Block):
         if self.idevice.comment != "":
             html += "<p>%s</p>\n" %\
                 self.idevice.comment
-        mailtostring = "<a href=\"mailto:" + self.idevice.address
+        mailtostring = "<a href=\"mailto:" + \
+            (self.idevice.address or self.package.email)
         if self.idevice.subject != "":
             mailtostring += "?subject:%s" % self.idevice.subject
         mailtostring += '" rel="external">%s</a>' % (_("Feedback to ") \

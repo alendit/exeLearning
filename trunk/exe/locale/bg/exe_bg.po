@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eXe Learning\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 16:52+0200\n"
+"POT-Creation-Date: 2009-06-16 20:54+0200\n"
 "PO-Revision-Date: 2008-03-16 14:35+0200\n"
 "Last-Translator: Svetoslav Stefanov <lfu.project@gmail.com>\n"
 "Language-Team: Svetoslav Stefanov <flu.project@gmail.com>\n"
@@ -140,7 +140,7 @@ msgstr ""
 "с изписването и, вместо всички думи да бъдат отчетени вкупом в \n"
 "края на упражнението.</p>"
 
-#: exe/engine/latexidevice.py:52
+#: exe/engine/latexidevice.py:49
 msgid ""
 "<p>Latex import idevice allows you to importa latex source file and convert it in HTML\n"
 "</p>"
@@ -209,7 +209,7 @@ msgstr ""
 "<p>Където имате много изображения, свързани помежду си или към определено \n"
 "упражнение, може да искате да ги покажете в галерия, вместо поотделно.</p>"
 
-#: exe/engine/package.py:444
+#: exe/engine/package.py:445
 msgid "?????"
 msgstr "?????"
 
@@ -307,7 +307,7 @@ msgstr "Добавяне на интерактивно поле за помощ�
 msgid "Add an mp3 file to your iDevice."
 msgstr "Добавяне на mp3  файл към вашето Помощно средство."
 
-#: exe/webui/testquestionelement.py:122 exe/webui/element.py:1895
+#: exe/webui/testquestionelement.py:122 exe/webui/element.py:1891
 msgid "Add another Option"
 msgstr "Добавяне на друг вариант"
 
@@ -324,7 +324,7 @@ msgstr "Добавяне на друг въпрос"
 msgid "Add another activity"
 msgstr "Добавяне на друга дейност"
 
-#: exe/webui/element.py:2226
+#: exe/webui/element.py:2222
 msgid "Add another option"
 msgstr "Добавяне на друг вариант"
 
@@ -447,7 +447,7 @@ msgstr "Код на аплета:"
 msgid "Applet Type"
 msgstr "Тип на аплета"
 
-#: exe/engine/wikipediaidevice.py:65 exe/engine/latexidevice.py:58
+#: exe/engine/wikipediaidevice.py:65 exe/engine/latexidevice.py:55
 msgid "Article"
 msgstr "Статия"
 
@@ -582,7 +582,7 @@ msgstr ""
 
 #: exe/engine/galleryidevice.py:665 exe/webui/block.py:260
 #: exe/webui/block.py:261 exe/webui/common.py:345 exe/webui/common.py:346
-#: exe/webui/element.py:2269 exe/webui/element.py:2270
+#: exe/webui/element.py:2265 exe/webui/element.py:2266
 #: exe/webui/truefalseelement.py:152 exe/webui/truefalseelement.py:153
 #: exe/webui/editorpane.py:360 exe/webui/editorpane.py:361
 #: exe/webui/editorpane.py:381 exe/webui/editorpane.py:382
@@ -619,11 +619,11 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: exe/webui/element.py:1779 exe/webui/element.py:2113
+#: exe/webui/element.py:1775 exe/webui/element.py:2109
 msgid "Correct"
 msgstr "Правилно"
 
-#: exe/webui/element.py:1727 exe/webui/element.py:2024
+#: exe/webui/element.py:1723 exe/webui/element.py:2020
 #: exe/webui/testoptionelement.py:111
 msgid "Correct Option"
 msgstr "Правилен вариант"
@@ -673,13 +673,13 @@ msgstr "Изтриване на файл"
 msgid "Delete Image"
 msgstr "Изтриване на изображение"
 
-#: exe/webui/element.py:1755 exe/webui/element.py:2052
+#: exe/webui/element.py:1751 exe/webui/element.py:2048
 #: exe/webui/testoptionelement.py:139
 msgid "Delete option"
 msgstr "Изтриване на вариант"
 
-#: exe/webui/testquestionelement.py:104 exe/webui/element.py:1313
-#: exe/webui/element.py:1864 exe/webui/element.py:2211
+#: exe/webui/testquestionelement.py:104 exe/webui/element.py:1309
+#: exe/webui/element.py:1860 exe/webui/element.py:2207
 #: exe/webui/truefalseelement.py:130 exe/webui/questionelement.py:111
 msgid "Delete question"
 msgstr "Изтриване на въпрос"
@@ -749,7 +749,7 @@ msgstr ""
 msgid "Disable Auto-Top Internal Linking"
 msgstr ""
 
-#: exe/webui/element.py:501 exe/webui/element.py:915 exe/webui/element.py:1426
+#: exe/webui/element.py:501 exe/webui/element.py:915 exe/webui/element.py:1422
 msgid "Display as:"
 msgstr "Показване като:"
 
@@ -871,7 +871,7 @@ msgid "Enter a hint here. If you do not want to provide a hint, leave this field
 msgstr "Въведете подсказка. Ако не желаете да давате подсказка, оставете полето празно."
 
 #: exe/engine/wikipediaidevice.py:73 exe/engine/wikipediaidevice.py:336
-#: exe/engine/latexidevice.py:372
+#: exe/engine/latexidevice.py:395
 msgid ""
 "Enter a phrase or term you wish to search \n"
 "within Wikipedia."
@@ -952,7 +952,7 @@ msgstr ""
 msgid "Enter instructions for completion here"
 msgstr "Тук въведете указания за завършване"
 
-#: exe/engine/latexidevice.py:63
+#: exe/engine/latexidevice.py:59
 msgid "Enter path to kpse on your system. Usualy it is in bin-directory of your latex installation"
 msgstr ""
 
@@ -1129,7 +1129,7 @@ msgstr "Невярно"
 #: exe/engine/clozeidevice.py:280 exe/engine/feedbackidevice.py:45
 #: exe/engine/feedbackidevice.py:229 exe/engine/pdfidevice.py:255
 #: exe/engine/idevicestore.py:337 exe/engine/idevicestore.py:445
-#: exe/webui/common.py:249 exe/webui/element.py:2055
+#: exe/webui/common.py:249 exe/webui/element.py:2051
 #: exe/webui/clozeblock.py:164 exe/webui/editorelement.py:148
 #: exe/webui/editorpane.py:251 exe/webui/questionelement.py:104
 msgid "Feedback"
@@ -1259,7 +1259,7 @@ msgstr "Скриване/Показване на Дума"
 
 #: exe/engine/field.py:3154 exe/engine/field.py:3220
 #: exe/engine/truefalseidevice.py:53 exe/engine/truefalseidevice.py:128
-#: exe/engine/hintidevice.py:45 exe/webui/element.py:2273
+#: exe/engine/hintidevice.py:45 exe/webui/element.py:2269
 #: exe/webui/truefalseelement.py:146 exe/webui/truefalseelement.py:156
 msgid "Hint"
 msgstr "Подсказка"
@@ -1322,7 +1322,7 @@ msgstr "Внасяне"
 msgid "Import local pdf and display them with Acrobat Reader plugin (must be installed first)"
 msgstr ""
 
-#: exe/webui/element.py:1781
+#: exe/webui/element.py:1777
 msgid "Incorrect"
 msgstr "Невярно"
 
@@ -1387,7 +1387,7 @@ msgstr "Етикет:"
 msgid "Large"
 msgstr "Голям"
 
-#: exe/engine/latexidevice.py:50
+#: exe/engine/latexidevice.py:47
 msgid "Latex import"
 msgstr ""
 
@@ -1555,13 +1555,13 @@ msgstr ""
 
 #: exe/engine/field.py:3076 exe/engine/field.py:3125
 #: exe/engine/quiztestidevice.py:48 exe/engine/quiztestidevice.py:98
-#: exe/webui/element.py:1722 exe/webui/element.py:2019
+#: exe/webui/element.py:1718 exe/webui/element.py:2015
 #: exe/webui/testoptionelement.py:106
 msgid "Option"
 msgstr "Вариант"
 
 #: exe/engine/field.py:3242 exe/engine/field.py:3279
-#: exe/webui/testquestionelement.py:110 exe/webui/element.py:1882
+#: exe/webui/testquestionelement.py:110 exe/webui/element.py:1878
 msgid "Options"
 msgstr "Настройки"
 
@@ -1631,7 +1631,7 @@ msgstr ""
 "Моля въведете име \n"
 "на Помощното средство."
 
-#: exe/webui/element.py:1488
+#: exe/webui/element.py:1484
 msgid "Please select a .flv file."
 msgstr "Моля изберете .flv  файл."
 
@@ -1688,7 +1688,7 @@ msgstr ""
 "<li>        Учащите трябва да имат Английски език 4-то ниво </li>\n"
 "<li>        Учащите трябва да могат да сглобят стандартни моторни инструменти </li></ul>\n"
 
-#: exe/webui/element.py:1631 exe/webui/editorpane.py:264
+#: exe/webui/element.py:1627 exe/webui/editorpane.py:264
 msgid "Preview"
 msgstr "Преглед"
 
@@ -1786,7 +1786,7 @@ msgstr "Въпрос"
 #: exe/engine/field.py:3368 exe/engine/field.py:3449
 #: exe/engine/truefalseidevice.py:46 exe/engine/truefalseidevice.py:122
 #: exe/engine/quiztestidevice.py:129 exe/engine/quiztestidevice.py:222
-#: exe/webui/element.py:1859
+#: exe/webui/element.py:1855
 msgid "Question:"
 msgstr "Въпрос"
 
@@ -1869,7 +1869,7 @@ msgstr ""
 "ЗАПАЗВАНЕТО СЕ ПРОВАЛИ!\n"
 "%s"
 
-#: exe/engine/package.py:475 exe/engine/package.py:482
+#: exe/engine/package.py:476 exe/engine/package.py:483
 #, python-format
 msgid ""
 "SAVE FAILED!\n"
@@ -1898,7 +1898,7 @@ msgstr ""
 msgid "Section"
 msgstr "Секция"
 
-#: exe/webui/element.py:1422 exe/webui/editorelement.py:268
+#: exe/webui/element.py:1418 exe/webui/editorelement.py:268
 msgid "Select Flash Object"
 msgstr "Изберете Flash обект"
 
@@ -1917,11 +1917,11 @@ msgstr "Изберете МР3 файл"
 msgid "Select a file"
 msgstr "Изберете файл"
 
-#: exe/webui/element.py:1504
+#: exe/webui/element.py:1500
 msgid "Select a flash video"
 msgstr "Изберете flash  видео"
 
-#: exe/webui/element.py:1617
+#: exe/webui/element.py:1613
 msgid "Select a font size: "
 msgstr "Изберете размер на шрифта:"
 
@@ -1950,7 +1950,7 @@ msgid "Select pass rate: "
 msgstr "Минимален % верни отговори за преминаване"
 
 #: exe/engine/wikipediaidevice.py:71 exe/engine/wikipediaidevice.py:334
-#: exe/engine/latexidevice.py:370
+#: exe/engine/latexidevice.py:393
 msgid ""
 "Select the appropriate language version \n"
 "of Wikipedia to search and enter search term."
@@ -2001,7 +2001,7 @@ msgstr "Показване на %s Изображение"
 msgid "Show Answers"
 msgstr "Показване на Отговори"
 
-#: exe/webui/element.py:1936 exe/webui/questionelement.py:130
+#: exe/webui/element.py:1932 exe/webui/questionelement.py:130
 msgid "Show Feedback"
 msgstr "Показване на Помощна информация"
 
@@ -2081,7 +2081,7 @@ msgstr "Изпращане на Отговор"
 msgid "Swedish Wikipedia Article"
 msgstr "Шведска статия в Wikipedia"
 
-#: exe/engine/latexidevice.py:51
+#: exe/engine/latexidevice.py:48
 msgid "TUM"
 msgstr ""
 
@@ -2097,10 +2097,15 @@ msgstr ""
 msgid "Term"
 msgstr ""
 
-#: exe/engine/field.py:3299 exe/webui/element.py:1308
+#: exe/engine/field.py:3299 exe/webui/element.py:1304
 #, fuzzy
 msgid "Term:"
 msgstr "Тип:"
+
+#: exe/webui/glossaryblock.py:114
+#, python-format
+msgid "Terms number %s are not entered)"
+msgstr ""
 
 #: exe/engine/idevice.py:52
 #, fuzzy
@@ -2289,7 +2294,7 @@ msgstr ""
 "За да укажете правилният отговор, \n"
 "цъкнете радио бутона до правилният вариант."
 
-#: exe/webui/glossaryblock.py:127 exe/webui/glossaryblock.py:175
+#: exe/webui/glossaryblock.py:138 exe/webui/glossaryblock.py:195
 #, fuzzy
 msgid "Top"
 msgstr "Тема"
@@ -2376,7 +2381,7 @@ msgid "URL:"
 msgstr "URL:"
 
 #: exe/engine/wikipediaidevice.py:99 exe/engine/wikipediaidevice.py:133
-#: exe/engine/latexidevice.py:160
+#: exe/engine/latexidevice.py:181
 #, python-format
 msgid "Unable to download from %s <br/>Please check the spelling and connection and try again."
 msgstr "Свалянето от %s е неуспешно.<br/> Моля проверете правописа и връзката, и опитайте отново."
@@ -2390,7 +2395,7 @@ msgstr "Не може да се зареди RSS емисията от %s <br/> 
 msgid "Unable to merge: duplicate Java Applet resource names exist (including: \""
 msgstr "Сливането е невъзможно: съществува дублиращо се Java Applet ресурсно име (включително: \")"
 
-#: exe/engine/latexidevice.py:128
+#: exe/engine/latexidevice.py:149
 #, python-format
 msgid "Unable to read file: %s."
 msgstr ""
@@ -2539,7 +2544,7 @@ msgstr "Wikiversity"
 msgid "Wiktionary"
 msgstr "Wiktionary"
 
-#: exe/webui/element.py:2115
+#: exe/webui/element.py:2111
 msgid "Wrong"
 msgstr "Грешно"
 
@@ -2577,7 +2582,7 @@ msgstr "eXe Проект"
 msgid "file %s has no parentNode"
 msgstr "Файлът %s няма родителски елемент"
 
-#: exe/engine/wikipediaidevice.py:288 exe/engine/latexidevice.py:324
+#: exe/engine/wikipediaidevice.py:288 exe/engine/latexidevice.py:347
 msgid "http://en.wikipedia.org/"
 msgstr "http://en.wikipedia.org/"
 
@@ -2586,7 +2591,7 @@ msgstr "http://en.wikipedia.org/"
 msgid "iDevice %s has no package"
 msgstr "Помощното средство %s няма пакет"
 
-#: exe/engine/package.py:743 exe/xului/templates/mainpage.xul:<menuitem
+#: exe/engine/package.py:744 exe/xului/templates/mainpage.xul:<menuitem
 #: n:render="translate" oncommand="toolsEditor()" label="iDevice Editor">
 msgid "iDevice Editor"
 msgstr "Редактор на Помощни средства"
@@ -2607,7 +2612,7 @@ msgstr "код на клавиш"
 msgid "label"
 msgstr "етикет"
 
-#: exe/webui/element.py:1614
+#: exe/webui/element.py:1610
 msgid "newline"
 msgstr "нов ред"
 
@@ -2615,7 +2620,7 @@ msgstr "нов ред"
 msgid "renamed a Resource for an Applet Idevice, and it should not have even made it this far!"
 msgstr ""
 
-#: exe/webui/element.py:1613
+#: exe/webui/element.py:1609
 msgid "text"
 msgstr "текст"
 

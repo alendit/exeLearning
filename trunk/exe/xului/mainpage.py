@@ -46,6 +46,7 @@ from exe.export.scormexport      import ScormExport
 from exe.export.imsexport        import IMSExport
 from exe.export.ipodexport       import IpodExport
 from exe.export.presentationexport  import PresentationExport
+from exe.export.handoutexport    import HandoutExport
 from exe.engine.path             import Path, toUnicode
 from exe.engine.package          import Package
 from exe                         import globals as G
@@ -808,6 +809,12 @@ class MainPage(RenderableLivePage):
 
         elif exportType == 'presentation':
             self.exportPresentation(client, filename, stylesDir)
+        elif exportType == 'printHandout':
+            exported_dir = self.printHandout(client, filename, stylesDir)
+            print exported_dir
+            web_printdir = self.get_printdir_relative2web(exported_dir)
+            client.call(print_callback, filename, exported_dir, 
+                web_printdir)
             
         elif exportType == 'zipFile':
             filename = self.b4save(client, filename, '.zip', _(u'EXPORT FAILED!'))
@@ -1020,6 +1027,19 @@ class MainPage(RenderableLivePage):
 
         # show new presentation in a new window
         self._startFile(filename)
+
+
+    def printHandout(self, client, exportDir, stylesDir):
+        """
+        export client to a DOM presentation
+        """
+
+        print exportDir
+        handoutExport = HandoutExport(self.config, stylesDir,
+            exportDir)
+        handoutExport.export(self.package)
+        return exportDir.encode('utf-8')
+
 
     def exportWebSite(self, client, filename, stylesDir):
         """

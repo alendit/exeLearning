@@ -23,6 +23,7 @@ FreeTextBlock can render and process FreeTextIdevices as XHTML
 import logging
 from exe.webui.block            import Block
 from exe.webui.element          import TextAreaElement
+from exe.engine                 import freetextidevice
 from exe.webui                     import common
 
 log = logging.getLogger(__name__)
@@ -70,8 +71,8 @@ class FreeTextBlock(Block):
             content = self.contentElement.process(request) 
             if content: 
                 self.idevice.content = content
-        if "present" + self.id in request.args and not is_cancel:
-            self.idevice.presentable = request.args["present" + self.id][0]
+        if "export" + self.id in request.args and not is_cancel:
+            self.idevice.exportType = request.args["export" + self.id][0]
 
 
     def renderEdit(self, style):
@@ -85,9 +86,11 @@ class FreeTextBlock(Block):
         if self.idevice is not None and self.idevice.parentNode is not None:
             this_package = self.idevice.parentNode.package
         html += common.formField('select', this_package,
-            _("Export to presentation"), "present" + self.id,
-            options = [[_('Export'), 'True'], [_('Don\'t export'), 'False']],
-            selection = self.idevice.presentable)
+            _("Custom export options"), "export" + self.id,
+            options = [[_('Don\'t export'), freetextidevice.NOEXPORT],
+                [_('Presentation'), freetextidevice.PRESENTATION],
+                [_('Handout'), freetextidevice.HANDOUT]],
+            selection = self.idevice.exportType)
         html += self.renderEditButtons()
         html += u"</div>\n"
         return html

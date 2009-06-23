@@ -66,7 +66,7 @@ dataFiles('exe/webui', '/usr/share/exe',
 dataFiles('exe', '/usr/share/exe', ['locale'])
 
 # Add our 3rd party library copies
-dataFiles('.', '/usr/share/exe', ['twisted', 'nevow', 'formless', 'pyPdf'])
+dataFiles('.', '/usr/share/exe', ['twisted', 'nevow', 'formless', 'pyPdf', 'plasTeX'])
 
 # Add in the xului directory
 dataFiles('exe/xului', '/usr/share/exe', ['scripts', 'templates'])

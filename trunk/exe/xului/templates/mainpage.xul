@@ -36,6 +36,7 @@
         <key n:render="translate" id="file-open-key" modifiers="control" key="O" oncommand="fileOpen()"/>
         <key n:render="translate" id="file-quit-key" modifiers="control" key="Q" oncommand="fileQuit()"/>
 	<key n:render="translate" id="file-print-key" modifiers="control" key="P" oncommand="filePrint()"/> 
+    <key n:render="translate" id="handout-print-key" modifiers="control" key="H" oncommand="handoutPrint()"/>
     </keyset>
     <vbox flex="1">
         <!-- Start Menus -->
@@ -55,6 +56,7 @@
                 <menuitem n:render="translate" label="Save As..." accesskey="a" oncommand="fileSaveAs()"/>
                     <menuseparator/>
 		    <menuitem n:render="translate" label="Print" key="file-print-key" accesskey="p" oncommand="filePrint()"/>
+            <menuitem n:render="translate" label="Print Handout" key="handout-print-key" accesskey="h" oncommand="handoutPrint()"/>
                     <menuseparator/>
                 <menu n:render="translate" id="export-menu" label="Export" accesskey="e">
                   <menupopup id="export-popup">

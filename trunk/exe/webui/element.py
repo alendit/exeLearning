@@ -1265,10 +1265,6 @@ class TermElement(Element):
         Initialize
         """
         Element.__init__(self, field)
-        #if field.termArea.idevice is None:
-        #    field.termArea.idevice = idevice
-        #if field.definitionArea.idevice is None:
-        #    field.definitionArea.idevice = idevice
 
         self.termElement = TextAreaElement(field.termArea)
         self.termId = "term" + self.id
@@ -1375,7 +1371,7 @@ class TermElement(Element):
                 self.definitionELement.field.content_wo_resourcePaths
             definitionContent = self.definitionElement.field.content
 
-            html = '<div id="ta%s" class="block" %s><span style="font-weight: bold">%s : </span>%s</div>' % (self.id, visible, termContent, definitionContent) 
+            html = '<div id="ta%s" class="term" %s><span style="font-weight: bold">%s : </span>%s</div>' % (self.id, visible, termContent, definitionContent) 
  
 
         return html

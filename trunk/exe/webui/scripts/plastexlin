@@ -30,6 +30,8 @@ def main(argv):
     file = args.pop(0)
 
     # Create document instance that output will be put into
+    print config['files']['split-level']
+    config['files']['split-level'] = -10
     document = plasTeX.TeXDocument(config=config)
 
     # Instantiate the TeX processor and parse the document

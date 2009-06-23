@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exe_cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 16:52+0200\n"
+"POT-Creation-Date: 2009-06-16 20:54+0200\n"
 "PO-Revision-Date: 2008-07-17 19:59+0200\n"
 "Last-Translator: Vlastimil Ott <vlastimil@e-ott.info>\n"
 "Language-Team:  <cs@li.org>\n"
@@ -165,7 +165,7 @@ msgstr ""
 "Je to lepší, než aby byla všechna slova označena na konci cvičení.\n"
 "</p>"
 
-#: exe/engine/latexidevice.py:52
+#: exe/engine/latexidevice.py:49
 msgid ""
 "<p>Latex import idevice allows you to importa latex source file and convert it in HTML\n"
 "</p>"
@@ -235,7 +235,7 @@ msgstr ""
 "k sobě navzájem nebo k nějaké části cvičení, \n"
 " bude jejich zobrazení ve společné galerii lepší než zobrazení samostatně.</p>"
 
-#: exe/engine/package.py:444
+#: exe/engine/package.py:445
 msgid "?????"
 msgstr "?????"
 
@@ -330,7 +330,7 @@ msgstr "Přidat do iDevice interaktivní zpětnou vazbu."
 msgid "Add an mp3 file to your iDevice."
 msgstr "Vložit do iDevice MP3 soubor."
 
-#: exe/webui/testquestionelement.py:122 exe/webui/element.py:1895
+#: exe/webui/testquestionelement.py:122 exe/webui/element.py:1891
 msgid "Add another Option"
 msgstr "Přidat další volbu"
 
@@ -347,7 +347,7 @@ msgstr "Přidat další otázku"
 msgid "Add another activity"
 msgstr "Přidat další aktivitu"
 
-#: exe/webui/element.py:2226
+#: exe/webui/element.py:2222
 msgid "Add another option"
 msgstr "Přidat další volbu"
 
@@ -467,7 +467,7 @@ msgstr "Kód appletu:"
 msgid "Applet Type"
 msgstr "Typ appletu"
 
-#: exe/engine/wikipediaidevice.py:65 exe/engine/latexidevice.py:58
+#: exe/engine/wikipediaidevice.py:65 exe/engine/latexidevice.py:55
 msgid "Article"
 msgstr "Článek"
 
@@ -600,7 +600,7 @@ msgstr "Pro vložení obrázku klepněte na tlačítko \"Přidat obrázky\". Obr
 
 #: exe/engine/galleryidevice.py:665 exe/webui/block.py:260
 #: exe/webui/block.py:261 exe/webui/common.py:345 exe/webui/common.py:346
-#: exe/webui/element.py:2269 exe/webui/element.py:2270
+#: exe/webui/element.py:2265 exe/webui/element.py:2266
 #: exe/webui/truefalseelement.py:152 exe/webui/truefalseelement.py:153
 #: exe/webui/editorpane.py:360 exe/webui/editorpane.py:361
 #: exe/webui/editorpane.py:381 exe/webui/editorpane.py:382
@@ -637,11 +637,11 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: exe/webui/element.py:1779 exe/webui/element.py:2113
+#: exe/webui/element.py:1775 exe/webui/element.py:2109
 msgid "Correct"
 msgstr "Správně"
 
-#: exe/webui/element.py:1727 exe/webui/element.py:2024
+#: exe/webui/element.py:1723 exe/webui/element.py:2020
 #: exe/webui/testoptionelement.py:111
 msgid "Correct Option"
 msgstr "Správná volba"
@@ -691,13 +691,13 @@ msgstr "Smazat soubor"
 msgid "Delete Image"
 msgstr "Smazat obrázek"
 
-#: exe/webui/element.py:1755 exe/webui/element.py:2052
+#: exe/webui/element.py:1751 exe/webui/element.py:2048
 #: exe/webui/testoptionelement.py:139
 msgid "Delete option"
 msgstr "Smazat volbu"
 
-#: exe/webui/testquestionelement.py:104 exe/webui/element.py:1313
-#: exe/webui/element.py:1864 exe/webui/element.py:2211
+#: exe/webui/testquestionelement.py:104 exe/webui/element.py:1309
+#: exe/webui/element.py:1860 exe/webui/element.py:2207
 #: exe/webui/truefalseelement.py:130 exe/webui/questionelement.py:111
 msgid "Delete question"
 msgstr "Smazat otázku"
@@ -767,7 +767,7 @@ msgstr ""
 msgid "Disable Auto-Top Internal Linking"
 msgstr ""
 
-#: exe/webui/element.py:501 exe/webui/element.py:915 exe/webui/element.py:1426
+#: exe/webui/element.py:501 exe/webui/element.py:915 exe/webui/element.py:1422
 msgid "Display as:"
 msgstr "Zobrazit jako:"
 
@@ -888,7 +888,7 @@ msgid "Enter a hint here. If you do not want to provide a hint, leave this field
 msgstr "Vložte radu. Pokud nechcete žádnou radu uvádět, nechejte pole prázdné."
 
 #: exe/engine/wikipediaidevice.py:73 exe/engine/wikipediaidevice.py:336
-#: exe/engine/latexidevice.py:372
+#: exe/engine/latexidevice.py:395
 msgid ""
 "Enter a phrase or term you wish to search \n"
 "within Wikipedia."
@@ -965,7 +965,7 @@ msgstr ""
 msgid "Enter instructions for completion here"
 msgstr "Vložte instrukce pro dokončení"
 
-#: exe/engine/latexidevice.py:63
+#: exe/engine/latexidevice.py:59
 msgid "Enter path to kpse on your system. Usualy it is in bin-directory of your latex installation"
 msgstr ""
 
@@ -1137,7 +1137,7 @@ msgstr "Ne"
 #: exe/engine/clozeidevice.py:280 exe/engine/feedbackidevice.py:45
 #: exe/engine/feedbackidevice.py:229 exe/engine/pdfidevice.py:255
 #: exe/engine/idevicestore.py:337 exe/engine/idevicestore.py:445
-#: exe/webui/common.py:249 exe/webui/element.py:2055
+#: exe/webui/common.py:249 exe/webui/element.py:2051
 #: exe/webui/clozeblock.py:164 exe/webui/editorelement.py:148
 #: exe/webui/editorpane.py:251 exe/webui/questionelement.py:104
 msgid "Feedback"
@@ -1267,7 +1267,7 @@ msgstr "Skrýt/zobrazit slovo"
 
 #: exe/engine/field.py:3154 exe/engine/field.py:3220
 #: exe/engine/truefalseidevice.py:53 exe/engine/truefalseidevice.py:128
-#: exe/engine/hintidevice.py:45 exe/webui/element.py:2273
+#: exe/engine/hintidevice.py:45 exe/webui/element.py:2269
 #: exe/webui/truefalseelement.py:146 exe/webui/truefalseelement.py:156
 msgid "Hint"
 msgstr "Rada"
@@ -1330,7 +1330,7 @@ msgstr "Importovat"
 msgid "Import local pdf and display them with Acrobat Reader plugin (must be installed first)"
 msgstr ""
 
-#: exe/webui/element.py:1781
+#: exe/webui/element.py:1777
 msgid "Incorrect"
 msgstr "Nesprávně"
 
@@ -1395,7 +1395,7 @@ msgstr "Popisek:"
 msgid "Large"
 msgstr "Velký"
 
-#: exe/engine/latexidevice.py:50
+#: exe/engine/latexidevice.py:47
 msgid "Latex import"
 msgstr ""
 
@@ -1562,13 +1562,13 @@ msgstr ""
 
 #: exe/engine/field.py:3076 exe/engine/field.py:3125
 #: exe/engine/quiztestidevice.py:48 exe/engine/quiztestidevice.py:98
-#: exe/webui/element.py:1722 exe/webui/element.py:2019
+#: exe/webui/element.py:1718 exe/webui/element.py:2015
 #: exe/webui/testoptionelement.py:106
 msgid "Option"
 msgstr "Volba"
 
 #: exe/engine/field.py:3242 exe/engine/field.py:3279
-#: exe/webui/testquestionelement.py:110 exe/webui/element.py:1882
+#: exe/webui/testquestionelement.py:110 exe/webui/element.py:1878
 msgid "Options"
 msgstr "Volby"
 
@@ -1636,7 +1636,7 @@ msgstr "Vyplňte prosím název iDevice."
 msgid "Please enter<br />an idevice name."
 msgstr "Vyplňte prosím<br />název iDevice."
 
-#: exe/webui/element.py:1488
+#: exe/webui/element.py:1484
 msgid "Please select a .flv file."
 msgstr "Vyberte prosím soubor .flv (Flash Video)."
 
@@ -1693,7 +1693,7 @@ msgstr ""
 "<li> Studenti musí mít Level 4 English </li>\n"
 "<li> Studenti musí být schopni zkompletovat běžné elektrické nářadí.</li></ul>\n"
 
-#: exe/webui/element.py:1631 exe/webui/editorpane.py:264
+#: exe/webui/element.py:1627 exe/webui/editorpane.py:264
 msgid "Preview"
 msgstr "Náhled"
 
@@ -1790,7 +1790,7 @@ msgstr "Otázka"
 #: exe/engine/field.py:3368 exe/engine/field.py:3449
 #: exe/engine/truefalseidevice.py:46 exe/engine/truefalseidevice.py:122
 #: exe/engine/quiztestidevice.py:129 exe/engine/quiztestidevice.py:222
-#: exe/webui/element.py:1859
+#: exe/webui/element.py:1855
 msgid "Question:"
 msgstr "Otázka:"
 
@@ -1874,7 +1874,7 @@ msgstr ""
 "ULOŽENÍ SE NEZDAŘILO!\n"
 "%s"
 
-#: exe/engine/package.py:475 exe/engine/package.py:482
+#: exe/engine/package.py:476 exe/engine/package.py:483
 #, python-format
 msgid ""
 "SAVE FAILED!\n"
@@ -1903,7 +1903,7 @@ msgstr ""
 msgid "Section"
 msgstr "Kapitola"
 
-#: exe/webui/element.py:1422 exe/webui/editorelement.py:268
+#: exe/webui/element.py:1418 exe/webui/editorelement.py:268
 msgid "Select Flash Object"
 msgstr "Vyberte flash objekt"
 
@@ -1922,11 +1922,11 @@ msgstr "Vyberte MP3 soubor"
 msgid "Select a file"
 msgstr "Vyberte soubor"
 
-#: exe/webui/element.py:1504
+#: exe/webui/element.py:1500
 msgid "Select a flash video"
 msgstr "Vyberte flash video"
 
-#: exe/webui/element.py:1617
+#: exe/webui/element.py:1613
 msgid "Select a font size: "
 msgstr "Vyberte velikost fontu: "
 
@@ -1955,7 +1955,7 @@ msgid "Select pass rate: "
 msgstr "Vyberte hodnocení zkoušky: "
 
 #: exe/engine/wikipediaidevice.py:71 exe/engine/wikipediaidevice.py:334
-#: exe/engine/latexidevice.py:370
+#: exe/engine/latexidevice.py:393
 msgid ""
 "Select the appropriate language version \n"
 "of Wikipedia to search and enter search term."
@@ -2006,7 +2006,7 @@ msgstr "Zobrazit obrázek %s"
 msgid "Show Answers"
 msgstr "Zobrazit odpovědi"
 
-#: exe/webui/element.py:1936 exe/webui/questionelement.py:130
+#: exe/webui/element.py:1932 exe/webui/questionelement.py:130
 msgid "Show Feedback"
 msgstr "Zobrazit zpětnou vazbu"
 
@@ -2086,7 +2086,7 @@ msgstr "Odeslat odpověď"
 msgid "Swedish Wikipedia Article"
 msgstr "Článek ve Wikipedii švédsky"
 
-#: exe/engine/latexidevice.py:51
+#: exe/engine/latexidevice.py:48
 msgid "TUM"
 msgstr ""
 
@@ -2102,10 +2102,15 @@ msgstr ""
 msgid "Term"
 msgstr ""
 
-#: exe/engine/field.py:3299 exe/webui/element.py:1308
+#: exe/engine/field.py:3299 exe/webui/element.py:1304
 #, fuzzy
 msgid "Term:"
 msgstr "Typ:"
+
+#: exe/webui/glossaryblock.py:114
+#, python-format
+msgid "Terms number %s are not entered)"
+msgstr ""
 
 #: exe/engine/idevice.py:52
 #, fuzzy
@@ -2287,7 +2292,7 @@ msgstr ""
 "K označení správné odpovědi \n"
 "klepněte na přepínač vedle dané možnosti."
 
-#: exe/webui/glossaryblock.py:127 exe/webui/glossaryblock.py:175
+#: exe/webui/glossaryblock.py:138 exe/webui/glossaryblock.py:195
 #, fuzzy
 msgid "Top"
 msgstr "Téma"
@@ -2375,7 +2380,7 @@ msgid "URL:"
 msgstr "URL:"
 
 #: exe/engine/wikipediaidevice.py:99 exe/engine/wikipediaidevice.py:133
-#: exe/engine/latexidevice.py:160
+#: exe/engine/latexidevice.py:181
 #, python-format
 msgid "Unable to download from %s <br/>Please check the spelling and connection and try again."
 msgstr "Nelze stahovat z %s <br/>Překontrolujte, prosím, zadaný text a také připojení a zkuste to znovu."
@@ -2389,7 +2394,7 @@ msgstr "Nelze načíst RSS kanál %s <br/>Překontrolujte, prosím, zadaný text
 msgid "Unable to merge: duplicate Java Applet resource names exist (including: \""
 msgstr "Není možné spojit: duplicitní jméno prostředku typu Java applet (včetně: \""
 
-#: exe/engine/latexidevice.py:128
+#: exe/engine/latexidevice.py:149
 #, python-format
 msgid "Unable to read file: %s."
 msgstr ""
@@ -2535,7 +2540,7 @@ msgstr "Wikiverzita"
 msgid "Wiktionary"
 msgstr "Wikcionář"
 
-#: exe/webui/element.py:2115
+#: exe/webui/element.py:2111
 msgid "Wrong"
 msgstr "Špatně"
 
@@ -2573,7 +2578,7 @@ msgstr "eXe projekt"
 msgid "file %s has no parentNode"
 msgstr "soubor %s nemá parentNode"
 
-#: exe/engine/wikipediaidevice.py:288 exe/engine/latexidevice.py:324
+#: exe/engine/wikipediaidevice.py:288 exe/engine/latexidevice.py:347
 msgid "http://en.wikipedia.org/"
 msgstr "http://cs.wikipedia.org/"
 
@@ -2582,7 +2587,7 @@ msgstr "http://cs.wikipedia.org/"
 msgid "iDevice %s has no package"
 msgstr "IDevice %s nemá balíček"
 
-#: exe/engine/package.py:743 exe/xului/templates/mainpage.xul:<menuitem
+#: exe/engine/package.py:744 exe/xului/templates/mainpage.xul:<menuitem
 #: n:render="translate" oncommand="toolsEditor()" label="iDevice Editor">
 msgid "iDevice Editor"
 msgstr "Editor iDevice"
@@ -2603,7 +2608,7 @@ msgstr "kód klávesy"
 msgid "label"
 msgstr "popisek"
 
-#: exe/webui/element.py:1614
+#: exe/webui/element.py:1610
 msgid "newline"
 msgstr "nový řádek"
 
@@ -2611,7 +2616,7 @@ msgstr "nový řádek"
 msgid "renamed a Resource for an Applet Idevice, and it should not have even made it this far!"
 msgstr "Zdroj přejmenován na na iDevice Applet, ale nemělo k tomu dojít!"
 
-#: exe/webui/element.py:1613
+#: exe/webui/element.py:1609
 msgid "text"
 msgstr "text"
 

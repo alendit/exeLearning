@@ -3298,8 +3298,10 @@ class GlossaryElementField(Field):
 
         self.termArea = TextAreaField(x_(u'Term:'),
                             x_("Enter term you want to describe"))
+        self.termArea.idevice = self.idevice
         self.definitionArea = TextAreaField(x_(u'Definition'),
                             x_("Enter definition"))
+        self.definitionArea.idevice = self.idevice
 
         self._termInstruct = x_("Enter term you want to describe")
 

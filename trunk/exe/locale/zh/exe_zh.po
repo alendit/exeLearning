@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eXe trunk (pre-0.8)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 16:52+0200\n"
+"POT-Creation-Date: 2009-06-16 20:54+0200\n"
 "PO-Revision-Date: 2007-08-08 10:27+1200\n"
 "Last-Translator: Jenny Lin <jenny.lin.nz@yahoo.com>\n"
 "Language-Team: eXe <info@exelearning.org>\n"
@@ -111,7 +111,7 @@ msgid ""
 "exercise.</p>"
 msgstr " "
 
-#: exe/engine/latexidevice.py:52
+#: exe/engine/latexidevice.py:49
 msgid ""
 "<p>Latex import idevice allows you to importa latex source file and convert it in HTML\n"
 "</p>"
@@ -161,7 +161,7 @@ msgid ""
 "these in a gallery context rather then individually.</p>"
 msgstr "当有一组相关的图片要展示时或对一个特定的练习,要显示几张图片."
 
-#: exe/engine/package.py:444
+#: exe/engine/package.py:445
 msgid "?????"
 msgstr "?????"
 
@@ -253,7 +253,7 @@ msgstr "添加互动式评语."
 msgid "Add an mp3 file to your iDevice."
 msgstr "添加mp3文档."
 
-#: exe/webui/testquestionelement.py:122 exe/webui/element.py:1895
+#: exe/webui/testquestionelement.py:122 exe/webui/element.py:1891
 msgid "Add another Option"
 msgstr "添加选项"
 
@@ -270,7 +270,7 @@ msgstr "添加问题"
 msgid "Add another activity"
 msgstr "添加另一项活动"
 
-#: exe/webui/element.py:2226
+#: exe/webui/element.py:2222
 msgid "Add another option"
 msgstr "添加选项"
 
@@ -368,7 +368,7 @@ msgstr "Applet Code:"
 msgid "Applet Type"
 msgstr "Applet 类别"
 
-#: exe/engine/wikipediaidevice.py:65 exe/engine/latexidevice.py:58
+#: exe/engine/wikipediaidevice.py:65 exe/engine/latexidevice.py:55
 msgid "Article"
 msgstr "文章"
 
@@ -492,7 +492,7 @@ msgstr "点击\"添加图片\"按钮来选择图片文档.所选图片将显示�
 
 #: exe/engine/galleryidevice.py:665 exe/webui/block.py:260
 #: exe/webui/block.py:261 exe/webui/common.py:345 exe/webui/common.py:346
-#: exe/webui/element.py:2269 exe/webui/element.py:2270
+#: exe/webui/element.py:2265 exe/webui/element.py:2266
 #: exe/webui/truefalseelement.py:152 exe/webui/truefalseelement.py:153
 #: exe/webui/editorpane.py:360 exe/webui/editorpane.py:361
 #: exe/webui/editorpane.py:381 exe/webui/editorpane.py:382
@@ -529,11 +529,11 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: exe/webui/element.py:1779 exe/webui/element.py:2113
+#: exe/webui/element.py:1775 exe/webui/element.py:2109
 msgid "Correct"
 msgstr "正确"
 
-#: exe/webui/element.py:1727 exe/webui/element.py:2024
+#: exe/webui/element.py:1723 exe/webui/element.py:2020
 #: exe/webui/testoptionelement.py:111
 #, fuzzy
 msgid "Correct Option"
@@ -588,13 +588,13 @@ msgstr "删除文档"
 msgid "Delete Image"
 msgstr "删除图片"
 
-#: exe/webui/element.py:1755 exe/webui/element.py:2052
+#: exe/webui/element.py:1751 exe/webui/element.py:2048
 #: exe/webui/testoptionelement.py:139
 msgid "Delete option"
 msgstr "删除选项"
 
-#: exe/webui/testquestionelement.py:104 exe/webui/element.py:1313
-#: exe/webui/element.py:1864 exe/webui/element.py:2211
+#: exe/webui/testquestionelement.py:104 exe/webui/element.py:1309
+#: exe/webui/element.py:1860 exe/webui/element.py:2207
 #: exe/webui/truefalseelement.py:130 exe/webui/questionelement.py:111
 msgid "Delete question"
 msgstr "删除问题"
@@ -653,7 +653,7 @@ msgstr ""
 msgid "Disable Auto-Top Internal Linking"
 msgstr ""
 
-#: exe/webui/element.py:501 exe/webui/element.py:915 exe/webui/element.py:1426
+#: exe/webui/element.py:501 exe/webui/element.py:915 exe/webui/element.py:1422
 msgid "Display as:"
 msgstr "显示为:"
 
@@ -770,7 +770,7 @@ msgid "Enter a hint here. If you do not want to provide a hint, leave this field
 msgstr "在此输入提示, 如果您不想提供提示, 就让此栏空白."
 
 #: exe/engine/wikipediaidevice.py:73 exe/engine/wikipediaidevice.py:336
-#: exe/engine/latexidevice.py:372
+#: exe/engine/latexidevice.py:395
 msgid ""
 "Enter a phrase or term you wish to search \n"
 "within Wikipedia."
@@ -829,7 +829,7 @@ msgstr ""
 msgid "Enter instructions for completion here"
 msgstr "在此输入完成说明"
 
-#: exe/engine/latexidevice.py:63
+#: exe/engine/latexidevice.py:59
 msgid "Enter path to kpse on your system. Usualy it is in bin-directory of your latex installation"
 msgstr ""
 
@@ -976,7 +976,7 @@ msgstr "错"
 #: exe/engine/clozeidevice.py:280 exe/engine/feedbackidevice.py:45
 #: exe/engine/feedbackidevice.py:229 exe/engine/pdfidevice.py:255
 #: exe/engine/idevicestore.py:337 exe/engine/idevicestore.py:445
-#: exe/webui/common.py:249 exe/webui/element.py:2055
+#: exe/webui/common.py:249 exe/webui/element.py:2051
 #: exe/webui/clozeblock.py:164 exe/webui/editorelement.py:148
 #: exe/webui/editorpane.py:251 exe/webui/questionelement.py:104
 msgid "Feedback"
@@ -1108,7 +1108,7 @@ msgstr "隐藏/显示 文字"
 
 #: exe/engine/field.py:3154 exe/engine/field.py:3220
 #: exe/engine/truefalseidevice.py:53 exe/engine/truefalseidevice.py:128
-#: exe/engine/hintidevice.py:45 exe/webui/element.py:2273
+#: exe/engine/hintidevice.py:45 exe/webui/element.py:2269
 #: exe/webui/truefalseelement.py:146 exe/webui/truefalseelement.py:156
 msgid "Hint"
 msgstr "提示"
@@ -1177,7 +1177,7 @@ msgstr "输入iDevice"
 msgid "Import local pdf and display them with Acrobat Reader plugin (must be installed first)"
 msgstr ""
 
-#: exe/webui/element.py:1781
+#: exe/webui/element.py:1777
 msgid "Incorrect"
 msgstr "不正确"
 
@@ -1245,7 +1245,7 @@ msgstr "标签:"
 msgid "Large"
 msgstr "大"
 
-#: exe/engine/latexidevice.py:50
+#: exe/engine/latexidevice.py:47
 msgid "Latex import"
 msgstr ""
 
@@ -1407,13 +1407,13 @@ msgstr "只能选用.swf (Flash Object)."
 
 #: exe/engine/field.py:3076 exe/engine/field.py:3125
 #: exe/engine/quiztestidevice.py:48 exe/engine/quiztestidevice.py:98
-#: exe/webui/element.py:1722 exe/webui/element.py:2019
+#: exe/webui/element.py:1718 exe/webui/element.py:2015
 #: exe/webui/testoptionelement.py:106
 msgid "Option"
 msgstr "选项"
 
 #: exe/engine/field.py:3242 exe/engine/field.py:3279
-#: exe/webui/testquestionelement.py:110 exe/webui/element.py:1882
+#: exe/webui/testquestionelement.py:110 exe/webui/element.py:1878
 msgid "Options"
 msgstr "选项"
 
@@ -1481,7 +1481,7 @@ msgstr "请填入iDevice名称."
 msgid "Please enter<br />an idevice name."
 msgstr "请填入iDevice名称."
 
-#: exe/webui/element.py:1488
+#: exe/webui/element.py:1484
 msgid "Please select a .flv file."
 msgstr "请选择 .flv 文档."
 
@@ -1533,7 +1533,7 @@ msgid ""
 "<li>        Learners must be able to assemble standard power tools </li></ul>\n"
 msgstr "预备知识是指学生为完成此课所应具备的知识.\n"
 
-#: exe/webui/element.py:1631 exe/webui/editorpane.py:264
+#: exe/webui/element.py:1627 exe/webui/editorpane.py:264
 msgid "Preview"
 msgstr "预览"
 
@@ -1614,7 +1614,7 @@ msgstr "问题"
 #: exe/engine/field.py:3368 exe/engine/field.py:3449
 #: exe/engine/truefalseidevice.py:46 exe/engine/truefalseidevice.py:122
 #: exe/engine/quiztestidevice.py:129 exe/engine/quiztestidevice.py:222
-#: exe/webui/element.py:1859
+#: exe/webui/element.py:1855
 msgid "Question:"
 msgstr "问题:"
 
@@ -1692,7 +1692,7 @@ msgstr ""
 "保存失败!\n"
 "%s"
 
-#: exe/engine/package.py:475 exe/engine/package.py:482
+#: exe/engine/package.py:476 exe/engine/package.py:483
 #, python-format
 msgid ""
 "SAVE FAILED!\n"
@@ -1721,7 +1721,7 @@ msgstr ""
 msgid "Section"
 msgstr "节"
 
-#: exe/webui/element.py:1422 exe/webui/editorelement.py:268
+#: exe/webui/element.py:1418 exe/webui/editorelement.py:268
 msgid "Select Flash Object"
 msgstr "选择flash文档"
 
@@ -1742,11 +1742,11 @@ msgstr "选择MP3 文档"
 msgid "Select a file"
 msgstr "选择文档"
 
-#: exe/webui/element.py:1504
+#: exe/webui/element.py:1500
 msgid "Select a flash video"
 msgstr "选择flash电影文档"
 
-#: exe/webui/element.py:1617
+#: exe/webui/element.py:1613
 msgid "Select a font size: "
 msgstr "选择字体大小:"
 
@@ -1773,7 +1773,7 @@ msgid "Select pass rate: "
 msgstr "选择及格线"
 
 #: exe/engine/wikipediaidevice.py:71 exe/engine/wikipediaidevice.py:334
-#: exe/engine/latexidevice.py:370
+#: exe/engine/latexidevice.py:393
 msgid ""
 "Select the appropriate language version \n"
 "of Wikipedia to search and enter search term."
@@ -1816,7 +1816,7 @@ msgstr "显示 %s 图象"
 msgid "Show Answers"
 msgstr "显示 答案"
 
-#: exe/webui/element.py:1936 exe/webui/questionelement.py:130
+#: exe/webui/element.py:1932 exe/webui/questionelement.py:130
 msgid "Show Feedback"
 msgstr "显示评语"
 
@@ -1898,7 +1898,7 @@ msgstr "提交答案"
 msgid "Swedish Wikipedia Article"
 msgstr "瑞典文Wikipedia 文章"
 
-#: exe/engine/latexidevice.py:51
+#: exe/engine/latexidevice.py:48
 msgid "TUM"
 msgstr ""
 
@@ -1914,10 +1914,15 @@ msgstr ""
 msgid "Term"
 msgstr ""
 
-#: exe/engine/field.py:3299 exe/webui/element.py:1308
+#: exe/engine/field.py:3299 exe/webui/element.py:1304
 #, fuzzy
 msgid "Term:"
 msgstr "类别:"
+
+#: exe/webui/glossaryblock.py:114
+#, python-format
+msgid "Terms number %s are not entered)"
+msgstr ""
 
 #: exe/engine/idevice.py:52
 #, fuzzy
@@ -2061,7 +2066,7 @@ msgid ""
 "click the radio button next to the correct option."
 msgstr "要指明正确答案, 点击正确选项旁的点选按钮."
 
-#: exe/webui/glossaryblock.py:127 exe/webui/glossaryblock.py:175
+#: exe/webui/glossaryblock.py:138 exe/webui/glossaryblock.py:195
 #, fuzzy
 msgid "Top"
 msgstr "课题"
@@ -2130,7 +2135,7 @@ msgid "URL:"
 msgstr "URL:"
 
 #: exe/engine/wikipediaidevice.py:99 exe/engine/wikipediaidevice.py:133
-#: exe/engine/latexidevice.py:160
+#: exe/engine/latexidevice.py:181
 #, python-format
 msgid "Unable to download from %s <br/>Please check the spelling and connection and try again."
 msgstr "无法从%s下载<br/>请检查拼写, 然后再连接."
@@ -2144,7 +2149,7 @@ msgstr "无法从%s下载 RSS Feed 请检查拼写, 然后再连接."
 msgid "Unable to merge: duplicate Java Applet resource names exist (including: \""
 msgstr ""
 
-#: exe/engine/latexidevice.py:128
+#: exe/engine/latexidevice.py:149
 #, python-format
 msgid "Unable to read file: %s."
 msgstr ""
@@ -2278,7 +2283,7 @@ msgstr "Wikiversity"
 msgid "Wiktionary"
 msgstr "Wiktionary"
 
-#: exe/webui/element.py:2115
+#: exe/webui/element.py:2111
 msgid "Wrong"
 msgstr "错误"
 
@@ -2316,7 +2321,7 @@ msgstr "eXe项目"
 msgid "file %s has no parentNode"
 msgstr "file %s has no parentNode"
 
-#: exe/engine/wikipediaidevice.py:288 exe/engine/latexidevice.py:324
+#: exe/engine/wikipediaidevice.py:288 exe/engine/latexidevice.py:347
 msgid "http://en.wikipedia.org/"
 msgstr "http://en.wikipedia.org/"
 
@@ -2329,7 +2334,7 @@ msgstr "iDevice %s has no package"
 # exe/xului/templates/mainpage.xul:<menuitem
 # exe/xului/templates/mainpage.xul:<menuitem
 # exe/xului/templates/mainpage.xul:<menuitem
-#: exe/engine/package.py:743 exe/xului/templates/mainpage.xul:<menuitem
+#: exe/engine/package.py:744 exe/xului/templates/mainpage.xul:<menuitem
 #: n:render="translate" oncommand="toolsEditor()" label="iDevice Editor">
 msgid "iDevice Editor"
 msgstr "iDevice 编辑器"
@@ -2353,7 +2358,7 @@ msgstr "keycode"
 msgid "label"
 msgstr "标签"
 
-#: exe/webui/element.py:1614
+#: exe/webui/element.py:1610
 msgid "newline"
 msgstr "换行"
 
@@ -2361,7 +2366,7 @@ msgstr "换行"
 msgid "renamed a Resource for an Applet Idevice, and it should not have even made it this far!"
 msgstr ""
 
-#: exe/webui/element.py:1613
+#: exe/webui/element.py:1609
 msgid "text"
 msgstr "文字"
 

@@ -30,6 +30,7 @@ from exe.engine.path          import Path
 from exe.export.pages         import Page, uniquifyNames
 from exe.webui                import common
 from exe.export.pages         import Page
+from exe.engine               import freetextidevice
 
 log = logging.getLogger("__name__")
 
@@ -136,7 +137,7 @@ class PresentationExport(object):
     def generatePages(self, node, depth):
         """
         recursively generates pages
-        """
+       """
 
         for child in node.children:
             title = child.titleShort
@@ -155,8 +156,9 @@ class PresentationPage(Page):
     def render(self):
         html = u""
         for idevice in self.node.idevices:
-            if hasattr(idevice, "presentable") and \
-                idevice.presentable == "True":
+            if hasattr(idevice, "exportType") and \
+                idevice.exportType == freetextidevice.PRESENTATION:
+                print "we made it"
                 log.debug("Exportable found: %s" % idevice.id)
                 
                 html += u"<div class=\"%s\" id=\"id%s\">\n" % \

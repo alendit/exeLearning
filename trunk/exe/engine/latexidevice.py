@@ -56,7 +56,6 @@ class LatexIdevice(Idevice):
         self.article.idevice  = self
         self.images           = {}
         self.icon             = u"inter"
-        self.count            = 1
         self.kpseInstruc_ = _("Enter path to kpse on your system. Usualy it is in bin-directory of your latex installation")
         self.latexpath        = G.application.config.configParser.get('user', 'latexpath')
         self.set_env()
@@ -87,14 +86,14 @@ class LatexIdevice(Idevice):
 		"""
 		
 		if sys.platform == 'win32':
-			command_line = "cmd /c \"\"%s\" " % os.path.join(G.application.config.webDir, "scripts", "plastexwin", "plastexwin.exe")
-			command_line += "\"%s\" \"%s\" " % (file, tempdir)
-			command_line += "&& echo Press \^C to conitnue \""
-			os.system(command_line)
+			command_line = [os.path.join(G.application.config.webDir, "scripts", "plastexwin", "plastexwin.exe"), file, tempdir]
+			print command_line
+			output = subprocess.Popen(command_line).communicate()
 		else:
-			command_line = "%s --sec-num-depth=0 --split-level=0 --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plastexlin")
-			command_line += "--dir=%s --filename=\'index$num(0).html\' %s\n" % (tempdir, file)
+			command_line = "%s --theme=minimal " % os.path.join(G.application.config.webDir, "scripts", "plastexlin")
+			command_line += "--dir=%s %s\n" % (tempdir, file)
 			LatexIdevice.__linux_plastex(command_line)
+
 
     @staticmethod
     def __linux_plastex(command_line):
@@ -140,10 +139,7 @@ class LatexIdevice(Idevice):
             print e
             self.source = "File not found"
             return -1
-        # self.count is a dirty hack to use the same texConfig without
-        # reloading
-        path = os.path.join(tempdir, "index" + str(self.count) + ".html")
-        self.count += 1
+        path = os.path.join(tempdir, "index.html")
         try:
             FILE = file(path, 'r')
             page = FILE.read()
@@ -409,3 +405,4 @@ within Wikipedia.""")
         """Add group to idevice"""
         self.group = Idevice.Content
 # ===========================================================================
+
