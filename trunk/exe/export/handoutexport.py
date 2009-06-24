@@ -140,7 +140,7 @@ class HandoutExport(object):
             title = child.titleShort
             if not title:
                 title = "__"
-            self.pages.append(PresentationPage(title, depth, child))
+            self.pages.append(HandoutPage(title, depth, child))
             self.generatePages(child, depth + 1)
         
         
