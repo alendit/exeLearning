@@ -1,0 +1,5 @@
+skin	browser	Noia2f	jar:chrome/tmp.xpi!/browser/
+skin	communicator	Noia2f	jar:chrome/tmp.xpi!/communicator/
+skin	help	Noia2f	jar:chrome/tmp.xpi!/help/
+skin	global	Noia2f	jar:chrome/tmp.xpi!/global/
+skin	mozapps	Noia2f	jar:chrome/tmp.xpi!/mozapps/
