@@ -2,18 +2,26 @@
 <RDF:RDF xmlns:NS1="http://www.mozilla.org/2004/em-rdf#"
          xmlns:NC="http://home.netscape.com/NC-rdf#"
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <RDF:Description RDF:about="urn:mozilla:item:{9f08cb5a-76b1-4bcf-aff9-90e1a5d60b1e}"
-                   NS1:installLocation="app-profile"
-                   NS1:version="3.64"
-                   NS1:aboutURL="chrome://global/skin/subskin/SubSkinseXtreme.xul"
-                   NS1:internalName="Noia2f"
-                   NS1:name="Noia 2.0 (eXtreme)"
-                   NS1:description="Fully skinned based on Noia icon set."
-                   NS1:creator="Kongkeat Kuatrakull"
-                   NS1:homepageURL="http://kasteo.deviantart.com"
-                   NS1:contributor="Noia icons by Carlitus">
-    <NS1:type NC:parseType="Integer">4</NS1:type>
-    <NS1:targetApplication RDF:resource="rdf:#$ynN862"/>
+  <RDF:Description RDF:about="rdf:#$JJvUk1"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.5"
+                   NS1:maxVersion="3.5" />
+  <RDF:Description RDF:about="rdf:#$PvC9a1"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="1.5"
+                   NS1:maxVersion="3.*" />
+  <RDF:Description RDF:about="urn:mozilla:item:{1d5287d1-8a92-0001-1f31-1cec198018d8}"
+                   NS1:installLocation="winreg-app-global"
+                   NS1:version="2.0.20080718"
+                   NS1:name="AVG Security Toolbar"
+                   NS1:description="AVG Security Toolbar for Firefox"
+                   NS1:creator="AVG, Inc."
+                   NS1:homepageURL="http://www.avg.com/"
+                   NS1:iconURL="chrome://avg/skin/avg_logo.ico"
+                   NS1:userDisabled="true">
+    <NS1:type NC:parseType="Integer">2</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$QJcSG2"/>
+    <NS1:targetApplication RDF:resource="rdf:#$RJcSG2"/>
   </RDF:Description>
   <RDF:Description RDF:about="urn:mozilla:item:exeex@exelearning.org"
                    NS1:installLocation="app-profile"
@@ -25,20 +33,13 @@
                    NS1:creator="eXe Project"
                    NS1:homepageURL="http://exelearning.org/">
     <NS1:type NC:parseType="Integer">2</NS1:type>
-    <NS1:targetApplication RDF:resource="rdf:#$dbFLP"/>
+    <NS1:targetApplication RDF:resource="rdf:#$PvC9a1"/>
   </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$ynN862"
-                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="3.0"
-                   NS1:maxVersion="3.5.*" />
-  <RDF:Description RDF:about="rdf:#$ZiY9w"
-                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="3.5"
-                   NS1:maxVersion="3.5" />
   <RDF:Seq RDF:about="urn:mozilla:item:root">
+    <RDF:li RDF:resource="urn:mozilla:item:arcticglow-ff3-30@glowplug.bitasylum.net"/>
     <RDF:li RDF:resource="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"/>
-    <RDF:li RDF:resource="urn:mozilla:item:{9f08cb5a-76b1-4bcf-aff9-90e1a5d60b1e}"/>
     <RDF:li RDF:resource="urn:mozilla:item:exeex@exelearning.org"/>
+    <RDF:li RDF:resource="urn:mozilla:item:{8181B740-5255-11D9-9FF6-0090995D2DCA}"/>
   </RDF:Seq>
   <RDF:Description RDF:about="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"
                    NS1:installLocation="app-global"
@@ -51,10 +52,50 @@
                    NS1:creator="Mozilla"
                    NS1:contributor="Mozilla Contributors">
     <NS1:type NC:parseType="Integer">4</NS1:type>
-    <NS1:targetApplication RDF:resource="rdf:#$ZiY9w"/>
+    <NS1:targetApplication RDF:resource="rdf:#$JJvUk1"/>
   </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$dbFLP"
+  <RDF:Description RDF:about="rdf:#$6LpGo2"
                    NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="1.5"
-                   NS1:maxVersion="3.*" />
+                   NS1:minVersion="3.0"
+                   NS1:maxVersion="3.1a2pre" />
+  <RDF:Description RDF:about="urn:mozilla:item:{8181B740-5255-11D9-9FF6-0090995D2DCA}"
+                   NS1:installLocation="app-profile"
+                   NS1:version="0.7.08.07.28"
+                   NS1:internalName="phoenitymodern"
+                   NS1:name="Phoenity Modern"
+                   NS1:description="Phoenity based on the SeaMonkey Modern theme"
+                   NS1:creator="Lim Chee Aun"
+                   NS1:homepageURL="http://maguroban.s41.xrea.com/firefox/ptmodern.html"
+                   NS1:developer="Kuden"
+                   NS1:contributor="Piotr 'Pitreck' Komoda">
+    <NS1:type NC:parseType="Integer">4</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$Imd8l2"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mozilla:item:{3f963a5b-e555-4543-90e2-c3908898db71}"
+                   NS1:installLocation="winreg-app-global"
+                   NS1:version="8.0"
+                   NS1:name="AVG Safe Search"
+                   NS1:description="Guard against clicking malicious links."
+                   NS1:creator="AVG, Inc."
+                   NS1:homepageURL="http://www.avg.com"
+                   NS1:iconURL="chrome://searchshield/skin/avg_logo.ico"
+                   NS1:userDisabled="true">
+    <NS1:type NC:parseType="Integer">2</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$3KcSG2"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mozilla:item:arcticglow-ff3-30@glowplug.bitasylum.net"
+                   NS1:installLocation="app-profile"
+                   NS1:version="3.1.3.1"
+                   NS1:internalName="arcticglow"
+                   NS1:name="Arctic Glow"
+                   NS1:description="Arctic fox and Arctic Glow thistle coloured in arctic ice blue."
+                   NS1:creator="glowplug"
+                   NS1:homepageURL="http://glowplug.bitasylum.net">
+    <NS1:type NC:parseType="Integer">4</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$6LpGo2"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$Imd8l2"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.0"
+                   NS1:maxVersion="3.0.*" />
 </RDF:RDF>
