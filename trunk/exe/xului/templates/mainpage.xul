@@ -130,14 +130,7 @@
                       <toolbarbutton id="btnDbl" n:render="dblNode" label="Duplicate" orient="vertical" key="dblNodeKey" image="/images/dublicate.png" tooltiptext="Duplicate"/>
                   </toolbar>
               </toolbox>
-              <!-- This label is actually rendered as a tree -->
-              <label flex="1" value="outlinePane" n:render="outlinePane"/>
-
-              <splitter collapse="none"></splitter>
-
-            <vbox flex="1">
-
-               <!-- buttons for promoting/demoting and moving nodes -->
+              <!-- buttons for promoting/demoting and moving nodes -->
               <toolbox>
                 <toolbar grippyhidden="true">
                    <toolbarbutton id="btnPromote" n:render="promote" key="promoteKey" image="/images/stock-goto-first.png" tooltiptext="Promote node up in hierarchy" flex="0"/>
@@ -147,6 +140,13 @@
                  </toolbar>
               </toolbox>
 
+
+              <!-- This label is actually rendered as a tree -->
+              <label flex="1" value="outlinePane" n:render="outlinePane"/>
+
+              <splitter collapse="none"></splitter>
+
+            <vbox flex="1">
             <!-- start iDevices -->
               <label flex="1" value="iDevicePane" n:render="idevicePane"/>
             </vbox>
