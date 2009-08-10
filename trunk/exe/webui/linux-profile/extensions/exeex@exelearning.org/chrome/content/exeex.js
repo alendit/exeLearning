@@ -13,7 +13,7 @@ function eXeWindowIsClosing() {
 
 function eXeTryToClose(arg) {
   alert("Please use eXe's\n   File... Quit\nmenu to close eXe.");
-  // don't let him close!  :-)
+   don't let him close!  :-)
   return false;
 }
 
