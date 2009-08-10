@@ -531,8 +531,13 @@ function handoutPrint2(tempPrintDir, printDir_warnings) {
 // Quit the application
 function fileQuit() {
     // Call file - save as
+    this.wrappedJSObject = this;
     saveWorkInProgress()
     askDirty('doQuit()')
+}
+
+function test() {
+    alert("Alerta!");
 }
 
 // Closes the window and stops the server

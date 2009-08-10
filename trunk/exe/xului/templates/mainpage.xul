@@ -84,7 +84,7 @@
                   </menupopup>
                 </menu>
                 <menuseparator/>
-                  <menuitem n:render="translate" label="Quit" accesskey="q" oncommand="fileQuit()"/>
+                  <menuitem n:render="translate" id="menu-quit" label="Quit" accesskey="q" onclick="fileQuit()"/>
               </menupopup>
             </menu>
             <menu n:render="translate" id="tools-menu" label="Tools" accesskey="t">
