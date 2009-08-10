@@ -125,8 +125,8 @@ class IdevicePane(Renderable):
         html += u' context="iDevice Menu" flex="1"'
         html += u' ondblclick="AddIdeviceBySelection()">\n'
         html += u'<treecols id="-1">\n'
-        html += u'  <treecol primary="true" label="%s" flex="1" />\n'\
-            % _("IDevices")
+        html += u'  <treecol primary="true" style="font-weight: bold" ' + \
+                 'label="%s" flex="1" />\n' % _("IDevices")
         html += u'</treecols>\n'
         html += u'<treechildren>\n'
         for group in groupkeys:
