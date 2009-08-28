@@ -2,7 +2,8 @@ app-global	{972ce4c6-7e08-4474-a285-3208198ce6fd}	rel%{972ce4c6-7e08-4474-a285-3
 app-global	ubufox@ubuntu.com	rel%ubufox@ubuntu.com	1239719963	
 app-global	refractor@developer.mozilla.org	rel%refractor@developer.mozilla.org	1250577540	
 app-global	langpack-en-GB@firefox-3.0.ubuntu.com	rel%langpack-en-GB@firefox-3.0.ubuntu.com	1240143498	
-app-profile	exeex@exelearning.org	rel%exeex@exelearning.org	1251452001	
+app-profile	exeex@exelearning.org	rel%exeex@exelearning.org	1251464251	
+app-profile	{8181B740-5255-11D9-9FF6-0090995D2DCA}	rel%{8181B740-5255-11D9-9FF6-0090995D2DCA}	1251464374	
 gre-global	{972ce4c6-7e08-4474-a285-3208198ce6fd}	rel%{972ce4c6-7e08-4474-a285-3208198ce6fd}	1251447065	
 gre-global	inspector@mozilla.org	rel%inspector@mozilla.org	1249488585	
 gre-global	langpack-en-GB@xulrunner-1.9.ubuntu.com	rel%langpack-en-GB@xulrunner-1.9.ubuntu.com	1240143498	
