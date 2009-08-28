@@ -134,19 +134,17 @@ class WebServer:
                     exe_server_string_pos = data.find(exe_server_string)
                     if exe_server_string_pos >= 0:
                         log.debug("find_port(): appears that another eXe " \
-                           + "server is running on port# %d; terminating.", \
+                           + "server is running on port# %d", \
                            test_port_num)
                         found_other_eXe = 1                        
-                        port_test_done = 1
                     else:
                         log.debug("find_port(): port# %d not in use by a newer eXe server, but checking if it is Twisted server, in general...", test_port_num)
                         # or, for older versions of eXe, check for regular ol' TwistedWeb server:
                         twisted_server_string = "Server: TwistedWeb/" # followed by the Actual TwistedWeb version number
                         twisted_server_string_pos = data.find(twisted_server_string)
                         if twisted_server_string_pos >= 0:
-                            log.debug("find_port(): appears that an earlier version of an eXe server might already running on port# %d; terminating.", test_port_num)
+                            log.debug("find_port(): appears that an earlier version of an eXe server might already running on port# %d.", test_port_num)
                             found_other_eXe = 1                        
-                            port_test_done = 1
                 except socket.error, msg:
                     log.debug("find_port(): timeout on socket port# %d, " \
                             + "probably not an eXe so continuing search.  " \
@@ -164,11 +162,10 @@ class WebServer:
             log.info("find_port(): found available eXe port# %d", 
                       self.config.port)
         else:
-            self.config.port = -1
             if found_other_eXe:
-                log.error("find_port(): found another eXe server running " \
+                log.info("find_port(): found another eXe server running " \
                             + "on port# %d; only one eXe server allowed " \
-                            + "to run at a time", test_port_num)
+                            + "to run at a time on one port", test_port_num)
             else:
                 log.error("find_port(): Can't listen on interface 127.0.0.1"\
                         + ", ports %s-%s, last exception: %s" % \

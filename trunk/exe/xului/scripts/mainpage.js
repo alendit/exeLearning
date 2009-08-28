@@ -357,6 +357,10 @@ function fileNew() {
     askDirty("window.top.location = '/'")
 }
 
+function tabNew() {
+    nevow_clientToServerEvent('openNewTab', this);
+}
+
 // This is called when a user wants to open a new file
 // It starts a chain of fileOpenX() funcs...
 function fileOpen() {
@@ -544,12 +548,14 @@ function test() {
 function doQuit() {
     netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect")
     nevow_clientToServerEvent('quit', this, '');
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + 500);
-    klass = Components.classes["@mozilla.org/toolkit/app-startup;1"]
-    interfac = Components.interfaces.nsIAppStartup
-    instance = klass.getService(interfac)
-    instance.quit(3)
+    //var start = new Date().getTime();
+    //while (new Date().getTime() < start + 500);
+    //klass = Components.classes["@mozilla.org/toolkit/app-startup;1"]
+    //interfac = Components.interfaces.nsIAppStartup
+    //instance = klass.getService(interfac)
+    //instance.quit(3)
+    window.open('', '_parent', '');
+    window.close();
 }
 
 // Submit any open iDevices

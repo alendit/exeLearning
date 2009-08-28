@@ -8,12 +8,6 @@
 </script>
 
 // remove some Firefox menus we don't need
-<menupopup id="menu_FilePopup" removeelement="true"/>
-<menupopup id="menu_EditPopup" removeelement="true"/>
-<menupopup id="menu_viewPopup" removeelement="true"/>
-<menupopup id="menu_BookmarksPopup" removeelement="true"/>
-<menupopup id="GoPopup" removeelement="true"/>
-<menupopup id="menu_HelpPopup" removeelement="true"/>
-
+<toolbar id="toolbar-menubar" style="display: none;"/>
 </overlay>
 

@@ -31,6 +31,7 @@ import re
 import logging
 from urllib import quote
 from twisted.internet import reactor
+from exe import globals
  
 log = logging.getLogger(__name__)
 
@@ -77,23 +78,17 @@ def launchBrowser(config, packageName, openMode):
         # workaround Debian/Ubuntu firefox launching script that requires
         # ':/' in the pathname
         profile = "linux-profile:"
-        # attempt to detect filesystems that won't allow a colon
-        try:
-            if (config.configDir/profile).exists():
-                (config.configDir/profile).rmtree()
-            (config.configDir/profile).mkdir()
-        except (OSError, IOError):
-            log.info("Unable to use linux-profile:")
-            profile = "linux-profile"
 
-    if (config.configDir/profile).exists():
-        (config.configDir/profile).rmtree()
-    log.info("Creating FireFox profile copied from"+
-             config.webDir/profile_src+" to "+
-             config.configDir/profile)
-    # Copy over the tree
-    (config.webDir/profile_src).copytreeFilter(config.configDir/profile,
-            filterDir=lambda dirName: dirName.basename() != '.svn')
+    if not globals.application.oldProfile:
+        if (config.configDir/profile).exists():
+            (config.configDir/profile).rmtree()
+        log.info("Creating FireFox profile copied from"+
+                 config.webDir/profile_src+" to "+
+                 config.configDir/profile)
+        # Copy over the tree
+        (config.webDir/profile_src).copytreeFilter\
+               (config.configDir/profile,
+                   filterDir=lambda dirName: dirName.basename() != '.svn')
 
     # if debug mode, don't allow eXeex to remove the Firefox "debug" features
     # lines containing 'debug' are deleted from the XUL file

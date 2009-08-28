@@ -54,7 +54,7 @@ from tempfile                    import mkdtemp
 from exe.engine.mimetex          import compile
 from exe.engine.pdfidevice       import PdfIdevice
 from pyPdf                       import PdfFileReader
-import re
+import re, subprocess
 
 
 log = logging.getLogger(__name__)
@@ -136,6 +136,7 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleSetLocale,       'setLocale')
         setUpHandler(self.handleSetInternalAnchors,  'setInternalAnchors')
         setUpHandler(self.handleImportPDF,           'importPDF')
+        setUpHandler(self.handleNewTab,           'openNewTab')
 
         self.idevicePane.client = client
         # Render the js 
@@ -273,6 +274,14 @@ class MainPage(RenderableLivePage):
             newNode.RenamedNodePath(isMerge=True)
             client.sendScript((u'top.location = "/%s"' % \
                           self.package.name).encode('utf8'))
+
+    def handleNewTab(self, client):
+        """
+        Opens new tab with new exe instance running in it
+        """
+
+        subprocess.Popen(['exe', '--use-old-profile'])
+        
 
 
     def handleImportPDF(self, client, path, importString):
