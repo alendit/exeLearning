@@ -137,6 +137,7 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleSetInternalAnchors,  'setInternalAnchors')
         setUpHandler(self.handleImportPDF,           'importPDF')
         setUpHandler(self.handleNewTab,           'openNewTab')
+        setUpHandler(self.handleOutlineClick,     'outlineClicked')
 
         self.idevicePane.client = client
         # Render the js 
@@ -281,6 +282,13 @@ class MainPage(RenderableLivePage):
         """
 
         subprocess.Popen(['exe', '--use-old-profile'])
+
+    def handleOutlineClick(self, client):
+        """
+        Sets documents title to package name + page
+        """
+
+        client.sendScript(u'setDocumentTitle("%s")' % self.package.name) 
         
 
 

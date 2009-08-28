@@ -303,8 +303,12 @@ function delTreeItem() { submitLink('deleteNode', currentOutlineId(), 1) }
 function outlineClick() {
     if (clickon) {
         submitLink('changeNode', currentOutlineId(), 0);
-        document.title = "eXe : " + currentOutlineLabel();
+        nevow_clientToServerEvent('outlineClicked', self);
     }
+}
+
+function setDocumentTitle(title) {
+    document.title = title + " : " + currentOutlineLabel();
 }
 
 // Call this to ask the server if the package is dirty
