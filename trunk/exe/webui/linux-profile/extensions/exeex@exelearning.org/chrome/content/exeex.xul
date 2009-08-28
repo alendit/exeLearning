@@ -8,6 +8,6 @@
 </script>
 
 // remove some Firefox menus we don't need
-<toolbar id="toolbar-menubar" style="display: none;"/>
+<toolbar id="toolbar-menubar" style="display: none;"/> //debug
 </overlay>
 
