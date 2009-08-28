@@ -7,7 +7,7 @@ Version:0.10:$
 /usr/lib/mozilla/plugins/libskypebuttons.so:$
 :$
 :$
-1249069841000:1:1:$
+1249069841000:1:5:$
 Mime Type x-skype for Skype Buttons:$
 Skype Buttons for Kopete:$
 1
@@ -15,7 +15,7 @@ Skype Buttons for Kopete:$
 /usr/lib/totem/gstreamer/libtotem-narrowspace-plugin.so:$
 :$
 :$
-1239706446000:1:1:$
+1239706446000:1:5:$
 The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.26.1 plugin handles video and audio streams.:$
 QuickTime Plug-in 7.2.0:$
 5
@@ -27,7 +27,7 @@ QuickTime Plug-in 7.2.0:$
 /usr/lib/totem/gstreamer/libtotem-mully-plugin.so:$
 :$
 :$
-1239706446000:1:1:$
+1239706446000:1:5:$
 DivX Web Player version 1.4.0.233:$
 DivX® Web Player:$
 1
@@ -35,7 +35,7 @@ DivX® Web Player:$
 /usr/lib/totem/gstreamer/libtotem-gmp-plugin.so:$
 :$
 :$
-1239706446000:1:1:$
+1239706446000:1:5:$
 The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.26.1 plugin handles video and audio streams.:$
 Windows Media Player Plug-in 10 (compatible; Totem):$
 13
@@ -55,7 +55,7 @@ Windows Media Player Plug-in 10 (compatible; Totem):$
 /usr/lib/totem/gstreamer/libtotem-cone-plugin.so:$
 :$
 :$
-1239706446000:1:1:$
+1239706446000:1:5:$
 The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.26.1 plugin handles video and audio streams.:$
 VLC Multimedia Plugin (compatible Totem 2.26.1):$
 19
@@ -78,11 +78,48 @@ VLC Multimedia Plugin (compatible Totem 2.26.1):$
 16:application/x-nsv-vp3-mp3:NullSoft video:nsv:$
 17:video/flv:Flash video:flv:$
 18:application/x-totem-plugin:Totem Multimedia plugin::$
+/var/lib/acroplugin/nppdf.so:$
+:$
+:$
+1246345391000:1:5:$
+The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
+Adobe Reader 9.1:$
+5
+0:application/pdf:Portable Document Format:pdf:$
+1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
+2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
+3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
+4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
+/usr/lib/xulrunner-addons/plugins/libunixprintplugin.so:$
+:$
+:$
+1249316283000:1:5:$
+The demo print plugin for unix.:$
+Demo Print Plugin for unix/linux:$
+1
+0:application/x-print-unix-nsplugin:Demo Print Plugin for Unix/Linux:.pnt:$
+/usr/lib/xulrunner-addons/plugins/libnullplugin.so:$
+:$
+:$
+1249316283000:1:5:$
+The default plugin handles plugin data for mimetypes and extensions that are not specified and facilitates downloading of new plugins.:$
+Default Plugin:$
+1
+0:*:All types:.*:$
+/var/lib/flashplugin-installer/npwrapper.libflashplayer.so:$
+:$
+:$
+1249718906000:1:5:$
+Shockwave Flash 10.0 r32:$
+Shockwave Flash:$
+2
+0:application/x-shockwave-flash:Shockwave Flash:swf:$
+1:application/futuresplash:FutureSplash Player:spl:$
 /usr/lib/jvm/java-6-openjdk/jre/lib/amd64/IcedTeaPlugin.so:$
 :$
 :$
-1242541915000:1:1:$
-The IcedTea Java Web Browser Plugin 1.4.1 (6b14-1.4.1-0ubuntu10) executes Java applets.:$
+1249781389000:1:1:$
+The IcedTea Java Web Browser Plugin 1.4.1 (6b14-1.4.1-0ubuntu11) executes Java applets.:$
 IcedTea Java Web Browser Plugin:$
 33
 0:application/x-java-vm:IcedTea:class,jar:$
@@ -118,47 +155,10 @@ IcedTea Java Web Browser Plugin:$
 30:application/x-java-bean;version=1.5:IcedTea:class,jar:$
 31:application/x-java-bean;version=1.6:IcedTea:class,jar:$
 32:application/x-java-bean;jpi-version=1.6.0_00:IcedTea:class,jar:$
-/var/lib/acroplugin/nppdf.so:$
-:$
-:$
-1246345391000:1:1:$
-The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
-Adobe Reader 9.1:$
-5
-0:application/pdf:Portable Document Format:pdf:$
-1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
-2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
-3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
-4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
-/usr/lib/xulrunner-addons/plugins/libunixprintplugin.so:$
-:$
-:$
-1249316283000:1:1:$
-The demo print plugin for unix.:$
-Demo Print Plugin for unix/linux:$
-1
-0:application/x-print-unix-nsplugin:Demo Print Plugin for Unix/Linux:.pnt:$
-/usr/lib/xulrunner-addons/plugins/libnullplugin.so:$
-:$
-:$
-1249316283000:1:1:$
-The default plugin handles plugin data for mimetypes and extensions that are not specified and facilitates downloading of new plugins.:$
-Default Plugin:$
-1
-0:*:All types:.*:$
-/var/lib/flashplugin-installer/npwrapper.libflashplayer.so:$
-:$
-:$
-1249718906000:1:1:$
-Shockwave Flash 10.0 r32:$
-Shockwave Flash:$
-2
-0:application/x-shockwave-flash:Shockwave Flash:swf:$
-1:application/futuresplash:FutureSplash Player:spl:$
 /usr/lib/nspluginwrapper/plugins/npwrapper.libflashplayer.so:$
 :$
 :$
-1237751889000:1:9:$
+1237751889000:1:13:$
 Shockwave Flash 10.0 r32:$
 Shockwave Flash:$
 2
@@ -167,7 +167,7 @@ Shockwave Flash:$
 /usr/lib/firefox-addons/plugins/nppdf.so:$
 :$
 :$
-1237902193000:1:9:$
+1237902193000:1:13:$
 The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
 Adobe Reader 9.1:$
 5
@@ -179,7 +179,7 @@ Adobe Reader 9.1:$
 /home/alt/.mozilla/plugins/nppdf.so:$
 :$
 :$
-1237901808000:1:9:$
+1237901808000:1:13:$
 The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
 Adobe Reader 9.1:$
 5

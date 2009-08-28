@@ -4,65 +4,68 @@ Generated File. Do not edit.
 Version,0,5
 
 [COMPONENTS]
-rel:FeedConverter.js,1249755482000
-rel:nsSafebrowsingApplication.js,1249755482000
-rel:nsSidebar.js,1249755482000
-gre:libnkgnomevfs.so,1249750305000
-gre:nsPlacesDBFlush.js,1249749922000
-gre:nsLivemarkService.js,1249749921000
-gre:NetworkGeolocationProvider.js,1249744757000
-rel:nsBrowserContentHandler.js,1249755482000
-gre:txEXSLTRegExFunctions.js,1249744757000
-gre:nsSearchSuggestions.js,1249749929000
-gre:nsProgressDialog.js,1249744760000
-rel:aboutCertError.js,1249755482000
-gre:nsSearchService.js,1249749929000
-rel:aboutPrivateBrowsing.js,1249755482000
-gre:nsUpdateService.js,1249749954000
-gre:jsconsole-clhandler.js,1249749923000
-gre:nsBadCertHandler.js,1249744755000
-rel:libbrowsercomps.so,1249755499000
-gre:nsAddonRepository.js,1249749953000
-gre:nsURLFormatter.js,1249749904000
-rel:aboutRobots.js,1249755482000
-gre:nsDownloadManagerUI.js,1249744779000
-gre:nsHelperAppDlg.js,1249749952000
-rel:libbrowserdirprovider.so,1249755499000
-rel:libnkgnomevfs.so,1249755500000
-rel:fuelApplication.js,1249755482000
-gre:libimgicon.so,1249750302000
-gre:nsHandlerService.js,1249744782000
-rel:nsMicrosummaryService.js,1249755482000
-gre:libdbusservice.so,1249750300000
-gre:nsLoginManager.js,1249744779000
-gre:nsLoginInfo.js,1249744779000
-gre:nsContentDispatchChooser.js,1249744781000
-gre:nsXULAppInstall.js,1249750105000
-gre:nsFilePicker.js,1249749923000
-rel:nsPrivateBrowsingService.js,1249755482000
-rel:WebContentConverter.js,1249755482000
-rel:nsPlacesTransactionsService.js,1249755482000
-rel:nsSessionStore.js,1249755482000
-rel:FeedWriter.js,1249755482000
-gre:nsLoginManagerPrompter.js,1249748469000
-rel:nsSessionStartup.js,1249755482000
-gre:nsExtensionManager.js,1249749953000
-rel:aboutSessionRestore.js,1249755482000
-gre:nsDefaultCLH.js,1249749936000
-gre:pluginGlue.js,1249744781000
-gre:nsBlocklistService.js,1249749953000
-gre:nsContentPrefService.js,1249744779000
-rel:aboutRights.js,1249755482000
-rel:nsBrowserGlue.js,1249755482000
-gre:nsTaggingService.js,1249749921000
-rel:nsSetDefaultBrowser.js,1249755482000
-gre:nsProxyAutoConfig.js,1249744773000
-gre:nsWebHandlerApp.js,1249744782000
-gre:nsTryToClose.js,1249744780000
-gre:FeedProcessor.js,1249744779000
-gre:storage-Legacy.js,1249744779000
-gre:storage-mozStorage.js,1249744779000
-gre:libmozgnome.so,1249750305000
+gre:jsconsole-clhandler.js,1251391016000
+rel:nsPrivateBrowsingService.js,1251396848000
+rel:nsSessionStore.js,1251396848000
+gre:nsAddonRepository.js,1251391060000
+rel:FeedWriter.js,1251396848000
+rel:aboutRights.js,1251396848000
+rel:aboutRobots.js,1251396848000
+rel:libnkgnomevfs.so,1251396864000
+gre:nsDefaultCLH.js,1251391039000
+gre:nsBadCertHandler.js,1251386624000
+gre:nsTryToClose.js,1251386650000
+gre:nsContentDispatchChooser.js,1251386651000
+gre:nsURLFormatter.js,1251390993000
+gre:pluginGlue.js,1251386651000
+gre:libnkgnomevfs.so,1251391520000
+gre:nsProxyAutoConfig.js,1251386643000
+gre:FeedProcessor.js,1251386649000
+rel:libbrowserdirprovider.so,1251396863000
+gre:nsDownloadManagerUI.js,1251386649000
+rel:fuelApplication.js,1251396848000
+gre:storage-mozStorage.js,1251386649000
+gre:nsFilePicker.js,1251391016000
+gre:nsLoginManagerPrompter.js,1251389285000
+rel:nsSidebar.js,1251396848000
+gre:nsWebHandlerApp.js,1251386653000
+gre:libmozgnome.so,1251391519000
+gre:nsBlocklistService.js,1251391060000
+gre:nsLoginManager.js,1251386649000
+rel:nsSessionStartup.js,1251396848000
+rel:aboutPrivateBrowsing.js,1251396848000
+gre:txEXSLTRegExFunctions.js,1251386626000
+rel:nsMicrosummaryService.js,1251396848000
+rel:nsSafebrowsingApplication.js,1251396848000
+rel:WebContentConverter.js,1251396848000
+gre:nsLoginInfo.js,1251386649000
+rel:nsPlacesTransactionsService.js,1251396848000
+gre:nsExtensionManager.js,1251391060000
+gre:nsHandlerService.js,1251386653000
+rel:aboutSessionRestore.js,1251396848000
+rel:aboutCertError.js,1251396848000
+abs:/usr/lib/xulrunner-1.9.1.4pre/extensions/inspector@mozilla.org/components/inspector-cmdline.js,1151065570000
+rel:FeedConverter.js,1251396848000
+rel:libbrowsercomps.so,1251396863000
+gre:nsTaggingService.js,1251391014000
+gre:nsLivemarkService.js,1251391014000
+rel:nsSetDefaultBrowser.js,1251396848000
+gre:nsXULAppInstall.js,1251391267000
+gre:nsSearchSuggestions.js,1251391024000
+gre:nsContentPrefService.js,1251386649000
+gre:NetworkGeolocationProvider.js,1251386627000
+gre:nsUrlClassifierLib.js,1251391035000
+gre:nsSearchService.js,1251391024000
+gre:storage-Legacy.js,1251386649000
+gre:nsUpdateService.js,1251391062000
+gre:nsUrlClassifierListManager.js,1251391035000
+gre:libdbusservice.so,1251391508000
+gre:nsProgressDialog.js,1251386629000
+rel:nsBrowserGlue.js,1251396848000
+rel:nsBrowserContentHandler.js,1251396848000
+gre:nsPlacesDBFlush.js,1251391014000
+gre:libimgicon.so,1251391508000
+gre:nsHelperAppDlg.js,1251391060000
 
 [CLASSIDS]
 {bfc310d2-38a0-11d3-8cd3-0060b0fc14a3},,application/x-mozilla-static,,nsLayoutModule
@@ -79,7 +82,7 @@ gre:libmozgnome.so,1249750305000
 {f1299dc2-1dd1-11b2-a347-ee6b7660e048},,application/x-mozilla-static,,JavaScript_Debugger
 {77da64d3-7458-4920-9491-86cc9914f904},,text/javascript,,gre:NetworkGeolocationProvider.js
 {0de2fbfa-6b7f-11d7-bbba-0003938a9d96},,application/x-mozilla-static,,nsLayoutModule
-{cb9e0de8-3598-4ed7-857b-827f011ad5d8},,text/javascript,,gre:nsLoginManager.js
+{5eb7c3c1-ec1f-4007-87cc-eefb37d68ce6},,application/x-mozilla-static,,nsToolkitCompsModule
 {6394eeae-fc3d-11d2-b3b8-00805f8a6670},,application/x-mozilla-static,,nsUConvModule
 {d4f2b600-b5c1-11d6-b483-cc97c63e567c},,application/x-mozilla-static,,nsLayoutModule
 {27f0682c-ff64-4dd2-ae7a-668e59f2fd38},,application/x-mozilla-static,,nsImageLib2Module
@@ -298,7 +301,7 @@ gre:libmozgnome.so,1249750305000
 {0958b101-9ada-11d2-8ebc-00805f29f370},,application/x-mozilla-static,,nsRDFModule
 {9158c470-86e4-11d4-9be2-00e09872a416},,application/x-mozilla-static,,necko
 {b9507aec-1dd1-11b2-8cd5-c48ee0c50307},,application/x-mozilla-static,,NSS
-{c64d0bcb-8270-4ca7-a0b3-3380c8ffecb5},,text/javascript,,rel:nsSafebrowsingApplication.js
+{26a4a019-2827-4a89-a85c-5931a678823a},,text/javascript,,gre:nsUrlClassifierLib.js
 {b6ed3030-6183-11d3-a178-0050041caf44},,application/x-mozilla-static,,necko
 {c07e81e0-ef12-11d2-92b6-00105a1b0d64},@mozilla.org/network/socket-transport-service;1,application/x-mozilla-static,nsSocketTransportService,necko
 {64d6174c-1496-4ffd-87f2-da2670f88934},,application/x-mozilla-static,,mozSpellCheckerModule
@@ -358,6 +361,7 @@ gre:libmozgnome.so,1249750305000
 {6ddb050c-0d04-11d4-986e-00c04fa0cf4a},,application/x-mozilla-static,,necko
 {1691e1f4-ee41-11d4-9885-00c04fa0cf4b},,application/x-mozilla-static,,nsLayoutModule
 {379c2774-ec77-11d2-8aac-00600811a836},,application/x-mozilla-static,,nsUConvModule
+{38293526-6b13-4d4f-a075-71939435b408},,text/javascript,,abs:/usr/lib/xulrunner-1.9.1.4pre/extensions/inspector@mozilla.org/components/inspector-cmdline.js
 {a6cf90f5-15b3-11d2-932e-00805f8add32},,application/x-mozilla-static,,nsLayoutModule
 {49bb6593-3aff-4eb3-a068-2712c28bd58e},,text/javascript,,rel:FeedWriter.js
 {e6156350-2be8-11db-a98b-0800200c9a66},,text/javascript,,gre:nsURLFormatter.js
@@ -414,6 +418,7 @@ gre:libmozgnome.so,1249750305000
 {1f59b001-02c9-11d5-ae76-cc92f7db9e03},,application/x-mozilla-static,,embedcomponents
 {ba6151b1-1dfa-11d3-b3bf-00805f8a6670},,application/x-mozilla-static,,nsUConvModule
 {47433d1d-d9a7-4954-994f-f7a05cf87c2e},,application/x-mozilla-static,,nsUConvModule
+{cb9e0de8-3598-4ed7-857b-827f011ad5d8},,text/javascript,,gre:nsLoginManager.js
 {495eca46-0a5c-11d4-a135-005004832142},,application/x-mozilla-static,,nsUConvModule
 {0e6892c1-a9ad-11d2-b3ae-00805f8a6670},,application/x-mozilla-static,,nsUConvModule
 {d4214e93-fb94-11d2-bdd8-00104bde6048},,application/x-mozilla-static,,nsRDFModule
@@ -606,6 +611,7 @@ gre:libmozgnome.so,1249750305000
 {7b8556b1-ec79-11d2-8aac-00600811a836},,application/x-mozilla-static,,nsUConvModule
 {7ee2a4c0-4b93-17d3-ba18-0060b0f199a2},@mozilla.org/scriptsecuritymanager;1,application/x-mozilla-static,scriptsecuritymanager,nsSecurityManagerModule
 {ba6151b3-1dfa-11d3-b3bf-00805f8a6670},,application/x-mozilla-static,,nsUConvModule
+{ca168834-cc00-48f9-b83c-fd018e58cae3},,text/javascript,,gre:nsUrlClassifierListManager.js
 {77221d5a-1dd2-11b2-8c69-c710f15d2ed5},,application/x-mozilla-static,,nsWidgetGtk2Module
 {5280606b-2510-4fe0-97ef-9b5a22eafe6b},,text/javascript,,rel:nsSessionStore.js
 {495eca48-0a5c-11d4-a135-005004832142},,application/x-mozilla-static,,nsUConvModule
@@ -671,6 +677,7 @@ gre:libmozgnome.so,1249750305000
 {20557898-1dd2-11b2-8f65-9c462ee2bc95},,application/x-mozilla-static,,nsImageLib2Module
 {2d96b3d1-c051-11d1-a827-0040959a28c9},,application/x-mozilla-static,,nsWidgetGtk2Module
 {13111d00-ce81-11d6-8082-ecf3665af67c},,application/x-mozilla-static,,nsLayoutModule
+{c64d0bcb-8270-4ca7-a0b3-3380c8ffecb5},,text/javascript,,rel:nsSafebrowsingApplication.js
 {bc26ff01-f2bd-11d4-a73c-e5a4b5a8bdfc},,application/x-mozilla-static,,nsComposerModule
 {7dfdf0d1-aff6-4a34-bad1-d0fe74601642},,text/javascript,,gre:nsDownloadManagerUI.js
 {ba6151b8-1dfa-11d3-b3bf-00805f8a6670},,application/x-mozilla-static,,nsUConvModule
@@ -695,7 +702,7 @@ gre:libmozgnome.so,1249750305000
 {51fa28c7-74c0-4b85-9c46-d03faa7b696b},,application/x-mozilla-static,,necko
 {d750a964-2d14-484c-b3aa-8ed7823b5c7b},,application/x-mozilla-static,,nsLayoutModule
 {f57899d0-4e2c-4ac6-9e29-50c736103b0c},,text/javascript,,rel:nsSetDefaultBrowser.js
-{2cd0c310-e127-44d0-88fc-4435c9ab4d4b},,text/javascript,,gre:jsconsole-clhandler.js
+{786e0a0e-e035-4600-8ee0-365a63a80b80},,application/x-mozilla-static,,nsToolkitCompsModule
 {b0ff4572-dae4-4bef-a092-83c1b88f6be9},@mozilla.org/network/dns-service;1,application/x-mozilla-static,nsDNSService,necko
 {bbc23860-2553-479d-8b78-94d9038334f7},,text/javascript,,gre:nsTaggingService.js
 {064d9cee-1dd2-11b2-83e3-d25ab0193c26},,application/x-mozilla-static,,nsPrefModule
@@ -705,12 +712,15 @@ gre:libmozgnome.so,1249750305000
 {2bf64765-997f-450d-af96-3028d1a902b0},,application/x-mozilla-static,,nsI18nModule
 {9c8f9601-801a-11d2-98ba-00805f297d89},,application/x-mozilla-static,,nsTransactionManagerModule
 {6c392c62-1ab1-4de7-bfc6-ed4f9fc7749a},,application/x-mozilla-static,,nsLayoutModule
+{2cd0c310-e127-44d0-88fc-4435c9ab4d4b},,text/javascript,,gre:jsconsole-clhandler.js
+{b7b2ccec-7912-4ea6-a548-b038447004bd},,application/x-mozilla-static,,nsToolkitCompsModule
 {06893e69-71d8-4b23-81eb-80314daf3e66},,application/x-mozilla-native,,rel:libbrowsercomps.so
 {d899a152-9412-46b2-b651-2e71c5c2f05f},,application/x-mozilla-static,,nsLayoutModule
 {217d014a-1dd2-11b2-999c-b0c4df79b324},,application/x-mozilla-static,,NSS
 {80d7e247-d4b8-45d7-bb59-6f1dd56f384c},,application/x-mozilla-static,,nsLayoutModule
 {ba6151b0-1dfa-11d3-b3bf-00805f8a6670},,application/x-mozilla-static,,nsUConvModule
 {df71c6f0-ec53-11d2-bdca-000064657374},,application/x-mozilla-static,,nsRDFModule
+{c2be6dc0-ef1e-4abd-86a2-4f864ddc57f6},,application/x-mozilla-static,,nsToolkitCompsModule
 {792a7e82-06a0-437c-af63-b2d12e808acc},,text/javascript,,rel:WebContentConverter.js
 {495eca45-0a5c-11d4-a135-005004832142},,application/x-mozilla-static,,nsUConvModule
 {78c61626-4d1f-4843-9364-4652d98ff6e1},,application/x-mozilla-static,,nsImageLib2Module
@@ -841,6 +851,7 @@ gre:libmozgnome.so,1249750305000
 @mozilla.org/network/sync-stream-listener;1,{439400d3-6f23-43db-8b06-8aafe1869bd8}
 @mozilla.org/intl/unicode/decoder;1?charset=x-viet-tcvn5712,{6394eead-fc3d-11d2-b3b8-00805f8a6670}
 @mozilla.org/intl/unicode/encoder;1?charset=x-mac-arabic,{6803cac7-1e3b-11d5-a145-005004832142}
+@mozilla.org/url-classifier/streamupdater;1,{c2be6dc0-ef1e-4abd-86a2-4f864ddc57f6}
 @mozilla.org/xmlextras/domparser;1,{3a8a3a50-512c-11d4-9a54-000064657374}
 @mozilla.org/oji/jvm-config-mgr;1,{4a68cee9-6f07-4950-b441-a1ce6a082e2f}
 @mozilla.org/streamconv;1?from=x-compress&to=uncompressed,{66230b2b-17fa-4bd3-abf4-07986151022d}
@@ -941,7 +952,7 @@ gre:libmozgnome.so,1249750305000
 @mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-6-E,{495eca45-0a5c-11d4-a135-005004832142}
 @mozilla.org/security/nsscertcache;1,{3f429a14-dffe-417d-8cb8-fdf09bacd09e}
 @mozilla.org/libjar/zip-reader-cache;1,{1b117e16-0cad-11d4-986e-00c04fa0cf4a}
-@mozilla.org/security/nsCertTree;1,{4ea60761-31d6-491d-9e34-4b53a26c416c}
+@mozilla.org/url-classifier/utils;1,{b7b2ccec-7912-4ea6-a548-b038447004bd}
 @mozilla.org/intl/unicode/encoder;1?charset=windows-936,{9416bfc1-1f93-11d3-b3bf-00805f8a6670}
 @mozilla.org/editor/txtsrvfilter;1,{171e72db-0f8a-412a-8461-e4c927a3a2ac}
 @mozilla.org/nsDOMCryptoDialogs;1,{518e071f-1dd2-11b2-937e-c45f14def778}
@@ -961,6 +972,7 @@ gre:libmozgnome.so,1249750305000
 @mozilla.org/network/input-stream-channel;1,{6ddb050c-0d04-11d4-986e-00c04fa0cf4a}
 @mozilla.org/microsummary/service;1,{460a9792-b154-4f26-a922-0f653e2c8f91}
 @mozilla.org/toolkit/app-startup;1,{7dd4d320-c84b-4624-8d45-7bb9b2356977}
+@mozilla.org/url-classifier/listmanager;1,{ca168834-cc00-48f9-b83c-fd018e58cae3}
 @mozilla.org/network/auth-module;1?name=ntlm,{a4e5888f-4fe4-4632-8e7e-745196ea7c70}
 @mozilla.org/intl/xmlencoding;1,{12bb8f16-2389-11d3-b3bf-00805f8a6670}
 @mozilla.org/network/socket;2?type=udp,{320706d2-2e81-42c6-89c3-8d83b17d3fb4}
@@ -1000,11 +1012,13 @@ gre:libmozgnome.so,1249750305000
 @mozilla.org/intl/unicode/encoder;1?charset=us-ascii,{ba6151ba-1dfa-11d3-b3bf-00805f8a6670}
 @mozilla.org/intl/unicode/encoder;1?charset=TIS-620,{c5de4da2-d667-42d2-b8c2-efdbcf3302ef}
 @mozilla.org/uriloader/content-handler;1?type=text/html,{5d0ce354-df01-421a-83fb-7ead0990c24e}
+@mozilla.org/security/nsCertTree;1,{4ea60761-31d6-491d-9e34-4b53a26c416c}
 @mozilla.org/xul/xul-template-builder;1,{3d262d00-8b5a-11d2-8eb0-00805f29f370}
 @mozilla.org/inspector/flasher;1,{9286e71a-621a-4b91-851e-9984c1a2e81a}
 @mozilla.org/security/crypto;1,{929d9320-251e-11d4-8a7c-006008c844c3}
 @mozilla.org/network/protocol/about;1?what=blocked,{c64d0bcb-8270-4ca7-a0b3-3380c8ffecb5}
 @mozilla.org/fuel/application;1,{fe74cf80-aa2d-11db-abbd-0800200c9a66}
+@mozilla.org/url-classifier/hashcompleter;1,{786e0a0e-e035-4600-8ee0-365a63a80b80}
 @mozilla.org/intl/converter-output-stream;1,{ff8780a5-bbb1-4bc5-8ee7-057e7bc5c925}
 @mozilla.org/embeddor.implemented/bookmark-charset-resolver;1,{88cecbb7-6c63-4b3b-8cd4-84f3b8228c69}
 @mozilla.org/xulrunner/app-install-service;1,{00790a19-27e2-4d9a-bef0-244080feabfd}
@@ -1368,6 +1382,7 @@ gre:libmozgnome.so,1249750305000
 @mozilla.org/intl/unicode/decoder;1?charset=windows-1256,{ba6151a2-1dfa-11d3-b3bf-00805f8a6670}
 @mozilla.org/extensions/manager;1,{8a115faa-7dcb-4e8f-979b-5f53472f51cf}
 @mozilla.org/spellchecker/i18nmanager;1,{aeb8936f-219c-4d3c-8385-d9382daa551a}
+@mozilla.org/commandlinehandler/general-startup;1?type=inspector,{38293526-6b13-4d4f-a075-71939435b408}
 @mozilla.org/intl/unicode/decoder;1?charset=x-gbk,{ba61519e-1dfa-11d3-b3bf-00805f8a6670}
 @mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-6-I,{495eca44-0a5c-11d4-a135-005004832142}
 @mozilla.org/dirIndex;1,{f6913e2e-1dd1-11b2-84be-f455dee342af}
@@ -1404,6 +1419,7 @@ gre:libmozgnome.so,1249750305000
 @mozilla.org/intl/unicodenormalizer;1,{a665e49a-f3e6-4fed-9f31-f7c568a29899}
 @mozilla.org/editor/editordocstatecontroller;1,{50e95301-17a8-11d4-9f7e-dd530d5f057c}
 @mozilla.org/intl/unicode/decoder;1?charset=UTF-16,{d673255d-1184-400a-b0b5-ee9d1295bd85}
+@mozilla.org/uriclassifierservice,{5eb7c3c1-ec1f-4007-87cc-eefb37d68ce6}
 @mozilla.org/textservices/textservicesdocument;1,{019718e3-cdb5-11d2-8d3c-000000000000}
 @mozilla.org/spellcheck/dir-provider;1,{64d6174c-1496-4ffd-87f2-da2670f88934}
 @mozilla.org/embedcomp/rangefind;1,{471f4944-1dd2-11b2-87ac-90be0a51d609}
@@ -1429,6 +1445,7 @@ gre:libmozgnome.so,1249750305000
 @mozilla.org/layout/xmlfragmentsink;2,{4dc30689-929d-425e-a709-082c6294e542}
 @mozilla.org/intl/unicode/encoder;1?charset=x-mac-croatian,{6394eeb7-fc3d-11d2-b3b8-00805f8a6670}
 @mozilla.org/content-pref/service;1,{e6a3f533-4ffa-4615-8eb4-d4e72d883fa7}
+@mozilla.org/url-classifier/dbservice;1,{5eb7c3c1-ec1f-4007-87cc-eefb37d68ce6}
 @mozilla.org/intl/unicode/decoder;1?charset=IBM862,{2d524fd4-ae74-11d3-abf7-0004aceefa51}
 @mozilla.org/document-transformer;1?type=xslt,{bacd8ad0-552f-11d3-a9f7-000064657374}
 @mozilla.org/image/decoder;2?type=image/vnd.microsoft.icon,{cb3ede1a-0fa5-4e27-aafe-0f7801e5a1f1}
@@ -1436,6 +1453,7 @@ gre:libmozgnome.so,1249750305000
 @mozilla.org/editor/htmleditor;1,{ed0244e0-c144-11d2-8f4c-006008159b0c}
 @mozilla.org/network/http-auth-manager;1,{36b63ef3-e0fa-4c49-9fd4-e065e85568f4}
 @mozilla.org/xul/xul-document;1,{541afcb2-a9a3-11d2-8ec5-00805f29f370}
+@mozilla.org/url-classifier/jslib;1,{26a4a019-2827-4a89-a85c-5931a678823a}
 @mozilla.org/saxparser/attributes;1,{7bb40992-77eb-43db-9a4e-39d3bcc383ae}
 @mozilla.org/intl/unicode/encoder;1?charset=KOI8-U,{6394eeb6-fc3d-11d2-b3b8-00805f8a6670}
 @mozilla.org/intl/unicode/encoder;1?charset=x-mac-gurmukhi,{6803cacf-1e3b-11d5-a145-005004832142}
@@ -1738,12 +1756,21 @@ JavaScript global constructor,BrowserFeedWriter,@mozilla.org/browser/feeds/resul
 JavaScript global constructor,Image,@mozilla.org/content/element/html;1?name=img
 JavaScript global constructor,Audio,@mozilla.org/content/element/html;1?name=audio
 JavaScript global constructor,Option,@mozilla.org/content/element/html;1?name=option
+agent-style-sheets,pluginfinder xbl binding,chrome://mozapps/content/plugins/missingPluginBinding.css
 xpcom-directory-providers,spellcheck-directory-provider,@mozilla.org/spellcheck/dir-provider;1
 xpcom-directory-providers,browser-directory-provider,@mozilla.org/browser/directory-provider;1
+external-uricontentlisteners,application/x-x509-user-cert,@mozilla.org/uriloader/psm-external-content-listener;1
+external-uricontentlisteners,application/x-x509-email-cert,@mozilla.org/uriloader/psm-external-content-listener;1
+external-uricontentlisteners,application/x-x509-crl,@mozilla.org/uriloader/psm-external-content-listener;1
+external-uricontentlisteners,application/pkix-crl,@mozilla.org/uriloader/psm-external-content-listener;1
+external-uricontentlisteners,application/x-pkcs7-crl,@mozilla.org/uriloader/psm-external-content-listener;1
+external-uricontentlisteners,application/x-x509-ca-cert,@mozilla.org/uriloader/psm-external-content-listener;1
+external-uricontentlisteners,application/x-x509-server-cert,@mozilla.org/uriloader/psm-external-content-listener;1
 uconv-charset-titles,chrome://global/locale/charsetTitles.properties,
 pref-config-startup,ReadConfig Module,@mozilla.org/readconfig;1
 command-line-handler,x-default,@mozilla.org/browser/final-clh;1
 command-line-handler,b-jsconsole,@mozilla.org/toolkit/console-clh;1
+command-line-handler,m-inspector,@mozilla.org/commandlinehandler/general-startup;1?type=inspector
 command-line-handler,m-setdefaultbrowser,@mozilla.org/browser/default-browser-clh;1
 command-line-handler,m-browser,@mozilla.org/browser/clh;1
 command-line-handler,y-default,@mozilla.org/toolkit/default-clh;1
@@ -1812,33 +1839,7 @@ Gecko-Content-Viewers,image/vnd.microsoft.icon,@mozilla.org/content/document-loa
 Gecko-Content-Viewers,image/xbm,@mozilla.org/content/document-loader-factory;1
 Gecko-Content-Viewers,image/x-ms-bmp,@mozilla.org/content/document-loader-factory;1
 profile-after-change,Extension Manager,@mozilla.org/extensions/manager;1
-profile-after-change,Used to synchronize the temporary and permanent tables of Places,@mozilla.org/places/sync;1
 profile-after-change,Blocklist Service,@mozilla.org/extensions/blocklist;1
-agent-style-sheets,pluginfinder xbl binding,chrome://mozapps/content/plugins/missingPluginBinding.css
-JavaScript global constructor prototype alias,Image,HTMLImageElement
-JavaScript global constructor prototype alias,Audio,HTMLAudioElement
-JavaScript global constructor prototype alias,Option,HTMLOptionElement
-module-loader,text/javascript,@mozilla.org/moz/jsloader;1
-app-startup,PrivateBrowsing Service,service,@mozilla.org/privatebrowsing;1
-app-startup,tryToClose Service,service,@mozilla.org/appshell/trytoclose;1
-app-startup,Firefox Browser Glue Service,service,@mozilla.org/browser/browserglue;1
-app-startup,Web Content Handler Registrar,service,@mozilla.org/embeddor.implemented/web-content-handler-registrar;1
-app-startup,Application,service,@mozilla.org/fuel/application;1
-app-startup,Window Data Source,service,@mozilla.org/rdf/datasource;1?name=window-mediator
-app-startup,Update Service,service,@mozilla.org/updates/update-service;1
-app-startup,Browser Session Startup Service,service,@mozilla.org/browser/sessionstartup;1
-app-startup,SystemPref Module,@mozilla.org/system-preferences;1
-app-startup,Script Security Manager,service,@mozilla.org/scriptsecuritymanager;1
-uconv-charset-data,resource://gre/res/charsetData.properties,
-external-uricontentlisteners,application/x-x509-user-cert,@mozilla.org/uriloader/psm-external-content-listener;1
-external-uricontentlisteners,application/x-x509-email-cert,@mozilla.org/uriloader/psm-external-content-listener;1
-external-uricontentlisteners,application/x-x509-crl,@mozilla.org/uriloader/psm-external-content-listener;1
-external-uricontentlisteners,application/pkix-crl,@mozilla.org/uriloader/psm-external-content-listener;1
-external-uricontentlisteners,application/x-pkcs7-crl,@mozilla.org/uriloader/psm-external-content-listener;1
-external-uricontentlisteners,application/x-x509-ca-cert,@mozilla.org/uriloader/psm-external-content-listener;1
-external-uricontentlisteners,application/x-x509-server-cert,@mozilla.org/uriloader/psm-external-content-listener;1
-JavaScript global privileged property,Application,@mozilla.org/fuel/application;1
-parser-service-category,Meta Charset Service,@mozilla.org/intl/metacharset;1
 Charset Decoders,UTF-16,
 Charset Decoders,ISO-8859-8-E,
 Charset Decoders,ISO-8859-4,
@@ -1928,3 +1929,23 @@ Charset Decoders,windows-936,
 Charset Decoders,windows-1254,
 Charset Decoders,IBM855,
 Charset Decoders,x-viet-vps,
+JavaScript global constructor prototype alias,Image,HTMLImageElement
+JavaScript global constructor prototype alias,Audio,HTMLAudioElement
+JavaScript global constructor prototype alias,Option,HTMLOptionElement
+module-loader,text/javascript,@mozilla.org/moz/jsloader;1
+app-startup,PrivateBrowsing Service,service,@mozilla.org/privatebrowsing;1
+app-startup,tryToClose Service,service,@mozilla.org/appshell/trytoclose;1
+app-startup,Firefox Browser Glue Service,service,@mozilla.org/browser/browserglue;1
+app-startup,Web Content Handler Registrar,service,@mozilla.org/embeddor.implemented/web-content-handler-registrar;1
+app-startup,Application,service,@mozilla.org/fuel/application;1
+app-startup,Window Data Source,service,@mozilla.org/rdf/datasource;1?name=window-mediator
+app-startup,Update Service,service,@mozilla.org/updates/update-service;1
+app-startup,Browser Session Startup Service,service,@mozilla.org/browser/sessionstartup;1
+app-startup,SystemPref Module,@mozilla.org/system-preferences;1
+app-startup,Script Security Manager,service,@mozilla.org/scriptsecuritymanager;1
+command-line-argument-handlers,inspector command line handler,@mozilla.org/commandlinehandler/general-startup;1?type=inspector
+uconv-charset-data,resource://gre/res/charsetData.properties,
+bookmark-observers,Used to synchronize the temporary and permanent tables of Places,@mozilla.org/places/sync;1
+JavaScript global privileged property,Application,@mozilla.org/fuel/application;1
+parser-service-category,Meta Charset Service,@mozilla.org/intl/metacharset;1
+history-observers,Used to synchronize the temporary and permanent tables of Places,@mozilla.org/places/sync;1
