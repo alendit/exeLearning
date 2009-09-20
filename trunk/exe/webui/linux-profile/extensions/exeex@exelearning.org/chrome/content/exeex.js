@@ -22,7 +22,7 @@ function eXeTryToClose(arg) {
 
 function eXeexInit() {
   window.WindowIsClosing = eXeWindowIsClosing;
-  window.tryToClose = eXeTryToClose;
+  window.tryToClose = eXeWindowIsClosing;
   gBrowser.tabContainer.addEventListener("TabClose", eXeWindowIsClosing, true)
 }
 

@@ -281,8 +281,12 @@ class MainPage(RenderableLivePage):
         """
         Opens new tab with new exe instance running in it
         """
-
-        subprocess.Popen([sys.argv[0], '--child-process'])
+        
+        exeStarter = G.application.config.exePath
+        # on windows exePath links to exe dir, on linux to executable
+        if sys.platform[:3] == 'win':
+            exeStarter = exeStarter / 'exe'
+        subprocess.Popen([exeStarter, '--child-process'])
         # file with information about new server's port
         portFile = G.application.config.configDir / 'port'
         while not os.path.exists(portFile):
