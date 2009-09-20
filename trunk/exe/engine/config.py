@@ -148,6 +148,25 @@ class Config:
         self.configParser.setdefault('logging', 'root', 'INFO')
 
 
+    def _getWinFolder(self, code):
+        """
+        Gets one of the windows famous directorys
+        depending on 'code'
+        Possible values can be found at:
+        http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc/platform/shell/reference/enums/csidl.asp#CSIDL_WINDOWS
+        """
+        from ctypes import WinDLL, create_unicode_buffer
+        dll = WinDLL('shell32')
+        # The '5' and the '0' from the below call come from
+        # google: "ShellSpecialConstants site:msdn.microsoft.com"
+        result = create_unicode_buffer(260)
+        resource = dll.SHGetFolderPathW(None, code, None, 0, result)
+        if resource != 0: 
+            return Path('')
+        else: 
+            return Path(result.value)
+
+        
     def __setConfigPath(self):
         """
         sets self.configPath to the filename of the config file that we'll
@@ -221,7 +240,8 @@ class Config:
             self.xulDir         = Path(system.xulDir)
             self.localeDir      = Path(system.localeDir)
             self.port           = int(system.port)
-            self.browserPath    = Path(system.browserPath)
+            if not self.standalone:
+                self.browserPath    = Path(system.browserPath)
             self.dataDir        = Path(system.dataDir)
             self.configDir      = Path(system.configDir)
             

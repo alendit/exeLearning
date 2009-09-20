@@ -26,6 +26,11 @@ import sys, os
 from exe.engine.config import Config
 from exe.engine.path import Path
 
+APPDATA        = 0x001a
+COMMON_APPDATA = 0x0023
+MYDOCUMENTS    = 0x0005 # Code for c:\documents and settings\myuser\My Documents
+PROGRAMFILES   = 0x0026
+
 # ===========================================================================
 class StandaloneConfig(Config):
     """
@@ -46,7 +51,7 @@ class StandaloneConfig(Config):
         self.dataDir       = exePath/'packages'
         if not self.dataDir.exists():
             self.dataDir.makedirs()
-        self.configDir = Path(self.__getWinFolder(APPDATA))/'exe'
+        self.configDir = Path(self._getWinFolder(APPDATA))/'exe'
         self.localeDir     = exePath/'locale'
         self.xulrunnerPath = exePath/'xulrunner/xulrunner'
         self.styles        = []

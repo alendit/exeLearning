@@ -45,10 +45,10 @@ class WinConfig(Config):
         exeDir = self.exePath.dirname()
         self.browserPath = exeDir/'Mozilla Firefox'/'firefox.exe'
         if not self.browserPath.isfile():
-            programFiles = Path(self.__getWinFolder(PROGRAMFILES))
+            programFiles = Path(self._getWinFolder(PROGRAMFILES))
             self.browserPath = programFiles/'Mozilla Firefox'/'firefox.exe'
-        self.dataDir   = Path(self.__getWinFolder(MYDOCUMENTS))
-        self.configDir = Path(self.__getWinFolder(APPDATA))/'exe'
+        self.dataDir   = Path(self._getWinFolder(MYDOCUMENTS))
+        self.configDir = Path(self._getWinFolder(APPDATA))/'exe'
 
     def _getConfigPathOptions(self):
         """
@@ -56,7 +56,7 @@ class WinConfig(Config):
         location of the config file under windows
         """
         # Find out where our nice config file is
-        folders = map(self.__getWinFolder, [APPDATA, COMMON_APPDATA])
+        folders = map(self._getWinFolder, [APPDATA, COMMON_APPDATA])
         # Add unique dir names
         folders = [folder/'exe' for folder in folders] 
         folders.append(self.__getInstallDir())
@@ -64,25 +64,7 @@ class WinConfig(Config):
         # Filter out non existant folders
         options = [folder/'exe.conf' for folder in map(Path, folders)]
         return options
-
-    def __getWinFolder(self, code):
-        """
-        Gets one of the windows famous directorys
-        depending on 'code'
-        Possible values can be found at:
-        http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc/platform/shell/reference/enums/csidl.asp#CSIDL_WINDOWS
-        """
-        from ctypes import WinDLL, create_unicode_buffer
-        dll = WinDLL('shell32')
-        # The '5' and the '0' from the below call come from
-        # google: "ShellSpecialConstants site:msdn.microsoft.com"
-        result = create_unicode_buffer(260)
-        resource = dll.SHGetFolderPathW(None, code, None, 0, result)
-        if resource != 0: 
-            return Path('')
-        else: 
-            return Path(result.value)
-                
+    
     def __getInstallDir(self):
         """
         Returns the path to where we were installed

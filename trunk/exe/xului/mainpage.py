@@ -284,7 +284,7 @@ class MainPage(RenderableLivePage):
         
         exeStarter = G.application.config.exePath
         # on windows exePath links to exe dir, on linux to executable
-        if sys.platform[:3] == 'win':
+        if os.path.isdir(exeStarter):
             exeStarter = exeStarter / 'exe'
         subprocess.Popen([exeStarter, '--child-process'])
         # file with information about new server's port
