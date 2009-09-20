@@ -616,6 +616,18 @@ function addPdf(blockId) {
     }
 }
 
+function addDir() {
+    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+    var nsIFilePicker = Components.interfaces.nsIFilePicker;
+    var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+    fp.init(window, "Select style folder to import", nsIFilePicker.modeGetFolder);
+    var res = fp.show();
+    if (res == nsIFilePicker.returnOK) {
+        return fp.file.path;
+    }
+
+}
+
 // Called by the user to provide a package name in order to get the user created idevices
 // used by idevice editor
 function addFile(blockId) {

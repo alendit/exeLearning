@@ -25,8 +25,8 @@ Version Information
 import re
 
 project        = "exe"
-release        = "1.04.1(TUMmod)"
-revision       = "$Revision: 3534 $"[11:-2]
+release        = "0.92(TUMmod)"
+revision       = "$Revision: 0001 $"[11:-2]
 # if it is available, get the SVN revision
 try:
     from version_svn import revision

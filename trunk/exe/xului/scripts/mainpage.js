@@ -153,6 +153,11 @@ function disableButtons(state) {
     }
 }
 
+function addStyle() {
+    var src = addDir();
+    nevow_clientToServerEvent('importStyle', this, '', src);
+}
+
 function enableButtons() {
     disableButtons(false)
 }

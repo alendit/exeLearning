@@ -55,7 +55,7 @@ from tempfile                    import mkdtemp
 from exe.engine.mimetex          import compile
 from exe.engine.pdfidevice       import PdfIdevice
 from pyPdf                       import PdfFileReader
-import re, subprocess
+import re, subprocess, shutil
 
 
 log = logging.getLogger(__name__)
@@ -138,6 +138,7 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleSetInternalAnchors,  'setInternalAnchors')
         setUpHandler(self.handleImportPDF,           'importPDF')
         setUpHandler(self.handleNewTab,           'openNewTab')
+        setUpHandler(self.handleImportStyle,      'importStyle')
         setUpHandler(self.handleOutlineClick,     'outlineClicked')
 
         self.idevicePane.client = client
@@ -298,7 +299,17 @@ class MainPage(RenderableLivePage):
         os.remove(portFile)
         client.sendScript(u"openNewTab('%s')" % port)
 
-            
+    def handleImportStyle(self, client, src):
+        '''imports a user style in config directory'''
+
+        print client
+        localeStyleDir = G.application.config.configDir / "style"
+        styleName = os.path.basename(src)
+        shutil.copytree(src, localeStyleDir / styleName) 
+        G.application.config.loadStyles()
+        client.sendScript(u'top.location = "/%s"' % self.package.name)
+
+        
 
     def handleOutlineClick(self, client):
         """
@@ -811,7 +822,7 @@ class MainPage(RenderableLivePage):
         'filename' is a file for scorm pages, and a directory for websites
         """ 
         webDir     = Path(self.config.webDir)
-        stylesDir  = webDir.joinpath('style', self.package.style)
+        stylesDir  = Path(self.package.style)
 
         exportDir  = Path(filename).dirname()
         if exportDir and not exportDir.exists():

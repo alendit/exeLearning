@@ -240,8 +240,7 @@ class Config:
             self.xulDir         = Path(system.xulDir)
             self.localeDir      = Path(system.localeDir)
             self.port           = int(system.port)
-            if not self.standalone:
-                self.browserPath    = Path(system.browserPath)
+            self.browserPath    = Path(system.browserPath)
             self.dataDir        = Path(system.dataDir)
             self.configDir      = Path(system.configDir)
             
@@ -364,18 +363,30 @@ class Config:
         Scans the eXe style directory and builds a list of styles
         """
         log = logging.getLogger()
-        self.styles = []
+        self.styles = [] 
         styleDir    = self.webDir/"style"
+        localeStyleDir = self.configDir / "style"
+        if not os.path.exists(localeStyleDir):
+            os.makedirs(localeStyleDir)
 
         log.debug("loadStyles from %s" % styleDir)
 
         for subDir in styleDir.dirs():
-            styleSheet = subDir/'content.css'
-            log.debug(" checking %s" % styleSheet)
-            if styleSheet.exists():
-                style = subDir.basename()
-                log.debug(" loading style %s" % style)
-                self.styles.append(style)
+            if self.__checkStyle(subDir):
+                styleName = subDir.basename()
+                log.debug(" adding style to style/%s" % styleName)
+                self.styles.append(styleName)
+        # adding style from config to style/locale
+        for subDir in localeStyleDir.dirs():
+            if self.__checkStyle(subDir):
+                styleName = "locale/" + subDir.basename()
+                log.debug(" adding locale style to style/%s" % styleName)
+                self.styles.append(styleName)
+
+    def __checkStyle(self, style):
+        '''Checks if it's valid style'''
+        styleSheet = style / 'content.css'
+        return styleSheet.exists()
 
 
     def loadLocales(self):

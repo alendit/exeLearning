@@ -184,6 +184,8 @@ class WebServer:
         self.root.putChild("css",         static.File(webDir+"/css"))   
         self.root.putChild("scripts",     static.File(webDir+"/scripts"))
         self.root.putChild("style",       static.File(webDir+"/style"))
+        self.root.getChild("style", None).putChild("locale",
+                           static.File(self.config.configDir / 'style'))
         self.root.putChild("docs",        static.File(webDir+"/docs"))
         self.root.putChild("temp_print_dirs",
                               static.File(self.tempWebDir+"/temp_print_dirs"))
