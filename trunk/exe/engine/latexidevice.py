@@ -70,8 +70,7 @@ class LatexIdevice(Idevice):
         """
 
         try:
-            subprocess.Popen(['kpsewhich'], 
-                stdout=subprocess.PIPE).communicate()
+            os.popen('kpsewhich')
             self.kpsefound = True
             self.message = ""
         except OSError, e:
