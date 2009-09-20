@@ -82,7 +82,7 @@ class Application:
         self.packagePath  = None
         self.webServer    = None
         self.standalone   = False # Used for the ready to run exe
-        self.oldProfile   = False # Used to start another exe instance
+        self.childProcess = False # Used to start another exe instance
         self.persistNonPersistants = False  
         self.tempWebDir   = mkdtemp('.eXe')
         self.afterUpgradeHandlers = []
@@ -156,7 +156,7 @@ class Application:
         """
         try:
             options, packages = getopt(sys.argv[1:], 
-                                       "hV", ["help", "version", "standalone", "use-old-profile"])
+                                       "hV", ["help", "version", "standalone", "child-process"])
         except GetoptError:
             self.usage()
             sys.exit(2)
@@ -177,8 +177,8 @@ class Application:
                 sys.exit()
             elif option[0].lower() == '--standalone':
                 self.standalone = True
-            elif option[0].lower() == '--use-old-profile':
-                self.oldProfile = True
+            elif option[0].lower() == '--child-process':
+                self.childProcess = True
 
     
     def loadConfiguration(self):
@@ -337,7 +337,7 @@ class Application:
         print "  -V, --version     print version information and exit"
         print "  -h, --help        display this help and exit"
         print "  --standalone      Run totally from current directory"
-        print "  --use-old-profile Don't delete old profile (DEBUG)"
+        print "  --child-process   Don't delete old profile (DEBUG)"
         print "Settings are read from exe.conf "
         print "in $HOME/.exe on Linux/Unix or"
         print "in Documents and Settings/<user name>/Application Data/exe "

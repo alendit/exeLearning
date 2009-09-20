@@ -46,7 +46,7 @@ class StandaloneConfig(Config):
         self.dataDir       = exePath/'packages'
         if not self.dataDir.exists():
             self.dataDir.makedirs()
-        self.configDir     = exePath/'config'
+        self.configDir = Path(self.__getWinFolder(APPDATA))/'exe'
         self.localeDir     = exePath/'locale'
         self.xulrunnerPath = exePath/'xulrunner/xulrunner'
         self.styles        = []

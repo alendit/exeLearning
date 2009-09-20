@@ -24,6 +24,7 @@ This is the main XUL page.
 
 import os
 import sys
+from time import sleep
 import logging
 import traceback
 import shutil
@@ -273,15 +274,27 @@ class MainPage(RenderableLivePage):
             newNode = newPackage.root.copyToPackage(self.package,
                                                 self.package.root)
             newNode.RenamedNodePath(isMerge=True)
-            client.sendScript((u'top.location = "/%s"' % \
-                          self.package.name).encode('utf8'))
+            client.sendScript(u'top.location = "/%s"' % \
+                          self.package.name)
 
     def handleNewTab(self, client):
         """
         Opens new tab with new exe instance running in it
         """
 
-        subprocess.Popen(['exe', '--use-old-profile'])
+        subprocess.Popen([sys.argv[0], '--child-process'])
+        # file with information about new server's port
+        portFile = G.application.config.configDir / 'port'
+        while not os.path.exists(portFile):
+        # waiting half a second for new process to start
+            sleep(0.2)
+        f = open(portFile, 'r')
+        port = f.read()
+        f.close()
+        os.remove(portFile)
+        client.sendScript(u"openNewTab('%s')" % port)
+
+            
 
     def handleOutlineClick(self, client):
         """

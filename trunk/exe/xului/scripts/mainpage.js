@@ -365,6 +365,11 @@ function tabNew() {
     nevow_clientToServerEvent('openNewTab', this);
 }
 
+function openNewTab(port) {
+    //used to open new tab for a new server
+    window.open("http://127.0.0.1:" + port)
+}
+
 // This is called when a user wants to open a new file
 // It starts a chain of fileOpenX() funcs...
 function fileOpen() {

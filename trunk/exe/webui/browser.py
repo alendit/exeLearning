@@ -79,7 +79,7 @@ def launchBrowser(config, packageName, openMode):
         # ':/' in the pathname
         profile = "linux-profile:"
 
-    if not globals.application.oldProfile:
+    if not globals.application.childProcess:
         if (config.configDir/profile).exists():
             (config.configDir/profile).rmtree()
         log.info("Creating FireFox profile copied from"+
@@ -107,34 +107,42 @@ def launchBrowser(config, packageName, openMode):
     log.info("setupMoz configDir "+config.configDir+ " profile "+profile)
     log.info(u"profile = " + config.configDir/profile)
 
-    # if using the system Firefox, set the version so user doesn't see
-    # the extension update check
-    if sys.platform[:5] == u"linux":
-        setBrowserVersion(config.browserPath, config.configDir/profile)
-
-    if sys.platform[:3] == u"win":
-        try:
-            # Set MOZ_NO_REMOTE so that eXe doesn't conflict with
-            # other versions or profiles of Firefox.
-            os.environ["MOZ_NO_REMOTE"] = "1"
-            os.spawnl(os.P_DETACH, 
-                      config.browserPath,
-                      config.browserPath.basename(),
-                      '-profile', 
-                      '"' + config.configDir/profile + '"', 
-                      url)
-            log.info(u'Launching firefox: ' + config.configDir/profile )
-            log.info(u'Launching firefox: ' + url)
-        except OSError:
-            print u"Cannot launch Firefox, please manually run Firefox"
-            print u"and go to", url     
-
+    if globals.application.childProcess:
+        f = open(config.configDir / "port", 'w')
+        f.write(str(config.port))
+        f.close()
+        return 0
     else:
-        # Set LOGNAME so exe doesn't conflict with Firefox
-        launchString  = 'LOGNAME=eXe7913 '
-        launchString += config.browserPath
-        launchString += ' -profile "' + config.configDir/profile + '/" '
-        launchString += url
-        launchString += "&"
-        log.info(u'Launching firefox: ' + launchString)
-        os.system(launchString)
+        # it's a main process, start firefox
+
+        # if using the system Firefox, set the version so user doesn't see
+        # the extension update check
+        if sys.platform[:5] == u"linux":
+            setBrowserVersion(config.browserPath, config.configDir/profile)
+ 
+        if sys.platform[:3] == u"win":
+            try:
+                # Set MOZ_NO_REMOTE so that eXe doesn't conflict with
+                # other versions or profiles of Firefox.
+                os.environ["MOZ_NO_REMOTE"] = "1"
+                os.spawnl(os.P_DETACH, 
+                          config.browserPath,
+                          config.browserPath.basename(),
+                          '-profile', 
+                          '"' + config.configDir/profile + '"', 
+                          url)
+                log.info(u'Launching firefox: ' + config.configDir/profile )
+                log.info(u'Launching firefox: ' + url)
+            except OSError:
+                print u"Cannot launch Firefox, please manually run Firefox"
+                print u"and go to", url     
+
+        else:
+            # Set LOGNAME so exe doesn't conflict with Firefox
+            launchString  = 'LOGNAME=eXe7913 '
+            launchString += config.browserPath
+            launchString += ' -profile "' + config.configDir/profile + '/" '
+            launchString += url
+            launchString += "&"
+            log.info(u'Launching firefox: ' + launchString)
+            os.system(launchString)
