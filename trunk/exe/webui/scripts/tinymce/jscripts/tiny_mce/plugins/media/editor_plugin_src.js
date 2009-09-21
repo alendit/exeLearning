@@ -1,203 +1,124 @@
 /**
- * $Id: editor_plugin_src.js 201 2007-02-12 15:56:56Z spocke $
+ * $Id: editor_plugin_src.js 1037 2009-03-02 16:41:15Z spocke $
  *
  * @author Moxiecode
- * @copyright Copyright © 2004-2007, Moxiecode Systems AB, All rights reserved.
+ * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
  */
 
-/* Import plugin specific language pack */
-tinyMCE.importPluginLanguagePack('media');
+(function() {
+	var each = tinymce.each;
 
-var TinyMCE_MediaPlugin = {
-	getInfo : function() {
-		return {
-			longname : 'Media',
-			author : 'Moxiecode Systems AB',
-			authorurl : 'http://tinymce.moxiecode.com',
-			infourl : 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/media',
-			version : tinyMCE.majorVersion + "." + tinyMCE.minorVersion
-		};
-	},
+	tinymce.create('tinymce.plugins.MediaPlugin', {
+		init : function(ed, url) {
+			var t = this;
+			
+			t.editor = ed;
+			t.url = url;
 
-	initInstance : function(inst) {
-		// Warn if user has flash plugin and media plugin at the same time
-		if (inst.hasPlugin('flash') && !tinyMCE.flashWarn) {
-			alert('Flash plugin is deprecated and should not be used together with the media plugin.');
-			tinyMCE.flashWarn = true;
-		}
+			function isMediaElm(n) {
+				return /^(mceItemFlash|mceItemShockWave|mceItemWindowsMedia|mceItemQuickTime|mceItemRealMedia)$/.test(n.className);
+			};
 
-		if (!tinyMCE.settings['media_skip_plugin_css'])
-			tinyMCE.importCSS(inst.getDoc(), tinyMCE.baseURL + "/plugins/media/css/content.css");
-	},
+			ed.onPreInit.add(function() {
+				// Force in _value parameter this extra parameter is required for older Opera versions
+				ed.serializer.addRules('param[name|value|_mce_value]');
+			});
 
-	getControlHTML : function(cn) {
-		switch (cn) {
-			case "media":
-				return tinyMCE.getButtonHTML(cn, 'lang_media_desc', '{$pluginurl}/images/media.gif', 'mceMedia');
-		}
+			// Register commands
+			ed.addCommand('mceMedia', function() {
+				ed.windowManager.open({
+					file : url + '/media.htm',
+					width : 430 + parseInt(ed.getLang('media.delta_width', 0)),
+					height : 470 + parseInt(ed.getLang('media.delta_height', 0)),
+					inline : 1
+				}, {
+					plugin_url : url
+				});
+			});
 
-		return "";
-	},
+			// Register buttons
+			ed.addButton('media', {title : 'media.desc', cmd : 'mceMedia'});
 
-	execCommand : function(editor_id, element, command, user_interface, value) {
-		// Handle commands
-		switch (command) {
-			case "mceMedia":
-				tinyMCE.openWindow({
-						file : '../../plugins/media/media.htm',
-						width : 430 + tinyMCE.getLang('lang_media_delta_width', 0),
-						height : 500 + tinyMCE.getLang('lang_media_delta_height', 0)
-					}, {
-						editor_id : editor_id,
-						inline : "yes"
+			ed.onNodeChange.add(function(ed, cm, n) {
+				cm.setActive('media', n.nodeName == 'IMG' && isMediaElm(n));
+			});
+
+			ed.onInit.add(function() {
+				var lo = {
+					mceItemFlash : 'flash',
+					mceItemShockWave : 'shockwave',
+					mceItemWindowsMedia : 'windowsmedia',
+					mceItemQuickTime : 'quicktime',
+					mceItemRealMedia : 'realmedia'
+				};
+
+				ed.selection.onSetContent.add(function() {
+					t._spansToImgs(ed.getBody());
 				});
 
-				return true;
-	   }
+				ed.selection.onBeforeSetContent.add(t._objectsToSpans, t);
 
-	   // Pass to next handler in chain
-	   return false;
-	},
+				if (ed.settings.content_css !== false)
+					ed.dom.loadCSS(url + "/css/content.css");
 
-	cleanup : function(type, content, inst) {
-		var nl, img, i, ne, d, s, ci;
-
-		switch (type) {
-			case "insert_to_editor":
-				img = tinyMCE.getParam("theme_href") + '/images/spacer.gif';
-				content = content.replace(/<script[^>]*>\s*write(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)\(\{([^\)]*)\}\);\s*<\/script>/gi, '<img class="mceItem$1" title="$2" src="' + img + '" />');
-				content = content.replace(/<object([^>]*)>/gi, '<div class="mceItemObject" $1>');
-				content = content.replace(/<embed([^>]*)>/gi, '<div class="mceItemObjectEmbed" $1>');
-				content = content.replace(/<\/(object|embed)([^>]*)>/gi, '</div>');
-				content = content.replace(/<param([^>]*)>/gi, '<div $1 class="mceItemParam"></div>');
-				content = content.replace(new RegExp('\\/ class="mceItemParam"><\\/div>', 'gi'), 'class="mceItemParam"></div>');
-				break;
-
-			case "insert_to_editor_dom":
-				d = inst.getDoc();
-				nl = content.getElementsByTagName("img");
-				for (i=0; i<nl.length; i++) {
-					if (/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(nl[i].className)) {
-						nl[i].width = nl[i].title.replace(/.*width:[^0-9]?([0-9]+)%?.*/g, '$1');
-						nl[i].height = nl[i].title.replace(/.*height:[^0-9]?([0-9]+)%?.*/g, '$1');
-					}
-				}
-
-				nl = tinyMCE.selectElements(content, 'DIV', function (n) {return tinyMCE.hasCSSClass(n, 'mceItemObject');});
-				for (i=0; i<nl.length; i++) {
-					ci = tinyMCE.getAttrib(nl[i], "classid").toLowerCase().replace(/\s+/g, '');
-
-					switch (ci) {
-						case 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000':
-						        // Flash: either regular Flash for SWFs, or embedded MP3s / FLVs:
-							flash_id = tinyMCE.getAttrib(nl[i], "id").toLowerCase();
-							if (flash_id == 'mp3player') {
-							    nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemMP3', d, nl[i]), nl[i]);
-							}
-							else {
-							    // normal Flash here:
-							    nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemFlash', d, nl[i]), nl[i]);
-							}
-							break;
-
-						case 'clsid:166b1bca-3f9c-11cf-8075-444553540000':
-							nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemShockWave', d, nl[i]), nl[i]);
-							break;
-
-						case 'clsid:6bf52a52-394a-11d3-b153-00c04f79faa6':
-						case 'clsid:22d6f312-b0f6-11d0-94ab-0080c74c7e95':
-						case 'clsid:05589fa1-c356-11ce-bf01-00aa0055595a':
-						// WMP hack for eXe: 
-						case 'clsid:BOGUSID_FOR_WINDOWSMEDIA_VIA_TINYMCE'.toLowerCase():
-							nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemWindowsMedia', d, nl[i]), nl[i]);
-							break;
-
-						case 'clsid:02bf25d5-8c17-4b23-bc80-d3488abddc6b':
-							nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemQuickTime', d, nl[i]), nl[i]);
-							break;
-
-						case 'clsid:cfcdaa03-8be4-11cf-b84b-0020afbbccfa':
-							nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemRealMedia', d, nl[i]), nl[i]);
-							break;
-
-						case '':
-							// new embedded FLV FlowPlayer uses NO classid nor codebase. double check its id, though:
-							flash_id = tinyMCE.getAttrib(nl[i], "id").toLowerCase();
-							if (flash_id == 'flowplayer') {
-							    nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemFlowPlayer', d, nl[i]), nl[i]);
-							}
-
-					}
-				}
-
-				// Handle embed (if any)
-				nl = tinyMCE.selectNodes(content, function (n) {return n.className == 'mceItemObjectEmbed';});
-				for (i=0; i<nl.length; i++) {
-					switch (tinyMCE.getAttrib(nl[i], 'type')) {
-						case 'application/x-shockwave-flash':
-							//TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemFlash');
-							// include mp3 and flv-flowplayer if the appropriate type specified:
-							switch (tinyMCE.getAttrib(nl[i], 'id')) {
-							    case 'flowplayer':
-							        TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemFlowPlayer');
-								break;
-							    case 'mp3player':
-							        TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemMP3');
-								break;
-							    default:
-							        TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemFlash');
-							}
-							break;
-
-						case 'application/x-director':
-							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemShockWave');
-							break;
-
-						// WMP hack for eXe: 
-						case 'video/x-ms-wmv':
-							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemWindowsMedia');
-							break;
-
-						case 'video/quicktime':
-							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemQuickTime');
-							break;
-
-						case 'audio/x-pn-realaudio-plugin':
-							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemRealMedia');
-							break;
-					}
-				}
-				break;
-
-			case "get_from_editor":
-				var startPos = -1, endPos, attribs, chunkBefore, chunkAfter, embedHTML, at, pl, cb, mt, ex;
-
-				while ((startPos = content.indexOf('<img', startPos+1)) != -1) {
-					endPos = content.indexOf('/>', startPos);
-					attribs = TinyMCE_MediaPlugin._parseAttributes(content.substring(startPos + 4, endPos));
-
-					// Is not flash, skip it
-					if (!/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(attribs['class']))
-						continue;
-
-					endPos += 2;
-
-					// Parse attributes
-					at = attribs['title'];
-					if (at) {
-						at = at.replace(/&(#39|apos);/g, "'");
-						at = at.replace(/&#quot;/g, '"');
-
-						try {
-							pl = eval('x={' + at + '};');
-						} catch (ex) {
-							pl = {};
+				if (ed.theme.onResolveName) {
+					ed.theme.onResolveName.add(function(th, o) {
+						if (o.name == 'img') {
+							each(lo, function(v, k) {
+								if (ed.dom.hasClass(o.node, k)) {
+									o.name = v;
+									o.title = ed.dom.getAttrib(o.node, 'title');
+									return false;
+								}
+							});
 						}
-					}
+					});
+				}
 
-					// Use object/embed
-					if (!tinyMCE.getParam('media_use_script', false)) {
-						switch (attribs['class']) {
+				if (ed && ed.plugins.contextmenu) {
+					ed.plugins.contextmenu.onContextMenu.add(function(th, m, e) {
+						if (e.nodeName == 'IMG' && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia)/.test(e.className)) {
+							m.add({title : 'media.edit', icon : 'media', cmd : 'mceMedia'});
+						}
+					});
+				}
+			});
+
+			ed.onBeforeSetContent.add(t._objectsToSpans, t);
+
+			ed.onSetContent.add(function() {
+				t._spansToImgs(ed.getBody());
+			});
+
+			ed.onPreProcess.add(function(ed, o) {
+				var dom = ed.dom;
+
+				if (o.set) {
+					t._spansToImgs(o.node);
+
+					each(dom.select('IMG', o.node), function(n) {
+						var p;
+
+						if (isMediaElm(n)) {
+							p = t._parse(n.title);
+							dom.setAttrib(n, 'width', dom.getAttrib(n, 'width', p.width || 100));
+							dom.setAttrib(n, 'height', dom.getAttrib(n, 'height', p.height || 100));
+						}
+					});
+				}
+
+				if (o.get) {
+					each(dom.select('IMG', o.node), function(n) {
+						var ci, cb, mt;
+
+						if (ed.getParam('media_use_script')) {
+							if (isMediaElm(n))
+								n.className = n.className.replace(/mceItem/g, 'mceTemp');
+
+							return;
+						}
+
+						switch (n.className) {
 							case 'mceItemFlash':
 								ci = 'd27cdb6e-ae6d-11cf-96b8-444553540000';
 								cb = 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0';
@@ -205,387 +126,280 @@ var TinyMCE_MediaPlugin = {
 								break;
 
 							case 'mceItemShockWave':
-								ci = '166B1BCA-3F9C-11CF-8075-444553540000';
+								ci = '166b1bca-3f9c-11cf-8075-444553540000';
 								cb = 'http://download.macromedia.com/pub/shockwave/cabs/director/sw.cab#version=8,5,1,0';
 								mt = 'application/x-director';
 								break;
 
 							case 'mceItemWindowsMedia':
+								ci = ed.getParam('media_wmp6_compatible') ? '05589fa1-c356-11ce-bf01-00aa0055595a' : '6bf52a52-394a-11d3-b153-00c04f79faa6';
 								cb = 'http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701';
-								// WMP hack for eXe:
-								ci = 'BOGUSID_FOR_WINDOWSMEDIA_VIA_TINYMCE'
-								mt = 'video/x-ms-wmv';
+								mt = 'application/x-mplayer2';
 								break;
 
 							case 'mceItemQuickTime':
-								ci = '02BF25D5-8C17-4B23-BC80-D3488ABDDC6B';
+								ci = '02bf25d5-8c17-4b23-bc80-d3488abddc6b';
 								cb = 'http://www.apple.com/qtactivex/qtplugin.cab#version=6,0,2,0';
 								mt = 'video/quicktime';
 								break;
 
 							case 'mceItemRealMedia':
-								ci = 'CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA';
+								ci = 'cfcdaa03-8be4-11cf-b84b-0020afbbccfa';
 								cb = 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0';
 								mt = 'audio/x-pn-realaudio-plugin';
 								break;
-
-							case 'mceItemMP3':
-							        // sorta from: case 'mceItemFlash':
-								// using the same real Flash ClassID:
-								ci = 'd27cdb6e-ae6d-11cf-96b8-444553540000';
-								// but also setting a specific type parameter:
-								pl.id="mp3player"
-								cb = 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0';
-								mt = 'application/x-shockwave-flash';
-								break;
-
-							case 'mceItemFlowPlayer':
-							        // use NO classid OR codebase for the flowplayer:
-								ci = '';
-								cb = '';
-								// but also setting a specific type parameter:
-								pl.id="flowplayer"
-								// and do set the object's data to the initial eXe templates directory:
-								pl.data="../templates/flowPlayer.swf";
-								pl.movie="../templates/flowPlayer.swf";
-								mt = 'application/x-shockwave-flash';
-								// at least until these flashvars are built into options an the FLV's appearance tab,
-								// continue to hardcode the same parameters that were in use with the old
-								// Flash Movie iDevice:
-								pl.flashvars="config={ autoPlay: false, loop: false, initialScale: 'scale', " 
-								    + "showLoopButton: false, showPlayListButtons: false, playList: [ { " 
-								    + "url: '" + pl.src + "' }, ]}";
-								break;
 						}
 
-						// Force absolute URL
-						if (!tinyMCE.getParam("relative_urls"))
-							pl.src = tinyMCE.convertRelativeToAbsoluteURL(tinyMCE.settings['base_href'], pl.src);
+						if (ci) {
+							dom.replace(t._buildObj({
+								classid : ci,
+								codebase : cb,
+								type : mt
+							}, n), n);
+						}
+					});
+				}
+			});
 
-						embedHTML = TinyMCE_MediaPlugin._getEmbed(ci, cb, mt, pl, attribs);
-					} else {
-						// Use script version
-						switch (attribs['class']) {
-							case 'mceItemFlash':
-								s = 'writeFlash';
-								break;
+			ed.onPostProcess.add(function(ed, o) {
+				o.content = o.content.replace(/_mce_value=/g, 'value=');
+			});
 
-							case 'mceItemShockWave':
-								s = 'writeShockWave';
-								break;
+			function getAttr(s, n) {
+				n = new RegExp(n + '=\"([^\"]+)\"', 'g').exec(s);
 
-							case 'mceItemWindowsMedia':
-								s = 'writeWindowsMedia';
-								break;
+				return n ? ed.dom.decode(n[1]) : '';
+			};
 
-							case 'mceItemQuickTime':
-								s = 'writeQuickTime';
-								break;
+			ed.onPostProcess.add(function(ed, o) {
+				if (ed.getParam('media_use_script')) {
+					o.content = o.content.replace(/<img[^>]+>/g, function(im) {
+						var cl = getAttr(im, 'class');
 
-							case 'mceItemRealMedia':
-								s = 'writeRealMedia';
-								break;
-
-							case 'mceItemMP3':
-								s = 'writeMP3';
-								break;
-
-							case 'mceItemFlowPlayer':
-								s = 'writeFlowPlayer';
-								break;
+						if (/^(mceTempFlash|mceTempShockWave|mceTempWindowsMedia|mceTempQuickTime|mceTempRealMedia)$/.test(cl)) {
+							at = t._parse(getAttr(im, 'title'));
+							at.width = getAttr(im, 'width');
+							at.height = getAttr(im, 'height');
+							im = '<script type="text/javascript">write' + cl.substring(7) + '({' + t._serialize(at) + '});</script>';
 						}
 
-						if (attribs.width)
-							at = at.replace(/width:[^0-9]?[0-9]+%?[^0-9]?/g, "width:'" + attribs.width + "'");
+						return im;
+					});
+				}
+			});
+		},
 
-						if (attribs.height)
-							at = at.replace(/height:[^0-9]?[0-9]+%?[^0-9]?/g, "height:'" + attribs.height + "'");
+		getInfo : function() {
+			return {
+				longname : 'Media',
+				author : 'Moxiecode Systems AB',
+				authorurl : 'http://tinymce.moxiecode.com',
+				infourl : 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/media',
+				version : tinymce.majorVersion + "." + tinymce.minorVersion
+			};
+		},
 
-						// Force absolute URL
-						if (!tinyMCE.getParam("relative_urls")) {
-							pl.src = tinyMCE.convertRelativeToAbsoluteURL(tinyMCE.settings['base_href'], pl.src);
-							at = at.replace(new RegExp("src:'[^']*'", "g"), "src:'" + pl.src + "'");
-						}
+		// Private methods
+		_objectsToSpans : function(ed, o) {
+			var t = this, h = o.content;
 
-						embedHTML = '<script type="text/javascript">' + s + '({' + at + '});</script>';
+			h = h.replace(/<script[^>]*>\s*write(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia)\(\{([^\)]*)\}\);\s*<\/script>/gi, function(a, b, c) {
+				var o = t._parse(c);
+
+				return '<img class="mceItem' + b + '" title="' + ed.dom.encode(c) + '" src="' + t.url + '/img/trans.gif" width="' + o.width + '" height="' + o.height + '" />'
+			});
+
+			h = h.replace(/<object([^>]*)>/gi, '<span class="mceItemObject" $1>');
+			h = h.replace(/<embed([^>]*)\/?>/gi, '<span class="mceItemEmbed" $1></span>');
+			h = h.replace(/<embed([^>]*)>/gi, '<span class="mceItemEmbed" $1>');
+			h = h.replace(/<\/(object)([^>]*)>/gi, '</span>');
+			h = h.replace(/<\/embed>/gi, '');
+			h = h.replace(/<param([^>]*)>/gi, function(a, b) {return '<span ' + b.replace(/value=/gi, '_mce_value=') + ' class="mceItemParam"></span>'});
+			h = h.replace(/\/ class=\"mceItemParam\"><\/span>/gi, 'class="mceItemParam"></span>');
+
+			o.content = h;
+		},
+
+		_buildObj : function(o, n) {
+			var ob, ed = this.editor, dom = ed.dom, p = this._parse(n.title), stc;
+			
+			stc = ed.getParam('media_strict', true) && o.type == 'application/x-shockwave-flash';
+
+			p.width = o.width = dom.getAttrib(n, 'width') || 100;
+			p.height = o.height = dom.getAttrib(n, 'height') || 100;
+
+			if (p.src)
+				p.src = ed.convertURL(p.src, 'src', n);
+
+			if (stc) {
+				ob = dom.create('span', {
+					id : p.id,
+					mce_name : 'object',
+					type : 'application/x-shockwave-flash',
+					data : p.src,
+					style : dom.getAttrib(n, 'style'),
+					width : o.width,
+					height : o.height
+				});
+			} else {
+				ob = dom.create('span', {
+					id : p.id,
+					mce_name : 'object',
+					classid : "clsid:" + o.classid,
+					style : dom.getAttrib(n, 'style'),
+					codebase : o.codebase,
+					width : o.width,
+					height : o.height
+				});
+			}
+
+			each (p, function(v, k) {
+				if (!/^(width|height|codebase|classid|id|_cx|_cy)$/.test(k)) {
+					// Use url instead of src in IE for Windows media
+					if (o.type == 'application/x-mplayer2' && k == 'src' && !p.url)
+						k = 'url';
+
+					if (v)
+						dom.add(ob, 'span', {mce_name : 'param', name : k, '_mce_value' : v});
+				}
+			});
+
+			if (!stc)
+				dom.add(ob, 'span', tinymce.extend({mce_name : 'embed', type : o.type, style : dom.getAttrib(n, 'style')}, p));
+
+			return ob;
+		},
+
+		_spansToImgs : function(p) {
+			var t = this, dom = t.editor.dom, im, ci;
+
+			each(dom.select('span', p), function(n) {
+				// Convert object into image
+				if (dom.getAttrib(n, 'class') == 'mceItemObject') {
+					ci = dom.getAttrib(n, "classid").toLowerCase().replace(/\s+/g, '');
+
+					switch (ci) {
+						case 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000':
+							dom.replace(t._createImg('mceItemFlash', n), n);
+							break;
+
+						case 'clsid:166b1bca-3f9c-11cf-8075-444553540000':
+							dom.replace(t._createImg('mceItemShockWave', n), n);
+							break;
+
+						case 'clsid:6bf52a52-394a-11d3-b153-00c04f79faa6':
+						case 'clsid:22d6f312-b0f6-11d0-94ab-0080c74c7e95':
+						case 'clsid:05589fa1-c356-11ce-bf01-00aa0055595a':
+							dom.replace(t._createImg('mceItemWindowsMedia', n), n);
+							break;
+
+						case 'clsid:02bf25d5-8c17-4b23-bc80-d3488abddc6b':
+							dom.replace(t._createImg('mceItemQuickTime', n), n);
+							break;
+
+						case 'clsid:cfcdaa03-8be4-11cf-b84b-0020afbbccfa':
+							dom.replace(t._createImg('mceItemRealMedia', n), n);
+							break;
+
+						default:
+							dom.replace(t._createImg('mceItemFlash', n), n);
 					}
-
-					// Insert embed/object chunk
-					chunkBefore = content.substring(0, startPos);
-					chunkAfter = content.substring(endPos);
-					content = chunkBefore + embedHTML + chunkAfter;
-				}
-				break;
-		}
-
-		return content;
-	},
-
-	handleNodeChange : function(editor_id, node, undo_index, undo_levels, visual_aid, any_selection) {
-		if (node == null)
-			return;
-
-		do {
-			if (node.nodeName == "IMG" && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(tinyMCE.getAttrib(node, 'class'))) {
-				tinyMCE.switchClass(editor_id + '_media', 'mceButtonSelected');
-				return true;
-			}
-		} while ((node = node.parentNode));
-
-		tinyMCE.switchClass(editor_id + '_media', 'mceButtonNormal');
-
-		return true;
-	},
-
-	_createImgFromEmbed : function(n, d, cl) {
-		var ne, at, i, ti = '', an;
-
-		ne = d.createElement('img');
-		ne.src = tinyMCE.getParam("theme_href") + '/images/spacer.gif';
-		ne.width = tinyMCE.getAttrib(n, 'width');
-		ne.height = tinyMCE.getAttrib(n, 'height');
-		ne.className = cl;
-
-		at = n.attributes;
-		for (i=0; i<at.length; i++) {
-			if (at[i].specified && at[i].nodeValue) {
-				an = at[i].nodeName.toLowerCase();
-
-				if (an == 'src')
-					continue;
-
-				if (an == 'mce_src')
-					an = 'src';
-
-				if (an.indexOf('mce_') == -1 && !new RegExp('^(class|type)$').test(an))
-					ti += an.toLowerCase() + ':\'' + at[i].nodeValue + "',";
-			}
-		}
-
-		ti = ti.length > 0 ? ti.substring(0, ti.length - 1) : ti;
-		ne.title = ti;
-
-		n.parentNode.replaceChild(ne, n);
-	},
-
-	_createImg : function(cl, d, n) {
-		var i, nl, ti = "", an, av, al = new Array();
-
-		ne = d.createElement('img');
-		ne.src = tinyMCE.getParam("theme_href") + '/images/spacer.gif';
-		ne.width = tinyMCE.getAttrib(n, 'width');
-		ne.height = tinyMCE.getAttrib(n, 'height');
-		ne.className = cl;
-
-		al.id = tinyMCE.getAttrib(n, 'id');
-		al.name = tinyMCE.getAttrib(n, 'name');
-		al.width = tinyMCE.getAttrib(n, 'width');
-		al.height = tinyMCE.getAttrib(n, 'height');
-		al.bgcolor = tinyMCE.getAttrib(n, 'bgcolor');
-		al.align = tinyMCE.getAttrib(n, 'align');
-		al.class_name = tinyMCE.getAttrib(n, 'mce_class');
-
-		nl = n.getElementsByTagName('div');
-		for (i=0; i<nl.length; i++) {
-			av = tinyMCE.getAttrib(nl[i], 'value');
-			av = av.replace(new RegExp('\\\\', 'g'), '\\\\');
-			av = av.replace(new RegExp('"', 'g'), '\\"');
-			av = av.replace(new RegExp("'", 'g'), "\\'");
-			an = tinyMCE.getAttrib(nl[i], 'name');
-			al[an] = av;
-		}
-
-		if (al.movie) {
-			al.src = al.movie;
-			al.movie = null;
-		}
-
-		// FLV hack: now that FLVs cannot export their src,
-		// allow their flv_src to override any earlier src,
-		// especially because they also have a movie param that 
-		// references the flowPlayer.swf rather than the source FLV:
-		if (al.flv_src) {
-			al.src = al.flv_src;
-		}
-
-		for (an in al) {
-			if (al[an] != null && typeof(al[an]) != "function" && al[an] != '')
-				ti += an.toLowerCase() + ':\'' + al[an] + "',";
-		}
-
-		ti = ti.length > 0 ? ti.substring(0, ti.length - 1) : ti;
-		ne.title = ti;
-
-		return ne;
-	},
-
-	_getEmbed : function(cls, cb, mt, p, at) {
-		var h = '', n;
-		var flv_skip_src = 0;  // to help with FLV src hack
-
-		p.width = at.width ? at.width : p.width;
-		p.height = at.height ? at.height : p.height;
-
-		h += '<object'
-		if (mt == 'video/x-ms-wmv') { 
-		    // WMP hack for eXe:
-		    h += ' classid="clsid:' + cls + '"'
-		    h += ' type="' + mt + '" data="' + p.src + '"';
-		    h += ' codebase="' + cb + '"'; 
-		}
-		else if (mt == 'application/x-shockwave-flash' 
-			&& p.id == 'flowplayer') {
-		    // embedded FLV player - no classid or codebase:
-		    h += ' type="' + mt + '"';
-		    h += ' data="' + p.data + '"';
-		}
-		else
-		{
-		    h += ' classid="clsid:' + cls + '"'
-		    h += ' codebase="' + cb + '"'; 
-		}
-
-		h += typeof(p.id) != "undefined" ? ' id="' + p.id + '"' : '';
-		h += typeof(p.name) != "undefined" ? ' name="' + p.name + '"' : '';
-		h += typeof(p.width) != "undefined" ? ' width="' + p.width + '"' : '';
-		h += typeof(p.height) != "undefined" ? ' height="' + p.height + '"' : '';
-		h += typeof(p.align) != "undefined" ? ' align="' + p.align + '"' : '';
-		h += '>';
-
-		// FLV hack for eXe:
-		if (mt == 'application/x-shockwave-flash' && p.id == 'flowplayer') {
-			// both src and flv_src parameters are saved with an FLV,
-			// but only write out src if they have changed (if they differ at all),
-			// and only write out flv_src if they have not.
-			// This is because only the src should be used when embedding a new resource,
-			// and for FLVs, otherwise just keep the flv-src since IE doesn't like its src:
-			if (p.src == p.flv_src) {
-				flv_skip_src = 1;
-				// implying to also NOT skip the flv_src param
-			}
-			else {
-				flv_skip_src = 0;
-				// implying to also skip the flv_src param
-			}
-		}
-
-		for (n in p) {
-                        if (typeof(p[n]) != "undefined" && typeof(p[n]) != "function") {
-
-				if ((n == 'src' || n == 'flv_src') 
-				    && mt == 'application/x-shockwave-flash' && p.id == 'flowplayer') {
-				    // FLV hack for eXe:
-				    if ((flv_skip_src && n == 'flv_src') || (!flv_skip_src && n == 'src')) {
-				        h += '<param name="' + n + '" value="' + p[n] + '" />';
-				    }
-				    // else: skip the other :-)
-				}
-				else {
-				    h += '<param name="' + n + '" value="' + p[n] + '" />';
+					
+					return;
 				}
 
-				// Add extra url parameter if it's an absolute URL on WMP
-				// with WMP hack for eXe:
-				if (n == 'src' && p[n].indexOf('://') != -1 && mt == 'video/x-ms-wmv')
-					h += '<param name="url" value="' + p[n] + '" />';
+				// Convert embed into image
+				if (dom.getAttrib(n, 'class') == 'mceItemEmbed') {
+					switch (dom.getAttrib(n, 'type')) {
+						case 'application/x-shockwave-flash':
+							dom.replace(t._createImg('mceItemFlash', n), n);
+							break;
+
+						case 'application/x-director':
+							dom.replace(t._createImg('mceItemShockWave', n), n);
+							break;
+
+						case 'application/x-mplayer2':
+							dom.replace(t._createImg('mceItemWindowsMedia', n), n);
+							break;
+
+						case 'video/quicktime':
+							dom.replace(t._createImg('mceItemQuickTime', n), n);
+							break;
+
+						case 'audio/x-pn-realaudio-plugin':
+							dom.replace(t._createImg('mceItemRealMedia', n), n);
+							break;
+
+						default:
+							dom.replace(t._createImg('mceItemFlash', n), n);
+					}
+				}			
+			});
+		},
+
+		_createImg : function(cl, n) {
+			var im, dom = this.editor.dom, pa = {}, ti = '', args;
+
+			args = ['id', 'name', 'width', 'height', 'bgcolor', 'align', 'flashvars', 'src', 'wmode', 'allowfullscreen', 'quality'];	
+
+			// Create image
+			im = dom.create('img', {
+				src : this.url + '/img/trans.gif',
+				width : dom.getAttrib(n, 'width') || 100,
+				height : dom.getAttrib(n, 'height') || 100,
+				style : dom.getAttrib(n, 'style'),
+				'class' : cl
+			});
+
+			// Setup base parameters
+			each(args, function(na) {
+				var v = dom.getAttrib(n, na);
+
+				if (v)
+					pa[na] = v;
+			});
+
+			// Add optional parameters
+			each(dom.select('span', n), function(n) {
+				if (dom.hasClass(n, 'mceItemParam'))
+					pa[dom.getAttrib(n, 'name')] = dom.getAttrib(n, '_mce_value');
+			});
+
+			// Use src not movie
+			if (pa.movie) {
+				pa.src = pa.movie;
+				delete pa.movie;
 			}
-		}
 
-		// MP3 hack for eXe:
-		// putting this AFTER all of the above p[], to ensure that it will FOLLOW
-		// the p.src attribute, for easier parsing within eXe.
-		if (mt == 'application/x-shockwave-flash' && p.id == 'mp3player') {
-			if (typeof(p.exe_mp3) == "undefined") {
-				// want to include the actual source name in this parm, 
-				// to confirm to eXe the source to which it applies:
-				h += '<param name="exe_mp3" value="' + p.src + '" />';
-			}
-		}
-                // FLV hack for eXe:
-                // likwise, putting this AFTER all of the above p[], to ensure that it will FOLLOW
-                // the p.src attribute, for easier parsing within eXe.
-                if (mt == 'application/x-shockwave-flash' && p.id == 'flowplayer') {
-                        if (typeof(p.exe_flv) == "undefined") {
-                                // want to include the actual source name in this parm, 
-                                // to confirm to eXe the source to which it applies:
-                                h += '<param name="exe_flv" value="' + p.src + '" />';
-                        } 
-                }
+			// Merge with embed args
+			n = dom.select('.mceItemEmbed', n)[0];
+			if (n) {
+				each(args, function(na) {
+					var v = dom.getAttrib(n, na);
 
-		h += '<embed type="' + mt + '"';
-
-		for (n in p) {
-			if (typeof(p[n]) == "function")
-				continue;
-
-			// FLV hack: 
-			if ((n == 'src' || n == 'flv_src') 
-			    && mt == 'application/x-shockwave-flash' && p.id == 'flowplayer') {
-			    if ((flv_skip_src && n == 'flv_src') || (!flv_skip_src && n == 'src')) {
-			        // will include it below
-			    }
-			    else {
-			        // else: skip the other :-)
-				continue;
-			    }
+					if (v && !pa[na])
+						pa[na] = v;
+				});
 			}
 
-			// Skip url parameter for embed tag on WMP
-			// with WMP hack for eXe:
-			if (!(n == 'url' && mt == 'video/x-ms-wmv'))
-				h += ' ' + n + '="' + p[n] + '"';
+			delete pa.width;
+			delete pa.height;
+
+			im.title = this._serialize(pa);
+
+			return im;
+		},
+
+		_parse : function(s) {
+			return tinymce.util.JSON.parse('{' + s + '}');
+		},
+
+		_serialize : function(o) {
+			return tinymce.util.JSON.serialize(o).replace(/[{}]/g, '');
 		}
+	});
 
-		h += '></embed></object>';
-
-		return h;
-	},
-
-	_parseAttributes : function(attribute_string) {
-		var attributeName = "", endChr = '"';
-		var attributeValue = "";
-		var withInName;
-		var withInValue;
-		var attributes = new Array();
-		var whiteSpaceRegExp = new RegExp('^[ \n\r\t]+', 'g');
-
-		if (attribute_string == null || attribute_string.length < 2)
-			return null;
-
-		withInName = withInValue = false;
-
-		for (var i=0; i<attribute_string.length; i++) {
-			var chr = attribute_string.charAt(i);
-
-			if ((chr == '"' || chr == "'") && !withInValue) {
-				withInValue = true;
-				endChr = chr;
-			} else if (chr == endChr && withInValue) {
-				withInValue = false;
-
-				var pos = attributeName.lastIndexOf(' ');
-				if (pos != -1)
-					attributeName = attributeName.substring(pos+1);
-
-				attributes[attributeName.toLowerCase()] = attributeValue.substring(1);
-
-				attributeName = "";
-				attributeValue = "";
-			} else if (!whiteSpaceRegExp.test(chr) && !withInName && !withInValue)
-				withInName = true;
-
-			if (chr == '=' && withInName)
-				withInName = false;
-
-			if (withInName)
-				attributeName += chr;
-
-			if (withInValue)
-				attributeValue += chr;
-		}
-
-		return attributes;
-	}
-};
-
-tinyMCE.addPlugin("media", TinyMCE_MediaPlugin);
+	// Register plugin
+	tinymce.PluginManager.add('media', tinymce.plugins.MediaPlugin);
+})();

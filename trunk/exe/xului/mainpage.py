@@ -822,7 +822,16 @@ class MainPage(RenderableLivePage):
         'filename' is a file for scorm pages, and a directory for websites
         """ 
         webDir     = Path(self.config.webDir)
-        stylesDir  = Path(self.package.style)
+        if self.package.style.find("locale/") != -1:
+            # local style loaded
+            stylesDir  = self.config.configDir / "style"
+            # delete "locale/" from style name
+            stylesDir /= self.package.style[self.package.style.find\
+                                            ("locale/") + len("locale/"):]
+        else:
+            # global style
+            stylesDir = webDir / "style"
+            stylesDir /= self.package.style
 
         exportDir  = Path(filename).dirname()
         if exportDir and not exportDir.exists():
