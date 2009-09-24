@@ -370,6 +370,11 @@ function tabNew() {
     nevow_clientToServerEvent('openNewTab', this);
 }
 
+function openPreview(path) {
+    netscape.security.PrivilegeManager.enablePrivilege("UniversalFileRead");
+    window.open("file://" + path);
+}
+
 function openNewTab(port) {
     //used to open new tab for a new server
     window.open("http://127.0.0.1:" + port)

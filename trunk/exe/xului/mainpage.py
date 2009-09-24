@@ -1038,7 +1038,7 @@ class MainPage(RenderableLivePage):
             raise
         # Show the newly exported web site in a new window
         if not printFlag:
-           self._startFile(filename)
+           self._startFile(client, filename)
         # and return a string of the actual directory name, 
         # in case the package name was added, etc.:
         return filename.abspath().encode('utf-8')
@@ -1080,7 +1080,7 @@ class MainPage(RenderableLivePage):
             raise
 
         # show new presentation in a new window
-        self._startFile(filename)
+        self._startFile(client, filename)
 
 
     def printHandout(self, client, exportDir, stylesDir):
@@ -1129,7 +1129,7 @@ class MainPage(RenderableLivePage):
             client.alert(_('EXPORT FAILED!\n%s') % str(e))
             raise
         # Show the newly exported web site in a new window
-        self._startFile(filename)
+        self._startFile(client, filename)
 
     def exportWebZip(self, client, filename, stylesDir):
         try:
@@ -1241,23 +1241,13 @@ class MainPage(RenderableLivePage):
         client.alert(_(u'Exported to %s' % filename))
 
     # Utility methods
-    def _startFile(self, filename):
+    def _startFile(self, client, filename):
         """
         Launches an exported web site or page
         """
-        if hasattr(os, 'startfile'):
-            try:
-                os.startfile(filename)
-            except UnicodeEncodeError:
-                os.startfile(filename.encode(Path.fileSystemEncoding))
-        elif sys.platform[:6] == "darwin":
-            import webbrowser
-            filename /= 'index.html'
-            webbrowser.open('file://'+filename)
-        else:
-            filename /= 'index.html'
-            log.debug(u"firefox file://"+filename+"&")
-            os.system("firefox file://"+filename+"&")
+        filename /= 'index.html'
+        print filename
+        client.sendScript("openPreview('%s');" % filename)
 
     def _loadPackage(self, client, filename, newLoad=True,
                      destinationPackage=None):

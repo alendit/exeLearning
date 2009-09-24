@@ -4,14 +4,17 @@ window.addEventListener("load", eXeexInit, true);
 
 function eXeWindowIsClosing() {
   // try to prevent closing the main window
-  if (content.document.getElementById('mainWindow').id == 'mainWindow') {
+  var mainWin = content.document.getElementById('mainWindow');
+  if (mainWin != null){
     var target = content.document.getElementById('menu-quit');
     var evObj = document.createEvent('MouseEvents');
     evObj.initMouseEvent( 'click', true, true, window, 1, 12, 345, 7, 220, false, false, true, false, 0, null );
     target.dispatchEvent(evObj);
     return false;
+  } else {
+    gBrowser.removeCurrentTab();
+    return false;
   }
-  return true;
 }
 
 function eXeTryToClose(arg) {
