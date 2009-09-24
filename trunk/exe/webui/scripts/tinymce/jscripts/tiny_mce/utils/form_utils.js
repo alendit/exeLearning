@@ -67,6 +67,49 @@ function getBrowserHTML(id, target_form_element, type, prefix) {
 	return html;
 }
 
+// a "live" version of the above getBrowserHTML(), rather
+// than embedding the file-browser callback in the HTML,
+// the following doBrowserHTML() will call the callback:
+function doBrowserHTML(id, target_form_element, type, prefix) {
+	var option = prefix + "_" + type + "_browser_callback";
+	var cb = tinyMCE.getParam(option, tinyMCE.getParam("file_browser_callback"));
+	if (cb == null)
+		return "";
+
+	var html = "";
+
+        openBrower(id, target_form_element, type, option);
+
+	return html;
+} // doBrowserHTML()
+
+function openBrower(img_id, target_form_element, type, option) {
+	var img = document.getElementById(img_id);
+
+	if (img.className != "mceButtonDisabled")
+		tinyMCEPopup.openBrowser(target_form_element, type, option);
+}
+
+// nearly the same as openBrower, but allows the source element 
+// to differ from the destination targe element, as used by exemath plugin:
+function openBrower2(img_id, source_form_element, target_form_element, type, option) {
+	var img = document.getElementById(img_id);
+
+	if (img.className != "mceButtonDisabled")
+		tinyMCEPopup.openBrowser2(source_form_element, target_form_element, type, option);
+}
+
+
+// likewise, nearly the same as openBrower2, but allows two source elements
+// to differ from the destination targe element, as used by exemath plugin:
+function openBrower3(img_id, source_form_element, source2_form_element, target_form_element, type, option) {
+	var img = document.getElementById(img_id);
+
+	if (img.className != "mceButtonDisabled")
+		tinyMCEPopup.openBrowser3(source_form_element, source2_form_element, target_form_element, type, option);
+}
+
+
 function openBrower(img_id, target_form_element, type, option) {
 	var img = document.getElementById(img_id);
 
