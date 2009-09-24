@@ -1245,8 +1245,10 @@ class MainPage(RenderableLivePage):
         """
         Launches an exported web site or page
         """
-        filename /= 'index.html'
-        print filename
+        if not filename.endswith("/index.html"):
+            filename /= 'index.html'
+        filename = filename.replace("\\", "\\\\")
+        log.info(filename)
         client.sendScript("openPreview('%s');" % filename)
 
     def _loadPackage(self, client, filename, newLoad=True,
