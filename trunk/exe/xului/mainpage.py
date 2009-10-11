@@ -140,6 +140,7 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleNewTab,           'openNewTab')
         setUpHandler(self.handleImportStyle,      'importStyle')
         setUpHandler(self.handleOutlineClick,     'outlineClicked')
+        setUpHandler(self.exportWebSite2,          'exportWebSite2')
 
         self.idevicePane.client = client
         # Render the js 
@@ -268,12 +269,12 @@ class MainPage(RenderableLivePage):
         """
 
         root = self.package.currentNode.parent
+        print root
         if root is None:
             client.alert(_("Can't dublicate root element"))
         else:
             newPackage = self.package.extractNode()
-            newNode = newPackage.root.copyToPackage(self.package,
-                                                self.package.root)
+            newNode = newPackage.root.copyToPackage(self.package, root)
             newNode.RenamedNodePath(isMerge=True)
             client.sendScript(u'top.location = "/%s"' % \
                           self.package.name)
@@ -1101,35 +1102,37 @@ class MainPage(RenderableLivePage):
         'webDir' is just read from config.webDir
         'stylesDir' is where to copy the style sheet information from
         """
+        # filename is a directory where we will export the website to
+        # We assume that the user knows what they are doing
+        # and don't check if the directory is already full or not
+        # and we just overwrite what's already there
+        filename = Path(filename)
+        # Append the package name to the folder path if necessary
+        if filename.basename() != self.package.name:
+            filename /= self.package.name
+        
+        if filename.exists():
+            client.sendScript('askOverwrite("%s, %s");' \
+                              % (filename, stylesDir));
+        # Now do the export
+        self.exportWebSite2(client, filename, stylesDir)
+
+    def exportWebSite2(self, client, filename, stylesDir):
+        '''Overwrite allowed, proceed'''
         try:
-            # filename is a directory where we will export the website to
-            # We assume that the user knows what they are doing
-            # and don't check if the directory is already full or not
-            # and we just overwrite what's already there
             filename = Path(filename)
-            # Append the package name to the folder path if necessary
-            if filename.basename() != self.package.name:
-                filename /= self.package.name
-            if not filename.exists():
-                filename.makedirs()
-            elif not filename.isdir():
-                client.alert(_(u'Filename %s is a file, cannot replace it') % 
-                             filename)
-                log.error("Couldn't export web page: "+
-                          "Filename %s is a file, cannot replace it" % filename)
-                return
-            else:
-                client.alert(_(u'Folder name %s already exists. '
-                                'Please choose another one or delete existing one then try again.') % filename)           
-                return 
-            # Now do the export
+            if filename.exists():
+                if filename.isdir():
+                    shutil.rmtree(filename)
+                else:
+                    os.remove(filename)
+            filename.makedirs()
             websiteExport = WebsiteExport(self.config, stylesDir, filename)
             websiteExport.export(self.package)
+            self._startFile(client, filename)
         except Exception, e:
-            client.alert(_('EXPORT FAILED!\n%s') % str(e))
+            log.error("EXPORT FAILED! %s" % filename)
             raise
-        # Show the newly exported web site in a new window
-        self._startFile(client, filename)
 
     def exportWebZip(self, client, filename, stylesDir):
         try:

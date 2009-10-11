@@ -463,6 +463,12 @@ function fileSave2(filename, onDone) {
     }
 }
 
+function askOverwrite(filename, stylesDir) {
+    if (confirm("File " + filename + "already exists. Would you like to overwrite?")) {
+        nevow_clientToServerEvent('exportWebSite2', this, '', filename, stylesDir);
+        }
+}
+
 // Called by the user when they want to save their package
 function fileSaveAs(onDone) {
     netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect")
