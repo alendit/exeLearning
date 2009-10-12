@@ -566,10 +566,6 @@ function fileQuit() {
     askDirty('doQuit()')
 }
 
-function test() {
-    alert("Alerta!");
-}
-
 // Closes the window and stops the server
 function doQuit() {
     netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect")

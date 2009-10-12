@@ -245,7 +245,7 @@ class MainPage(RenderableLivePage):
         """
 
         disabled = G.application.lastExportType and u"false" or u"true"
-        result = u'<menuitem ' +\
+        result = u'<menuitem accesskey="q" ' +\
                   u'id="quick-export" label="Quick Export" ' +\
                   u'key="quick-export-key" disabled="%s" ' % disabled +\
                   u'oncommand="quickExport()"></menuitem>'
@@ -847,6 +847,7 @@ class MainPage(RenderableLivePage):
         """ 
         G.application.lastExportType = exportType
         G.application.lastExportPath = filename
+        log.info("Filename to export" + filename)
         webDir     = Path(self.config.webDir)
         if self.package.style.find("locale/") != -1:
             # local style loaded
@@ -1132,17 +1133,15 @@ class MainPage(RenderableLivePage):
         'stylesDir' is where to copy the style sheet information from
         """
         # filename is a directory where we will export the website to
-        # We assume that the user knows what they are doing
-        # and don't check if the directory is already full or not
-        # and we just overwrite what's already there
         filename = Path(filename)
         # Append the package name to the folder path if necessary
         if filename.basename() != self.package.name:
             filename /= self.package.name
-        
+
         if filename.exists() and not quick:
             client.sendScript('askOverwrite("%s", "%s");' \
-                              % (filename, stylesDir));
+                              % (str(filename).replace("\\", "\\\\"),
+                                 stylesDir.replace("\\", "\\\\")))
         else:
             # Now do the export
             self.exportWebSite2(client, filename, stylesDir)

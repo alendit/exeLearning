@@ -34,6 +34,7 @@ from __future__ import generators
 
 import sys, os, fnmatch, glob, shutil, codecs, md5
 from tempfile import mkdtemp
+from re import findall
 import logging
 log = logging.getLogger(__name__)
 
@@ -96,6 +97,9 @@ class Path(unicode):
         Join two Path components, adding a separator character if
         needed.
         """
+        # on windows we have to change c: to c:\
+        if findall("^[a-zA-Z]:$", self) and sys.platform[:3] == 'win':
+            self += "\\"
         return Path(os.path.join(toUnicode(self), toUnicode(rel)))
 
     # Make the / operator work even when true division is enabled.
