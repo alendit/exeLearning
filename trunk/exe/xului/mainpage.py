@@ -833,8 +833,6 @@ class MainPage(RenderableLivePage):
         Checks if already exported, does last export
         """
 
-        print "Quick Export"
-        print G.application.lastExportType
         if G.application.lastExportType:
             self.handleExport(client, G.application.lastExportType, 
                         G.application.lastExportPath, quick=True) 
