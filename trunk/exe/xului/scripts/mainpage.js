@@ -668,6 +668,10 @@ function AddIdeviceBySelection() {
 // 'presentation' exports marked freetext passages to a
 // DOMSlides-presentation
 
+function quickExport() {
+    nevow_clientToServerEvent('quickExport', this);
+}
+
 function exportPackage(exportType, exportDir, printCallback) {
     netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
 

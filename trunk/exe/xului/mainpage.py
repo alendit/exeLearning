@@ -140,7 +140,8 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleNewTab,           'openNewTab')
         setUpHandler(self.handleImportStyle,      'importStyle')
         setUpHandler(self.handleOutlineClick,     'outlineClicked')
-        setUpHandler(self.exportWebSite2,          'exportWebSite2')
+        setUpHandler(self.exportWebSite2,         'exportWebSite2')
+        setUpHandler(self.handleQuickExport,      'quickExport')
 
         self.idevicePane.client = client
         # Render the js 
@@ -237,6 +238,19 @@ class MainPage(RenderableLivePage):
                       _('Clear Recent Projects List'))
         result.append('</menupopup>')
         return stan.xml('\n'.join(result))
+
+    def render_quickExportElement(self, ctx, data):
+        """
+        Enables or disables the quick export button
+        """
+
+        disabled = G.application.lastExportType and u"false" or u"true"
+        result = u'<menuitem ' +\
+                  u'id="quick-export" label="Quick Export" ' +\
+                  u'key="quick-export-key" disabled="%s" ' % disabled +\
+                  u'oncommand="quickExport()"></menuitem>'
+        return stan.xml(result)
+
 
     def render_debugInfo(self, ctx, data):
         """Renders debug info to the to
@@ -813,8 +827,19 @@ class MainPage(RenderableLivePage):
             Path(tempFileName).remove()
         return
 
+    def handleQuickExport(self, client):
+        """
+        Called by js.
+        Checks if already exported, does last export
+        """
 
-    def handleExport(self, client, exportType, filename, print_callback=''):
+        print "Quick Export"
+        print G.application.lastExportType
+        if G.application.lastExportType:
+            self.handleExport(client, G.application.lastExportType, 
+                        G.application.lastExportPath, quick=True) 
+
+    def handleExport(self, client, exportType, filename, print_callback='', quick=False):
         """
         Called by js. 
         Exports the current package to one of the above formats
@@ -822,6 +847,8 @@ class MainPage(RenderableLivePage):
                      'textFile' 'scorm' or 'presentation'
         'filename' is a file for scorm pages, and a directory for websites
         """ 
+        G.application.lastExportType = exportType
+        G.application.lastExportPath = filename
         webDir     = Path(self.config.webDir)
         if self.package.style.find("locale/") != -1:
             # local style loaded
@@ -860,7 +887,7 @@ class MainPage(RenderableLivePage):
                             web_printdir)
 
         elif exportType == 'webSite':
-            self.exportWebSite(client, filename, stylesDir)
+            self.exportWebSite(client, filename, stylesDir, quick=quick)
 
         elif exportType == 'presentation':
             self.exportPresentation(client, filename, stylesDir)
@@ -890,6 +917,10 @@ class MainPage(RenderableLivePage):
         else:
             filename = self.b4save(client, filename, '.zip', _(u'EXPORT FAILED!'))
             self.exportIMS(client, filename, stylesDir)
+
+        client.sendScript((u'top.location = "/%s"' % \
+                          self.package.name).encode('utf8'))
+
 
     def handleQuit(self, client):
         """
@@ -1096,7 +1127,7 @@ class MainPage(RenderableLivePage):
         return exportDir.encode('utf-8')
 
 
-    def exportWebSite(self, client, filename, stylesDir):
+    def exportWebSite(self, client, filename, stylesDir, quick=False):
         """
         Export 'client' to a web site,
         'webDir' is just read from config.webDir
@@ -1111,7 +1142,7 @@ class MainPage(RenderableLivePage):
         if filename.basename() != self.package.name:
             filename /= self.package.name
         
-        if filename.exists():
+        if filename.exists() and not quick:
             client.sendScript('askOverwrite("%s", "%s");' \
                               % (filename, stylesDir));
         else:

@@ -83,6 +83,8 @@ class Application:
         self.webServer    = None
         self.standalone   = False # Used for the ready to run exe
         self.childProcess = False # Used to start another exe instance
+        self.lastExportType = ""
+        self.lastExportPath = None
         self.persistNonPersistants = False  
         self.tempWebDir   = mkdtemp('.eXe')
         self.afterUpgradeHandlers = []
