@@ -47,6 +47,7 @@ EXPORT_IPOD_PACKAGE_AS = "Export iPod package as";
 INVALID_VALUE_PASSED_TO_EXPORTPACKAGE = "INVALID VALUE PASSED TO exportPackage";
 SELECT_PACKAGE_TO_INSERT = "Select package to insert";
 SAVE_EXTRACTED_PACKAGE_AS = "Save extracted package as";
+OVERWRITE_DIALOG = "\nFile already exists. Would you like to overwrite?"
 
 
 // This var is needed, because initWindow is called twice for some reason
@@ -464,7 +465,7 @@ function fileSave2(filename, onDone) {
 }
 
 function askOverwrite(filename, stylesDir) {
-    if (confirm("File " + filename + "already exists. Would you like to overwrite?")) {
+    if (confirm(filename + OVERWRITE_DIALOG)) {
         nevow_clientToServerEvent('exportWebSite2', this, '', filename, stylesDir);
         }
 }

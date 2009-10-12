@@ -1112,10 +1112,11 @@ class MainPage(RenderableLivePage):
             filename /= self.package.name
         
         if filename.exists():
-            client.sendScript('askOverwrite("%s, %s");' \
+            client.sendScript('askOverwrite("%s", "%s");' \
                               % (filename, stylesDir));
-        # Now do the export
-        self.exportWebSite2(client, filename, stylesDir)
+        else:
+            # Now do the export
+            self.exportWebSite2(client, filename, stylesDir)
 
     def exportWebSite2(self, client, filename, stylesDir):
         '''Overwrite allowed, proceed'''
