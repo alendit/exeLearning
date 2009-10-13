@@ -60,7 +60,7 @@
 		    <menuitem n:render="translate" label="Print" key="file-print-key" accesskey="p" oncommand="filePrint()"/>
             <menuitem n:render="translate" label="Print Handout" accesskey="h" oncommand="handoutPrint()"/>
                     <menuseparator/>
-                    <menuitem n:render="quickExportElement" id="quick-export" />
+                    <menuitem n:render="translate" id="quick-export" label="Quick Export" disabled="true" key="quick-export-key" accesskey="q" oncommand="quickExport()"/>
                 <menu n:render="translate" id="export-menu" label="Export" accesskey="e">
                   <menupopup id="export-popup">
                     <menuitem label="Common Cartridge" accesskey="c" oncommand="exportPackage('commoncartridge','','')"/>

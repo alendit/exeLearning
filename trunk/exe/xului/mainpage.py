@@ -239,19 +239,6 @@ class MainPage(RenderableLivePage):
         result.append('</menupopup>')
         return stan.xml('\n'.join(result))
 
-    def render_quickExportElement(self, ctx, data):
-        """
-        Enables or disables the quick export button
-        """
-
-        disabled = G.application.lastExportType and u"false" or u"true"
-        result = u'<menuitem accesskey="q" ' +\
-                  u'id="quick-export" label="Quick Export" ' +\
-                  u'key="quick-export-key" disabled="%s" ' % disabled +\
-                  u'oncommand="quickExport()"></menuitem>'
-        return stan.xml(result)
-
-
     def render_debugInfo(self, ctx, data):
         """Renders debug info to the to
         of the screen if logging is set to debug level
@@ -847,6 +834,8 @@ class MainPage(RenderableLivePage):
         """ 
         G.application.lastExportType = exportType
         G.application.lastExportPath = filename
+        client.sendScript('document.getElementById("quick-export").' +\
+                          'setAttribute("disabled", "false");')
         log.info("Filename to export" + filename)
         webDir     = Path(self.config.webDir)
         if self.package.style.find("locale/") != -1:
@@ -916,9 +905,6 @@ class MainPage(RenderableLivePage):
         else:
             filename = self.b4save(client, filename, '.zip', _(u'EXPORT FAILED!'))
             self.exportIMS(client, filename, stylesDir)
-
-        client.sendScript((u'top.location = "/%s"' % \
-                          self.package.name).encode('utf8'))
 
 
     def handleQuit(self, client):
