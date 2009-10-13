@@ -239,6 +239,21 @@ class MainPage(RenderableLivePage):
         result.append('</menupopup>')
         return stan.xml('\n'.join(result))
 
+    def render_quickExportMenu(self, ctx, data):
+        """
+        Renders Quick Export Menu enabled, if there
+        is a export type defined
+        """
+
+        disabled = G.application.lastExportType\
+                   and "false" or "true"
+        result = u'<menuitem id="quick-export" ' +\
+                 u'label="Quick Export" disabled="%s" ' % disabled +\
+                 u'key="quick-export-key" accesskey="q" ' +\
+                 u'oncommand="quickExport()"/>'
+        return stan.xml(result)
+                 
+
     def render_debugInfo(self, ctx, data):
         """Renders debug info to the to
         of the screen if logging is set to debug level
