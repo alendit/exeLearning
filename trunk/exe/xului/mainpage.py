@@ -847,6 +847,8 @@ class MainPage(RenderableLivePage):
         """ 
         G.application.lastExportType = exportType
         G.application.lastExportPath = filename
+        client.sendScript('document.getElementById("quick-export")' + \
+                          '.setAttribute("disabled", "false");')
         webDir     = Path(self.config.webDir)
         if self.package.style.find("locale/") != -1:
             # local style loaded
@@ -915,10 +917,6 @@ class MainPage(RenderableLivePage):
         else:
             filename = self.b4save(client, filename, '.zip', _(u'EXPORT FAILED!'))
             self.exportIMS(client, filename, stylesDir)
-
-        client.sendScript((u'top.location = "/%s"' % \
-                          self.package.name).encode('utf8'))
-
 
     def handleQuit(self, client):
         """
