@@ -37,6 +37,7 @@ from nevow.livepage              import handler, js
 from exe.xului.idevicepane       import IdevicePane
 from exe.xului.outlinepane       import OutlinePane
 from exe.xului.stylemenu         import StyleMenu
+from exe.xului.server            import ServerController
 from exe.webui.renderable        import RenderableLivePage
 from exe.xului.propertiespage    import PropertiesPage
 from exe.webui.authoringpage     import AuthoringPage
@@ -80,6 +81,9 @@ class MainPage(RenderableLivePage):
 
         mainxul = Path(self.config.xulDir).joinpath('templates', 'mainpage.xul')
         self.docFactory  = loaders.xmlfile(mainxul)
+
+        # Server Controller
+        self.servController = ServerController()
 
         # Create all the children on the left
         self.outlinePane = OutlinePane(self)
@@ -142,6 +146,8 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleOutlineClick,     'outlineClicked')
         setUpHandler(self.exportWebSite2,         'exportWebSite2')
         setUpHandler(self.handleQuickExport,      'quickExport')
+        setUpHandler(self.handleServeDocument,    'serveDocument')
+        setUpHandler(self.handleStopServing,      'stopServing')
 
         self.idevicePane.client = client
         # Render the js 
@@ -251,6 +257,31 @@ class MainPage(RenderableLivePage):
                   u'oncommand="quickExport()"></menuitem>'
         return stan.xml(result)
 
+    def render_startServeElement(self, ctx, data):
+        """
+        Disabled bevor export, Start if server doesn't run, stop if it's
+        running
+        """
+        
+        message = ""
+        command = ""
+        disabled = G.application.lastExportType and u"false" or u"true"
+        if disabled == "true":
+            message = "Export first"
+            command = ""
+        elif not self.servController.running:
+            message = "Start serving"
+            command = "serveDocument()"
+        else:
+            message = "Stop Serving"
+            command = "stopServing"
+        result = u'<menuitem id="serving-elem" label="%s" disabled="%s" ' \
+                % (message, disabled)
+        result += u'oncommand="%s"/>' % command
+        return stan.xml(result)
+            
+        
+
 
     def render_debugInfo(self, ctx, data):
         """Renders debug info to the to
@@ -293,6 +324,36 @@ class MainPage(RenderableLivePage):
             client.sendScript(u'top.location = "/%s"' % \
                           self.package.name)
 
+    def handleServeDocument(self, client):
+        """
+        Starts serving of $path to localhost:8000
+        """
+
+        if G.application.lastExportPath and \
+                not self.servController.running:
+            self.servController.startServing(\
+                    G.application.lastExportPath / self.package.name)
+        client.sendScript('document.getElementById("serving-elem").' +\
+                          'setAttribute("label", "Stop Serving")')
+        client.sendScript('document.getElementById("serving-elem").' +\
+                          'oncommand = stopServing')
+        client.sendScript('alert("Serving exported Document to port ' + \
+                          str(self.servController.PORT) + '");')
+
+    def handleStopServing(self, client):
+        """
+        Stops a running Server
+        """
+
+        if self.servController.running:
+            self.servController.stopServing()
+            client.sendScript('document.getElementById("serving-elem").' +\
+                          'setAttribute("label", "Start Serving")')
+            client.sendScript('document.getElementById("serving-elem").' +\
+                          'oncommand = serveDocument')
+ 
+
+
     def handleNewTab(self, client):
         """
         Opens new tab with new exe instance running in it
@@ -313,7 +374,7 @@ class MainPage(RenderableLivePage):
         f.close()
         os.remove(portFile)
         client.sendScript(u"openNewTab('%s')" % port)
-
+ 
     def handleImportStyle(self, client, src):
         '''imports a user style in config directory'''
 
@@ -846,13 +907,16 @@ class MainPage(RenderableLivePage):
         'filename' is a file for scorm pages, and a directory for websites
         """ 
         G.application.lastExportType = exportType
-        G.application.lastExportPath = filename
-<<<<<<< HEAD:trunk/exe/xului/mainpage.py
+        G.application.lastExportPath = Path(filename)
         client.sendScript('document.getElementById("quick-export")' + \
                           '.setAttribute("disabled", "false");')
-=======
+        client.sendScript('document.getElementById("serving-elem")' + \
+                          '.setAttribute("disabled", "false");')
+        client.sendScript('document.getElementById("serving-elem")' + \
+                          '.setAttribute("label", "Start Serving");')
+        client.sendScript('document.getElementById("serving-elem")' + \
+                        '.setAttribute("oncommand", "serveDocument\(\)");')
         log.info("Filename to export" + filename)
->>>>>>> ac1fb64621a2c63e96bde3076c8c716a8ce3d952:trunk/exe/xului/mainpage.py
         webDir     = Path(self.config.webDir)
         if self.package.style.find("locale/") != -1:
             # local style loaded
@@ -934,6 +998,7 @@ class MainPage(RenderableLivePage):
         (parent_temp_print_dir, dir_warnings) = \
                 self.ClearParentTempPrintDirs(client, log_dir_warnings)
 
+        self.servController.stopServing()
         reactor.stop()
 
     def handleBrowseURL(self, client, url):
@@ -941,7 +1006,7 @@ class MainPage(RenderableLivePage):
         
         if the URL contains %s, substitute the local webDir
         if the URL contains %t, show a temp file containing NEWS and README """
-        if url.find('%t') > -1:
+        if '%t' in url.find:
             release_notes = os.path.join(G.application.tempWebDir,
                     'Release_Notes.html')
             f = open(release_notes, 'wt')

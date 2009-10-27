@@ -96,6 +96,7 @@
                 <menuitem n:render="translate" label="Preferences" oncommand="toolsPreferences()"/>
                 <menuitem n:render="translate" label="Import PDF"
                 oncommand="importPDF()"/>
+                <menuitem n:render="startServeElement"/>
 		<menuseparator/>
                 <menuitem n:render="translate" id="refresh-menu" label="Refresh Display" accesskey="r" oncommand="window.location = window.location"></menuitem>
               </menupopup>

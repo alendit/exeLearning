@@ -541,6 +541,15 @@ function filePrint3_openPrintWin(tempPrintDir, tempExportedDir, webPrintDir) {
 } // function filePrint3_openPrintWin()
 
 
+function serveDocument() {
+    nevow_clientToServerEvent('serveDocument', this);
+}
+
+function stopServing() {
+    nevow_clientToServerEvent('stopServing', this);
+}
+
+
 function handoutPrint() {
    // for fuction description look at filePrint comments
    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect")
