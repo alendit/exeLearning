@@ -245,17 +245,20 @@ class MainPage(RenderableLivePage):
         result.append('</menupopup>')
         return stan.xml('\n'.join(result))
 
-    def render_quickExportElement(self, ctx, data):
+    def render_quickExportMenu(self, ctx, data):
         """
-        Enables or disables the quick export button
+        Renders Quick Export Menu enabled, if there
+        is a export type defined
         """
 
-        disabled = G.application.lastExportType and u"false" or u"true"
-        result = u'<menuitem accesskey="q" ' +\
-                  u'id="quick-export" label="Quick Export" ' +\
-                  u'key="quick-export-key" disabled="%s" ' % disabled +\
-                  u'oncommand="quickExport()"></menuitem>'
+        disabled = G.application.lastExportType\
+                   and "false" or "true"
+        result = u'<menuitem id="quick-export" ' +\
+                 u'label="Quick Export" disabled="%s" ' % disabled +\
+                 u'key="quick-export-key" accesskey="q" ' +\
+                 u'oncommand="quickExport()"/>'
         return stan.xml(result)
+<<<<<<< HEAD:trunk/exe/xului/mainpage.py
 
     def render_startServeElement(self, ctx, data):
         """
@@ -282,6 +285,9 @@ class MainPage(RenderableLivePage):
             
         
 
+=======
+                 
+>>>>>>> 154528f4a08ff02d07c00a6e4398b4ca7ebdc670:trunk/exe/xului/mainpage.py
 
     def render_debugInfo(self, ctx, data):
         """Renders debug info to the to
@@ -907,6 +913,7 @@ class MainPage(RenderableLivePage):
         'filename' is a file for scorm pages, and a directory for websites
         """ 
         G.application.lastExportType = exportType
+<<<<<<< HEAD:trunk/exe/xului/mainpage.py
         G.application.lastExportPath = Path(filename)
         client.sendScript('document.getElementById("quick-export")' + \
                           '.setAttribute("disabled", "false");')
@@ -916,6 +923,11 @@ class MainPage(RenderableLivePage):
                           '.setAttribute("label", "Start Serving");')
         client.sendScript('document.getElementById("serving-elem")' + \
                         '.setAttribute("oncommand", "serveDocument\(\)");')
+=======
+        G.application.lastExportPath = filename
+        client.sendScript('document.getElementById("quick-export").' +\
+                          'setAttribute("disabled", "false");')
+>>>>>>> 154528f4a08ff02d07c00a6e4398b4ca7ebdc670:trunk/exe/xului/mainpage.py
         log.info("Filename to export" + filename)
         webDir     = Path(self.config.webDir)
         if self.package.style.find("locale/") != -1:
@@ -986,6 +998,10 @@ class MainPage(RenderableLivePage):
             filename = self.b4save(client, filename, '.zip', _(u'EXPORT FAILED!'))
             self.exportIMS(client, filename, stylesDir)
 
+<<<<<<< HEAD:trunk/exe/xului/mainpage.py
+=======
+
+>>>>>>> 154528f4a08ff02d07c00a6e4398b4ca7ebdc670:trunk/exe/xului/mainpage.py
     def handleQuit(self, client):
         """
         Stops the server
