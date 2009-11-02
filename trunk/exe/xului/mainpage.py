@@ -331,8 +331,8 @@ class MainPage(RenderableLivePage):
 
         if G.application.lastExportPath and \
                 not self.servController.running:
-            self.servController.startServing(\
-                    G.application.lastExportPath / self.package.name)
+            path = os.path.join(G.application.lastExportPath, self.package.name)
+            self.servController.startServing(path)
         client.sendScript('document.getElementById("serving-elem").' +\
                           'setAttribute("label", "Stop Serving")')
         client.sendScript('document.getElementById("serving-elem").' +\
@@ -907,7 +907,7 @@ class MainPage(RenderableLivePage):
         'filename' is a file for scorm pages, and a directory for websites
         """ 
         G.application.lastExportType = exportType
-        G.application.lastExportPath = Path(filename)
+        G.application.lastExportPath = filename
         client.sendScript('document.getElementById("quick-export")' + \
                           '.setAttribute("disabled", "false");')
         client.sendScript('document.getElementById("serving-elem")' + \

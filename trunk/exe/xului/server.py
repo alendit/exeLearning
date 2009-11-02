@@ -1,10 +1,7 @@
 import SimpleHTTPServer
-from multiprocessing import Process
-import SocketServer
-import urllib
-import os
-
-
+from twisted.web.server import Site
+from twisted.web.static import File
+from twisted.internet import reactor
 
 class ServerController:
     """
@@ -15,31 +12,21 @@ class ServerController:
 
     def __init__(self):
 
-        self.Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-        self.httpd = SocketServer.TCPServer(("", self.PORT), self.Handler)
-        self.servProc = None
+        self.socket = None
 
 
     def startServing(self, path):
 
-        if not self.servProc:
-            self.servProc = Process(target=serveForever, 
-                                    args=(self.httpd, path))
-            self.servProc.start()
-
+        resource = File(path)
+        factory = Site(resource)
+        self.socket = reactor.listenTCP(self.PORT, factory)
+        
     @property
     def running(self):
-        return (bool)(self.servProc)
+        return (bool)(self.socket)
 
     
     def stopServing(self):
-
-        if self.servProc:
-            self.servProc.terminate()
-            self.servProc = None
-
-def serveForever(server, path):
-    os.chdir(path)
-    server.serve_forever()
-
+        self.socket.stopListening()
+        self.socket = None
 
