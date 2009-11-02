@@ -258,7 +258,6 @@ class MainPage(RenderableLivePage):
                  u'key="quick-export-key" accesskey="q" ' +\
                  u'oncommand="quickExport()"/>'
         return stan.xml(result)
-<<<<<<< HEAD:trunk/exe/xului/mainpage.py
 
     def render_startServeElement(self, ctx, data):
         """
@@ -284,11 +283,6 @@ class MainPage(RenderableLivePage):
         return stan.xml(result)
             
         
-
-=======
-                 
->>>>>>> 154528f4a08ff02d07c00a6e4398b4ca7ebdc670:trunk/exe/xului/mainpage.py
-
     def render_debugInfo(self, ctx, data):
         """Renders debug info to the to
         of the screen if logging is set to debug level
@@ -913,7 +907,6 @@ class MainPage(RenderableLivePage):
         'filename' is a file for scorm pages, and a directory for websites
         """ 
         G.application.lastExportType = exportType
-<<<<<<< HEAD:trunk/exe/xului/mainpage.py
         G.application.lastExportPath = Path(filename)
         client.sendScript('document.getElementById("quick-export")' + \
                           '.setAttribute("disabled", "false");')
@@ -923,11 +916,8 @@ class MainPage(RenderableLivePage):
                           '.setAttribute("label", "Start Serving");')
         client.sendScript('document.getElementById("serving-elem")' + \
                         '.setAttribute("oncommand", "serveDocument\(\)");')
-=======
-        G.application.lastExportPath = filename
         client.sendScript('document.getElementById("quick-export").' +\
                           'setAttribute("disabled", "false");')
->>>>>>> 154528f4a08ff02d07c00a6e4398b4ca7ebdc670:trunk/exe/xului/mainpage.py
         log.info("Filename to export" + filename)
         webDir     = Path(self.config.webDir)
         if self.package.style.find("locale/") != -1:
@@ -998,10 +988,6 @@ class MainPage(RenderableLivePage):
             filename = self.b4save(client, filename, '.zip', _(u'EXPORT FAILED!'))
             self.exportIMS(client, filename, stylesDir)
 
-<<<<<<< HEAD:trunk/exe/xului/mainpage.py
-=======
-
->>>>>>> 154528f4a08ff02d07c00a6e4398b4ca7ebdc670:trunk/exe/xului/mainpage.py
     def handleQuit(self, client):
         """
         Stops the server
