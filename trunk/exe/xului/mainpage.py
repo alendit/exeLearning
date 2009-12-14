@@ -314,7 +314,6 @@ class MainPage(RenderableLivePage):
         """
 
         root = self.package.currentNode.parent
-        print root
         if root is None:
             client.alert(_("Can't dublicate root element"))
         else:

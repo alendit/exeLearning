@@ -2,6 +2,7 @@ import SimpleHTTPServer
 from twisted.web.server import Site
 from twisted.web.static import File
 from twisted.internet import reactor
+import time
 
 class ServerController:
     """
@@ -12,21 +13,26 @@ class ServerController:
 
     def __init__(self):
 
-        self.socket = None
+        self.server = None
 
 
     def startServing(self, path):
 
         resource = File(path)
         factory = Site(resource)
-        self.socket = reactor.listenTCP(self.PORT, factory)
+        self.server = reactor.listenTCP(self.PORT, factory)
         
     @property
     def running(self):
-        return (bool)(self.socket)
+        return (bool)(self.server)
 
+    def test(contents):
+        print "FUCK YEAH!"
     
     def stopServing(self):
-        self.socket.stopListening()
-        self.socket = None
+        print "Stopping Serving"
+        if self.server:
+            deffered = self.server.stopListening()
+            deffered.addCallback(self.test)
+            reactor.run()
 

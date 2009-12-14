@@ -47,6 +47,7 @@ from exe.webui.feedbackblock          import FeedbackBlock
 from exe.webui.hintblock              import HintBlock
 from exe.webui.glossaryblock          import GlossaryBlock
 from exe.webui.latexblock             import LatexBlock
+from exe.webui.tocblock               import TOCBlock
 
 # ===========================================================================
 

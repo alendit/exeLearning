@@ -141,8 +141,11 @@ class IdeviceStore:
         from exe.engine.hintidevice           import HintIdevice
         from exe.engine.glossaryidevice       import GlossaryIdevice
         from exe.engine.latexidevice          import LatexIdevice
+        from exe.engine.tocidevice            import TOCIdevice
 
         self.extended.append(FreeTextIdevice())
+
+        self.extended.append(TOCIdevice())
 
         self.extended.append(LatexIdevice())
 
