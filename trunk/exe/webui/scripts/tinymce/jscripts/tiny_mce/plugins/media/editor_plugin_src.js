@@ -1,5 +1,5 @@
 /**
- * $Id: editor_plugin_src.js 296 2007-08-21 10:36:35Z spocke $
+ * $Id: editor_plugin_src.js 201 2007-02-12 15:56:56Z spocke $
  *
  * @author Moxiecode
  * @copyright Copyright © 2004-2007, Moxiecode Systems AB, All rights reserved.
@@ -46,7 +46,7 @@ var TinyMCE_MediaPlugin = {
 				tinyMCE.openWindow({
 						file : '../../plugins/media/media.htm',
 						width : 430 + tinyMCE.getLang('lang_media_delta_width', 0),
-						height : 470 + tinyMCE.getLang('lang_media_delta_height', 0)
+						height : 500 + tinyMCE.getLang('lang_media_delta_height', 0)
 					}, {
 						editor_id : editor_id,
 						inline : "yes"
@@ -65,7 +65,7 @@ var TinyMCE_MediaPlugin = {
 		switch (type) {
 			case "insert_to_editor":
 				img = tinyMCE.getParam("theme_href") + '/images/spacer.gif';
-				content = content.replace(/<script[^>]*>\s*write(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia)\(\{([^\)]*)\}\);\s*<\/script>/gi, '<img class="mceItem$1" title="$2" src="' + img + '" />');
+				content = content.replace(/<script[^>]*>\s*write(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)\(\{([^\)]*)\}\);\s*<\/script>/gi, '<img class="mceItem$1" title="$2" src="' + img + '" />');
 				content = content.replace(/<object([^>]*)>/gi, '<div class="mceItemObject" $1>');
 				content = content.replace(/<embed([^>]*)>/gi, '<div class="mceItemObjectEmbed" $1>');
 				content = content.replace(/<\/(object|embed)([^>]*)>/gi, '</div>');
@@ -77,10 +77,9 @@ var TinyMCE_MediaPlugin = {
 				d = inst.getDoc();
 				nl = content.getElementsByTagName("img");
 				for (i=0; i<nl.length; i++) {
-					if (/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia)/.test(nl[i].className)) {
+					if (/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(nl[i].className)) {
 						nl[i].width = nl[i].title.replace(/.*width:[^0-9]?([0-9]+)%?.*/g, '$1');
 						nl[i].height = nl[i].title.replace(/.*height:[^0-9]?([0-9]+)%?.*/g, '$1');
-						//nl[i].align = nl[i].title.replace(/.*align:([a-z]+).*/gi, '$1');
 					}
 				}
 
@@ -90,7 +89,15 @@ var TinyMCE_MediaPlugin = {
 
 					switch (ci) {
 						case 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000':
-							nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemFlash', d, nl[i]), nl[i]);
+						        // Flash: either regular Flash for SWFs, or embedded MP3s / FLVs:
+							flash_id = tinyMCE.getAttrib(nl[i], "id").toLowerCase();
+							if (flash_id == 'mp3player') {
+							    nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemMP3', d, nl[i]), nl[i]);
+							}
+							else {
+							    // normal Flash here:
+							    nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemFlash', d, nl[i]), nl[i]);
+							}
 							break;
 
 						case 'clsid:166b1bca-3f9c-11cf-8075-444553540000':
@@ -100,6 +107,8 @@ var TinyMCE_MediaPlugin = {
 						case 'clsid:6bf52a52-394a-11d3-b153-00c04f79faa6':
 						case 'clsid:22d6f312-b0f6-11d0-94ab-0080c74c7e95':
 						case 'clsid:05589fa1-c356-11ce-bf01-00aa0055595a':
+						// WMP hack for eXe: 
+						case 'clsid:BOGUSID_FOR_WINDOWSMEDIA_VIA_TINYMCE'.toLowerCase():
 							nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemWindowsMedia', d, nl[i]), nl[i]);
 							break;
 
@@ -110,6 +119,14 @@ var TinyMCE_MediaPlugin = {
 						case 'clsid:cfcdaa03-8be4-11cf-b84b-0020afbbccfa':
 							nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemRealMedia', d, nl[i]), nl[i]);
 							break;
+
+						case '':
+							// new embedded FLV FlowPlayer uses NO classid nor codebase. double check its id, though:
+							flash_id = tinyMCE.getAttrib(nl[i], "id").toLowerCase();
+							if (flash_id == 'flowplayer') {
+							    nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemFlowPlayer', d, nl[i]), nl[i]);
+							}
+
 					}
 				}
 
@@ -118,14 +135,26 @@ var TinyMCE_MediaPlugin = {
 				for (i=0; i<nl.length; i++) {
 					switch (tinyMCE.getAttrib(nl[i], 'type')) {
 						case 'application/x-shockwave-flash':
-							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemFlash');
+							//TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemFlash');
+							// include mp3 and flv-flowplayer if the appropriate type specified:
+							switch (tinyMCE.getAttrib(nl[i], 'id')) {
+							    case 'flowplayer':
+							        TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemFlowPlayer');
+								break;
+							    case 'mp3player':
+							        TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemMP3');
+								break;
+							    default:
+							        TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemFlash');
+							}
 							break;
 
 						case 'application/x-director':
 							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemShockWave');
 							break;
 
-						case 'application/x-mplayer2':
+						// WMP hack for eXe: 
+						case 'video/x-ms-wmv':
 							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemWindowsMedia');
 							break;
 
@@ -148,7 +177,7 @@ var TinyMCE_MediaPlugin = {
 					attribs = TinyMCE_MediaPlugin._parseAttributes(content.substring(startPos + 4, endPos));
 
 					// Is not flash, skip it
-					if (!/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia)/.test(attribs['class']))
+					if (!/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(attribs['class']))
 						continue;
 
 					endPos += 2;
@@ -182,9 +211,10 @@ var TinyMCE_MediaPlugin = {
 								break;
 
 							case 'mceItemWindowsMedia':
-								ci = tinyMCE.getParam('media_wmp6_compatible') ? '05589FA1-C356-11CE-BF01-00AA0055595A' : '6BF52A52-394A-11D3-B153-00C04F79FAA6';
 								cb = 'http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701';
-								mt = 'application/x-mplayer2';
+								// WMP hack for eXe:
+								ci = 'BOGUSID_FOR_WINDOWSMEDIA_VIA_TINYMCE'
+								mt = 'video/x-ms-wmv';
 								break;
 
 							case 'mceItemQuickTime':
@@ -198,10 +228,39 @@ var TinyMCE_MediaPlugin = {
 								cb = 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0';
 								mt = 'audio/x-pn-realaudio-plugin';
 								break;
+
+							case 'mceItemMP3':
+							        // sorta from: case 'mceItemFlash':
+								// using the same real Flash ClassID:
+								ci = 'd27cdb6e-ae6d-11cf-96b8-444553540000';
+								// but also setting a specific type parameter:
+								pl.id="mp3player"
+								cb = 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0';
+								mt = 'application/x-shockwave-flash';
+								break;
+
+							case 'mceItemFlowPlayer':
+							        // use NO classid OR codebase for the flowplayer:
+								ci = '';
+								cb = '';
+								// but also setting a specific type parameter:
+								pl.id="flowplayer"
+								// and do set the object's data to the initial eXe templates directory:
+								pl.data="../templates/flowPlayer.swf";
+								pl.movie="../templates/flowPlayer.swf";
+								mt = 'application/x-shockwave-flash';
+								// at least until these flashvars are built into options an the FLV's appearance tab,
+								// continue to hardcode the same parameters that were in use with the old
+								// Flash Movie iDevice:
+								pl.flashvars="config={ autoPlay: false, loop: false, initialScale: 'scale', " 
+								    + "showLoopButton: false, showPlayListButtons: false, playList: [ { " 
+								    + "url: '" + pl.src + "' }, ]}";
+								break;
 						}
 
-						// Convert the URL
-						pl.src = tinyMCE.convertURL(pl.src, null, true);
+						// Force absolute URL
+						if (!tinyMCE.getParam("relative_urls"))
+							pl.src = tinyMCE.convertRelativeToAbsoluteURL(tinyMCE.settings['base_href'], pl.src);
 
 						embedHTML = TinyMCE_MediaPlugin._getEmbed(ci, cb, mt, pl, attribs);
 					} else {
@@ -226,6 +285,14 @@ var TinyMCE_MediaPlugin = {
 							case 'mceItemRealMedia':
 								s = 'writeRealMedia';
 								break;
+
+							case 'mceItemMP3':
+								s = 'writeMP3';
+								break;
+
+							case 'mceItemFlowPlayer':
+								s = 'writeFlowPlayer';
+								break;
 						}
 
 						if (attribs.width)
@@ -235,8 +302,10 @@ var TinyMCE_MediaPlugin = {
 							at = at.replace(/height:[^0-9]?[0-9]+%?[^0-9]?/g, "height:'" + attribs.height + "'");
 
 						// Force absolute URL
-						pl.src = tinyMCE.convertURL(pl.src, null, true);
-						at = at.replace(new RegExp("src:'[^']*'", "g"), "src:'" + pl.src + "'");
+						if (!tinyMCE.getParam("relative_urls")) {
+							pl.src = tinyMCE.convertRelativeToAbsoluteURL(tinyMCE.settings['base_href'], pl.src);
+							at = at.replace(new RegExp("src:'[^']*'", "g"), "src:'" + pl.src + "'");
+						}
 
 						embedHTML = '<script type="text/javascript">' + s + '({' + at + '});</script>';
 					}
@@ -257,7 +326,7 @@ var TinyMCE_MediaPlugin = {
 			return;
 
 		do {
-			if (node.nodeName == "IMG" && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia)/.test(tinyMCE.getAttrib(node, 'class'))) {
+			if (node.nodeName == "IMG" && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(tinyMCE.getAttrib(node, 'class'))) {
 				tinyMCE.switchClass(editor_id + '_media', 'mceButtonSelected');
 				return true;
 			}
@@ -331,6 +400,14 @@ var TinyMCE_MediaPlugin = {
 			al.movie = null;
 		}
 
+		// FLV hack: now that FLVs cannot export their src,
+		// allow their flv_src to override any earlier src,
+		// especially because they also have a movie param that 
+		// references the flowPlayer.swf rather than the source FLV:
+		if (al.flv_src) {
+			al.src = al.flv_src;
+		}
+
 		for (an in al) {
 			if (al[an] != null && typeof(al[an]) != "function" && al[an] != '')
 				ti += an.toLowerCase() + ':\'' + al[an] + "',";
@@ -344,11 +421,30 @@ var TinyMCE_MediaPlugin = {
 
 	_getEmbed : function(cls, cb, mt, p, at) {
 		var h = '', n;
+		var flv_skip_src = 0;  // to help with FLV src hack
 
 		p.width = at.width ? at.width : p.width;
 		p.height = at.height ? at.height : p.height;
 
-		h += '<object classid="clsid:' + cls + '" codebase="' + cb + '"';
+		h += '<object'
+		if (mt == 'video/x-ms-wmv') { 
+		    // WMP hack for eXe:
+		    h += ' classid="clsid:' + cls + '"'
+		    h += ' type="' + mt + '" data="' + p.src + '"';
+		    h += ' codebase="' + cb + '"'; 
+		}
+		else if (mt == 'application/x-shockwave-flash' 
+			&& p.id == 'flowplayer') {
+		    // embedded FLV player - no classid or codebase:
+		    h += ' type="' + mt + '"';
+		    h += ' data="' + p.data + '"';
+		}
+		else
+		{
+		    h += ' classid="clsid:' + cls + '"'
+		    h += ' codebase="' + cb + '"'; 
+		}
+
 		h += typeof(p.id) != "undefined" ? ' id="' + p.id + '"' : '';
 		h += typeof(p.name) != "undefined" ? ' name="' + p.name + '"' : '';
 		h += typeof(p.width) != "undefined" ? ' width="' + p.width + '"' : '';
@@ -356,15 +452,65 @@ var TinyMCE_MediaPlugin = {
 		h += typeof(p.align) != "undefined" ? ' align="' + p.align + '"' : '';
 		h += '>';
 
+		// FLV hack for eXe:
+		if (mt == 'application/x-shockwave-flash' && p.id == 'flowplayer') {
+			// both src and flv_src parameters are saved with an FLV,
+			// but only write out src if they have changed (if they differ at all),
+			// and only write out flv_src if they have not.
+			// This is because only the src should be used when embedding a new resource,
+			// and for FLVs, otherwise just keep the flv-src since IE doesn't like its src:
+			if (p.src == p.flv_src) {
+				flv_skip_src = 1;
+				// implying to also NOT skip the flv_src param
+			}
+			else {
+				flv_skip_src = 0;
+				// implying to also skip the flv_src param
+			}
+		}
+
 		for (n in p) {
-			if (typeof(p[n]) != "undefined" && typeof(p[n]) != "function") {
-				h += '<param name="' + n + '" value="' + p[n] + '" />';
+                        if (typeof(p[n]) != "undefined" && typeof(p[n]) != "function") {
+
+				if ((n == 'src' || n == 'flv_src') 
+				    && mt == 'application/x-shockwave-flash' && p.id == 'flowplayer') {
+				    // FLV hack for eXe:
+				    if ((flv_skip_src && n == 'flv_src') || (!flv_skip_src && n == 'src')) {
+				        h += '<param name="' + n + '" value="' + p[n] + '" />';
+				    }
+				    // else: skip the other :-)
+				}
+				else {
+				    h += '<param name="' + n + '" value="' + p[n] + '" />';
+				}
 
 				// Add extra url parameter if it's an absolute URL on WMP
-				if (n == 'src' && p[n].indexOf('://') != -1 && mt == 'application/x-mplayer2')
+				// with WMP hack for eXe:
+				if (n == 'src' && p[n].indexOf('://') != -1 && mt == 'video/x-ms-wmv')
 					h += '<param name="url" value="' + p[n] + '" />';
 			}
 		}
+
+		// MP3 hack for eXe:
+		// putting this AFTER all of the above p[], to ensure that it will FOLLOW
+		// the p.src attribute, for easier parsing within eXe.
+		if (mt == 'application/x-shockwave-flash' && p.id == 'mp3player') {
+			if (typeof(p.exe_mp3) == "undefined") {
+				// want to include the actual source name in this parm, 
+				// to confirm to eXe the source to which it applies:
+				h += '<param name="exe_mp3" value="' + p.src + '" />';
+			}
+		}
+                // FLV hack for eXe:
+                // likwise, putting this AFTER all of the above p[], to ensure that it will FOLLOW
+                // the p.src attribute, for easier parsing within eXe.
+                if (mt == 'application/x-shockwave-flash' && p.id == 'flowplayer') {
+                        if (typeof(p.exe_flv) == "undefined") {
+                                // want to include the actual source name in this parm, 
+                                // to confirm to eXe the source to which it applies:
+                                h += '<param name="exe_flv" value="' + p.src + '" />';
+                        } 
+                }
 
 		h += '<embed type="' + mt + '"';
 
@@ -372,8 +518,21 @@ var TinyMCE_MediaPlugin = {
 			if (typeof(p[n]) == "function")
 				continue;
 
+			// FLV hack: 
+			if ((n == 'src' || n == 'flv_src') 
+			    && mt == 'application/x-shockwave-flash' && p.id == 'flowplayer') {
+			    if ((flv_skip_src && n == 'flv_src') || (!flv_skip_src && n == 'src')) {
+			        // will include it below
+			    }
+			    else {
+			        // else: skip the other :-)
+				continue;
+			    }
+			}
+
 			// Skip url parameter for embed tag on WMP
-			if (!(n == 'url' && mt == 'application/x-mplayer2'))
+			// with WMP hack for eXe:
+			if (!(n == 'url' && mt == 'video/x-ms-wmv'))
 				h += ' ' + n + '="' + p[n] + '"';
 		}
 
