@@ -268,15 +268,17 @@ class MainPage(RenderableLivePage):
         message = ""
         command = ""
         disabled = G.application.lastExportType and u"false" or u"true"
-        if disabled == "true":
+        if not G.application.lastExportType:
+            disabled = "true"
             message = "Export first"
-            command = ""
-        elif not self.servController.running:
-            message = "Start serving"
-            command = "serveDocument()"
         else:
-            message = "Stop Serving"
-            command = "stopServing"
+            if self.servController.running:
+                disabled = "true"
+                message = "Serving"
+            else:
+                disabled = "false"
+                message = "Start serving"
+                command = "startServing()"
         result = u'<menuitem id="serving-elem" label="%s" disabled="%s" ' \
                 % (message, disabled)
         result += u'oncommand="%s"/>' % command
@@ -333,11 +335,16 @@ class MainPage(RenderableLivePage):
             path = os.path.join(G.application.lastExportPath, self.package.name)
             self.servController.startServing(path)
         client.sendScript('document.getElementById("serving-elem").' +\
-                          'setAttribute("label", "Stop Serving")')
-        client.sendScript('document.getElementById("serving-elem").' +\
-                          'oncommand = stopServing')
+                          'setAttribute("label", "Serving")')
+        #client.sendScript('document.getElementById("serving-elem").' +\
+        #                  'oncommand = stopServing')
+        client.sendScript('document.getElementById("quick-export").' +\
+                          'setAttribute("disabled", "true");')
         client.sendScript('alert("Serving exported Document to port ' + \
                           str(self.servController.PORT) + '");')
+        client.sendScript(u'top.location = "/%s"' % \
+                          self.package.name)
+
 
     def handleStopServing(self, client):
         """
@@ -999,7 +1006,7 @@ class MainPage(RenderableLivePage):
         (parent_temp_print_dir, dir_warnings) = \
                 self.ClearParentTempPrintDirs(client, log_dir_warnings)
 
-        self.servController.stopServing()
+#       self.servController.stopServing()
         reactor.stop()
 
     def handleBrowseURL(self, client, url):
