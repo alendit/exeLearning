@@ -86,6 +86,11 @@ background-position: -2px 2px;
 background-repeat:no-repeat;
 }
 
+div .withChild {
+    background-image:url(with_child.gif);
+    background-repeat:no-repeat;
+}
+
 #subnav a { /* subnav when parent is selected */
 display: block;
 border: 0 !important;
@@ -127,3 +132,19 @@ width: 68%;
 position: absolute;
 text-align:left;
 }
+
+div #activeWithoutChild {
+padding: 0px 0px 3px 18px;
+width: 195px !important; /* the Housley Hack for Firefox... */
+width: 209px; /* for IE */
+background-color: #706F61;
+color: #ffffff;
+border-bottom: 1px solid #fff;
+border-top: 6px solid #706f61;
+}
+
+div .withChild {
+    background-image:url(with_child.gif);
+    background-repeat:no-repeat;
+}
+

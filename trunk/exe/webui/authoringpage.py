@@ -206,7 +206,7 @@ class AuthoringPage(RenderableResource):
             html += u"exe_assume_media_plugins : true,\n"
 
         html += u"theme_advanced_statusbar_location : \"bottom\",\n"
-        html += u"    theme_advanced_resize_horizontal : false,\n"
+        html += u"    theme_advanced_resize_horizontal : true,\n"
         html += u"    theme_advanced_resizing : true\n"
         html += u" });\n"
         html += u"//-->\n"
