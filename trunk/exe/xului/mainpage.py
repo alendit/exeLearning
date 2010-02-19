@@ -148,6 +148,7 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleQuickExport,      'quickExport')
         setUpHandler(self.handleServeDocument,    'serveDocument')
         setUpHandler(self.handleStopServing,      'stopServing')
+        setUpHandler(self.handleSetEditorsWidth,  'setEditorsWidth')
 
         self.idevicePane.client = client
         # Render the js 
@@ -325,6 +326,15 @@ class MainPage(RenderableLivePage):
             client.sendScript(u'top.location = "/%s"' % \
                           self.package.name)
 
+    def handleSetEditorsWidth(self, client, width):
+        """
+        Set application's global variable editorsWidth to width. editorsWidth is used to
+        set up width of every TinyMCE editor. Updates window after that
+        """
+        G.application.editorsWidth = width
+        client.sendScript(u'top.location = "/%s"' % \
+                          self.package.name)
+        
     def handleServeDocument(self, client):
         """
         Starts serving of $path to localhost:8000

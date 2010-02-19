@@ -172,7 +172,7 @@ class TextAreaElement(ElementWithResources):
         """
         ElementWithResources.__init__(self, field)
 
-        self.width  = "100%"
+        self.width  = "0"
         if (hasattr(field.idevice, 'class_') and
             field.idevice.class_ in \
                     ("activity", "objectives", "preknowledge")):

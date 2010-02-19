@@ -94,8 +94,8 @@
               <menupopup id="tools-popup">
                 <menuitem n:render="translate" label="iDevice Editor" oncommand="toolsEditor()"/>
                 <menuitem n:render="translate" label="Preferences" oncommand="toolsPreferences()"/>
-                <menuitem n:render="translate" label="Import PDF"
-                oncommand="importPDF()"/>
+                <menuitem n:render="translate" label="Import PDF" oncommand="importPDF()"/>
+		    <menuitem n:render="translate" label="Set Editor's width" oncommand="setEditorsWidth()"/>
                 <menuitem n:render="startServeElement"/>
 		<menuseparator/>
                 <menuitem n:render="translate" id="refresh-menu" label="Refresh Display" accesskey="r" oncommand="window.location = window.location"></menuitem>

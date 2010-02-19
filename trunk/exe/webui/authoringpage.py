@@ -207,7 +207,8 @@ class AuthoringPage(RenderableResource):
 
         html += u"theme_advanced_statusbar_location : \"bottom\",\n"
         html += u"    theme_advanced_resize_horizontal : true,\n"
-        html += u"    theme_advanced_resizing : true\n"
+        html += u"    theme_advanced_resizing : true,\n"
+        html += u"    width : \"%s\"\n" % (G.application.editorsWidth or "100%")
         html += u" });\n"
         html += u"//-->\n"
         html += u"</script>\n"

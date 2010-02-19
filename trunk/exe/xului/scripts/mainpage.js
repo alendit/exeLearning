@@ -391,6 +391,12 @@ function fileOpen() {
     askDirty('fileOpen2()')
 }
 
+//gets editors width in pixel and sets its width accordingly
+function setEditorsWidth() {
+	var width = prompt("Enter editor's new width. 0 or empty to set it to 100%");
+	nevow_clientToServerEvent('setEditorsWidth', this, '', width);
+}
+
 // Shows the the load dialog and actually loads the new package
 function fileOpen2() {
     netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect")
