@@ -85,6 +85,8 @@ class Application:
         self.childProcess = False # Used to start another exe instance
         self.lastExportType = ""
         self.lastExportPath = None
+        self.lastEditedIdevice = -1 # Stores last edited idevice to open it on
+                                    # refresh
         self.editorsWidth = 0 # Default width of TinyMCE editor, 0 = 100%
         self.persistNonPersistants = False  
         self.tempWebDir   = mkdtemp('.eXe')

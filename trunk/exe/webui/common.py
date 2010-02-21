@@ -104,14 +104,14 @@ def textArea(name, value="", disabled="", cols="80", rows="8"):
     html += 'id = "%s"' % name
     if disabled:
         html += u'disabled="disabled" '
-    html += u'style=\"width:100%"'
+    html += u'style=\"width:0"'
     html += u'cols="%s" rows="%s">' %(cols, rows)
     html += value
     html += u'</textarea><br/>'
     return html
 
 
-def richTextArea(name, value="", width="100%", height=100, package=None):
+def richTextArea(name, value="", width="0", height=100, package=None):
     """Adds a editor to a form"""
     log.debug(u"richTextArea %s, height=%s" % (value, height))
     # to counter TinyMCE's ampersand-processing:

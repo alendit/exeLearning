@@ -331,9 +331,12 @@ class MainPage(RenderableLivePage):
         Set application's global variable editorsWidth to width. editorsWidth is used to
         set up width of every TinyMCE editor. Updates window after that
         """
-        G.application.editorsWidth = width
-        client.sendScript(u'top.location = "/%s"' % \
+	try:
+	        G.application.editorsWidth = int(width)
+	        client.sendScript(u'top.location = "/%s"' % \
                           self.package.name)
+	except ValueError, e:
+		client.sendScript(u"alert('Please, enter a number');")
         
     def handleServeDocument(self, client):
         """
