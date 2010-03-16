@@ -23,7 +23,7 @@ The collection of iDevices available
 
 from exe.engine         import persist
 from exe.engine.idevice import Idevice
-from exe.engine.field   import TextAreaField, FeedbackField
+from exe.engine.field   import TextAreaField, FeedbackField, ExportOptionField
 from nevow.flat         import flatten
 
 import imp
@@ -355,6 +355,7 @@ learning tasks."""),
 
         objectives.addField(TextAreaField(_(u"Objectives"),
 _(u"""Type the learning objectives for this resource.""")))
+	objectives.addField(ExportOptionField(_(u"Export Option"), _(u"Choose export type for this iDevice")))
         self.generic.append(objectives)
 
         preknowledge = GenericIdevice(_(u"Preknowledge"), 

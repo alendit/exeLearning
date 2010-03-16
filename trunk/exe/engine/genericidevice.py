@@ -26,6 +26,7 @@ from exe.engine.idevice import Idevice
 # For backward compatibility Jelly expects to find a Field class
 from exe.engine.field   import Field, TextField, TextAreaField, FeedbackField 
 from exe.engine.field   import ImageField, AttachmentField
+from exe.engine         import freetextidevice
 import re
 import logging
 log = logging.getLogger(__name__)
@@ -38,7 +39,7 @@ class GenericIdevice(Idevice):
     can have a multitude of different forms all of which are just simple
     XHTML fields.
     """
-    persistenceVersion = 10
+    persistenceVersion = 11
     
     def __init__(self, title, class_, author, purpose, tip,\
             group=Idevice.Unknown):
@@ -55,6 +56,9 @@ class GenericIdevice(Idevice):
         self.group   = group 
         self.fields  = []
         self.nextFieldId = 0
+        self.exportType = freetextidevice.NOEXPORT
+        if self.class_ == "objectives":
+            self.exportType = freetextidevice.HANDOUT
         self.systemResources.append('common.js')
         self.systemResources.append('libot_drag.js')
 
@@ -352,5 +356,11 @@ class GenericIdevice(Idevice):
         Adds group to idevice
         """
         self.group = Idevice.Unknown
+
+    def upgradeToVersion11(self):
+        """
+        Adds export type option
+        """
+        self.exportType = freetextidevice.NOEXPORT # NOEXPORT
  
 # ===========================================================================
