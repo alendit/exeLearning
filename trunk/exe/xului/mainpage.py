@@ -1068,7 +1068,10 @@ class MainPage(RenderableLivePage):
                                                    self.package.currentNode)
         # trigger a rename of all of the internal nodes and links,
         # and to add any such anchors into the dest package via isMerge:
-        newNode.RenamedNodePath(isMerge=True)
+        try:
+            newNode.RenamedNodePath(isMerge=True)
+        except Exception, e:
+            client.alert(str(e))
 
         client.sendScript((u'top.location = "/%s"' % \
                           self.package.name).encode('utf8'))

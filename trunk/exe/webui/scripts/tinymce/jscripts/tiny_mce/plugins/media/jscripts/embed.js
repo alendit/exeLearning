@@ -83,6 +83,11 @@ function writeWindowsMedia(p) {
 	);
 }
 
+function writeHTMLVideo(p) {
+    var h = '';
+    h += '<video
+}
+
 function writeEmbed(cls, cb, mt, p) {
 	var h = '', n;
 	var flv_skip_src = 0;  // to help with FLV src hack
