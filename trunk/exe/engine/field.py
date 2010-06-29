@@ -162,6 +162,19 @@ class TextField(Field):
 
 
 # ===========================================================================
+class ExportOptionField(Field):
+    """
+    Adds a option to enable export of this iDevice
+    """
+
+    def __init__(self, name, instruc="", content=""):
+        """
+        Initialize
+        """
+	Field.__init__(self, name, instruc)
+
+
+# ===========================================================================
 class FieldWithResources(Field):
     """
     A Generic iDevice is built up of these fields.  Each field can be

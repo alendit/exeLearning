@@ -27,6 +27,7 @@ import urllib
 from exe.webui       import common
 from exe.engine.path import Path
 from exe             import globals as G
+from exe.engine      import freetextidevice
 
 log = logging.getLogger(__name__)
 
@@ -159,6 +160,46 @@ class TextElement(Element):
         Returns an XHTML string for viewing or previewing this element
         """
         return self.field.content
+
+# ===========================================================================
+class ExportOptionElement(Element):
+    """
+    Gives an option to choose export type of the idevice
+    """
+
+    def __init__(self, field):
+	    """
+	    Initialize
+	    """
+	    Element.__init__(self, field)
+
+    def process(self, request):
+	"""
+	Process arguments from the web server
+	"""
+        is_cancel = common.requestHasCancel(request)
+        if "export" + self.id in request.args and not is_cancel:
+            self.field.idevice.exportType = \
+                request.args["export" + self.id][0]
+
+    def renderEdit(self):
+        this_package = None
+        if self.field.idevice is not None and self.field.idevice.parentNode \
+           is not None:
+            this_package = self.field.idevice.parentNode.package
+
+        html = common.formField('select', this_package,
+            _("Custom export options"), "export" + self.id,
+            options = [[_('Don\'t export'), freetextidevice.NOEXPORT],
+                [_('Presentation'), freetextidevice.PRESENTATION],
+                [_('Handout'), freetextidevice.HANDOUT]],
+            selection = self.field.idevice.exportType)
+        return html
+    
+    def renderView(self):
+        return u""
+
+
 
 # ===========================================================================
 

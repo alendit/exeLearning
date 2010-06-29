@@ -67,10 +67,10 @@ class HandoutExport(object):
         self.generatePages(package.root, 1)
         log.debug(map(lambda x : getattr(x, "name"), self.pages))
 
-        html = '''<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"             "http://www.w3.org/TR/html4/strict.dtd">
+        html = u'''<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"             "http://www.w3.org/TR/html4/strict.dtd">
         <html dir="ltr" lang="en">
         <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>%s</title>
         <style type="text/css" media="screen">
         @import url(base.css);
@@ -91,12 +91,14 @@ class HandoutExport(object):
         for page in self.pages:
             slidehtml = page.render()
             if slidehtml != "":
-                html += '<div class="page">'
-                html += '<p id="nodeTitle">%s</p>' % page.name
+                html += u'<div class="page">'
+                html += u'<p id="nodeTitle">%s</p>' % escape(page.node.titleLong)
                 html += slidehtml
-                html += '</div>'
+                html += u'</div>'
 
+	log.debug(type(html))
         html = html.encode("utf8")
+	log.debug(type(html))
 
         log.debug(html)
         output = open(outputDir / "index.html", "w")
@@ -158,7 +160,7 @@ class HandoutPage(Page):
                 log.debug("Exportable found: %s" % idevice.id)
                 
                 html += u"<div class=\"%s\" id=\"id%s\">\n" % \
-                    (idevice.klass, idevice.id)
+                    (escape(idevice.klass), escape(idevice.id))
                 block = g_blockFactory.createBlock(None, idevice)
                 style = self.node.package.style
                 html += block.renderView(style)
