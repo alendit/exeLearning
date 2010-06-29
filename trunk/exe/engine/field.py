@@ -1354,6 +1354,70 @@ class FieldWithResources(Field):
     
             # Find the next source image in the content, continuing the loop:
             found_pos = new_content.find(search_str, found_pos+1) 
+
+        webDir = Path(G.application.tempWebDir)
+        previewDir = webDir / ('previews')
+
+        log.debug("Content: %s" % new_content)
+        videos = re.finditer("(<video.*(data|src)=\"(.*?)\".*?</video>)",
+                             new_content)
+        for video in videos:
+            resourceUrl = ""
+            print "it's a parachute", video.groups()
+            if 'src' == video.group(2):
+                # found a new file
+                server_filename = previewDir / video.group(3).\
+                        split("/")[-1]
+                log.debug("Processing HTML5 videos, new file found: %s" % 
+                          server_filename)
+                descript_file_path = open(server_filename + ".exe_info")
+                #try:
+                base_file = descript_file_path.read().decode('utf-8').\
+                        split('=')[-1]
+                base_dir = previewDir / ('allyourbase')
+                base_path = base_dir / base_file
+                if not base_dir.exists():
+                    base_dir.makedirs()
+
+                log.debug("Processing HTML5, copy %s to %s" % (server_filename,
+                                base_path))
+                shutil.copyfile(server_filename, base_path)
+                # copying the file to htmlvid folder to use it later
+                htmlviddir = webDir / ('htmlvid')
+                if not htmlviddir.exists():
+                    htmlviddir.makedirs()
+                shutil.copyfile(server_filename, htmlviddir / base_file)
+            else:
+                #processing an old file
+                base_path = (webDir / ('htmlvid')) / video.group(3)
+                log.debug("Processing HTML5 video, looking for an old file in %s" % base_path)
+
+            #building a ressource, since it's a rip-off of image processing
+            # we're using GalleryImageResource for it
+            # have to import GalleryImage one more time -.-, my 
+            # comments become more appologetic
+             
+            from exe.engine.galleryidevice import GalleryImage
+            self.setParentNode()
+
+            gImage = GalleryImage(self, '', base_path, mkThumbnail=False)
+            gImageResource = gImage._imageResource
+            resource_path = gImageResource._storageName
+            resourceUrl = gImage.resourcesUrl + resource_path
+
+            new_src = video.expand("<video src=\"%s\" data=\"%s\"" + \
+                "controls=\"1\">You browser can't process" +
+                "HTML5 videotags</video>") % (resourceUrl, resource_path)
+            log.debug("Processing HTML5 videos, new src: %s" % new_src)
+            new_content = new_content[:video.start()] + new_src +\
+                    new_content[video.end()]
+            #except Exception, e:
+                    #log.debug("Couldn't copy ressource file to base")
+                    #raise e
+
+
+
+
         
         return new_content
         # end ProcessPreviewedMedia()

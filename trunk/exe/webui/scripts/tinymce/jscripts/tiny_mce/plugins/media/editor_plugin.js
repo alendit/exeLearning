@@ -65,7 +65,7 @@ var TinyMCE_MediaPlugin = {
 		switch (type) {
 			case "insert_to_editor":
 				img = tinyMCE.getParam("theme_href") + '/images/spacer.gif';
-				content = content.replace(/<script[^>]*>\s*write(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)\(\{([^\)]*)\}\);\s*<\/script>/gi, '<img class="mceItem$1" title="$2" src="' + img + '" />');
+				content = content.replace(/<script[^>]*>\s*write(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer|HTML5)\(\{([^\)]*)\}\);\s*<\/script>/gi, '<img class="mceItem$1" title="$2" src="' + img + '" />');
 				content = content.replace(/<object([^>]*)>/gi, '<div class="mceItemObject" $1>');
 				content = content.replace(/<embed([^>]*)>/gi, '<div class="mceItemObjectEmbed" $1>');
 				content = content.replace(/<\/(object|embed)([^>]*)>/gi, '</div>');
@@ -77,7 +77,7 @@ var TinyMCE_MediaPlugin = {
 				d = inst.getDoc();
 				nl = content.getElementsByTagName("img");
 				for (i=0; i<nl.length; i++) {
-					if (/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(nl[i].className)) {
+					if (/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer|HTML5)/.test(nl[i].className)) {
 						nl[i].width = nl[i].title.replace(/.*width:[^0-9]?([0-9]+)%?.*/g, '$1');
 						nl[i].height = nl[i].title.replace(/.*height:[^0-9]?([0-9]+)%?.*/g, '$1');
 					}
@@ -165,6 +165,9 @@ var TinyMCE_MediaPlugin = {
 						case 'audio/x-pn-realaudio-plugin':
 							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemRealMedia');
 							break;
+                        case 'html5video':
+                            TinyMCE_MediaPluagin._createImgFromEmbed(nl[i], d, 'mceItemHTML5');
+                            break;
 					}
 				}
 				break;
@@ -177,7 +180,7 @@ var TinyMCE_MediaPlugin = {
 					attribs = TinyMCE_MediaPlugin._parseAttributes(content.substring(startPos + 4, endPos));
 
 					// Is not flash, skip it
-					if (!/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(attribs['class']))
+					if (!/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer|HTML5)/.test(attribs['class']))
 						continue;
 
 					endPos += 2;
@@ -256,6 +259,12 @@ var TinyMCE_MediaPlugin = {
 								    + "showLoopButton: false, showPlayListButtons: false, playList: [ { " 
 								    + "url: '" + pl.src + "' }, ]}";
 								break;
+                            case 'mceItemHTML5':
+                                ci = '';
+                                cb = '';
+                                pl.id = 'html5';
+                                mt = 'html5video';
+                                break;
 						}
 
 						// Force absolute URL
@@ -293,6 +302,9 @@ var TinyMCE_MediaPlugin = {
 							case 'mceItemFlowPlayer':
 								s = 'writeFlowPlayer';
 								break;
+                            case 'mceItemHTML5Video':
+                                s = 'writeHTML5Video';
+                                break;
 						}
 
 						if (attribs.width)
@@ -326,7 +338,7 @@ var TinyMCE_MediaPlugin = {
 			return;
 
 		do {
-			if (node.nodeName == "IMG" && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(tinyMCE.getAttrib(node, 'class'))) {
+			if (node.nodeName == "IMG" && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer|HTML5)/.test(tinyMCE.getAttrib(node, 'class'))) {
 				tinyMCE.switchClass(editor_id + '_media', 'mceButtonSelected');
 				return true;
 			}
@@ -425,6 +437,16 @@ var TinyMCE_MediaPlugin = {
 
 		p.width = at.width ? at.width : p.width;
 		p.height = at.height ? at.height : p.height;
+
+        if (mt == 'html5video') {
+            var h = '<video';
+            h += ' src="' + p.src + '"';
+            h += ' controls="controls">';
+            h += 'Your browser does not support video tag';
+            h += '</video>';
+            return h;
+        }
+
 
 		h += '<object'
 		if (mt == 'video/x-ms-wmv') { 

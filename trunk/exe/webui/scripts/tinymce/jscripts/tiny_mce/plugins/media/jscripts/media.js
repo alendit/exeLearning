@@ -59,10 +59,13 @@ function init() {
 	// always allow the eXe MP3 because player is embedded (no detection mechanism, either):
 	 var flv_pos = 6;  // shortcut to expected hardcoded select position
          enable_media_type(f, max_plugin,  flv_pos, "flp");
+    //html5 video tags
+    var html5_pos = 7;
+        enable_media_type(f, max_plugin, html5_pos, "html5");
 
 
 	fe = tinyMCE.selectedInstance.getFocusElement();
-	if (/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(tinyMCE.getAttrib(fe, 'class'))) {
+	if (/mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer|HTML5)/.test(tinyMCE.getAttrib(fe, 'class'))) {
 		pl = "x={" + fe.title + "};";
 
 		switch (tinyMCE.getAttrib(fe, 'class')) {
@@ -93,6 +96,9 @@ function init() {
 			case 'mceItemFlowPlayer':
 				type = 'flp';
 				break;
+            case 'mceItemHTML5':
+                type = 'html5';
+                break;
 		}
 		// In case this media type was disbled due to lack of its browser plugin,
 		// but such a media type is now being loaded - don't want it uneditable.
@@ -270,7 +276,7 @@ function insertMedia() {
 	f.height.value = f.height.value == "" ? 100 : f.height.value;
 
 	fe = tinyMCE.selectedInstance.getFocusElement();
-	if (fe != null && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer)/.test(tinyMCE.getAttrib(fe, 'class'))) {
+	if (fe != null && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer|HTML5)/.test(tinyMCE.getAttrib(fe, 'class'))) {
 		switch (f.media_type.options[f.media_type.selectedIndex].value) {
 			case "flash":
 				fe.className = "mceItemFlash";
@@ -299,6 +305,9 @@ function insertMedia() {
 			case "flp":
 				fe.className = "mceItemFlowPlayer";
 				break;
+            case "html5":
+                fe.className = "mceItemHTML5";
+                break;
 		}
 
 		if (fe.width != f.width.value || fe.height != f.height.value)
@@ -341,6 +350,9 @@ function insertMedia() {
 			case "flp":
 				h += ' class="mceItemFlowPlayer"';
 				break;
+            case "html5":
+                h += ' class="mceItemHTML5"';
+                break;
 		}
 
 		h += ' title="' + serializeParameters() + '"';
@@ -444,6 +456,7 @@ function changedType(t) {
 	d.getElementById('none_options').style.display = 'none';
 	d.getElementById('mp3_options').style.display = 'none';
 	d.getElementById('flp_options').style.display = 'none';
+    d.getElementById('html5_options').style.display = 'none';
 
 	d.getElementById(t + '_options').style.display = 'block';
 }

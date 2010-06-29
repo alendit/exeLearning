@@ -83,9 +83,14 @@ function writeWindowsMedia(p) {
 	);
 }
 
-function writeHTMLVideo(p) {
+function writeHTML5Video(p) {
     var h = '';
-    h += '<video
+    h += '<video';
+    h += ' src="' + p.src + '"';
+    h += ' controls="controls">';
+    h += 'Your browser does not support video tag';
+    h += '</video>';
+    document.write(h)
 }
 
 function writeEmbed(cls, cb, mt, p) {

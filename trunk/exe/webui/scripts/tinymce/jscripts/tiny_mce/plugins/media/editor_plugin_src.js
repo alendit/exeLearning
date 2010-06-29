@@ -165,6 +165,9 @@ var TinyMCE_MediaPlugin = {
 						case 'audio/x-pn-realaudio-plugin':
 							TinyMCE_MediaPlugin._createImgFromEmbed(nl[i], d, 'mceItemRealMedia');
 							break;
+                        case 'html5video':
+                            TinyMCE_MediaPluagin._createImgFromEmbed(nl[i], d, 'mceItemHTML5');
+                            break;
 					}
 				}
 				break;
@@ -256,6 +259,12 @@ var TinyMCE_MediaPlugin = {
 								    + "showLoopButton: false, showPlayListButtons: false, playList: [ { " 
 								    + "url: '" + pl.src + "' }, ]}";
 								break;
+                            case 'mceItemHTML5':
+                                ci = '';
+                                cb = '';
+                                pl.id = 'html5';
+                                mt = 'html5video';
+                                break;
 						}
 
 						// Force absolute URL
@@ -293,6 +302,8 @@ var TinyMCE_MediaPlugin = {
 							case 'mceItemFlowPlayer':
 								s = 'writeFlowPlayer';
 								break;
+                            case 'mceItemHTML5Video'
+                                s = 'writeHTML5Video'
 						}
 
 						if (attribs.width)
@@ -425,6 +436,18 @@ var TinyMCE_MediaPlugin = {
 
 		p.width = at.width ? at.width : p.width;
 		p.height = at.height ? at.height : p.height;
+
+        alert("Embeding video");
+        if (mt = 'html5video') {
+            alert("Embeding html5 video");
+            var h = '<video';
+            h += '<video';
+            h += ' src="' + p.src + '"';
+            h += ' controls="controls">';
+            h += 'Your browser does not support video tag';
+            h += '</video>';
+            return h
+
 
 		h += '<object'
 		if (mt == 'video/x-ms-wmv') { 
@@ -588,4 +611,4 @@ var TinyMCE_MediaPlugin = {
 	}
 };
 
-tinyMCE.addPlugin("media", TinyMCE_MediaPlugin);
+inyMCE.addPlugin("media", TinyMCE_MediaPlugin);
