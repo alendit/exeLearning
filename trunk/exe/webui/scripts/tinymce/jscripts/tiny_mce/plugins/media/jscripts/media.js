@@ -272,8 +272,8 @@ function insertMedia() {
             src = f.src.value;
         }
 
-	f.width.value = f.width.value == "" ? 100 : f.width.value;
-	f.height.value = f.height.value == "" ? 100 : f.height.value;
+	f.width.value = f.width.value == "" ? 200 : f.width.value;
+	f.height.value = f.height.value == "" ? 200 : f.height.value;
 
 	fe = tinyMCE.selectedInstance.getFocusElement();
 	if (fe != null && /mceItem(Flash|ShockWave|WindowsMedia|QuickTime|RealMedia|MP3|FlowPlayer|HTML5)/.test(tinyMCE.getAttrib(fe, 'class'))) {

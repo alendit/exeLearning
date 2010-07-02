@@ -86,6 +86,7 @@ var TinyMCE_MediaPlugin = {
 				nl = tinyMCE.selectElements(content, 'DIV', function (n) {return tinyMCE.hasCSSClass(n, 'mceItemObject');});
 				for (i=0; i<nl.length; i++) {
 					ci = tinyMCE.getAttrib(nl[i], "classid").toLowerCase().replace(/\s+/g, '');
+                    alert(ci);
 
 					switch (ci) {
 						case 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000':
@@ -121,11 +122,16 @@ var TinyMCE_MediaPlugin = {
 							break;
 
 						case '':
-							// new embedded FLV FlowPlayer uses NO classid nor codebase. double check its id, though:
+							// new embedded FLV FlowPlayer uses NO classid nor codebase. double check its id, though :
 							flash_id = tinyMCE.getAttrib(nl[i], "id").toLowerCase();
-							if (flash_id == 'flowplayer') {
+							if (flash_id == 'flowplayer' || true) {
+                                alert("Inserting an html5 image");
 							    nl[i].parentNode.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemFlowPlayer', d, nl[i]), nl[i]);
 							}
+                            else {
+                                //it must be a HTML5 vid
+                                nl[i].parentNone.replaceChild(TinyMCE_MediaPlugin._createImg('mceItemHTML5', d, nl[i]), nl[i]);
+                            }
 
 					}
 				}
@@ -441,6 +447,9 @@ var TinyMCE_MediaPlugin = {
         if (mt == 'html5video') {
             var h = '<video';
             h += ' src="' + p.src + '"';
+            h += ' type="html5video"';
+            h += ' height="' + p.height + '"';
+            h += ' width="' + p.width +'"';
             h += ' controls="controls">';
             h += 'Your browser does not support video tag';
             h += '</video>';

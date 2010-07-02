@@ -105,20 +105,6 @@ class Application:
             username = getpass.getuser()
         except ImportError:
             username = ''
-        eXeStart = globals.application.tempWebDir
-        eXeStart = re.sub("[\/|\\\\][^\/|\\\\]*$","",eXeStart)
-        eXeStart = eXeStart + '/tmpExeStartupTime.' + username
-
-        if os.path.exists(eXeStart):
-            inStartFH=open(eXeStart, "r")
-            lastRunTimeS = 0
-            for line in inStartFH:
-                try:
-                    lastRunTimeS = int(line)
-                except ValueError:
-                    lastRunTimeS = 0
-            inStartFH.close()
-            log.debug('lastRunTimeS: ' + `lastRunTimeS`)
 
             currentTime = int (time.time())
             currentTime2 = int (time.time())
@@ -129,7 +115,6 @@ class Application:
                 return None
 
         else:
-            log.info('eXeStart: ' + eXeStart)
             log.info('tempWebDir: ' + globals.application.tempWebDir)
 
         # if a document was double clicked to launch on Win32,
@@ -150,10 +135,6 @@ class Application:
             log.error('eXe appears to already be running')
             log.error('looks like the eXe server was not able to find a valid port; terminating...')
         shutil.rmtree(self.tempWebDir, True)
-        try:
-            os.remove(eXeStart)
-        except IOError:
-            pass
 
     def processArgs(self):
         """

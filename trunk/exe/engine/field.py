@@ -1372,11 +1372,10 @@ class FieldWithResources(Field):
         previewDir = webDir / ('previews')
 
         log.debug("Content: %s" % new_content)
-        videos = re.finditer("(<video.*(data|src)=\"(.*?)\".*?</video>)",
+        videos = re.finditer("(<video.*(data|src)=\"(.*?)\".*?height=\"(.*?)\" width=\"(.*?)\".*?</video>)",
                              new_content)
         for video in videos:
             resourceUrl = ""
-            print "it's a parachute", video.groups()
             if 'src' == video.group(2):
                 # found a new file
                 server_filename = previewDir / video.group(3).\
@@ -1418,9 +1417,14 @@ class FieldWithResources(Field):
             resource_path = gImageResource._storageName
             resourceUrl = gImage.resourcesUrl + resource_path
 
-            new_src = video.expand("<video src=\"%s\" data=\"%s\"" + \
-                "controls=\"1\">You browser can't process" +
-                "HTML5 videotags</video>") % (resourceUrl, resource_path)
+            width, height = video.group(4), video.group(5)
+            log.debug("HTML5 Video Processing, width:%s height:%s" %\
+                      (width, height))
+            new_src = video.expand("<video src=\"%s\" data=\"%s\"" %\
+                (resourceUrl, resource_path) +\
+                " height=\"%s\" width=\"%s\"" % (height, width) +\
+                " controls=\"1\">You browser does not support" +\
+                "video tag</video>")
             log.debug("Processing HTML5 videos, new src: %s" % new_src)
             new_content = new_content[:video.start()] + new_src +\
                     new_content[video.end()]
