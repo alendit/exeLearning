@@ -142,6 +142,7 @@ class WebsiteExport(object):
         styleFiles += self.stylesDir.files("*.css")
         styleFiles += self.stylesDir.files("*.jpg")
         styleFiles += self.stylesDir.files("*.gif")
+        styleFiles += self.stylesDir.files("*.svg")
         styleFiles += self.stylesDir.files("*.png")
         styleFiles += self.stylesDir.files("*.js")
         styleFiles += self.stylesDir.files("*.html")

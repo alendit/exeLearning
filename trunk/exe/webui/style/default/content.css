@@ -39,6 +39,18 @@ div#nodeDecoration {
    text-align:left;
 }
 
+/* --- swap next and prev buttons with images --- */
+
+/* --- enable this code to show next and prev images
+#go_next img {display:inherit;}
+#go_next span{display:none;}
+
+#go_prev img {display:inherit;}
+#go_prev span{display:none;}
+
+--- */
+
+
 
 /* --- iDevice Styles -- */
 
