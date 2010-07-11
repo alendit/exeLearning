@@ -41,12 +41,15 @@ div#nodeDecoration {
 
 /* --- swap next and prev buttons with images --- */
 
-#go_next img {
-    display:none;
-}
+/* --- enable this code to show next and prev images
+#go_next img {display:inherit;}
+#go_next span{display:none;}
 
+#go_prev img {display:inherit;}
+#go_prev span{display:none;}
 
-#go_prev img {display:none;}
+--- */
+
 
 
 /* --- iDevice Styles -- */
