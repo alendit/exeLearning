@@ -1,9 +1,0 @@
-skin	browser	phoenitymodern	jar:chrome/phoenitymodern.jar!/browser/
-skin	communicator	phoenitymodern	jar:chrome/phoenitymodern.jar!/communicator/
-skin	global	phoenitymodern	jar:chrome/phoenitymodern.jar!/global/
-skin	mozapps	phoenitymodern	jar:chrome/phoenitymodern.jar!/mozapps/
-skin	inspector	phoenitymodern	jar:chrome/phoenitymodern.jar!/inspector/
-skin	reporter	phoenitymodern	jar:chrome/phoenitymodern.jar!/reporter/
-skin	platform	phoenitymodern	jar:chrome/phoenitymodern.jar!/platform/standard/
-skin	platform	phoenitymodern	jar:chrome/phoenitymodern.jar!/platform/linux/ os=Linux
-skin	winnt	phoenitymodern	jar:chrome/phoenitymodern.jar!/platform/winnt/ os=WINNT

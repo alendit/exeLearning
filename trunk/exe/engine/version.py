@@ -25,7 +25,7 @@ Version Information
 import re
 
 project        = "exe"
-release        = "0.94.2(TUMmod)"
+release        = "0.94.3(TUMmod)"
 revision       = "0"
 # if it is available, get the SVN revision
 try:
