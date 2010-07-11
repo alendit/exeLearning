@@ -187,19 +187,22 @@ class WebsitePage(Page):
         html = "<div class=\"noprt\" align=\"right\">"
 
         if prevPage:
-            html += "<a href=\""+quote(prevPage.name)+".html\">"
-            html += '<img src="leftarrow.gif" alt='
-            html += "\"&laquo; %s\" border=0 ></a>\n"\
-                % _('Previous')
+            html += "<a id=\"go_prev\" href=\""+quote(prevPage.name)
+            html += ".html\">\n"
+            html += "<img src=\"arrowleft.gif\" border=0>"
+            html += "<span>%s</span></a>\n" % _('Previous')
 
         if nextPage:
             if prevPage:
                 html += " | "
-            html += "<a href=\""+quote(nextPage.name)+".html\">"
-            html += '<img src="rightarrow.gif" alt='
-            html += "\" %s &raquo;\" border=0 ></a>\n"\
-                % _('Next')
             
+            html += "<a id=\"go_next\" href=\""+quote(nextPage.name)
+            html += ".html\">\n"
+            html += "<img src=\"arrowright.gif\" border=0>"
+            html += "<span>%s</span></a>\n" % _('Next')
+
+
+           
         html += "</div>\n"
         return html
 

@@ -39,6 +39,15 @@ div#nodeDecoration {
    text-align:left;
 }
 
+/* --- swap next and prev buttons with images --- */
+
+#go_next img {
+    display:none;
+}
+
+
+#go_prev img {display:none;}
+
 
 /* --- iDevice Styles -- */
 
