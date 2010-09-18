@@ -16,6 +16,20 @@ textarea { font-family: arial, verdana, helvetica, sans-serif;
        background-color: #FFFFFF ;
 }
 
+div#sidebar {
+    float: left;
+    border: 1px solid;
+}
+
+div#sidebar div {
+    border: 2px solid;
+}
+
+#main {
+    width: 800px;
+    height: *;
+}
+
 
 /* styles for iDevice Editor */
 
