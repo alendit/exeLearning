@@ -5,18 +5,24 @@
         <link rel="stylesheet" type="text/css" href="css/superfish.css" />
         <link rel="stylesheet" type="text/css" href="css/exe.css" />
         <link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.4.custom.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.treeview.css" />
         <!-- SCRIPTS -->
         <script n:render="liveid"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="/scripts/jquery-ui.custom.min.js"></script>
         <script type="text/javascript" src="/scripts/common.js"></script>
+        <script type="text/javascript" src="/xulscripts/jquery.min.js"></script>
+        <script type="text/javascript" src="/xulscripts/jquery-ui.custom.min.js"></script>
         <script type="text/javascript" src="/xulscripts/mainpage.js"></script>
         <script type="text/javascript" src="/xulscripts/superfish.js"></script>
+        <script type="text/javascript" src="/xulscripts/jquery.treeview.js"></script>
         <script type="text/javascript" src="/xulscripts/nevow_glue.js"></script>
         <script type="text/javascript">
-            jQuery(function() {
+            jQuery(document).ready(function() {
                 $("#filemenu").superfish();
                 $("a.bigButton, a.smallButton").button();
+                $("#outlineTree").treeview({
+                    persist: "location",
+                    collapsed: false});
+                $("#authoringIFrame1").attr('src', document.location + "/authoring");
             });
         </script>
     </head>
@@ -274,15 +280,13 @@
                 <a id="btnUp" class="fg-button smallButton" href="javascript:outlineControll('Up');">Up</a>
                 <a id="btnDown" class="fg-button smallButton" href="javascript:outlineControll('Down');">Down</a>
             </div>
-            <div id="outlinepane">
-                <p>Outline pane</p>
-            </div>
+            <span n:render="outlinePane"/>
             <div id="idevicepane">
                 <p>Idevices</p>
             </div>
         </div>
         <div id="main">
-            <iframe id="authoringIFrame1" src="newPackage/authoring"></iframe>
+            <iframe id="authoringIFrame1" ></iframe>
         </div>
     </body>
 </html>
