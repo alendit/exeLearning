@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html xmlns:n="http://nevow.com/ns/nevow/0.1">
+    <head>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/superfish.css" />
+        <link rel="stylesheet" type="text/css" href="css/exe.css" />
+        <link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.4.custom.css" />
+        <!-- SCRIPTS -->
+        <script n:render="liveid"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="/scripts/jquery-ui.custom.min.js"></script>
+        <script type="text/javascript" src="/scripts/common.js"></script>
+        <script type="text/javascript" src="/xulscripts/mainpage.js"></script>
+        <script type="text/javascript" src="/xulscripts/superfish.js"></script>
+        <script type="text/javascript" src="/xulscripts/nevow_glue.js"></script>
+        <script type="text/javascript">
+            jQuery(function() {
+                $("#filemenu").superfish();
+                $("a.bigButton, a.smallButton").button();
+            });
+        </script>
+    </head>
+    <body>
+         <table><tr><td><div>
+    <ul class="sf-menu sf-vertical" label="root">
+        
+        <li>
+            <a href="#" id="file-menu">
+                File
+            </a>
+            <ul label="File ul">
+                
+                <li>
+                    <a href="javascript:fileNew()">
+                        New
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:tabNew()">
+                        New Tab
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:fileOpen()">
+                        Open
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="recent-projects-menu">
+                        Recent Projects...
+                    </a>
+                    <ul label="Recent Projects... ul">
+                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:fileSave()">
+                        Save
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:fileSaveAs()">
+                        Save As...
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:filePrint()">
+                        Print
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:handoutPrint()">
+                        Print Handout
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:">
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="export-menu">
+                        Export
+                    </a>
+                    <ul label="Export ul">
+                        
+                        <li>
+                            <a href="javascript:exportPackage('commoncartridge','','')">
+                                Common Cartridge
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:exportPackage('scorm','','')">
+                                SCORM 1.2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:exportPackage('ims','','')">
+                                IMS Content Package
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="website">
+                                Web Site
+                            </a>
+                            <ul label="Web Site ul">
+                                
+                                <li>
+                                    <a href="javascript:exportPackage('webSite','','')">
+                                        Self-contained Folder
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:exportPackage('zipFile','','')">
+                                        Zip File
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:exportPackage('presentation', '', '')">
+                                        DOM Presentation
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:exportPackage('singlePage','','')">
+                                Single Page
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:exportPackage('textFile','','')">
+                                Text File
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:exportPackage('ipod', '', '')">
+                                iPod Notes
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="merging-menu">
+                        Merging
+                    </a>
+                    <ul label="Merging ul">
+                        
+                        <li>
+                            <a href="javascript:insertPackage()">
+                                Insert Package
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:extractPackage()">
+                                Extract Package
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:fileQuit()">
+                        Quit
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" id="tools-menu">
+                Tools
+            </a>
+            <ul label="Tools ul">
+                
+                <li>
+                    <a href="javascript:toolsEditor()">
+                        iDevice Editor
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:testFunc()">
+                        TEST!
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:toolsPreferences()">
+                        Preferences
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:importPDF()">
+                        Import PDF
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:setEditorsWidth()">
+                        Set Editor's width
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:">
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:window.location = window.location">
+                        Refresh Display
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" id="styles-menu">
+                Styles
+            </a>
+            <ul label="Styles ul">
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#" id="help-menu">
+                Help
+            </a>
+            <ul label="Help ul">
+                
+                <li>
+                    <a href="javascript:fileOpenTutorial()">
+                        eXe Tutorial
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:browseURL('file://%s/docs/manual/Online_manual.html')">
+                        eXe Manual
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:browseURL('file://%t')">
+                        Release Notes
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:browseURL('http://exelearning.org/')">
+                        eXe Web Site
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:browseURL('http://exelearning.org/issue.php')">
+                        Report an Issue
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:browseURL('http://exelearning.org/irc.php')">
+                        eXe Live Chat
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:aboutPage()">
+                        About eXe
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+        </div></td></tr></table>
+        <div id="sidebar">
+            <div id="outlinecontroll">
+                <a id="btnAdd" class="bigButton" href="javascript:outlineControll('AddChild');">Add</a>
+                <a id="btnRemove" class="bigButton" href="javascript:outlineControll('DelNode');">Remove</a>
+                <a id="btnRename" class="bigButton" href="javascript:outlineControll('RenNode');">Rename</a>
+                <a id="btnDuplicate" class="bigButton" href="javascript:outlineControll('DblNode');">Duplicate</a>
+            </div>
+            <div id="outlinemove">
+                <a id="btnPromote" class="fg-button smallButton" href="javascript:outlineControll('Promote');">Promote</a>
+                <a id="btnDemote" class="fg-button smallButton" href="javascript:OutlineControll('Demote');">Demote</a>
+                <a id="btnUp" class="fg-button smallButton" href="javascript:outlineControll('Up');">Up</a>
+                <a id="btnDown" class="fg-button smallButton" href="javascript:outlineControll('Down');">Down</a>
+            </div>
+            <div id="outlinepane">
+                <p>Outline pane</p>
+            </div>
+            <div id="idevicepane">
+                <p>Idevices</p>
+            </div>
+        </div>
+        <div id="main">
+            <iframe id="authoringIFrame1" src="newPackage/authoring"></iframe>
+        </div>
+    </body>
+</html>
+<!--
+                      <toolbarbutton id="btnAdd" n:render="addChild" label="Add" orient="vertical" key="addChildKey" image="/images/add.png" tooltiptext="Add Child"/>
+                      <toolbarbutton id="btnDel" n:render="delNode" label="Delete" orient="vertical" key="delNodeKey" image="/images/delete.png" tooltiptext="Delete"/>
+                      <toolbarbutton id="btnRename" n:render="renNode" label="Rename" orient="vertical" key="renNodeKey" image="/images/rename.png" tooltiptext="Rename"/>
+                      <toolbarbutton id="btnDbl" n:render="dblNode" label="Duplicate" orient="vertical" key="dblNodeKey" image="/images/dublicate.png" tooltiptext="Duplicate"/>
+                  </toolbar>
+              </toolbox>
+              <toolbox>
+                <toolbar grippyhidden="true">
+                   <toolbarbutton id="btnPromote" n:render="promote" key="promoteKey" image="/images/stock-goto-first.png" tooltiptext="Promote node up in hierarchy" flex="0"/>
+                   <toolbarbutton id="btnDemote" n:render="demote" key="demoteKey" image="/images/stock-goto-last.png" tooltiptext="Demote node down in hierarchy"/>
+                   <toolbarbutton id="btnUp" n:render="up" key="upKey" image="/images/stock-go-up.png" tooltiptext="Move node up"/>
+                   <toolbarbutton id="btnDown" n:render="down" key="downKey" image="/images/stock-go-down.png" tooltiptext="Move node down"/>
+                 </toolbar>
+              </toolbox>
+
+
+              <label flex="1" value="outlinePane" n:render="outlinePane"/>
+
+              <splitter collapse="none"></splitter>
+
+            <vbox flex="1">
+              <label flex="1" value="iDevicePane" n:render="idevicePane"/>
+            </vbox>
+           </vbox>
+
+
+
+            <splitter collapse="none"></splitter>
+            <tabbox n:render="translate" flex="1" selectedTab="Authoring">
+                <tabs align="end" pack="end">
+                    <tab n:render="translate" label="Authoring"/>
+                    <tab n:render="translate" label="Properties"/>
+                </tabs>
+                <tabpanels flex="1">
+                    <tabpanel id="authoringPane">
+                        <iframe flex="1" n:render="prePath" name="authoringIFrame1" id="authoringIFrame" src="authoring"/>
+                    </tabpanel>
+                    <tabpanel id="propertiesPane">
+                        <iframe flex="1" n:render="prePath" src="properties"/>
+                    </tabpanel>
+                </tabpanels>
+            </tabbox>
+        </hbox>
+    </vbox>
+    </window> -->
