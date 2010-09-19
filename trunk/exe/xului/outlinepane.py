@@ -293,7 +293,7 @@ class OutlinePane(Renderable):
         'extraIndent' is the extra number of spaces to put for the next level
         when recursing (this is really used as a local static constant)
         """
-        
+        #TODO escape names 
         html = (u'<li>',
                 u'  <a href="javascript:outlineClick(\'%s\');">%s</a>' %\
                         (node.id, node.titleLong))
