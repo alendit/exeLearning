@@ -128,22 +128,6 @@ class OutlinePane(Renderable):
         client.call('enableButtons')
     
 
-    def handleDblNode(self, client):
-        """
-        Dublicates a tree element
-        """
-
-        root = self.package.currentNode.parent
-        if root is None:
-            client.alert(_("Can't dublicate root element"))
-        else:
-            newPackage = self.package.extractNode()
-            newNode = newPackage.root.copyToPackage(self.package, root)
-            newNode.RenamedNodePath(isMerge=True)
-            client.sendScript(u'top.location = "/%s"' % \
-                          self.package.name)
-
-
     def handleSetTreeSelection(self, client):
         """
         Called when the client want's to update the tree with the correct

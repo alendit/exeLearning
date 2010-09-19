@@ -127,40 +127,32 @@ function getOutlineItem(tree, index) {
 // Returns the currently selected tree item.
 function currentOutlineItem(tree) {
     // Get the appropriate treeitem element
-    // #TODO implement getting current OutlineID
-/*    var mytree = tree
+    var mytree = tree
     if (!mytree) { mytree = document.getElementById('outlineTree') }
-    return getOutlineItem(tree, mytree.currentIndex) */
-    return 0 
+    return getOutlineItem(tree, mytree.currentIndex)
 }
 
 // Returns the label of the currently selected tree row
 function currentOutlineLabel() {
-    //#TODO
-    /*var treeitem = currentOutlineItem()
+    var treeitem = currentOutlineItem()
     return treeitem.getElementsByTagName('treecell')[0].getAttribute('label')
-    */
-    return ""
 }
 
 // Returns the _exe_nodeid attribute of the currently selected row item
 function currentOutlineId(index)
 {
-    //#TODO
-    /*
     disableButtons(true)
     var treeitem = currentOutlineItem()
-    return treeitem.getElementsByTagName('treerow')[0].getAttribute('_exe_nodeid')*/
-    return 0
-
+    return treeitem.getElementsByTagName('treerow')[0].getAttribute('_exe_nodeid')
 }
 
 var outlineButtons = new Array('btnAdd', 'btnDel', 'btnRename', 'btnPromote', 'btnDemote', 'btnUp', 'btnDown', 'btnDbl')
 
 function disableButtons(state) {
-//    #TODO implement a block while AJAXing 
+    for (button in outlineButtons) {
+        document.getElementById(outlineButtons[button]).disabled = state
+    }
 }
-
 
 function addStyle() {
     var src = addDir();
@@ -168,7 +160,7 @@ function addStyle() {
 }
 
 function enableButtons() {
-    disableButtons(false);
+    disableButtons(false)
 }
 
 // Confirms the deletion of the currently selected node.
@@ -377,10 +369,6 @@ function fileNew() {
 
 function tabNew() {
     nevow_clientToServerEvent('openNewTab', this);
-}
-
-function outlineControll(action) {
-    nevow_clientToServerEvent('outlineControll', this, "", action, currentOutlineId());
 }
 
 function openPreview(path) {
@@ -610,7 +598,7 @@ function doQuit() {
 // Submit any open iDevices
 function saveWorkInProgress() {
     // Do a submit so any editing is saved to the server
-    var theForm = $("#authoringIFrame #contentForm");
+    var theForm = top["authoringIFrame1"].document.getElementById('contentForm');
     if (!theForm) {
         // try and find the form for the authoring page
         theForm = document.getElementById('contentForm');

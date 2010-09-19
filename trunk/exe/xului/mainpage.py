@@ -67,7 +67,7 @@ class MainPage(RenderableLivePage):
     This is the main XUL page.  Responsible for handling URLs.
     """
     
-    _templateFileName = 'mainpage.html'
+    _templateFileName = 'mainpage.xul'
     name = 'to_be_defined'
 
     def __init__(self, parent, package):
@@ -79,7 +79,7 @@ class MainPage(RenderableLivePage):
         RenderableLivePage.__init__(self, parent, package)
         self.putChild("resources", static.File(package.resourceDir))
 
-        mainxul = Path(self.config.xulDir).joinpath('templates', 'mainpage.html')
+        mainxul = Path(self.config.xulDir).joinpath('templates', 'mainpage.xul')
         self.docFactory  = loaders.xmlfile(mainxul)
 
         # Server Controller
@@ -108,7 +108,7 @@ class MainPage(RenderableLivePage):
 
     def goingLive(self, ctx, client):
         """Called each time the page is served/refreshed"""
-        inevow.IRequest(ctx).setHeader('content-type', 'text/html')
+        inevow.IRequest(ctx).setHeader('content-type', 'application/vnd.mozilla.xul+xml')
         # Set up named server side funcs that js can call
         def setUpHandler(func, name, *args, **kwargs):
             """
@@ -149,8 +149,6 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleServeDocument,    'serveDocument')
         setUpHandler(self.handleStopServing,      'stopServing')
         setUpHandler(self.handleSetEditorsWidth,  'setEditorsWidth')
-        setUpHandler(self.passHandle,       'outlineControll')
-
 
         self.idevicePane.client = client
         # Render the js 
@@ -164,6 +162,36 @@ class MainPage(RenderableLivePage):
             ctx.tag.tagName = 'toolbar'
         return ctx.tag
 
+    def render_addChild(self, ctx, data):
+        """Fills in the oncommand handler for the 
+        add child button and short cut key"""
+        return ctx.tag(oncommand=handler(self.outlinePane.handleAddChild,
+                       js('currentOutlineId()')))
+
+
+    def render_delNode(self, ctx, data):
+        """Fills in the oncommand handler for the 
+        delete child button and short cut key"""
+        return ctx.tag(oncommand=handler(self.outlinePane.handleDelNode,
+                       js("confirmDelete()"),
+                       js('currentOutlineId()')))
+
+
+    def render_renNode(self, ctx, data):
+        """Fills in the oncommand handler for the 
+        rename node button and short cut key"""
+        return ctx.tag(oncommand=handler(self.outlinePane.handleRenNode,
+                       js('currentOutlineId()'),
+                       js('askNodeName()'), bubble=True))
+
+    def render_dblNode(self, ctx, data):
+        """Fills in the oncommand handler for the
+        dublicate node button and short cut key"""
+
+        return ctx.tag(oncommand=handler(self.handleDblNode,
+                        bubble=True))
+
+
     def render_prePath(self, ctx, data):
         """Fills in the package name to certain urls in the xul"""
         request = inevow.IRequest(ctx)
@@ -171,10 +199,35 @@ class MainPage(RenderableLivePage):
 
 
     # The node moving buttons
-    def passHandle(self, client, name, outlineId):
+    def _passHandle(self, ctx, name):
+        """Ties up a handler for the promote, demote,
+        up and down buttons. (Called by below funcs)"""
         attr = getattr(self.outlinePane, 'handle%s' % name)
-        attr(client, outlineId)
+        return ctx.tag(oncommand=handler(attr, js('currentOutlineId()')))
 
+
+    def render_promote(self, ctx, data):
+        """Fills in the oncommand handler for the 
+        Promote button and shortcut key"""
+        return self._passHandle(ctx, 'Promote')
+
+
+    def render_demote(self, ctx, data):
+        """Fills in the oncommand handler for the 
+        Demote button and shortcut key"""
+        return self._passHandle(ctx, 'Demote')
+
+
+    def render_up(self, ctx, data):
+        """Fills in the oncommand handler for the 
+        Up button and shortcut key"""
+        return self._passHandle(ctx, 'Up')
+
+
+    def render_down(self, ctx, data):
+        """Fills in the oncommand handler for the 
+        Down button and shortcut key"""
+        return self._passHandle(ctx, 'Down')
 
     def render_recentProjects(self, ctx, data):
         """
@@ -257,6 +310,21 @@ class MainPage(RenderableLivePage):
         Prints a test message, and yup, that's all! 
         """ 
         print "Test Message: ", message, " [eol, eh!]"
+
+    def handleDblNode(self, client):
+        """
+        Dublicates a tree element
+        """
+
+        root = self.package.currentNode.parent
+        if root is None:
+            client.alert(_("Can't dublicate root element"))
+        else:
+            newPackage = self.package.extractNode()
+            newNode = newPackage.root.copyToPackage(self.package, root)
+            newNode.RenamedNodePath(isMerge=True)
+            client.sendScript(u'top.location = "/%s"' % \
+                          self.package.name)
 
     def handleSetEditorsWidth(self, client, width):
         """
