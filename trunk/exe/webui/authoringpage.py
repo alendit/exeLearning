@@ -105,7 +105,7 @@ class AuthoringPage(RenderableResource):
         self.blocks = []
         self.__addBlocks(topNode)
         html  = self.__renderHeader()
-        html += u'<body onload="onLoadHandler();">\n'
+        html += u'<body">\n'
         html += u"<form method=\"post\" "
 
         if request is None:
@@ -146,6 +146,8 @@ class AuthoringPage(RenderableResource):
         html += u'@import url(/style/base.css);\n'
         html += u'@import url(/style/%s/content.css);\n' % self.package.style
         html += u'</style>\n'
+        html += u'<script type="text/javascript" src="/xulscripts/jquery.min.js">'
+        html += '</script>'
         html += u'<script type="text/javascript" src="/scripts/common.js">'
         html += u'</script>\n'
         html += u'<script type="text/javascript" '
@@ -212,6 +214,10 @@ class AuthoringPage(RenderableResource):
         html += u"    width : \"%s\"\n" % (G.application.editorsWidth or "100%")
         html += u" });\n"
         html += u"//-->\n"
+        #jQuery onload handlers
+        html += u'''jQuery(document).ready(function() {
+            onLoadHandler();
+        });'''
         html += u"</script>\n"
         html += u'<script type="text/javascript" src="/scripts/libot_drag.js">'
         html += u'</script>\n'

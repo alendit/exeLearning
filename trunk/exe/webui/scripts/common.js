@@ -720,30 +720,33 @@ function updateCoords(e) {
 // action and object fields so they can be used by submitLink
 function clearHidden()
 {
-    var theForm = top["authoringIFrame1"].document.getElementById('contentForm')
-    if (!theForm) {
-        // try and find the form for the authoring page
-        theForm = document.getElementById('contentForm')
-    }
-    theForm.action.value = "";
-    theForm.object.value = "";
+    $.post("authoring#currentBlock", {
+        action: "",
+        object: "",
+        isChanged: ""});
 }
 
 // Sets the hidden action and object fields, then submits the 
 // contentForm to the server
 function submitLink(action, object, changed) 
 {
-    var theForm = top["authoringIFrame1"].document.getElementById('contentForm')
-    if (!theForm) {
-        // try and find the form for the authoring page
-        theForm = document.getElementById('contentForm')
-    }
-    theForm.action.value    = action;
-    theForm.object.value    = object;
-    theForm.isChanged.value = changed;
+    changeSubmitArgument("action", action); 
+    changeSubmitArgument("object", object);
+    changeSubmitArgument("isChanged", changed);
     runFuncArray(beforeSubmitHandlers)
 
-    theForm.submit();
+    getContentForm().submit();
+
+}
+
+function getContentForm() {
+    return $("#authoringIFrame1").contents().find("#contentForm");
+}
+
+function changeSubmitArgument(name, value) {
+    //changes argument "name" to "value" in contentForm
+    getContentForm().find("#" + name).attr("value", value);
+
 }
 
 

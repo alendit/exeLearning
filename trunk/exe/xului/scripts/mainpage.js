@@ -314,9 +314,9 @@ function askNodeName() {
 function delTreeItem() { submitLink('deleteNode', currentOutlineId(), 1) }
 
 // This is called when a different tree node is selected
-function outlineClick() {
+function outlineClick(nodeId) {
     if (clickon) {
-        submitLink('changeNode', currentOutlineId(), 0);
+        submitLink('changeNode', nodeId, 0);
         nevow_clientToServerEvent('outlineClicked', self);
     }
 }
@@ -610,13 +610,7 @@ function doQuit() {
 // Submit any open iDevices
 function saveWorkInProgress() {
     // Do a submit so any editing is saved to the server
-    var theForm = $("#authoringIFrame #contentForm");
-    if (!theForm) {
-        // try and find the form for the authoring page
-        theForm = document.getElementById('contentForm');
-    }
-    if (theForm)
-        theForm.submit();
+    $("#authoringIFrame").contents().find("#contentForm").submit();
 }
 
 // Launch the iDevice Editor Window

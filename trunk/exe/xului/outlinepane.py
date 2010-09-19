@@ -34,12 +34,14 @@ class OutlinePane(Renderable):
     OutlinePane is responsible for creating the XHTML for the package outline
     """
     name = 'outlinePane'
+    __counter = 0
 
     def process(self, request):
         """ 
         Get current package
         """
         log.debug("process")
+        print request.args
         
         if "action" in request.args:
             nodeId = request.args["object"][0]
@@ -262,29 +264,14 @@ class OutlinePane(Renderable):
         """
         # Now do the rendering
         log.debug("render")
-        xul = (u'<!-- start outline pane -->',
-                '    <tree id="outlineTree"',
-                '          hidecolumnpicker="true" ',
-                '          onselect="outlineClick()" ',
-                '          context="outlineMenu" flex="1"',
-                '          ondraggesture="treeDragGesture(event)"',
-                '          ondragenter="treeDragEnter(event)"',
-                '          ondragover="treeDragOver(event)"',
-                '          ondragexit="treeDragExit(event)"',
-                '          ondragdrop="treeDragDrop(event)"',
-                '          ondblclick="eval(document.getElementById('
-                """'btnRename').getAttribute('oncommand'))">""",
-                '        <treecols>',
-                '            <treecol id="sectionCol" primary="true" '+
-                'style="font-weight: bold" label="%s" flex="1"/>' \
-                       % _(u"Outline"),
-                '        </treecols>',
-                '        <treechildren>',)
-        xul += self.__renderNode(self.package.root, 12)
-        xul += ('       </treechildren>',
-                '    </tree>',
-                '<!-- end outline pane -->')
-        return stan.xml('\n'.join(xul))
+        html = u'<!-- Start outlinePane -->'
+        html += u'<div id="outlinePane">\n'
+        html += u'  <ul id="outlineTree">\n'
+        html += self.__renderNode(self.package.root, 4)
+        html += u'  </ul>'
+        html += u'</div>'
+        html += u'<!-- Ende outlinePane -->'
+        return stan.xml(html)
 
     def encode2nicexml(self, string):
         """
@@ -299,35 +286,26 @@ class OutlinePane(Renderable):
             string = string.replace(src, dest)
         return string
 
-    def __renderNode(self, node, indent, extraIndent=2):
+    def __renderNode(self, node, indent, extraIndent=4):
         """
         Renders all children recursively.
         'indent' is the number of spaces to put in front of each line of xul
         'extraIndent' is the extra number of spaces to put for the next level
         when recursing (this is really used as a local static constant)
         """
+        
+        html = (u'<li>',
+                u'  <a href="javascript:outlineClick(\'%s\');">%s</a>' %\
+                        (node.id, node.titleLong))
         if node.children:
-            start = '<treeitem container="true" open="true">'
-        else:
-            start = '<treeitem>'
-
-        # Render the inner bits
-        titleShort = self.encode2nicexml(node.titleShort)
-        titleFull = self.encode2nicexml(node.title)
-        xul = ('%s' % start,
-               """    <treerow _exe_nodeid="%s"> """ % node.id,
-               '        <treecell label="%s" name="%s"/>' % (
-                            titleShort, titleFull),
-               '    </treerow>')
-
-        # Recursively render children if necessary
-        if node.children:
-            xul += ('    <treechildren>',)
+            childHtml = u''
             for child in node.children:
-                xul += self.__renderNode(child, indent + extraIndent)
-            xul += ('    </treechildren>',)
-        xul += ('</treeitem>',)
-        # Return nicely indented xul
-        return tuple([(' ' * indent) + line for line in xul])
+                childHtml += self.__renderNode(child,
+                                    indent + extraIndent)
+            html += (u'<ul>',
+                     childHtml,
+                     u'</ul>')
+            html += (u'</li>',)
+        return '\n'.join(((' ' * indent) + line for line in html))
     
 # ===========================================================================
