@@ -56,6 +56,12 @@ var haveLoaded = false
 // Set to false to stop selects doing page reloads
 var clickon = true 
 
+//Onload handlers from jQuery
+jQuery(document).ready(function() {
+        $(".outlineNode").each(function(index) {
+            bindOutlineClicked(this);
+            });
+        });
 // Takes a server tree node id eg. '1' and returns a xul treeitem elemtent
 // reference
 function serverId2treeitem(serverId) {
@@ -127,11 +133,7 @@ function getOutlineItem(tree, index) {
 // Returns the currently selected tree item.
 function currentOutlineItem(tree) {
     // Get the appropriate treeitem element
-    // #TODO implement getting current OutlineID
-/*    var mytree = tree
-    if (!mytree) { mytree = document.getElementById('outlineTree') }
-    return getOutlineItem(tree, mytree.currentIndex) */
-    return 0 
+    return null;
 }
 
 // Returns the label of the currently selected tree row
@@ -151,14 +153,18 @@ function currentOutlineId(index)
     disableButtons(true)
     var treeitem = currentOutlineItem()
     return treeitem.getElementsByTagName('treerow')[0].getAttribute('_exe_nodeid')*/
-    return 0
+    return $('.curNode').attr('nodeId');
 
 }
 
 var outlineButtons = new Array('btnAdd', 'btnDel', 'btnRename', 'btnPromote', 'btnDemote', 'btnUp', 'btnDown', 'btnDbl')
 
 function disableButtons(state) {
-//    #TODO implement a block while AJAXing 
+    if (state){
+        $(".bigButton, .smallButton").button("disable");
+    } else {
+        enableButtons();
+    }
 }
 
 
@@ -168,7 +174,7 @@ function addStyle() {
 }
 
 function enableButtons() {
-    disableButtons(false);
+    $(".bigButton, .smallButton").button('enable');
 }
 
 // Confirms the deletion of the currently selected node.
@@ -183,24 +189,41 @@ function confirmDelete() {
     }
 }
 
+function outlineAddChild() {
+    //Add a child to current node and select it
+
+    var parentNode = $(".curNode").removeClass('curNode').parent();
+    var childNode = $("<a />").addClass("curNode outlineNode").attr('nodeId', '-1').text("Child");
+    bindOutlineClicked(childNode);
+    childNode = $('<li />').append(childNode);
+    if (parentNode.find(" > ul").length != 0) {
+        parentNode.find(" > ul").append(childNode);
+    } else {
+        parentNode.append($('<ul />').append(childNode));
+    }
+    $('#outlineTree').treeview({add: childNode});
+    nevow_clientToServerEvent('outlineControll', this, '', 'AddChild', currentOutlineId());
+}
+
+function outlineDelNode() {
+    outlineControll("DelNode");
+}
+
 // Appends a child node with name and _exe_nodeid to the currently
 // selected node
 // XH means that the func is actually called by the server over xmlhttp
-function XHAddChildTreeItem(nodeid, parentid, name) {
-    var tree = document.getElementById('outlineTree');
-    var treeitem = currentOutlineItem(tree)
-//    var treeitem =  getOutlineItem(tree, parentid);
-    var row = treeitem.getElementsByTagName('treerow')[0]
-    // Create the new node
-    var newTreeRow = row.cloneNode(1) // Clone the existing row
-    newTreeRow.firstChild.setAttribute('label', name) // Set the treecell s label
-    newTreeRow.firstChild.setAttribute('name', name) // Set the treecell s label
-    newTreeRow.setAttribute('_exe_nodeid', nodeid)
-    var newTreeItem = document.createElement('treeitem')
-    newTreeItem.appendChild(newTreeRow)
-    insertChildTreeItem(treeitem, newTreeItem)
-    // Select the new child
-    tree.view.selection.select(tree.view.getIndexOfItem(newTreeItem))
+function XHAddChildTreeItem(nodeid, name) {
+    var parentNode = getCurrentNode();
+    var childNode = $("<a />").addClass("outlineNode").attr('nodeId', nodeid).text(name);
+    bindOutlineClicked(childNode);
+    childNode = $('<li />').append(childNode);
+    if (parentNode.find(" > ul").length != 0) {
+        parentNode.find(" > ul").append(childNode);
+    } else {
+        parentNode.append($('<ul />').append(childNode));
+    }
+    $('#outlineTree').treeview({add: $("#outlineTree")});
+    childNode.find(">a").click();
 }
 
 function insertChildTreeItem(parentItem, newTreeItem, nextSibling) {
@@ -229,23 +252,18 @@ function insertChildTreeItem(parentItem, newTreeItem, nextSibling) {
 // XH means that the func is actually called by the server over xmlhttp
 // item can be a dom node or a server node id
 function XHDelNode(item) {
-    var tree = document.getElementById('outlineTree');
-    if (!item) { var treeitem = currentOutlineItem(tree) }
-    else if (typeof(item) == 'string') { var treeitem = serverId2treeitem(item) }
-    else { var treeitem = item }
-    var parentItem = treeitem.parentNode.parentNode
-    // Select the parent node
-    if (parentItem.tagName == 'treeitem') { 
-        tree.view.selection.select(tree.view.getIndexOfItem(parentItem))
+    var currentNode = $('.curNode').parent();
+    /*if (currentNode.is('.last')){
+        currentNode.prev().addClass('last');
+    }*/
+    // parent ul
+    var parentNode = currentNode.parent();
+    currentNode.remove();
+    parentNode.parent().find(" > a").click();
+    if (parentNode.find(" > li").length == 0) {
+        parentNode.remove();
     }
-    // Remove our node
-    var parent = treeitem.parentNode
-    parent.removeChild(treeitem)
-    // If we dont have any siblings, make our parent be not a container
-    if (parent.childNodes.length == 0) {
-        parentItem.setAttribute('container', 'false')
-        parentItem.removeChild(parent) // Remove the treechildren node
-    }
+    $("#outlineTree").treeview({add : $("#outlineTree")});
 }
 
 // Renames the node associated with 'treeitem'
@@ -254,24 +272,24 @@ function XHDelNode(item) {
 // titleFull is stored in the treecell's ID
 // If 'treeitem' is not passed, uses currently selected node
 function XHRenNode(titleShort, titleLong, titleFull, id) { 
-    if (!id) {
-        var treeitem = currentOutlineItem()
-    } else {
-        var treeitem = serverId2treeitem(id)
-    }
-    treeitem.getElementsByTagName('treecell')[0].setAttribute('label', titleShort);
-    treeitem.getElementsByTagName('treecell')[0].setAttribute('name', titleFull);
-    // Update the authoring page iframe
-    var titleElement = top.frames[0].document.getElementById('nodeTitle');
+    $('.outlineNode[nodeId=' + id + ']').text(titleLong)
+    var titleElement = $("#authoringIFrame1").contents().find('#nodeTitle');
     // Sometimes when promoting/demoting nodes
     // the title element isn't there/renedered for some reason
     // Looping doesn't fix that, so we just tell firefox
     // to reload the page
     if (titleElement) {
-        titleElement.firstChild.nodeValue = titleLong;
+        titleElement.text(titleLong);
     } else {
         top.frames[0].src = top.frames[0].src;
     }
+}
+
+function renameNode() {
+    var oldLabel = $(".curNode").text();
+    jPrompt(RENAME_+oldLabel+"\n"+ENTER_THE_NEW_NAME, oldLabel, RENAME_, function(name) {
+        nevow_clientToServerEvent('renameNode', this, '', currentOutlineId(), name);
+        });
 }
 
 // Moves a node in the tree
@@ -301,24 +319,54 @@ function XHMoveNode(id, parentId, nextSiblingId) {
     var tree = document.getElementById('outlineTree')
     tree.view.selection.select(tree.view.getIndexOfItem(node))
 }
-    
 
-// Asks the user for a new name for the currently selected node
-function askNodeName() {
-    var treeitem = currentOutlineItem()
-    var oldLabel = treeitem.getElementsByTagName('treecell')[0].getAttribute('name')
-    var name = prompt(RENAME_+oldLabel+'"\n'+ENTER_THE_NEW_NAME, oldLabel);
-    return name
+function getCurrentNode() {
+    return $(".curNode").parent();
 }
+
+//Move node up
+function XHMoveNodeUp() {
+    var curNode = getCurrentNode()
+    curNode.prev().before(curNode);
+}
+
+//Move node down
+function XHMoveNodeDown() {
+    var curNode = getCurrentNode()
+    curNode.next().after
+}
+
+//Promote node
+function XHPromoteNode() {
+    var curNode = getCurrentNode();
+    curNode.parent().parent().after(curNode);
+}
+
+function XHDemoteNode() {
+    var curNode = getCurrentNode();
+    var sibling = curNode.prev();
+    if (sibling.length != 0) {
+        var siblingUl = sibling.find(" > ul");
+        if (siblingUl.length == 0) {
+            siblingUl = $('<ul />');
+            sibling.append(siblingUl);
+        }
+        siblingUl.append(curNode);
+    }
+}
+    
+    
 
 function delTreeItem() { submitLink('deleteNode', currentOutlineId(), 1) }
 
-// This is called when a different tree node is selected
-function outlineClick(nodeId) {
-    if (clickon) {
-        submitLink('changeNode', nodeId, 0);
+//bind server messages and class changing to the outline links
+function bindOutlineClicked(link) {
+    $(link).click(function() {
+        $(".curNode").removeClass("curNode");
+        $(this).addClass("curNode");
+        submitLink('changeNode', $(this).attr("nodeId"), 0);
         nevow_clientToServerEvent('outlineClicked', self);
-    }
+        });
 }
 
 function setDocumentTitle(title) {
@@ -380,6 +428,7 @@ function tabNew() {
 }
 
 function outlineControll(action) {
+    disableButtons(true);
     nevow_clientToServerEvent('outlineControll', this, "", action, currentOutlineId());
 }
 

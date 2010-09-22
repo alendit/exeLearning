@@ -227,7 +227,6 @@ class AuthoringPage(RenderableResource):
         html += u'</head>\n'
         return html
 
-
     def __addBlocks(self, node):
         """
         Add All the blocks for the currently selected node

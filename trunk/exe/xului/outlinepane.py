@@ -41,8 +41,7 @@ class OutlinePane(Renderable):
         Get current package
         """
         log.debug("process")
-        print request.args
-        
+
         if "action" in request.args:
             nodeId = request.args["object"][0]
             package = self.package
@@ -81,31 +80,28 @@ class OutlinePane(Renderable):
         if node is not None:
             self.package.currentNode = newNode = node.createChild()
             log.debug("XHAddChildTreeItem %s %s" % (newNode.id, newNode.title))
-            client.call('XHAddChildTreeItem', newNode.id, parentNodeId, newNode.title)
+            client.call('XHAddChildTreeItem', newNode.id, newNode.title)
         else:
             client.call('enableButtons')
 
 
-    def handleDelNode(self, client, confirm, nodeId):
+    def handleDelNode(self, client, nodeId):
         """Called from xmlhttp. 
         'confirm' is a string. It is 'false' if the user or the gui has
         cancelled the deletion 'nodeId' is the nodeId
         """
         log.debug("handleDelNode nodeId=" + nodeId)
-        if confirm == 'true':
-            node = self.package.findNode(nodeId)
-            if node is not None and node is not self.package.root:
-                # Actually remove the elements in the dom
-                client.call('XHDelNode', nodeId)
-                # Update our server version of the package
-                if (node.isAncestorOf(self.package.currentNode) or 
-                    node is self.package.currentNode):
-                    self.package.currentNode = node.parent
-                node.delete()
-            else:
-                log.error("deleteNode cannot locate " + nodeId)
-                client.call('enableButtons')
+        node = self.package.findNode(nodeId)
+        if node is not None and node is not self.package.root:
+            # Actually remove the elements in the dom
+            client.call('XHDelNode', nodeId)
+            # Update our server version of the package
+            if (node.isAncestorOf(self.package.currentNode) or 
+                node is self.package.currentNode):
+                self.package.currentNode = node.parent
+            node.delete()
         else:
+            log.error("deleteNode cannot locate " + nodeId)
             client.call('enableButtons')
 
 
@@ -123,25 +119,27 @@ class OutlinePane(Renderable):
         node.RenamedNodePath()
 
         params = [s.replace('"', '\\"') for s in 
-                  [node.titleShort, node.titleLong, node.title]]
-        command = u'XHRenNode("%s", "%s", "%s")' % tuple(params)
+                  [node.titleShort, node.titleLong, node.title, nodeId]]
+        command = u'XHRenNode("%s", "%s", "%s", "%s")' % tuple(params)
         log.debug(command)
         client.sendScript(command.encode('utf-8'))
         client.call('enableButtons')
     
 
-    def handleDblNode(self, client):
+    def handleDblNode(self, client, nodeId):
         """
         Dublicates a tree element
         """
 
-        root = self.package.currentNode.parent
+        root = self.package.findNode(nodeId).parent
         if root is None:
-            client.alert(_("Can't dublicate root element"))
+            client.sendScript('jAlert("Can not dublicate root element");')
         else:
             newPackage = self.package.extractNode()
             newNode = newPackage.root.copyToPackage(self.package, root)
             newNode.RenamedNodePath(isMerge=True)
+            command = u'XHDblNode("%s, %s");' % (nodeId, root.id)
+            log.debug(command)
             client.sendScript(u'top.location = "/%s"' % \
                           self.package.name)
 
@@ -221,39 +219,35 @@ class OutlinePane(Renderable):
         """Promotes a node"""
         node = self.package.findNode(sourceNodeId)
         if node.promote():
-            self._doJsMove(client, node)
+            client.call("XHPromoteNode")
             self._doJsRename(client, node)
-        else:
-            client.call('enableButtons')
+        client.call('enableButtons')
 
     def handleDemote(self, client, sourceNodeId):
         """Demotes a node"""
         node = self.package.findNode(sourceNodeId)
         if node.demote():
-            self._doJsMove(client, node)
+            client.call("XHDemoteNode")
             self._doJsRename(client, node)
-        else:
-            client.call('enableButtons')
+        client.call('enableButtons')
 
 
     def handleUp(self, client, sourceNodeId):
         """Moves a node up its list of siblings"""
         node = self.package.findNode(sourceNodeId)
         if node.up():
-            self._doJsMove(client, node)
+            client.call("XHMoveNodeUp")
             self._doJsRename(client, node)
-        else:
-            client.call('enableButtons')
+        client.call('enableButtons')
 
 
     def handleDown(self, client, sourceNodeId):
         """Moves a node down its list of siblings"""
         node = self.package.findNode(sourceNodeId)
         if node.down():
-            self._doJsMove(client, node)
+            self.call("XHMoveNodeDown")
             self._doJsRename(client, node)
-        else:
-            client.call('enableButtons')
+        client.call('enableButtons')
 
 
     def render(self, ctx, data):
@@ -264,13 +258,13 @@ class OutlinePane(Renderable):
         """
         # Now do the rendering
         log.debug("render")
-        html = u'<!-- Start outlinePane -->'
+        html = u'<!-- Start outlinePane -->\n'
         html += u'<div id="outlinePane">\n'
         html += u'  <ul id="outlineTree">\n'
         html += self.__renderNode(self.package.root, 4)
-        html += u'  </ul>'
-        html += u'</div>'
-        html += u'<!-- Ende outlinePane -->'
+        html += u'  </ul>\n'
+        html += u'</div>\n'
+        html += u'<!-- End outlinePane -->\n'
         return stan.xml(html)
 
     def encode2nicexml(self, string):
@@ -295,7 +289,9 @@ class OutlinePane(Renderable):
         """
         #TODO escape names 
         html = (u'<li>',
-                u'  <a href="javascript:outlineClick(\'%s\');">%s</a>' %\
+                u'  <a class="%s"' % ("curNode outlineNode" if node == \
+                    self.package.currentNode else "outlineNode") +\
+                    'nodeId="%s">%s</a>' %\
                         (node.id, node.titleLong))
         if node.children:
             childHtml = u''
@@ -305,7 +301,7 @@ class OutlinePane(Renderable):
             html += (u'<ul>',
                      childHtml,
                      u'</ul>')
-            html += (u'</li>',)
-        return '\n'.join(((' ' * indent) + line for line in html))
+        html += (u'</li>',)
+        return u'\n'.join(((' ' * indent) + line for line in html)) + "\n"
     
 # ===========================================================================

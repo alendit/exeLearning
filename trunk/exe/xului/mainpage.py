@@ -149,6 +149,7 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleServeDocument,    'serveDocument')
         setUpHandler(self.handleStopServing,      'stopServing')
         setUpHandler(self.handleSetEditorsWidth,  'setEditorsWidth')
+        setUpHandler(self.outlinePane.handleRenNode, 'renameNode')
         setUpHandler(self.passHandle,       'outlineControll')
 
 
@@ -156,6 +157,12 @@ class MainPage(RenderableLivePage):
         # Render the js 
         handleId = "'", client.handleId, "'" 
 
+
+    def render_POST(self, request=None):
+        print "Rendering GET"
+        if "ajax" in request.args:
+            print "NYORO~N"
+            return "nagato-chi"
 
     def render_mainMenu(self, ctx, data):
         """Mac menubars are not shown
