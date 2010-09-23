@@ -158,12 +158,6 @@ class MainPage(RenderableLivePage):
         handleId = "'", client.handleId, "'" 
 
 
-    def render_POST(self, request=None):
-        print "Rendering GET"
-        if "ajax" in request.args:
-            print "NYORO~N"
-            return "nagato-chi"
-
     def render_mainMenu(self, ctx, data):
         """Mac menubars are not shown
         so make it a toolbar"""

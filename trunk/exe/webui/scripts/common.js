@@ -739,8 +739,16 @@ function submitLink(action, object, changed)
 
 }
 
+//returns content form
 function getContentForm() {
-    return $("#authoringIFrame1").contents().find("#contentForm");
+    var contentForm = $("#contentForm");
+    if (contentForm.length == 0) {
+        //we are in main window - return contentForm from IFrame
+        return $("#authoringIFrame1").contents().find("#contentForm");
+    } else {
+        //we are in IFrame
+        return contentForm;
+    }
 }
 
 function changeSubmitArgument(name, value) {

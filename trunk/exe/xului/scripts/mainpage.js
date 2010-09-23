@@ -155,7 +155,8 @@ var outlineButtons = new Array('btnAdd', 'btnDel', 'btnRename', 'btnPromote', 'b
 
 function disableButtons(state) {
     if (state){
-        $(".bigButton, .smallButton").button("disable");
+        //$(".bigButton, .smallButton").button("disable");
+        $.blockUI();
     } else {
         enableButtons();
     }
@@ -168,7 +169,8 @@ function addStyle() {
 }
 
 function enableButtons() {
-    $(".bigButton, .smallButton").button('enable');
+    //$(".bigButton, .smallButton").button('enable');
+    $.unblockUI();
 }
 
 // Confirms the deletion of the currently selected node.
@@ -265,7 +267,7 @@ function XHDelNode(item) {
 // titleLong is the long version of the title for authoringPage
 // titleFull is stored in the treecell's ID
 // If 'treeitem' is not passed, uses currently selected node
-function XHRenNode(titleShort, titleLong, titleFull, id) { 
+function XHRenNode(titleLong, id) { 
     $('.outlineNode[nodeId=' + id + ']').text(titleLong)
     var titleElement = $("#authoringIFrame1").contents().find('#nodeTitle');
     // Sometimes when promoting/demoting nodes
@@ -282,6 +284,7 @@ function XHRenNode(titleShort, titleLong, titleFull, id) {
 function renameNode() {
     var oldLabel = $(".curNode").text();
     jPrompt(RENAME_+oldLabel+"\n"+ENTER_THE_NEW_NAME, oldLabel, RENAME_, function(name) {
+        disableButtons(true);
         nevow_clientToServerEvent('renameNode', this, '', currentOutlineId(), name);
         });
 }
@@ -719,12 +722,8 @@ function XHAddIdeviceListItem(ideviceId, ideviceTitle) {
     list.appendChild(newListItem)
 }
 
-function AddIdeviceBySelection() {
-    var tree = document.getElementById('iDeviceTree');
-    var treeitem = getOutlineItem(tree, tree.currentIndex); 
-    if (treeitem.id != "-1") {
-    submitLink('AddIdevice', treeitem.id, 1);
-    }
+function addIdevice(ideviceId) {
+    submitLink('AddIdevice', ideviceId, 1);
 }
 
 

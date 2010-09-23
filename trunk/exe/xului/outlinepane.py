@@ -116,10 +116,12 @@ class OutlinePane(Renderable):
         node.RenamedNodePath()
 
         params = [s.replace('"', '\\"') for s in 
-                  [node.titleShort, node.titleLong, node.title, nodeId]]
-        command = u'XHRenNode("%s", "%s", "%s", "%s")' % tuple(params)
+                  [node.titleLong, nodeId]]
+        command = u'XHRenNode("%s", "%s")' % tuple(params)
         log.debug(command)
         client.sendScript(command.encode('utf-8'))
+        #have to call it manually, because it's not part of outlineControll
+        client.call("enableButtons")
     
 
     def handleDblNode(self, client, nodeId):

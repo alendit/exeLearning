@@ -19,8 +19,7 @@ textarea { font-family: arial, verdana, helvetica, sans-serif;
 
 div#sidebar {
     float: left;
-    border: 1px solid;
-    width: auto;
+    width: 300px;
 }
 
 .outlineNode:visited {
@@ -42,9 +41,25 @@ iframe {
     height: 600px;
 }
 
-div#outlinePane {
+#wrap {
+    width: 1024px;
+}
+
+#main {
+    width: 700px;
+    float: right;
+}
+
+#outlinePane {
     height: 300px;
     overflow: auto;
+    border: 1px solid;
+}
+
+#idevicePane {
+    height: 300px;
+    overflow: auto;
+    border: 1px solid;
 }
 
 

@@ -91,6 +91,7 @@ class IdevicePane(Renderable):
         # Now do the rendering
         log.debug("Render")
 
+
         ## A dict with idevices groups
         groups = {Idevice.Didactics : u"",
                   Idevice.Content : u"",
@@ -121,25 +122,21 @@ class IdevicePane(Renderable):
             groupkeys += [Idevice.Unknown]
             groups[Idevice.Unknown] =  unknown
         html  = u"<!-- IDevice Pane Start -->\n"
-        html += u'<tree id="iDeviceTree" hidecolumnpicker="true"'
-        html += u' context="iDevice Menu" flex="1"'
-        html += u' ondblclick="AddIdeviceBySelection()">\n'
-        html += u'<treecols id="-1">\n'
-        html += u'  <treecol primary="true" style="font-weight: bold" ' + \
-                 'label="%s" flex="1" />\n' % _("IDevices")
-        html += u'</treecols>\n'
-        html += u'<treechildren>\n'
+        html += u'<div id="idevicePane">\n'
+        html += u' <ul id="ideviceTree"\n'
+        html += u'   <li><span>%s</span>' % _("IDevices")
+        html += u'   <ul>'
         for group in groupkeys:
-            html += u'  <treeitem id="-1" container="true" open="true">'
-            html += u'    <treerow>\n'
-            html += u'    <treecell label="%s"/>\n' % _(group)
-            html += u'     </treerow>\n'
-            html += u'     <treechildren>\n'
+            html += u'  <li id="iDeviceGroup%s">' % group
+            html += u'    <span class="groupName">%s</span>\n' % _(group)
+            html += u'    <ul>\n'
             html += groups[group]
-            html += u"      </treechildren>\n"
-            html += u"    </treeitem>\n"
-        html += u"  </treechildren>"
-        html += u"</tree>\n"
+            html += u'    </ul>\n'
+            html += u'  </li>'
+        html += u"  </li>"
+        html += u"  </ul>"
+        html += u" </ul>\n"
+        html += u"</div>\n"
         html += u"<!-- IDevice Pane End -->\n"
         return stan.xml(html.encode('utf8'))
 
@@ -151,11 +148,10 @@ class IdevicePane(Renderable):
         log.debug("Render "+prototype.title)
         log.debug("_title "+prototype._title)
         log.debug("of type "+repr(type(prototype.title)))
-        xul  = u'  <treeitem id="%s"><treerow>\n' % prototype.id
-        xul += u"<treecell name=\"" + prototype.id + "\" label=\""
-        xul += prototype.title + u"\"/>\n"
-        xul += '</treerow></treeitem>\n'
-        return xul
+        html = u'<li>\n'
+        html += u'  <a class="ideviceItem" ideviceid="%s">%s</a>' % (prototype.id, _(prototype.title))
+        html += u'</li>\n'
+        return html
         
     
 # ===========================================================================
