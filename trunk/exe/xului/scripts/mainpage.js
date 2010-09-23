@@ -56,12 +56,6 @@ var haveLoaded = false
 // Set to false to stop selects doing page reloads
 var clickon = true 
 
-//Onload handlers from jQuery
-jQuery(document).ready(function() {
-        $(".outlineNode").each(function(index) {
-            bindOutlineClicked(this);
-            });
-        });
 // Takes a server tree node id eg. '1' and returns a xul treeitem elemtent
 // reference
 function serverId2treeitem(serverId) {
@@ -366,8 +360,18 @@ function bindOutlineClicked(link) {
         $(this).addClass("curNode");
         submitLink('changeNode', $(this).attr("nodeId"), 0);
         nevow_clientToServerEvent('outlineClicked', self);
-        });
+    });
 }
+
+//bind click events to outline buttons
+function bindButtonClicked(button) {
+    $(button).click(function() {
+        if (!($(this).button("option", "disabled"))) {
+            outlineControll($(this).attr("action"));
+        }
+    });
+}
+
 
 function setDocumentTitle(title) {
     document.title = title + " : " + currentOutlineLabel();

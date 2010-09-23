@@ -33,7 +33,14 @@
                     outlineControll("DelNode");
                     });
                 $("#btnRemove").confirm({msg: "Are you sure you want to delete this node?"});
-                
+                //bind actions to outline
+                $(".outlineNode").each(function(index) {
+                bindOutlineClicked(this);
+                });
+                //bind action to buttons
+                $(".bigButton, .smallButton").each(function(index) {
+                    bindButtonClicked(this);
+                });
             });
         </script>
     </head>
@@ -282,16 +289,16 @@
         
         <div id="sidebar">
             <div id="outlinecontroll">
-                <a id="btnAdd" class="bigButton" href="javascript:outlineControll('AddChild');">Add</a>
-                <a id="btnRemove" class="bigButton" href="#">Remove</a>
-                <a id="btnRename" class="bigButton" href="javascript:renameNode();">Rename</a>
-                <a id="btnDuplicate" class="bigButton" href="javascript:outlineControll('DblNode');">Duplicate</a>
+                <a id="btnAdd" class="bigButton" action="AddChild">Add</a>
+                <a id="btnRemove" class="bigButton">Remove</a>
+                <a id="btnRename" class="bigButton" action="renameNode">Rename</a>
+                <a id="btnDuplicate" class="bigButton" action="DblNode">Duplicate</a>
             </div>
             <div id="outlinemove">
-                <a id="btnPromote" class="fg-button smallButton" href="javascript:outlineControll('Promote');">Promote</a>
-                <a id="btnDemote" class="fg-button smallButton" href="javascript:outlineControll('Demote');">Demote</a>
-                <a id="btnUp" class="fg-button smallButton" href="javascript:outlineControll('Up');">Up</a>
-                <a id="btnDown" class="fg-button smallButton" href="javascript:outlineControll('Down');">Down</a>
+                <a id="btnPromote" class="fg-button smallButton" action="Promote">Promote</a>
+                <a id="btnDemote" class="fg-button smallButton" action="Demote">Demote</a>
+                <a id="btnUp" class="fg-button smallButton" action="Up">Up</a>
+                <a id="btnDown" class="fg-button smallButton" action="Down">Down</a>
             </div>
             <span n:render="outlinePane"/>
             <div id="idevicepane">

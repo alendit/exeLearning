@@ -181,6 +181,7 @@ class MainPage(RenderableLivePage):
     def passHandle(self, client, name, outlineId):
         attr = getattr(self.outlinePane, 'handle%s' % name)
         attr(client, outlineId)
+        client.call("enableButtons")
 
 
     def render_recentProjects(self, ctx, data):

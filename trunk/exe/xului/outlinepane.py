@@ -81,8 +81,6 @@ class OutlinePane(Renderable):
             self.package.currentNode = newNode = node.createChild()
             log.debug("XHAddChildTreeItem %s %s" % (newNode.id, newNode.title))
             client.call('XHAddChildTreeItem', newNode.id, newNode.title)
-        else:
-            client.call('enableButtons')
 
 
     def handleDelNode(self, client, nodeId):
@@ -102,7 +100,6 @@ class OutlinePane(Renderable):
             node.delete()
         else:
             log.error("deleteNode cannot locate " + nodeId)
-            client.call('enableButtons')
 
 
     def handleRenNode(self, client, nodeId, newName):
@@ -123,7 +120,6 @@ class OutlinePane(Renderable):
         command = u'XHRenNode("%s", "%s", "%s", "%s")' % tuple(params)
         log.debug(command)
         client.sendScript(command.encode('utf-8'))
-        client.call('enableButtons')
     
 
     def handleDblNode(self, client, nodeId):
@@ -221,7 +217,6 @@ class OutlinePane(Renderable):
         if node.promote():
             client.call("XHPromoteNode")
             self._doJsRename(client, node)
-        client.call('enableButtons')
 
     def handleDemote(self, client, sourceNodeId):
         """Demotes a node"""
@@ -229,7 +224,6 @@ class OutlinePane(Renderable):
         if node.demote():
             client.call("XHDemoteNode")
             self._doJsRename(client, node)
-        client.call('enableButtons')
 
 
     def handleUp(self, client, sourceNodeId):
@@ -238,7 +232,6 @@ class OutlinePane(Renderable):
         if node.up():
             client.call("XHMoveNodeUp")
             self._doJsRename(client, node)
-        client.call('enableButtons')
 
 
     def handleDown(self, client, sourceNodeId):
@@ -247,7 +240,6 @@ class OutlinePane(Renderable):
         if node.down():
             self.call("XHMoveNodeDown")
             self._doJsRename(client, node)
-        client.call('enableButtons')
 
 
     def render(self, ctx, data):
