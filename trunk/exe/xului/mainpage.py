@@ -143,7 +143,7 @@ class MainPage(RenderableLivePage):
         setUpHandler(self.handleImportPDF,           'importPDF')
         setUpHandler(self.handleNewTab,           'openNewTab')
         setUpHandler(self.handleImportStyle,      'importStyle')
-        setUpHandler(self.handleOutlineClick,     'outlineClicked')
+        setUpHandler(self.handleUpdateTitle,     'updateTitle')
         setUpHandler(self.exportWebSite2,         'exportWebSite2')
         setUpHandler(self.handleQuickExport,      'quickExport')
         setUpHandler(self.handleServeDocument,    'serveDocument')
@@ -182,17 +182,19 @@ class MainPage(RenderableLivePage):
         """
         Fills in the list of recent projects menu
         """
-        result = ['<menupopup id="recent-projects-popup">\n']
+        result = ['<ul id="recentProjects">']
         for num, path in enumerate(self.config.recentProjects):
-            result.append('  <menuitem label="%(num)s. %(path)s"'
-                          ' accesskey="%(num)s"'
-                          ' oncommand="fileOpenRecent(\'%(num)s\')"/>' %
-                          {'num': num + 1, 'path': escape(path)})
-        result.append('  <menuseparator/>')
-        result.append('  <menuitem label="%s"'
-                      ' oncommand="fileRecentClear()"/>' %
-                      _('Clear Recent Projects List'))
-        result.append('</menupopup>')
+            result.append('  <li id="proj%s">'
+                          '   <a href="' + \
+                          'javascript:fileOpenRecent(\'%(num)s\')";>%(path)s'
+                          '   </a>'
+                          '  </li>' % {'num': num + 1, 'path': escape(path)})
+        result.append('</li>')
+        result.append('<li id="%(label)s"'
+                      '  <a href="javascript:fileRecentClear()"/>' +\
+                      '%(label)s</a>' % 
+                      {"label" : _('Clear Recent Projects List')})
+        result.append('</ul>')
         return stan.xml('\n'.join(result))
 
     def render_quickExportMenu(self, ctx, data):
@@ -281,16 +283,6 @@ class MainPage(RenderableLivePage):
                 not self.servController.running:
             path = os.path.join(G.application.lastExportPath, self.package.name)
             self.servController.startServing(path)
-        client.sendScript('document.getElementById("serving-elem").' +\
-                          'setAttribute("label", "Serving")')
-        #client.sendScript('document.getElementById("serving-elem").' +\
-        #                  'oncommand = stopServing')
-        client.sendScript('document.getElementById("quick-export").' +\
-                          'setAttribute("disabled", "true");')
-        client.sendScript('alert("Serving exported Document to port ' + \
-                          str(self.servController.PORT) + '");')
-        client.sendScript(u'top.location = "/%s"' % \
-                          self.package.name)
 
 
     def handleStopServing(self, client):
@@ -300,10 +292,6 @@ class MainPage(RenderableLivePage):
 
         if self.servController.running:
             self.servController.stopServing()
-            client.sendScript('document.getElementById("serving-elem").' +\
-                          'setAttribute("label", "Start Serving")')
-            client.sendScript('document.getElementById("serving-elem").' +\
-                          'oncommand = serveDocument')
  
 
 
@@ -340,11 +328,12 @@ class MainPage(RenderableLivePage):
 
         
 
-    def handleOutlineClick(self, client):
+    def handleUpdateTitle(self, client):
         """
         Sets documents title to package name + page
         """
 
+        log.debug("Setting title %s" % self.package.name)
         client.sendScript(u'setDocumentTitle("%s")' % self.package.name) 
         
 

@@ -52,22 +52,24 @@ class StyleMenu(Renderable):
         """
         log.debug("render")
         # Render the start tags
-        xul  = u"<!-- Styles Pane Start -->\n"
-        xul += u"<menupopup>\n"
+        html  = u"<!-- Styles Pane Start -->\n"
+        html += u'<ul id="stylesMenu"'
 
         # Render each style individually
         for style in self.config.styles:
-            name = style[style.find("/") + 1:]
-            xul += u"  <menuitem label=\"" + name.capitalize() + "\" "
-            xul += u"oncommand=\"submitLink('ChangeStyle', '" + style +\
-                    "', 1);\"/>\n"
+            name = style[style.find("/") + 1:].capitalize()
+            html += u'  <li id="style%s">\n' % name
+            html += u'      <a href="javascript:submitLink(\'ChangeStyle\''+\
+                    ',\'' + style + '\', 1);">%s</a>\n' % name
+            html += u'  </li>\n'
 
         # Render the end tags
-        xul += u"<menuseparator/>"
-        xul += u"<menuitem label=\"Add Style\" oncommand=\"addStyle()\"/>"
-        xul += u"</menupopup>\n"
-        xul += u"<!-- Styles Pane End -->\n"
-        return stan.xml(xul)
+        html += u'  <li id="Add Style">\n'
+        html += u'   <a href="javascript:addStyle()">%s</a>\n' % _("Add Style")
+        html += u'  </li>\n'
+        html += u'</ul>'
+        html += u"<!-- Styles Pane End -->\n"
+        return stan.xml(html)
         
     
 # ===========================================================================

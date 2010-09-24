@@ -50,6 +50,7 @@
                         addIdevice($(this).attr("ideviceId"));
                         });
                     });
+                updateTitle();
             });
         </script>
     </head>
@@ -83,9 +84,8 @@
                     <a href="#" id="recent-projects-menu">
                         Recent Projects...
                     </a>
-                    <ul label="Recent Projects... ul">
-                        
-                    </ul>
+                    <!-- Recent Projects will be rendered here -->
+                    <span n:render="recentProjects" />
                 </li>
                 <li>
                     <a href="javascript:fileSave()">
@@ -245,9 +245,7 @@
             <a href="#" id="styles-menu">
                 Styles
             </a>
-            <ul label="Styles ul">
-                
-            </ul>
+            <span n:render="stylePane" />
         </li>
         <li>
             <a href="#" id="help-menu">

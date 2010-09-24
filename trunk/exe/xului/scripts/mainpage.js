@@ -260,6 +260,7 @@ function XHDelNode(item) {
         parentNode.remove();
     }
     $("#outlineTree").treeview({add : $("#outlineTree")});
+    updateTitle();
 }
 
 // Renames the node associated with 'treeitem'
@@ -279,6 +280,7 @@ function XHRenNode(titleLong, id) {
     } else {
         top.frames[0].src = top.frames[0].src;
     }
+    updateTitle();
 }
 
 function renameNode() {
@@ -362,7 +364,7 @@ function bindOutlineClicked(link) {
         $(".curNode").removeClass("curNode");
         $(this).addClass("curNode");
         submitLink('changeNode', $(this).attr("nodeId"), 0);
-        nevow_clientToServerEvent('outlineClicked', self);
+        updateTitle();
     });
 }
 
@@ -377,7 +379,7 @@ function bindButtonClicked(button) {
 
 
 function setDocumentTitle(title) {
-    document.title = title + " : " + currentOutlineLabel();
+    document.title = title + " : " + $(".curNode").text();
 }
 
 // Call this to ask the server if the package is dirty
@@ -720,12 +722,16 @@ function XHAddIdeviceListItem(ideviceId, ideviceTitle) {
                              "submitLink('AddIdevice', "+ideviceId+", 1);")
     newListItem.setAttribute("label", unescape(ideviceTitle))
     list.appendChild(newListItem)
+    updateTitle();
 }
 
 function addIdevice(ideviceId) {
     submitLink('AddIdevice', ideviceId, 1);
 }
 
+function updateTitle() {
+    nevow_clientToServerEvent("updateTitle", this);
+}
 
 
 // This function takes care of all
