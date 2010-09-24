@@ -50,6 +50,7 @@
                         addIdevice($(this).attr("ideviceId"));
                         });
                     });
+                $("#main").tabs();
                 updateTitle();
             });
         </script>
@@ -314,7 +315,14 @@
 
         </div>
         <div id="main">
-            <iframe id="authoringIFrame1" ></iframe>
+            <ul>
+                <li><a href="#authoring">Authoring</a></li>
+                <li><a href="#propertiesPane">Properties</a></li>
+            </ul>
+            <div id="authoring">
+                <iframe id="authoringIFrame1" ></iframe>
+            </div>
+            <div id="propertiesPane">Package Properties</div>
         </div>
         </div>
     </body>
