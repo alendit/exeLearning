@@ -1,0 +1,146 @@
+<!--
+All XUL fields work by AJAX magic.
+All the property page xul templates are handled by AJAX code in xului/propertiespage.py
+
+This code has 3 purposes:
+1. Translates labels and descriptions as they are shown
+2. Fills in form fields from attributes of engine properties
+3. Receives the data when the user submits
+
+===============================
+Quick HowTo add a normal string field:
+===============================
+1. Make a normal label and a textbox like this:
+<label id="ppmyattrib" value="My Label"/>
+<textbox id="pp_myAttrib" onchange="this.style.color='red';" />
+
+Rules:
+1. Label must have a unique id. It must be unique overall the properties pages
+   as they are all imported into the same XUL document. This is so the system
+   can translate the label.
+2. Any field with 1 underscore in the name will be considered a data field.
+3. The bit before the underscore is a 2 character id for the engine object:
+
+    # pp means Project Properties (package)
+    # dc means Dublin Core (package.dublinCore)
+    # eo means Export Options (package.exportOptions)
+
+4. The bit after the underscore is the name of the attribute
+
+eg. pp_title => package.title
+
+5. ATM only string and boolean attributes are supported
+6. The 'onchange' handler is just a visual indicator to the user that his change
+   is yet to be sent to the server. After the server recieves the changes it
+   changes the color back to black automatically.
+
+===============================
+Form Howto:
+===============================
+
+Fields are automatically loaded with data from the server when shown.
+There is a java script function called 'submitForm' which will submit all the
+fields inside a given element to the server.
+
+Usually its called with "this.parentNode.parentNode" as the parameter because 'this' is
+the submit button, and parentNode.parentNode is the container of all the form elements
+that we want to submit.
+
+You could call this function in the onchange handler of a single element passing
+this.parentNode to do auto updates of just this field (and any siblings) if you want.
+-->
+<script type="text/javascript">
+    $(document).ready(function() {
+        fillInForms();
+        $("#loadImage, #pp_background").click(function(e) {
+            addImage($("#pp_backgroundImg"), $(this).parent().parent());
+        });
+    });
+</script>
+
+<div id="projectProperties">
+    <div>
+        <h2 id="pptitle">Project Properties</h2>
+        <div>
+            <label id="ppProjectTitle" title="The project's title.">Project Title:</label>
+            <input type="text" id="pp_title" />
+        </div>
+        <div>
+            <label id="ppBackgroundImg" title="Background image for a header (an image 100px high is recommended).">Header Background:</label>
+        </div>
+        <div>
+            <img id="pp_backgroundImg" src="" />
+        </div>
+        <div>
+            <button id="loadImage">Load Image</button> 
+            <button id="showImage" onclick="window.location.reload(true);">Show Image</button> 
+            <button id="clearImage" onclick="clearImage('pp_backgroundImg',this.parentNode.parentNode);">Clear
+                Image</button> 
+            <label id="dcTile">Tile background image?</label>
+            <input type="checkbox" id="pp_backgroundImgTile" /> 
+        </div>
+        <div>
+            <label id="ppAuthor" title="Primary author of the resource.">Author:</label>
+            <input type="text" id="pp_author" />
+        </div>
+        <div>
+            <label id="ppAuthorsEmail" title="Primary author's email.">Author's Email:</label>
+            <input type="text" id="pp_email" />
+        </div>
+        <div>
+            <label id="ppLicense" title="Select a license.">License:</label>
+            <select id="pp_license" title="Select License"> 
+                <option id="ppcc31" value="Creative Commons Attribution 3.0 License">Creative Commons Attribution 3.0 License</option>
+                <option id="ppcc32" value="Creative Commons Attribution Share Alike 3.0 License">Creative Commons Attribution Share Alike 3.0 License</option>
+                <option id="ppcc33" value="Creative Commons Attribution No Derivatives 3.0 License">Creative Commons Attribution No Derivatives 3.0 License</option>
+                <option id="ppcc34" value="Creative Commons Attribution Non-commercial 3.0 License">Creative Commons Attribution Non-commercial 3.0 License</option>
+                <option id="ppcc35" value="Creative Commons Attribution Non-commercial Share Alike 3.0 License">Creative Commons Attribution Non-commercial Share Alike 3.0 License</option>
+                <option id="ppcc36" value="Creative Commons Attribution Non-commercial No Derivatives 3.0 License">Creative Commons Attribution Non-commercial No Derivatives 3.0 License</option>
+                <option id="ppcca1" value="Creative Commons Attribution 2.5 License">Creative Commons Attribution 2.5 License</option>
+                <option id="ppcca2" value="Creative Commons Attribution-ShareAlike 2.5 License">Creative Commons Attribution-ShareAlike 2.5 License</option>
+                <option id="ppcca3" value="Creative Commons Attribution-NoDerivs 2.5 License">Creative Commons Attribution-NoDerivs 2.5 License</option>
+                <option id="ppcca4" value="Creative Commons Attribution-NonCommercial 2.5 License">Creative Commons Attribution-NonCommercial 2.5 License</option>
+                <option id="ppcca5" value="Creative Commons Attribution-NonCommercial-ShareAlike 2.5 License">Creative Commons Attribution-NonCommercial-ShareAlike 2.5 License</option>
+                <option id="ppcca6" value="Creative Commons Attribution-NonCommercial-NoDerivs 2.5 License">Creative Commons Attribution-NonCommercial-NoDerivs 2.5 License</option>
+                <option id="ppdn" value="Developing Nations 2.0">Developing Nations 2.0</option>
+            </select>
+        </div>
+        <div>
+            <label id="ppFooter" title="Web pages footer.">Footer:</label>
+            <textarea id="pp_footer" rows="4" cols="38" /> 
+        </div>
+        <div> 
+            <label id="ppFooterImg" title="Background image for a footer (an image 100px high is recommended).">Footer Background:</label>
+            <img id="pp_footerImg" src=""
+                         onclick="addImage('pp_footerImg',this.parentNode.parentNode);" />
+            <button id="loadImage" click="addImage('pp_footerImg',this.parentNode.parentNode);">Load Image</button>
+            <button id="showImage" onclick="window.location.reload(true);">Show Image</button>
+            <button id="clearImage" onclick="clearImage('pp_footerImg',this.parentNode.parentNode);">Clear Image</button>
+            <input type="checkbox" id="pp_footerImgTile" value="Tile footer image?" />
+        </div>
+        <div>
+            <label id="ppDescription" title="An account of the content of the resource.">Description:</label>
+                <textarea id="pp_description" rows="4" cols="38" /> 
+        </div>
+    </div>
+    <div>
+        <h2>Taxonomy</h2>
+        <div>
+            <label id="ppLevel1" title="Default name for level 1 nodes">Level 1:</label>
+            <input type="text" id="pp_level1" />
+        </div>
+        <div>
+            <label id="ppLevel2" title="Default name for level 2 nodes">Level 2:</label> 
+            <input type="text" id="pp_level2" />
+        </div>
+        <div>
+            <label id="ppLevel3" title="Default name for level 3 nodes">Level 3:</label>
+            <input type="text" id="pp_level3" />
+        </div>
+        <button id="ppBtnUpdateTree" onclick="submitForm(this.parentNode.parentNode,
+            'window.parent.location.reload(true);');" title="Submit changes and update the tree display">Update Tree</button>
+    </div>
+    <div>
+        <button id="ppBtnDone" onclick="submitForm(this.parentNode.parentNode);">Apply</button>
+    </div>
+</div>

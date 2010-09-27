@@ -1,0 +1,223 @@
+<div id="dublincore">
+    <h2 id="dcCaptionMetadata">Dublin Core Metadata</h2>
+    <div>
+        <label id="dcTitle" title="The name given to the resource.">Title:</label>
+        <input type="text" id="dc_title" size="40" />
+    </div>
+    <div>
+        <label id="dcCreator" title="An entity primarily responsible for making the content of the resource.">Creator:</label>
+          <input type="text" id="dc_creator" size="40" />
+    </div>
+    <div>
+        <label id="dcSubject" title="The topic of the content of the resource.">Subject:</label>
+        <input type="text" id="dc_subject" size="40" />
+        <img src="/images/info.png" onclick="setText('dc-subject');" style="cursor:help;"/>
+    </div>
+    <div>
+        <label id="dcDescription" title="An account of the content of the resource.">Description:</label>
+        <textarea id="dc_description" rows="4" cols="38" />
+    </div>
+    <div>
+        <label id="dcPublisher" title="An entity responsible for making the resource available.">Publisher:</label>
+          <input type="text" id="dc_publisher" size="40" />
+    </div>
+    <div>
+        <label id="dcContributors" title="An entity responsible for making contributions to the content of the resource.">Contributors:</label>
+        <textarea id="dc_contributors" rows="4" cols="38" />
+    </div>
+    <div>
+        <label id="dcDate" title="A date of an event in the lifecycle of the resource.">Date:</label> 
+        <input type="text" id="dc_date" size="40" />
+        <img src="/images/info.png" onclick="setText('dc-date');" style="cursor:help;"/>
+    </div>
+    <div>
+        <label id="dcType" title="The nature or genre of the content of the resource.">Type:</label>
+        <input type="text" id="dc_type" size="40" />
+        <img src="/images/info.png" onclick="setText('dc-type');" style="cursor:help;"/>
+    </div>
+    <div>
+        <label id="dcFormat" title="Select a Format.">Format:</label>
+        <select id="dc_format" title="Select Format">
+            <option id="dcmiXHTML" value="XHTML">XHTML</option>
+            <option id="dcmiSCORM" value="SCORM 1.2"/>SCORM 1.2<option>
+            <option id="dcmiIMS" value="IMS-CP"/>IMS Content Package 1.1.3</option>
+            <option id="dcmiWebSite" value="Web Site"/>Web Site</option>
+        </select>
+    </div>
+    <div>
+        <label id="dcIdentifier" title="An unambiguous reference to the resource within a given context.">Identifier:</label>
+        <input type="text" id="dc_identifier" size="40" />
+    </div>
+    <div>
+        <label id="dcSource" style="width:8em" title="A Reference to a resource from which the present resource is derived.">Source:</label>
+        <input type="text" id="dc_source" size="40" />
+    </div>
+    <div>
+        <label id="dcLanguage" style="width:8em" title="Select a language.""Select a language.">Language:</label>
+        <select id="dc_language"> 
+            <option id="dcmiab" value="ab">Abkhazian </option>
+            <option id="dcmiaa" value="aa">Afar </option>
+            <option id="dcmiaf" value="af">Afrikaans </option>
+            <option id="dcmisq" value="sq">Albanian </option>
+            <option id="dcmiam" value="am">Amharic </option>
+            <option id="dcmiar" value="ar">Arabic </option>
+            <option id="dcmihy" value="hy">Armenian </option>
+            <option id="dcmias" value="as">Assamese </option>
+            <option id="dcmiae" value="ae">Avestan </option>
+            <option id="dcmiay" value="ay">Aymara </option>
+            <option id="dcmiaz" value="az">Azerbaijani </option>
+            <option id="dcmiba" value="ba">Bashkir </option>
+            <option id="dcmieu" value="eu">Basque </option>
+            <option id="dcmibn" value="bn">Bengali; Bangla </option>
+            <option id="dcmibh" value="bh">Bihari </option>
+            <option id="dcmibi" value="bi">Bislama </option>
+            <option id="dcmibs" value="bs">Bosnian </option>
+            <option id="dcmibr" value="br">Breton </option>
+            <option id="dcmibe" value="be">Byelorussian; Belarusian </option>
+            <option id="dcmibg" value="bg">Bulgarian </option>
+            <option id="dcmimy" value="my">Burmese </option>
+            <option id="dcmica" value="ca">Catalan </option>
+            <option id="dcmich" value="ch">Chamorro </option>
+            <option id="dcmice" value="ce">Chechen </option>
+            <option id="dcmizh" value="zh">Chinese </option>
+            <option id="dcmicu" value="cu">Church Slavic </option>
+            <option id="dcmicv" value="cv">Chuvash </option>
+            <option id="dcmikw" value="kw">Cornish </option>
+            <option id="dcmico" value="co">Corsican </option>
+            <option id="dcmihr" value="hr">Croatian </option>
+            <option id="dcmics" value="cs">Czech </option>
+            <option id="dcmida" value="da">Danish </option>
+            <option id="dcmidz" value="dz">Dzongkha; Bhutani </option>
+            <option id="dcmien" value="en">English </option>
+            <option id="dcmieo" value="eo">Esperanto </option>
+            <option id="dcmiet" value="et">Estonian </option>
+            <option id="dcmifi" value="fi">Finnish </option>
+            <option id="dcmifj" value="fj">Fijian; Fiji </option>
+            <option id="dcmifo" value="fo">Faroese </option>
+            <option id="dcmifr" value="fr">French </option>
+            <option id="dcmify" value="fy">Frisian </option>
+            <option id="dcmigd" value="gd">Scots; Gaelic </option>
+            <option id="dcmigl" value="gl">Gallegan; Galician </option>
+            <option id="dcmika" value="ka">Georgian </option>
+            <option id="dcmide" value="de">German </option>
+            <option id="dcmiel" value="el">Greek </option>
+            <option id="dcmign" value="gn">Guarani </option>
+            <option id="dcmigu" value="gu">Gujarati </option>
+            <option id="dcmiha" value="ha">Hausa (?) </option>
+            <option id="dcmihe" value="he">Hebrew (formerly iw) </option>
+            <option id="dcmihi" value="hi">Hindi </option>
+            <option id="dcmiho" value="ho">Hiri Motu </option>
+            <option id="dcmihu" value="hu">Hungarian </option>
+            <option id="dcmihz" value="hz">Herero </option>
+            <option id="dcmiia" value="ia">Interlingua </option>
+            <option id="dcmiid" value="id">Indonesian (formerly in) </option>
+            <option id="dcmiie" value="ie">Interlingue </option>
+            <option id="dcmiik" value="ik">Inupiak </option>
+            <option id="dcmiio" value="io">Ido </option>
+            <option id="dcmiga" value="ga">Irish </option>
+            <option id="dcmiit" value="it">Italian </option>
+            <option id="dcmiiu" value="iu">Inuktitut </option>
+            <option id="dcmija" value="ja">Japanese </option>
+            <option id="dcmijv" value="jv">Javanese </option>
+            <option id="dcmiki" value="ki">Kikuyu </option>
+            <option id="dcmikj" value="kj">Kuanyama </option>
+            <option id="dcmikk" value="kk">Kazakh </option>
+            <option id="dcmikl" value="kl">Kalaallisut; Greenlandic </option>
+            <option id="dcmikm" value="km">Khmer; Cambodian </option>
+            <option id="dcmikn" value="kn">Kannada </option>
+            <option id="dcmiko" value="ko">Korean </option>
+            <option id="dcmiks" value="ks">Kashmiri </option>
+            <option id="dcmirw" value="rw">Kinyarwanda </option>
+            <option id="dcmiky" value="ky">Kirghiz </option>
+            <option id="dcmikv" value="kv">Komi </option>
+            <option id="dcmiku" value="ku">Kurdish </option>
+            <option id="dcmila" value="la">Latin </option>
+            <option id="dcmilb" value="lb">Letzeburgesch </option>
+            <option id="dcmilo" value="lo">Lao; Laotian </option>
+            <option id="dcmilt" value="lt">Lithuanian </option>
+            <option id="dcmilv" value="lv">Latvian; Lettish </option>
+            <option id="dcmimg" value="mg">Malagasy </option>
+            <option id="dcmigv" value="gv">Manx </option>
+            <option id="dcmimh" value="mh">Marshall </option>
+            <option id="dcmimi" value="mi">Maori </option>
+            <option id="dcmimk" value="mk">Macedonian </option>
+            <option id="dcmimr" value="mr">Marathi </option>
+            <option id="dcmimn" value="mn">Mongolian </option>
+            <option id="dcmims" value="ms">Malay </option>
+            <option id="dcmimt" value="mt">Maltese </option>
+            <option id="dcminb" value="nb">Norwegian Bokmål </option>
+            <option id="dcmind" value="nd">Ndebele, North </option>
+            <option id="dcming" value="ng">Ndonga </option>
+            <option id="dcminl" value="nl">Dutch </option>
+            <option id="dcmino" value="no">Norwegian </option>
+            <option id="dcminr" value="nr">Ndebele, South </option>
+            <option id="dcminv" value="nv">Navajo </option>
+            <option id="dcminy" value="ny">Chichewa; Nyanja </option>
+            <option id="dcmioc" value="oc">Occitan; Provençal </option>
+            <option id="dcmior" value="or">Oriya </option>
+            <option id="dcmipi" value="pi">Pali </option>
+            <option id="dcmifa" value="fa">Persian </option>
+            <option id="dcmips" value="ps">Pashto, Pushto </option>
+            <option id="dcmiqu" value="qu">Quechua </option>
+            <option id="dcmirm" value="rm">Rhaeto-Romance </option>
+            <option id="dcmirn" value="rn">Rundi; Kirundi </option>
+            <option id="dcmiro" value="ro">Romanian </option>
+            <option id="dcmiru" value="ru">Russian </option>
+            <option id="dcmisc" value="sc">Sardinian </option>
+            <option id="dcmise" value="se">Northern Sami </option>
+            <option id="dcmism" value="sm">Samoan </option>
+            <option id="dcmisg" value="sg">Sango; Sangro </option>
+            <option id="dcmist" value="st">Sesotho; Sotho, Southern </option>
+            <option id="dcmisn" value="sn">Shona </option>
+            <option id="dcmisd" value="sd">Sindhi </option>
+            <option id="dcmisr" value="sr">Serbian </option>
+            <option id="dcmisi" value="si">Sinhalese </option>
+            <option id="dcmisk" value="sk">Slovak </option>
+            <option id="dcmisl" value="sl">Slovenian </option>
+            <option id="dcmiso" value="so">Somali </option>
+            <option id="dcmies" value="es">Spanish </option>
+            <option id="dcmisw" value="sw">Swahili </option>
+            <option id="dcmisv" value="sv">Swedish </option>
+            <option id="dcmitl" value="tl">Tagalog </option>
+            <option id="dcmity" value="ty">Tahitian </option>
+            <option id="dcmitg" value="tg">Tajik </option>
+            <option id="dcmitt" value="tt">Tatar </option>
+            <option id="dcmite" value="te">Telugu </option>
+            <option id="dcmith" value="th">Thai </option>
+            <option id="dcmiti" value="ti">Tigrinya </option>
+            <option id="dcmits" value="ts">Tsonga </option>
+            <option id="dcmito" value="to">Tongan  </option>
+            <option id="dcmitr" value="tr">Turkish </option>
+            <option id="dcmitk" value="tk">Turkmen </option>
+            <option id="dcmitw" value="tw">Twi </option>
+            <option id="dcmiug" value="ug">Uighur </option>
+            <option id="dcmiur" value="ur">Urdu </option>
+            <option id="dcmiuz" value="uz">Uzbek </option>
+            <option id="dcmivi" value="vi">Vietnamese </option>
+            <option id="dcmivo" value="vo">Volapük; Volapuk </option>
+            <option id="dcmiwa" value="wa">Walloon </option>
+            <option id="dcmicy" value="cy">Welsh </option>
+            <option id="dcmiwo" value="wo">Wolof </option>
+            <option id="dcmixh" value="xh">Xhosa </option>
+            <option id="dcmiyi" value="yi">Yiddish (formerly ji) </option>
+            <option id="dcmiza" value="za">Zhuang </option>
+            <option id="dcmizu" value="zu">Zulu </option>
+        </select>
+    </div>
+    <div>
+        <label id="dcRelation" title="A reference to a related resource.">Relation:</label>
+          <input type="text" id="dc_relation" size="40" />
+    </div>
+    <div>
+        <label id="dcCoverage" title="The extent or scope of the content of the resource.">Coverage:</label>
+        <input type="text" id="dc_coverage" size="40" />
+    </div>
+    <div>
+        <label id="dcRights" title="Information about rights held in and over the resource.">Rights:</label>
+        <input type="text" id="dc_rights" size="40" />
+        <img src="/images/info.png" onclick="setText('dc-rights');" style="cursor:help;"/>
+    </div>
+    <div>
+        <button id="dcBtnDone" oncommand="submitForm(this.parentNode.parentNode)">Apply</button>
+    </div>
+</div>

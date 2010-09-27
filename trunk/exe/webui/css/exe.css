@@ -42,11 +42,11 @@ iframe {
 }
 
 #wrap {
-    width: 1024px;
+    width: 1200px;
 }
 
-#main {
-    width: 700px;
+#middle {
+    width: 870px;
     float: right;
 }
 

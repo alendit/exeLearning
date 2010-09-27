@@ -1,24 +1,19 @@
-<?xml version="1.0"?>
-<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
-<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml">
-  <vbox id="dublinCore" style="overflow: auto;" flex="1">
-    <groupbox flex="0">
-      <caption id="dcCaptionMetadata" label="Dublin Core Metadata"/>
-      <vbox flex="0">
-        <hbox align="center">
-          <label id="dcTitle" style="width:8em" value="Title:" tooltiptext="The name given to the resource."/>
-          <textbox id="dc_title" size="40" onchange="this.style.color = 'red'" />
-        </hbox>
-        <hbox align="center">
-          <label id="dcCreator" style="width:8em" value="Creator:" tooltiptext="An entity primarily responsible for making the content of the resource."/>
-          <textbox id="dc_creator" size="40" onchange="this.style.color = 'red'" />
-        </hbox>
-        <hbox align="center">
-          <label id="dcSubject" style="width:8em" value="Subject:" tooltiptext="The topic of the content of the resource."/>
-          <textbox id="dc_subject" size="40" onchange="this.style.color = 'red'" />
-          <image src="/images/info.png" onclick="setText('dc-subject');" style="cursor:help;"/>
-        </hbox>
-        <hbox flex="0" id="dc-subject" hidden="true" style="padding-left:9em;">
+<div id="dublincore">
+    <h2 id="dcCaptionMetadata">Dublin Core Metadata</h2>
+    <div>
+        <label id="dcTitle" title="The name given to the resource.">Title:</label>
+        <input type="text" id="dc_title" size="40" />
+    </div>
+    <div>
+        <label id="dcCreator" title="An entity primarily responsible for making the content of the resource.">Creator:</label>
+          <input type="text" id="dc_creator" size="40" />
+      </div>
+      <div>
+          <label id="dcSubject" title="The topic of the content of the resource.">Subject:</label>
+          <input type="text" id="dc_subject" size="40" />
+          <img src="/images/info.png" onclick="setText('dc-subject');" style="cursor:help;"/>
+      </div>
+      <!--<hbox flex="0" id="dc-subject" hidden="true" style="padding-left:9em;">
           <groupbox style="width:21em;">
              <description id="dcDescSubject">
                 Typically, Subject will be expressed as keywords, key phrases or
@@ -96,11 +91,6 @@
           <label id="dcLanguage" style="width:8em" value="Language:" tooltiptext="Select a language."/>
           <menulist id="dc_language" label="Select Language" onchange="this.style.color = 'red'" >
             <menupopup>
-                <!-- The unique ids for these menu items only exist for
-                     translation. The name dcmixx comes from:
-                     dc = Dublin Core
-                     mi = Menu Item
-                     xx = Language Code -->
                 <menuitem id="dcmiab" value="ab" label="Abkhazian "/>
                 <menuitem id="dcmiaa" value="aa" label="Afar "/>
                 <menuitem id="dcmiaf" value="af" label="Afrikaans "/>
@@ -295,4 +285,5 @@
       <button id="dcBtnDone" label="Apply" oncommand="submitForm(this.parentNode.parentNode)"/>
     </hbox>
   </vbox>
-</overlay>
+</overlay> -->
+</div>

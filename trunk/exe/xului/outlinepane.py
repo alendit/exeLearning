@@ -157,10 +157,8 @@ class OutlinePane(Renderable):
         """
         log.debug("_doJsRename")
         if not node._title:
-            params = [s.replace('"', '\\"') for s in 
-                      [node.titleShort, node.titleLong, node.title]]
-            params.append(node.id)
-            command = 'XHRenNode("%s", "%s", "%s", "%s")' % tuple(params)
+            command = 'XHRenNode("%s", "%s")' %\
+                    (node.titleLong.replace('"', '\\"'), node.id)
             log.debug(command)
             client.sendScript(command)
         for child in node.children: 

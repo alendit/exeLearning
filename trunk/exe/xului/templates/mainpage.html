@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.alerts.css" />
         <!-- SCRIPTS -->
         <script n:render="liveid"></script>
-        <script type="text/javascript" src="/scripts/common.js"></script>
-        <script type="text/javascript" src="/xulscripts/jquery.min.js"></script>
+         <script type="text/javascript" src="/xulscripts/jquery.min.js"></script>
         <script type="text/javascript" src="/xulscripts/jquery-ui.custom.min.js"></script>
+        <script type="text/javascript" src="/scripts/common.js"></script>
         <script type="text/javascript" src="/xulscripts/mainpage.js"></script>
         <script type="text/javascript" src="/xulscripts/superfish.js"></script>
         <script type="text/javascript" src="/xulscripts/jquery.treeview.js"></script>
@@ -32,6 +32,8 @@
                     collapsed: false});
                 $("#authoringIFrame1").attr('src',
                     document.location.pathname + "/authoring");
+                $("#propertiesIFrame").attr('src',
+                    document.location.pathname + "/properties");
                 //bind actions to outline
                 $(".outlineNode").each(function(index) {
                     bindOutlineClicked(this);
@@ -50,7 +52,7 @@
                         addIdevice($(this).attr("ideviceId"));
                         });
                     });
-                $("#main").tabs();
+                $("#middle").tabs();
                 updateTitle();
             });
         </script>
@@ -314,15 +316,18 @@
             <span n:render="idevicePane"/>
 
         </div>
-        <div id="main">
+        <div id="middle">
             <ul>
                 <li><a href="#authoring">Authoring</a></li>
-                <li><a href="#propertiesPane">Properties</a></li>
+                <li><a href="#properties">Properties</a></li>
             </ul>
             <div id="authoring">
                 <iframe id="authoringIFrame1" ></iframe>
             </div>
-            <div id="propertiesPane">Package Properties</div>
+            <!--Properties pane will be rendered here-->
+            <div id="properties">
+                <iframe id="propertiesIFrame"></iframe>
+            </div>
         </div>
         </div>
     </body>

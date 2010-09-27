@@ -50,7 +50,7 @@ class PropertiesPage(RenderableLivePage):
     """
     The PropertiesPage is for user to enter or edit package's properties
     """
-    _templateFileName = 'properties.xul'
+    _templateFileName = 'properties.html'
     name = 'properties'
     # List of field names that contain boolean values
     booleanFieldNames = ('pp_scolinks', 'pp_backgroundImgTile', 
@@ -68,7 +68,7 @@ class PropertiesPage(RenderableLivePage):
         """
         RenderableLivePage.__init__(self, parent)
         mainxul = Path(self.config.xulDir).joinpath('templates', 
-                                                    'properties.xul')
+                                                    'properties.html')
         self.docFactory  = loaders.xmlfile(mainxul)
         self.client = None
         self.fieldsReceived = set()
@@ -78,7 +78,7 @@ class PropertiesPage(RenderableLivePage):
                         
     def goingLive(self, ctx, client):
         """Called each time the page is served/refreshed"""
-        inevow.IRequest(ctx).setHeader('content-type', 'application/vnd.mozilla.xul+xml')
+        inevow.IRequest(ctx).setHeader('content-type', 'text/html')
 
         hndlr = handler(self.fillInField, identifier='fillInField')
         hndlr(ctx, client) # Stores it
@@ -153,10 +153,12 @@ class PropertiesPage(RenderableLivePage):
         else:
             # Remove enters
             encoded = ''
+            print value
             for char in value:
                 encoded += '%%u%04x' % ord(char[0])
+            print encoded
             client.sendScript(js(
-                'document.getElementById("%s").value = unescape("%s")' % \
+                '$("#%s").val(unescape("%s"))' % \
                     (fieldId, encoded)))
 
     def recieveFieldData(self, client, fieldId, value, total, onDone=None):
