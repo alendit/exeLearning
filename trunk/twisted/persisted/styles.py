@@ -469,13 +469,16 @@ class Versioned:
                         # This appears to be a corrupt Node.
                         # Refer them to the standard LOAD procedure
                         # to fix the elp before trying to MERGE:
-                        log.error("Old package: unable to "
-                                + "relink old Node (w/ wrong package) "
-                                + repr(self)
-                                + " to new merge package. "
-                                + " Please upgrade package first!")
-                        #  May want to include the package name here:
-                        raise Exception(_(u"Package is old. Please upgrade it (using File..Open followed by File..Save As) before attempting to insert it into another package!"))
+                        if hasattr(self, "_id"):
+                            self._package = newPackage
+                        else: 
+                            log.error("Old package: unable to "
+                                    + "relink old Node (w/ wrong package) "
+                                    + repr(self)
+                                    + " to new merge package. "
+                                    + " Please upgrade package first!")
+                            #  May want to include the package name here:
+                            raise Exception(_(u"Package is old. Please upgrade it (using File..Open followed by File..Save As) before attempting to insert it into another package!"))
                     elif not isMerge:
                         # swap to a proper package on Nodes, IF the current
                         # package is NOT the one that we're really using:

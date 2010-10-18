@@ -2,14 +2,83 @@
 <RDF:RDF xmlns:NS1="http://www.mozilla.org/2004/em-rdf#"
          xmlns:NC="http://home.netscape.com/NC-rdf#"
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <RDF:Description RDF:about="rdf:#$081k2"
-                   NS1:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
-                   NS1:minVersion="2.0a"
-                   NS1:maxVersion="2.0.*" />
-  <RDF:Description RDF:about="rdf:#$181k2"
-                   NS1:id="prism@developer.mozilla.org"
-                   NS1:minVersion="0.4"
-                   NS1:maxVersion="1.0.0.*" />
+  <RDF:Description RDF:about="rdf:#$B8kuD"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.5"
+                   NS1:maxVersion="3.6.*" />
+  <RDF:Description RDF:about="urn:mozilla:item:langpack-en-CA@firefox-3.6.ubuntu.com"
+                   NS1:installLocation="app-global"
+                   NS1:version="3.6"
+                   NS1:name="Firefox (en-CA)"
+                   NS1:creator="http://translations.launchpad.net">
+    <NS1:type NC:parseType="Integer">8</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$I8kuD"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$761k2"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="1.5"
+                   NS1:maxVersion="3.*" />
+  <RDF:Description RDF:about="rdf:#$y9kuD"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="1.5"
+                   NS1:maxVersion="3.7.*" />
+  <RDF:Description RDF:about="rdf:#$N9kuD"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.6.10"
+                   NS1:maxVersion="3.6.10" />
+  <RDF:Description RDF:about="urn:mozilla:item:firebug@software.joehewitt.com"
+                   NS1:installLocation="app-profile"
+                   NS1:version="1.5.4"
+                   NS1:iconURL="chrome://firebug/content/firebug.png"
+                   NS1:name="Firebug"
+                   NS1:description="Web Development Evolved."
+                   NS1:creator="Joe Hewitt"
+                   NS1:homepageURL="http://www.getfirebug.com/">
+    <NS1:type NC:parseType="Integer">2</NS1:type>
+    <NS1:translator>Leszek(teo)Życzkowski (pl-PL)</NS1:translator>
+    <NS1:translator>markh (nl-NL)</NS1:translator>
+    <NS1:translator>peter3 (sv-SE)</NS1:translator>
+    <NS1:translator>AlleyKat (da-DK)</NS1:translator>
+    <NS1:translator>Hector Zhao, lovelywcm (zh-CN)</NS1:translator>
+    <NS1:translator>Lukáš Kucharczyk, Michal Kec (cs-CZ)</NS1:translator>
+    <NS1:translator>Team erweiterungen.de, ReinekeFux, Benedikt Langens (de-DE)</NS1:translator>
+    <NS1:translator>l0stintranslation, gonzalopirobutirro (it-IT)</NS1:translator>
+    <NS1:translator>alexxed (ro-RO)</NS1:translator>
+    <NS1:translator>Nicolas Martin, Franck Marcia (fr-FR)</NS1:translator>
+    <NS1:translator>gLes (hu-HU)</NS1:translator>
+    <NS1:translator>Xavi Ivars - Softcatalà (ca)</NS1:translator>
+    <NS1:translator>gezmen (tr-TR)</NS1:translator>
+    <NS1:translator>eternoendless (es-AR)</NS1:translator>
+    <NS1:translator>Dark Preacher (ru-RU)</NS1:translator>
+    <NS1:translator>Tiago Oliveira, Diego de Carvalho Zimmermann, Alexandre Rapaki (pt-BR)</NS1:translator>
+    <NS1:translator>Juan Botías (es-ES)</NS1:translator>
+    <NS1:translator>Andriy Zhouck (uk-UA)</NS1:translator>
+    <NS1:translator>Hisateru Tanaka (ja-JP)</NS1:translator>
+    <NS1:translator>Mohsen Shadroo (fa-IR)</NS1:translator>
+    <NS1:translator>Eduard Babayan (hy-AM)</NS1:translator>
+    <NS1:translator>Helder Magalhães (pt-PT)</NS1:translator>
+    <NS1:translator>Tomaž Mačus (sl-SI)</NS1:translator>
+    <NS1:translator>Stoyan Stefanov (bg-BG)</NS1:translator>
+    <NS1:translator>Kristján Bjarni Guðmundsson (is-IS)</NS1:translator>
+    <NS1:translator>NGUYỄN Mạnh Hùng (vi-VN)</NS1:translator>
+    <NS1:translator>Bwah (hr-HR)</NS1:translator>
+    <NS1:translator>Sonickydon (el-GR)</NS1:translator>
+    <NS1:contributor>John J. Barton (IBM Almaden)</NS1:contributor>
+    <NS1:contributor>Jan Odvarko (Mozilla Corp.)</NS1:contributor>
+    <NS1:contributor>Max Stepanov (Aptana Inc.)</NS1:contributor>
+    <NS1:contributor>Rob Campbell (Mozilla Corp.)</NS1:contributor>
+    <NS1:contributor>Hans Hillen (Paciello Group, Mozilla)</NS1:contributor>
+    <NS1:contributor>Curtis Bartley (Mozilla Corp.)</NS1:contributor>
+    <NS1:contributor>Mike Collins (IBM Almaden)</NS1:contributor>
+    <NS1:contributor>Kevin Decker</NS1:contributor>
+    <NS1:contributor>Mike Ratcliffe (Comartis AG)</NS1:contributor>
+    <NS1:contributor>Hernan Rodríguez Colmeiro</NS1:contributor>
+    <NS1:contributor>Austin Andrews</NS1:contributor>
+    <NS1:contributor>Christoph Dorn</NS1:contributor>
+    <NS1:contributor>Steven Roussey (AppCenter Inc, Network54)</NS1:contributor>
+    <NS1:targetApplication RDF:resource="rdf:#$A8kuD"/>
+    <NS1:targetApplication RDF:resource="rdf:#$B8kuD"/>
+  </RDF:Description>
   <RDF:Description RDF:about="urn:mozilla:item:exeex@exelearning.org"
                    NS1:installLocation="app-profile"
                    NS1:version="0.4.0"
@@ -22,63 +91,52 @@
     <NS1:type NC:parseType="Integer">2</NS1:type>
     <NS1:targetApplication RDF:resource="rdf:#$761k2"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:mozilla:item:{3f963a5b-e555-4543-90e2-c3908898db71}"
-                   NS1:installLocation="winreg-app-global"
-                   NS1:version="8.0"
-                   NS1:name="AVG Safe Search"
-                   NS1:description="Guard against clicking malicious links."
-                   NS1:creator="AVG, Inc."
-                   NS1:homepageURL="http://www.avg.com"
-                   NS1:iconURL="chrome://searchshield/skin/avg_logo.ico"
-                   NS1:userDisabled="true">
-    <NS1:type NC:parseType="Integer">2</NS1:type>
-    <NS1:targetApplication RDF:resource="rdf:#$3KcSG2"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$.71k2"
-                   NS1:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
-                   NS1:minVersion="3.0a1pre"
-                   NS1:maxVersion="3.0.*" />
-  <RDF:Description RDF:about="urn:mozilla:item:inspector@mozilla.org"
-                   NS1:installLocation="gre-global"
-                   NS1:version="2.0.0"
-                   NS1:name="DOM Inspector"
-                   NS1:description="Inspects the structure and properties of a window and its contents."
-                   NS1:creator="mozilla.org"
-                   NS1:homepageURL="http://www.mozilla.org/projects/inspector/">
-    <NS1:type NC:parseType="Integer">2</NS1:type>
-    <NS1:localized RDF:resource="rdf:#$Y71k2"/>
-    <NS1:targetApplication RDF:resource="rdf:#$Z71k2"/>
-    <NS1:targetApplication RDF:resource="rdf:#$.71k2"/>
-    <NS1:targetApplication RDF:resource="rdf:#$+71k2"/>
-    <NS1:targetApplication RDF:resource="rdf:#$081k2"/>
-    <NS1:targetApplication RDF:resource="rdf:#$181k2"/>
-    <NS1:targetApplication RDF:resource="rdf:#$281k2"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"
-                   NS1:installLocation="app-global"
-                   NS1:version="3.5"
-                   NS1:internalName="classic/1.0"
-                   NS1:locked="true"
-                   NS1:appManaged="true"
-                   NS1:name="Default"
-                   NS1:description="The default theme."
-                   NS1:creator="Mozilla"
-                   NS1:contributor="Mozilla Contributors">
-    <NS1:type NC:parseType="Integer">4</NS1:type>
-    <NS1:targetApplication RDF:resource="rdf:#$JJvUk1"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$W61k2"
+  <RDF:Description RDF:about="rdf:#$W8kuD"
                    NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="3.0"
-                   NS1:maxVersion="3.5b4" />
-  <RDF:Description RDF:about="urn:mozilla:item:langpack-en-GB@xulrunner-1.9.ubuntu.com"
-                   NS1:installLocation="gre-global"
-                   NS1:version="1.9.0.8"
-                   NS1:name="Xulrunner (en-GB)"
+                   NS1:minVersion="3.6"
+                   NS1:maxVersion="3.6.*" />
+  <RDF:Description RDF:about="rdf:#$P8kuD"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.6"
+                   NS1:maxVersion="3.6.*" />
+  <RDF:Description RDF:about="urn:mozilla:item:langpack-en@firefox-3.6.ubuntu.com"
+                   NS1:installLocation="app-global"
+                   NS1:version="3.6"
+                   NS1:name="Firefox (en)"
                    NS1:creator="http://translations.launchpad.net">
     <NS1:type NC:parseType="Integer">8</NS1:type>
-    <NS1:targetApplication RDF:resource="rdf:#$i71k2"/>
+    <NS1:targetApplication RDF:resource="rdf:#$W8kuD"/>
   </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$A8kuD"
+                   NS1:id="toolkit@mozilla.org"
+                   NS1:minVersion="1.9.1"
+                   NS1:maxVersion="1.9.2.*" />
+  <RDF:Description RDF:about="rdf:#$I8kuD"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.6"
+                   NS1:maxVersion="3.6.*" />
+  <RDF:Description RDF:about="urn:mozilla:item:langpack-en-GB@firefox-3.6.ubuntu.com"
+                   NS1:installLocation="app-global"
+                   NS1:version="3.6"
+                   NS1:name="Firefox (en-GB)"
+                   NS1:creator="http://translations.launchpad.net">
+    <NS1:type NC:parseType="Integer">8</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$19kuD"/>
+  </RDF:Description>
+  <RDF:Seq RDF:about="urn:mozilla:item:root">
+    <RDF:li RDF:resource="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"/>
+    <RDF:li RDF:resource="urn:mozilla:item:exeex@exelearning.org"/>
+    <RDF:li RDF:resource="urn:mozilla:item:langpack-en-GB@firefox-3.6.ubuntu.com"/>
+    <RDF:li RDF:resource="urn:mozilla:item:langpack-en@firefox-3.6.ubuntu.com"/>
+    <RDF:li RDF:resource="urn:mozilla:item:langpack-en-AU@firefox-3.6.ubuntu.com"/>
+    <RDF:li RDF:resource="urn:mozilla:item:langpack-en-CA@firefox-3.6.ubuntu.com"/>
+    <RDF:li RDF:resource="urn:mozilla:item:firebug@software.joehewitt.com"/>
+    <RDF:li RDF:resource="urn:mozilla:item:ubufox@ubuntu.com"/>
+  </RDF:Seq>
+  <RDF:Description RDF:about="rdf:#$19kuD"
+                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   NS1:minVersion="3.6"
+                   NS1:maxVersion="3.6.*" />
   <RDF:Description RDF:about="urn:mozilla:item:{1d5287d1-8a92-0001-1f31-1cec198018d8}"
                    NS1:installLocation="winreg-app-global"
                    NS1:version="2.0.20080718"
@@ -92,102 +150,52 @@
     <NS1:targetApplication RDF:resource="rdf:#$QJcSG2"/>
     <NS1:targetApplication RDF:resource="rdf:#$RJcSG2"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:mozilla:item:{8181B740-5255-11D9-9FF6-0090995D2DCA}"
-                   NS1:installLocation="app-profile"
-                   NS1:version="0.8.09.07.17"
-                   NS1:internalName="phoenitymodern"
-                   NS1:name="Phoenity Modern"
-                   NS1:description="Phoenity based on the SeaMonkey Modern theme"
-                   NS1:creator="Kuden"
-                   NS1:homepageURL="https://addons.mozilla.org/firefox/addon/1013">
-    <NS1:type NC:parseType="Integer">4</NS1:type>
-    <NS1:contributor>Lim Chee Aun (Original Author)</NS1:contributor>
-    <NS1:contributor>Piotr 'Pitreck' Komoda</NS1:contributor>
-    <NS1:targetApplication RDF:resource="rdf:#$g8V711"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$761k2"
-                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="1.5"
-                   NS1:maxVersion="3.*" />
-  <RDF:Description RDF:about="rdf:#$JJvUk1"
-                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="3.5"
-                   NS1:maxVersion="3.5" />
-  <RDF:Seq RDF:about="urn:mozilla:item:root">
-    <RDF:li RDF:resource="urn:mozilla:item:inspector@mozilla.org"/>
-    <RDF:li RDF:resource="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"/>
-    <RDF:li RDF:resource="urn:mozilla:item:langpack-en-GB@firefox-3.0.ubuntu.com"/>
-    <RDF:li RDF:resource="urn:mozilla:item:{8181B740-5255-11D9-9FF6-0090995D2DCA}"/>
-    <RDF:li RDF:resource="urn:mozilla:item:refractor@developer.mozilla.org"/>
-    <RDF:li RDF:resource="urn:mozilla:item:ubufox@ubuntu.com"/>
-    <RDF:li RDF:resource="urn:mozilla:item:langpack-en-GB@xulrunner-1.9.ubuntu.com"/>
-    <RDF:li RDF:resource="urn:mozilla:item:exeex@exelearning.org"/>
-  </RDF:Seq>
-  <RDF:Description RDF:about="rdf:#$I61k2"
-                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="3.0"
-                   NS1:maxVersion="3.0.*" />
-  <RDF:Description RDF:about="rdf:#$g8V711"
-                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="3.5"
-                   NS1:maxVersion="3.5.*" />
-  <RDF:Description RDF:about="rdf:#$b71k2"
-                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="1.5"
-                   NS1:maxVersion="3.0.*" />
-  <RDF:Description RDF:about="rdf:#$Y71k2"
-                   NS1:locale="sk"
-                   NS1:name="DOM Inspector"
-                   NS1:description="Umožní preskúmať štruktúru a vlastnosti okna a jeho obsahu." />
-  <RDF:Description RDF:about="urn:mozilla:item:refractor@developer.mozilla.org"
-                   NS1:installLocation="app-global"
-                   NS1:version="0.9.9"
-                   NS1:iconURL="chrome://refractor/skin/install-shortcut48.png"
-                   NS1:name="Prism for Firefox"
-                   NS1:description="Create Prism applications directly in Firefox"
-                   NS1:creator="Prism Project"
-                   NS1:homepageURL="http://wiki.mozilla.org/Prism">
+  <RDF:Description RDF:about="urn:mozilla:item:{3f963a5b-e555-4543-90e2-c3908898db71}"
+                   NS1:installLocation="winreg-app-global"
+                   NS1:version="8.0"
+                   NS1:name="AVG Safe Search"
+                   NS1:description="Guard against clicking malicious links."
+                   NS1:creator="AVG, Inc."
+                   NS1:homepageURL="http://www.avg.com"
+                   NS1:iconURL="chrome://searchshield/skin/avg_logo.ico"
+                   NS1:userDisabled="true">
     <NS1:type NC:parseType="Integer">2</NS1:type>
-    <NS1:targetApplication RDF:resource="rdf:#$W61k2"/>
+    <NS1:targetApplication RDF:resource="rdf:#$3KcSG2"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:mozilla:item:langpack-en-GB@firefox-3.0.ubuntu.com"
+  <RDF:Description RDF:about="urn:mozilla:item:{972ce4c6-7e08-4474-a285-3208198ce6fd}"
                    NS1:installLocation="app-global"
-                   NS1:version="3.0.7"
-                   NS1:name="Firefox (en-GB)"
-                   NS1:creator="http://translations.launchpad.net">
-    <NS1:type NC:parseType="Integer">8</NS1:type>
-    <NS1:targetApplication RDF:resource="rdf:#$I61k2"/>
+                   NS1:version="3.6.10"
+                   NS1:internalName="classic/1.0"
+                   NS1:locked="true"
+                   NS1:appManaged="true"
+                   NS1:name="Default"
+                   NS1:description="The default theme."
+                   NS1:creator="Mozilla"
+                   NS1:contributor="Mozilla Contributors">
+    <NS1:type NC:parseType="Integer">4</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$N9kuD"/>
   </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$Z71k2"
-                   NS1:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   NS1:minVersion="3.0a1"
-                   NS1:maxVersion="3.0.*" />
   <RDF:Description RDF:about="urn:mozilla:item:ubufox@ubuntu.com"
-                   NS1:installLocation="app-global"
-                   NS1:version="0.7"
+                   NS1:installLocation="app-system-share"
+                   NS1:version="0.9rc2"
                    NS1:iconURL="chrome://ubufox/content/ubuntulogo32.png"
                    NS1:name="Ubuntu Firefox Modifications"
                    NS1:description="Ubuntu configuration defaults and apt support for firefox extensions/plugins."
-                   NS1:creator="Canonical Ltd."
-                   NS1:userDisabled="true">
+                   NS1:creator="Canonical Ltd.">
     <NS1:type NC:parseType="Integer">2</NS1:type>
     <NS1:contributor>Alexander Sack &lt;asac@ubuntu.com&gt;</NS1:contributor>
     <NS1:contributor>Sasa Bodiroza &lt;jazzva@gmail.com&gt;</NS1:contributor>
     <NS1:contributor>Daniel Abramov &lt;ex@vingrad.ru&gt;</NS1:contributor>
     <NS1:contributor>Arzhel Younsi &lt;xionox@gmail.com&gt;</NS1:contributor>
     <NS1:contributor>Saïvann Carignan &lt;oxmosys@gmail.com&gt;</NS1:contributor>
-    <NS1:targetApplication RDF:resource="rdf:#$b71k2"/>
+    <NS1:targetApplication RDF:resource="rdf:#$y9kuD"/>
   </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$281k2"
-                   NS1:id="toolkit@mozilla.org"
-                   NS1:minVersion="1.9a1"
-                   NS1:maxVersion="1.9.0.*" />
-  <RDF:Description RDF:about="rdf:#$i71k2"
-                   NS1:id="toolkit@mozilla.org"
-                   NS1:minVersion="1.9"
-                   NS1:maxVersion="1.9.0.*" />
-  <RDF:Description RDF:about="rdf:#$+71k2"
-                   NS1:id="{718e30fb-e89b-41dd-9da7-e25a45638b28}"
-                   NS1:minVersion="0.6a1"
-                   NS1:maxVersion="0.6a1" />
+  <RDF:Description RDF:about="urn:mozilla:item:langpack-en-AU@firefox-3.6.ubuntu.com"
+                   NS1:installLocation="app-global"
+                   NS1:version="3.6"
+                   NS1:name="Firefox (en-AU)"
+                   NS1:creator="http://translations.launchpad.net">
+    <NS1:type NC:parseType="Integer">8</NS1:type>
+    <NS1:targetApplication RDF:resource="rdf:#$P8kuD"/>
+  </RDF:Description>
 </RDF:RDF>

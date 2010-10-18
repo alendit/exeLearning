@@ -1,42 +1,42 @@
 Generated File. Do not edit.
 
 [HEADER]
-Version:0.10:$
+Version:0.11:$
 
 [PLUGINS]
-/usr/lib/mozilla/plugins/libskypebuttons.so:$
+librhythmbox-itms-detection-plugin.so:$
+/usr/lib/mozilla/plugins/librhythmbox-itms-detection-plugin.so:$
 :$
-:$
-1249069841000:1:5:$
-Mime Type x-skype for Skype Buttons:$
-Skype Buttons for Kopete:$
+1285633242000:1:1:$
+This plug-in detects the presence of iTunes when opening iTunes Store URLs in a web page with Firefox.:$
+iTunes Application Detector:$
 1
-0:application/x-skype:Skype Buttons:skype:$
-/usr/lib/totem/gstreamer/libtotem-narrowspace-plugin.so:$
+0:application/itunes-plugin:::$
+libtotem-narrowspace-plugin.so:$
+/usr/lib/mozilla/plugins/libtotem-narrowspace-plugin.so:$
 :$
-:$
-1239706446000:1:5:$
-The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.26.1 plugin handles video and audio streams.:$
-QuickTime Plug-in 7.2.0:$
+1285633033000:1:1:$
+The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.32.0 plugin handles video and audio streams.:$
+QuickTime Plug-in 7.6.6:$
 5
 0:video/quicktime:QuickTime video:mov:$
 1:video/mp4:MPEG-4 video:mp4:$
 2:image/x-macpaint:MacPaint Bitmap image:pntg:$
 3:image/x-quicktime:Macintosh Quickdraw/PICT drawing:pict, pict1, pict2:$
 4:video/x-m4v:MPEG-4 video:m4v:$
-/usr/lib/totem/gstreamer/libtotem-mully-plugin.so:$
+libtotem-mully-plugin.so:$
+/usr/lib/mozilla/plugins/libtotem-mully-plugin.so:$
 :$
-:$
-1239706446000:1:5:$
+1285633033000:1:1:$
 DivX Web Player version 1.4.0.233:$
 DivX® Web Player:$
 1
 0:video/divx:AVI video:divx:$
-/usr/lib/totem/gstreamer/libtotem-gmp-plugin.so:$
+libtotem-gmp-plugin.so:$
+/usr/lib/mozilla/plugins/libtotem-gmp-plugin.so:$
 :$
-:$
-1239706446000:1:5:$
-The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.26.1 plugin handles video and audio streams.:$
+1285633033000:1:1:$
+The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.32.0 plugin handles video and audio streams.:$
 Windows Media Player Plug-in 10 (compatible; Totem):$
 13
 0:application/x-mplayer2:AVI video:avi, wma, wmv:$
@@ -52,13 +52,13 @@ Windows Media Player Plug-in 10 (compatible; Totem):$
 10:application/x-ms-wmp:Windows Media video:wmp:$
 11:application/asx:Microsoft ASX playlist:asx:$
 12:audio/x-ms-wma:Windows Media audio:wma:$
-/usr/lib/totem/gstreamer/libtotem-cone-plugin.so:$
+libtotem-cone-plugin.so:$
+/usr/lib/mozilla/plugins/libtotem-cone-plugin.so:$
 :$
-:$
-1239706446000:1:5:$
-The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.26.1 plugin handles video and audio streams.:$
-VLC Multimedia Plugin (compatible Totem 2.26.1):$
-19
+1285633033000:1:1:$
+The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.32.0 plugin handles video and audio streams.:$
+VLC Multimedia Plugin (compatible Totem 2.32.0):$
+20
 0:application/x-vlc-plugin:VLC Multimedia Plugin::$
 1:application/vlc:VLC Multimedia Plugin::$
 2:video/x-google-vlc-plugin:VLC Multimedia Plugin::$
@@ -77,51 +77,24 @@ VLC Multimedia Plugin (compatible Totem 2.26.1):$
 15:audio/mpeg:MP3 audio:mp3:$
 16:application/x-nsv-vp3-mp3:NullSoft video:nsv:$
 17:video/flv:Flash video:flv:$
-18:application/x-totem-plugin:Totem Multimedia plugin::$
-/var/lib/acroplugin/nppdf.so:$
+18:video/webm:WebM video:webm:$
+19:application/x-totem-plugin:Totem Multimedia plugin::$
+libflashplayer.so:$
+/usr/lib/flashplugin-installer/libflashplayer.so:$
 :$
-:$
-1246345391000:1:5:$
-The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
-Adobe Reader 9.1:$
-5
-0:application/pdf:Portable Document Format:pdf:$
-1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
-2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
-3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
-4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
-/usr/lib/xulrunner-addons/plugins/libunixprintplugin.so:$
-:$
-:$
-1249316283000:1:5:$
-The demo print plugin for unix.:$
-Demo Print Plugin for unix/linux:$
-1
-0:application/x-print-unix-nsplugin:Demo Print Plugin for Unix/Linux:.pnt:$
-/usr/lib/xulrunner-addons/plugins/libnullplugin.so:$
-:$
-:$
-1249316283000:1:5:$
-The default plugin handles plugin data for mimetypes and extensions that are not specified and facilitates downloading of new plugins.:$
-Default Plugin:$
-1
-0:*:All types:.*:$
-/var/lib/flashplugin-installer/npwrapper.libflashplayer.so:$
-:$
-:$
-1249718906000:1:5:$
-Shockwave Flash 10.0 r32:$
+1285074513000:1:1:$
+Shockwave Flash 10.1 r85:$
 Shockwave Flash:$
 2
 0:application/x-shockwave-flash:Shockwave Flash:swf:$
 1:application/futuresplash:FutureSplash Player:spl:$
-/usr/lib/jvm/java-6-openjdk/jre/lib/amd64/IcedTeaPlugin.so:$
+IcedTeaPlugin.so:$
+/usr/lib/jvm/java-6-openjdk/jre/lib/i386/IcedTeaPlugin.so:$
 :$
-:$
-1249781389000:1:5:$
-The IcedTea Java Web Browser Plugin 1.4.1 (6b14-1.4.1-0ubuntu11) executes Java applets.:$
-IcedTea Java Web Browser Plugin:$
-33
+1283880912000:1:1:$
+The IcedTea NPR Web Browser Plugin (using IcedTea6 1.9 (6b20-1.9-0ubuntu1)) executes Java applets.:$
+IcedTea NPR Web Browser Plugin (using IcedTea6 1.9 (6b20-1.9-0ubuntu1)):$
+34
 0:application/x-java-vm:IcedTea:class,jar:$
 1:application/x-java-applet:IcedTea:class,jar:$
 2:application/x-java-applet;version=1.1:IcedTea:class,jar:$
@@ -138,7 +111,7 @@ IcedTea Java Web Browser Plugin:$
 13:application/x-java-applet;version=1.4.2:IcedTea:class,jar:$
 14:application/x-java-applet;version=1.5:IcedTea:class,jar:$
 15:application/x-java-applet;version=1.6:IcedTea:class,jar:$
-16:application/x-java-applet;jpi-version=1.6.0_00:IcedTea:class,jar:$
+16:application/x-java-applet;jpi-version=1.6.0_20:IcedTea:class,jar:$
 17:application/x-java-bean:IcedTea:class,jar:$
 18:application/x-java-bean;version=1.1:IcedTea:class,jar:$
 19:application/x-java-bean;version=1.1.1:IcedTea:class,jar:$
@@ -154,37 +127,38 @@ IcedTea Java Web Browser Plugin:$
 29:application/x-java-bean;version=1.4.2:IcedTea:class,jar:$
 30:application/x-java-bean;version=1.5:IcedTea:class,jar:$
 31:application/x-java-bean;version=1.6:IcedTea:class,jar:$
-32:application/x-java-bean;jpi-version=1.6.0_00:IcedTea:class,jar:$
+32:application/x-java-bean;jpi-version=1.6.0_20:IcedTea:class,jar:$
+33:application/x-java-vm-npruntime:::$
+nppdf.so:$
+/home/alt/.mozilla/plugins/nppdf.so:$
+:$
+-1:1:13:$
+The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
+Adobe Reader 9.1:$
+5
+0:application/pdf:Portable Document Format:pdf:$
+1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
+2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
+3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
+4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
+nppdf.so:$
+/usr/lib/firefox-addons/plugins/nppdf.so:$
+:$
+-1:1:13:$
+The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
+Adobe Reader 9.1:$
+5
+0:application/pdf:Portable Document Format:pdf:$
+1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
+2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
+3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
+4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
+npwrapper.libflashplayer.so:$
 /usr/lib/nspluginwrapper/plugins/npwrapper.libflashplayer.so:$
 :$
-:$
-1237751889000:1:13:$
+-1:1:13:$
 Shockwave Flash 10.0 r32:$
 Shockwave Flash:$
 2
 0:application/x-shockwave-flash:Shockwave Flash:swf:$
 1:application/futuresplash:FutureSplash Player:spl:$
-/usr/lib/firefox-addons/plugins/nppdf.so:$
-:$
-:$
-1237902193000:1:13:$
-The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
-Adobe Reader 9.1:$
-5
-0:application/pdf:Portable Document Format:pdf:$
-1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
-2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
-3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
-4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
-/home/alt/.mozilla/plugins/nppdf.so:$
-:$
-:$
-1237901808000:1:13:$
-The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
-Adobe Reader 9.1:$
-5
-0:application/pdf:Portable Document Format:pdf:$
-1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
-2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
-3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
-4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
