@@ -1,0 +1,141 @@
+/*
+===========================================================================
+eXe
+Copyright 2004-2005, University of Auckland
+style sheet for Maori theme by Derek Renata - renade@xtra.co.nz
+===========================================================================
+*/
+
+body, html {
+    color:#4d4d4d;
+    /*background: #DCE3FC url(main_bg.gif) repeat-x top;*/
+}
+
+div {
+    background-image:none;
+    background-color:transparent;
+}
+
+a {
+    color: #263264;
+    text-decoration: underline;
+}
+
+a:hover { 
+    color: #263264;
+    background-color: #fff;
+    text-decoration: none;
+}
+
+
+p#nodeTitle { 
+    color: #000000;
+    font-size: 20px;
+    text-align: left;
+}
+
+div#nodeDecoration {
+    padding: 2px;
+    /*border-bottom:2px solid #0c346d; Linie unter dem Seitentitel*/
+    text-align:left;
+    margin-bottom: 10px;
+}
+
+
+/* --- iDevice Styles -- */
+
+
+.emphasis0 {
+    padding-left: 0px;
+    margin: 0px 0px 5px;
+    vertical-align: middle;
+}
+
+.emphasis1 { 	/*Stil der iDevices*/
+    /*background-image:url(idevice_bg.gif); Bild für den Titel*/
+    /*background-repeat: repeat-x;*/
+    margin-bottom: 25px;
+    text-align:left;
+	border:1px solid #000000;
+	background-color: #ffffff;
+	background-color: #ddddff;
+    /*border-right-width: 1px;
+	border:1px solid #000000;
+    /*border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #000000;
+    border-left-color: #000000;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;*/
+}
+
+.emphasis2 {
+    background-color: #E0DFD8;
+    border-bottom: 3px solid #9d9d9d;
+    background-image:url(body_top_bg.gif);
+    background-position:top left;
+    background-repeat:no-repeat;
+    margin-bottom: 10px;
+    text-align:left;
+}
+
+
+.iDevice p {
+    padding-left: 0px;
+    line-height: 115%
+    text-align:left;
+}
+
+.iDeviceTitle {
+    color: #006699;
+    font-size: 18px;
+    background: transparent; 
+
+} 
+
+.iDevice_icon {
+    margin-top: 7px;
+    padding-left: 0px;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+input.feedbackbutton {
+    background: #ddddff;
+}
+
+p.reading_feedback {
+    border: 1px dashed #ADADAD;
+    background-color: #FFF;
+}
+
+.iDevice_inner { /*Innere Fläche des iDevice*/
+    color:#4d4d4d;
+    background-color:#ffffff;
+    padding: 10px 5px 5px 15px;
+    margin: 2px 0px 0px;
+    /*-moz-border-radius: 8px;*/
+}
+
+
+.iDevice_inner_free {
+    padding: 60px 20px 20px;
+    padding: 20px;
+    padding-top: 60px;
+}
+
+.iDevice li {
+	list-style-position: outside;
+}
+
+/* styles for image with text iDevice */
+
+.image_text { 
+    border: 1px solid #CCC;
+    background: #F9F9F9;
+    padding: 4px;
+    margin: 0px 20px 4px 4px;
+}

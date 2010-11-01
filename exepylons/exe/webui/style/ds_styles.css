@@ -1,0 +1,193 @@
+   * {
+		margin:0;
+		padding:0;
+	}
+	body{
+		margin:0;
+		padding:0;
+		font-family:Verdana,Sans-Serif;
+		color:#000;
+		background:#ccf;
+	}
+	#boundary{
+		position:relative;
+	}
+/*  Add a height here to force a certain height 
+	for boundary when JavaScript is available */
+	#boundary.js{
+	}
+	#footer
+	{
+		position:relative;
+		width:100%;
+		background:#999;
+		text-align:left;
+		padding:5px 0;
+		clear:both;
+		color:#fff;
+		font-weight:bold;
+		font-size:80%;
+		line-height:2.5em;
+	}
+	#footer a{
+		color:#000;
+	}
+
+/* Class applied to hide the slides and the form */	
+	.hide{
+		position:absolute;
+		top:-999px;
+		left:-9999px;
+	}
+
+/* List with previous and next links and indicator which slide is shown */
+	.counter
+	{
+		position:absolute;
+		top:10px;
+		right:1em;
+		font-weight:bold;
+		margin:0;
+		padding:0;
+		float:left;	
+	}
+	ul.counter li{
+		float:left;
+		padding:0 1em 0 0;
+		margin:0;
+		list-style-type:none;
+	}
+	
+/* Nested TOC list */	
+	#toclist{
+		margin:0;
+		padding:0;
+		position:absolute;
+		bottom:10px;
+		right:1em;
+		width:300px;
+	}
+	#toclist li{
+		list-style-type:none;
+		text-align:right;
+		position:relative;
+	}
+	#toclist li ul li{
+		list-style-type:none;
+		font-size:80%;
+		text-align:left;
+		position:relative;
+	}
+	#toclist li li a{
+		line-height:1.4em;
+	}
+	#toclist li li a:hover{
+		line-height:1.4em;
+		background:#fff;
+	}
+	#toclist li ul{
+		background:#ccc;
+		padding:10px;
+		width:280px;
+		position:absolute;
+		right:-2em;
+		bottom:2.4em;
+		border-bottom:1px solid #369;
+	}
+	/* close TOC item */	
+	#toclist li ul li#closeToc{
+		text-align:right;
+		position:absolute;
+		top:-10px;
+		right:0px;
+		padding-right:10px;
+		padding-bottom:5px;
+		width:290px;
+		background: #69c;
+		line-height:1em;
+	}
+
+/* Slide styles */	
+
+	div.slide{
+		background:#fff;
+		padding-bottom:1em;
+	}
+	p.footnote{
+		font-size:80%;
+	}
+	.counter{
+		color:#fff;
+		font-weight:bold;
+	}
+	.slide .counter a{
+		text-decoration:underline;
+		border:none;
+		font-weight:bold;
+		color:#fff;
+	}
+	.slide p{
+		margin:0 1em;
+	}
+	.slide a{
+		color:#369;
+		border-bottom:1px solid #000;
+		text-decoration:none;
+	}
+	.slide form{
+		margin:1em 2em;
+	}
+/* The H1 and the H2 are the same style when JavaScript is available, as the H1 gets hidden */
+	h2{
+		clear:both;
+		letter-spacing:-1px;
+		font-size:1.3em;
+		margin:.5em;
+		font-weight:normal;
+	}
+	h1,#boundary.js h2{
+		background:#036;
+		margin:0 0 10px 0;
+		color:#fff;
+		padding:5px 20px;
+		padding-right:215px;
+		letter-spacing:-1px;
+		font-size:1.5em;
+		font-weight:normal;
+		height:20px; /* cheers MSIE */
+	}
+	html>body h1,html>body #boundary.js h2{
+		height:auto;
+	}
+	h3{
+		padding:0 .5em;
+		letter-spacing:-1px;
+		font-size:1.2em;
+		font-weight:normal;
+	}
+	ul{
+		margin:0 2em 0 2em;
+		padding:0;	
+	}
+	li{
+		list-style-type:square;
+		line-height:1.3em;
+		padding:.5em 0;
+	}
+	li li{
+		list-style-type:square;
+		line-height:1.3em;
+		padding:.5em 0 0 0;
+	}
+	ul ul {
+		margin-left:2em;
+	}
+	pre{
+		background:#eee;
+		border:1px solid #999;
+		padding:.5em;
+		margin:.5em;
+		display:block;
+	}
+
+	

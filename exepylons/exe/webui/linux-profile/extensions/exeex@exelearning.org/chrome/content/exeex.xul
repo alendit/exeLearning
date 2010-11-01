@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<overlay id="exeex"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+// import the eXeex Javascript
+<script type="application/x-javascript" src="chrome://exeex/content/exeex.js">
+</script>
+
+// remove some Firefox menus we don't need
+<toolbar id="toolbar-menubar" style="display: none;"/> //debug
+</overlay>
+
