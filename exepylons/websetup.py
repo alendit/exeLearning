@@ -1,5 +1,6 @@
 """Setup the ExePylons application"""
 import logging
+import os
 
 import pylons.test
 
@@ -13,6 +14,10 @@ def setup_app(command, conf, vars):
     # Don't reload the app if it was loaded under the testing environment
     if not pylons.test.pylonsapp:
         load_environment(conf.global_conf, conf.local_conf)
-
+    
+    # Deleting the old database
+    Base.metadata.drop_all(checkfirst=True, bind=Session.bind)
+    
     # Create the tables if they don't already exist
     Base.metadata.create_all(bind=Session.bind)
+    

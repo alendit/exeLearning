@@ -18,7 +18,11 @@ function test(data){
 $(document).ready(function() {
         $("#createNew").click(function() {
             title = prompt("Enter new title");
-            rpcCall('CreateNew', {'title' : title}, function(newName) {
-                $('<p />').text(title + " - " + newName).appendTo($("#packages"));
+            rpcCall('CreateNew', {'title' : title}, function(data) {
+                $('<p />').
+                html($("<a />").
+                attr("href", "/package/index/" + data.newId).
+                text(title + " - " + data.newId)).
+                appendTo($("#packages"));
                 }); });
         });

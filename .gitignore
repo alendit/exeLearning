@@ -1,2 +1,5 @@
 # Don't version .pyc files
 *.pyc
+*pyo
+*.swp
+*.swo

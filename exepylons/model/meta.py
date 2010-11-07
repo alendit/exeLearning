@@ -1,5 +1,4 @@
 """SQLAlchemy Metadata and Session object"""
-from sqlalchemy import MetaData
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -12,4 +11,3 @@ Session = scoped_session(sessionmaker())
 # names, you'll need a metadata for each database
 Base = declarative_base()
 metadata = Base.metadata
-print metadata

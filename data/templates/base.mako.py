@@ -4,8 +4,8 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1288540216.0904789
-_template_filename=u'/home/alendit/Documents/exepylons/ExePylons/exepylons/templates/base.mako'
+_modified_time = 1289136242.4242289
+_template_filename=u'/home/alendit/workspace/exepylons/ExePylons/exepylons/templates/base.mako'
 _template_uri=u'/base.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
 _source_encoding='utf-8'
@@ -26,12 +26,15 @@ def render_body(context,**pageargs):
         __M_writer(escape(self.title()))
         __M_writer(u'</title>\n        ')
         # SOURCE LINE 6
-        __M_writer(escape(h.javascript_link('/scripts/jquery.js', '/scripts/common.js')))
+        __M_writer(escape(h.javascript_link('/scripts/jquery.js')))
+        __M_writer(u'\n        ')
+        # SOURCE LINE 7
+        __M_writer(escape(self.head_tags()))
         __M_writer(u'\n    </head>\n    <body>\n        <h1>')
-        # SOURCE LINE 9
+        # SOURCE LINE 10
         __M_writer(escape(self.title()))
         __M_writer(u'</h1>\n\n<!-- ***BEGIN page content -->\n')
-        # SOURCE LINE 12
+        # SOURCE LINE 13
         __M_writer(escape(self.body()))
         __M_writer(u'\n<!-- ***END page content -->\n\n    </body>\n</html>\n')
         return ''

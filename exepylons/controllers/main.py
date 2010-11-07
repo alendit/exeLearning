@@ -6,8 +6,8 @@ from pylons.decorators import jsonify
 
 from exepylons.lib.base import BaseController, render
 
+from exepylons.model.meta import Session
 from exepylons import model
-from exepylons.model.package import packageList
 
 log = logging.getLogger(__name__)
 
@@ -16,10 +16,14 @@ class MainController(BaseController):
     def index(self):
         # q = model.Session.query(model.Packages)
         # c.packages = q.limit(5)
-        c.packages = model.Session.query(model.Package).all()
+        c.packages = Session.query(model.Package).all()
 
-        c.test = "This is a test Message"
+        c.test = "This is a test Message!!!11ryo-n"
         return render('/main/main.mako')
+    
+    def signout(self):
+        '''Displayed when user signed out'''
+        return "You've been signed out"
 
     def _denest(self, data):
         '''Densting a associative array to a param dictionary. 
@@ -28,7 +32,7 @@ class MainController(BaseController):
         params = {}
         for param in data:
             if param.startswith('params['):
-                # loose 'params['
+                # lose 'params['
                 params[param[7:-1]] = data[param]
         return params
      
@@ -38,22 +42,29 @@ class MainController(BaseController):
         params = self._denest(request.params)
         try:
             function = getattr(self, "_handle%s" % funcName)
-            # The handle function should expect exactly the same params, as
-            # js sends
+            # The handle function should get exactly the same
+            # params as it expects
             result = function(**params)
+            print "got results"
             return result
 
         except AttributeError, e:
+            print e
+            raise e
             print "Function %s not found" % funcName
         
 
-    def _handleTest(self, param):
-        return packageList
 
-    def _handleCreateNew(self, title):
+    def _handleCreateNew(self, title=None):
         '''Create new package and bind it to a global storage'''
+        print "### Creating new package ###"
         newPackage = model.Package(title)
-        model.Session.add(newPackage)
-        model.Session.commit()
-        return newPackage.id
+        Session.add(newPackage)
+        if title is None:
+            title = newPackage.id
+            newPackage.title = title
+        Session.commit()
+        packageId = newPackage.id
+        print "### Package ID %s" % packageId
+        return {'newId' : packageId}
 

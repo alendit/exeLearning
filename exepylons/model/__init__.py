@@ -1,5 +1,5 @@
 """The application's model objects"""
-from exepylons.model.meta import Session, metadata, Base
+from exepylons.model.meta import Session, Base
 import sqlalchemy as sa
 from sqlalchemy import orm
 from sqlalchemy import types

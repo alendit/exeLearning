@@ -9,8 +9,6 @@ log = logging.getLogger(__name__)
 
 class PackageController(BaseController):
 
-    def index(self):
-        # Return a rendered template
-        #return render('/package.mako')
-        # or, return a response
-        return 'Hello World'
+    def index(self, packageId):
+        c.package_name = "Package %s" % packageId
+        return render('/package/package.mako')
