@@ -1,0 +1,3 @@
+include exepylons/config/deployment.ini_tmpl
+recursive-include exepylons/public *
+recursive-include exepylons/templates *
