@@ -15,7 +15,6 @@ setup(
     install_requires=[
         "Pylons>=0.10",
         "SQLAlchemy>=0.5",
-        "nosetools>=0.10",
     ],
     setup_requires=["PasteScript>=1.6.3"],
     packages=find_packages(exclude=['ez_setup']),
