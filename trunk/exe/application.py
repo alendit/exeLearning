@@ -29,7 +29,6 @@ import shutil
 import time
 import re
 import getpass
-import vimpdb
 
 from tempfile import mkdtemp
 # Make it so we can import our own nevow and twisted etc.
