@@ -146,10 +146,10 @@ class PdfBlock(Block):
             html += "<strong>%s : %s</strong>" \
                 % (_("File not found"), self.idevice.path)
         else:
-            html += u'<iframe height="%s"'  %\
+            html += u'<embed height="%s"'  %\
                 self.idevice.height
             html += ' width="100%"'
-            html += u"src=\"%s\"></iframe>\n" \
+            html += u"src=\"%s\"></embed>\n" \
                 % (resource + self.idevice.file.storageName)
         html += u'</div>\n'
         return html

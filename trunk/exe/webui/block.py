@@ -209,16 +209,16 @@ class Block(Renderable):
         """
         
         html  = common.submitImage(u"done", self.id, 
-                                   u"/images/stock-apply.png", 
+                                   u"images/stock-apply.png", 
                                    _(u"Done"),1)
 
         if undo:
             html  += common.submitImage(u"cancel", self.id, 
-                                   u"/images/stock-undo.png", 
+                                   u"images/stock-undo.png", 
                                    _(u"Undo Edits"),1)
         else:
             html  += common.submitImage(u"no_cancel", self.id, 
-                                   u"/images/stock-undoNOT.png", 
+                                   u"images/stock-undoNOT.png", 
                                    _(u"Can NOT Undo Edits"),1)
 
         html += common.confirmThenSubmitImage(
@@ -226,21 +226,21 @@ class Block(Renderable):
               u"\\n"
               u"Do you really want to do this?"),
             u"delete",
-            self.id, u"/images/stock-cancel.png", 
+            self.id, u"images/stock-cancel.png", 
             _(u"Delete"), 1)
 
         if self.idevice.isFirst():
-            html += common.image(u"movePrev", u"/images/stock-go-up-off.png")
+            html += common.image(u"movePrev", u"images/stock-go-up-off.png")
         else:
             html += common.submitImage(u"movePrev", self.id, 
-                                       u"/images/stock-go-up.png", 
+                                       u"images/stock-go-up.png", 
                                        _(u"Move Up"),1)
 
         if self.idevice.isLast():
-            html += common.image(u"moveNext", u"/images/stock-go-down-off.png")
+            html += common.image(u"moveNext", u"images/stock-go-down-off.png")
         else:
             html += common.submitImage(u"moveNext", self.id, 
-                                       u"/images/stock-go-down.png", 
+                                       u"images/stock-go-down.png", 
                                        _(u"Move Down"),1)
 
         options  = [(_(u"---Move To---"), "")]
@@ -252,12 +252,12 @@ class Block(Renderable):
             html += u'onmousedown="Javascript:updateCoords(event);" '
             html += u"onclick=\"Javascript:showMe('p"+self.id+"', 420, 240);\" "
             html += u'href="Javascript:void(0)" style="cursor:help;"> ' 
-            html += u'<img alt="%s" class="info" src="/images/info.png" ' \
+            html += u'<img alt="%s" class="info" src="images/info.png" ' \
                     % _('Information')
             html += u'style="align:middle;" /></a>\n'
             html += u'<div id="p%s" style="display:none;">' % self.id
             html += u'<div style="float:right;">'
-            html += u'<img alt="%s" src="/images/stock-stop.png" ' % _('Close')
+            html += u'<img alt="%s" src="images/stock-stop.png" ' % _('Close')
             html += u' title="%s" ' % _(u"Close")
             html += u'onmousedown="Javascript:hideMe();"/></div>'
 
@@ -340,7 +340,7 @@ class Block(Renderable):
         Returns an XHTML string for the view buttons
         """
         html  = common.submitImage(u"edit", self.id, 
-                                   u"/images/stock-edit.png", 
+                                   u"images/stock-edit.png", 
                                    _(u"Edit"), self.package.isChanged)
         return html
 

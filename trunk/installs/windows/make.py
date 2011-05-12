@@ -55,9 +55,10 @@ for installer in ('exe.nsi', 'exe.standalone.nsi'):
         try:
             pnsis = subprocess.Popen('%s %s %s %s' %
                                      (nsis, nsis_options, versions, installer))
-        except OSError:
+        except OSError, e:
             print '*** unable to run makensis, check PATH or explicit pathname'
             print '    in make.py'
+            raise e
     pnsis.wait()
 
 # remove branded splash screen
