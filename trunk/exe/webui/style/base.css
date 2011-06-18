@@ -40,8 +40,8 @@ img.submit, img.help, img.info, img.gallery {
 	border: 0;
 }
 
-#go_next img {display: none;}
-#go_prev img {display: none;}
+#go_next span {display: none;}
+#go_prev span {display: none;}
 
 li {
     list-style-position: inside;

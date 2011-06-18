@@ -1721,7 +1721,7 @@ msgstr "Vorschauverzeichnis %s ist eine Datei und kann nicht ersetzt werden."
 #: exe/engine/galleryidevice.py:665 exe/export/scormexport.py:339
 #: exe/export/websitepage.py:194 exe/export/ipodpage.py:110
 msgid "Previous"
-msgstr "Vorheriges"
+msgstr "Vorherige"
 
 #: exe/engine/field.py:2533 exe/engine/field.py:2580
 #: exe/engine/multimediaidevice.py:72
