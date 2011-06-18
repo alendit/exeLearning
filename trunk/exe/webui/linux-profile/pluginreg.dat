@@ -1,118 +1,90 @@
 Generated File. Do not edit.
 
 [HEADER]
-Version:0.15:$
-Arch:x86_64-gcc3:$
+Version|0.15|$
+Arch|x86-msvc|$
 
 [PLUGINS]
-npwrapper.libflashplayer.so:$
-/var/lib/flashplugin-installer/npwrapper.libflashplayer.so:$
-:$
-1307392958000:1:1:$
-Shockwave Flash 10.3 r181:$
-Shockwave Flash:$
-2
-0:application/x-shockwave-flash:Shockwave Flash:swf:$
-1:application/futuresplash:FutureSplash Player:spl:$
-libtotem-narrowspace-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-narrowspace-plugin.so:$
-:$
-1300218622000:1:1:$
-The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.32.0 plugin handles video and audio streams.:$
-QuickTime Plug-in 7.6.6:$
-5
-0:video/quicktime:QuickTime video:mov:$
-1:video/mp4:MPEG-4 video:mp4:$
-2:image/x-macpaint:MacPaint Bitmap image:pntg:$
-3:image/x-quicktime:Macintosh Quickdraw/PICT drawing:pict, pict1, pict2:$
-4:video/x-m4v:MPEG-4 video:m4v:$
-libtotem-mully-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-mully-plugin.so:$
-:$
-1300218622000:1:1:$
-DivX Web Player version 1.4.0.233:$
-DivX® Web Player:$
+nppdf32.dll|$
+C:\Program Files (x86)\Adobe\Reader 10.0\Reader\browser\nppdf32.dll|$
+10.0.1.434|$
+1296402312000|1|1|$
+Adobe PDF Plug-In For Firefox and Netscape 10.0.1|$
+Adobe Acrobat|$
+7
+0|application/pdf|Acrobat Portable Document Format|pdf|$
+1|application/vnd.adobe.pdfxml|Adobe PDF in XML Format|pdfxml|$
+2|application/vnd.adobe.x-mars|Adobe PDF in XML Format|mars|$
+3|application/vnd.fdf|Acrobat Forms Data Format|fdf|$
+4|application/vnd.adobe.xfdf|XML Version of Acrobat Forms Data Format|xfdf|$
+5|application/vnd.adobe.xdp+xml| Acrobat XML Data Package|xdp|$
+6|application/vnd.adobe.xfd+xml|Adobe FormFlow99 Data File|xfd|$
+npdeployJava1.dll|$
+C:\Program Files (x86)\Java\jre6\bin\new_plugin\npdeployJava1.dll|$
+6.0.240.7|$
+1302686810435|1|1|$
+NPRuntime Script Plug-in Library for Java(TM) Deploy|$
+Java Deployment Toolkit 6.0.240.7|$
 1
-0:video/divx:AVI video:divx:$
-libtotem-gmp-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-gmp-plugin.so:$
-:$
-1300218622000:1:1:$
-The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.32.0 plugin handles video and audio streams.:$
-Windows Media Player Plug-in 10 (compatible; Totem):$
-13
-0:application/x-mplayer2:AVI video:avi, wma, wmv:$
-1:video/x-ms-asf-plugin:ASF video:asf, wmv:$
-2:video/x-msvideo:AVI video:asf, wmv:$
-3:video/x-ms-asf:ASF video:asf:$
-4:video/x-ms-wmv:Windows Media video:wmv:$
-5:video/x-wmv:Windows Media video:wmv:$
-6:video/x-ms-wvx:Windows Media video:wmv:$
-7:video/x-ms-wm:Windows Media video:wmv:$
-8:video/x-ms-wmp:Windows Media video:wmv:$
-9:application/x-ms-wms:Windows Media video:wms:$
-10:application/x-ms-wmp:Windows Media video:wmp:$
-11:application/asx:Microsoft ASX playlist:asx:$
-12:audio/x-ms-wma:Windows Media audio:wma:$
-libtotem-cone-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-cone-plugin.so:$
-:$
-1300218622000:1:1:$
-The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.32.0 plugin handles video and audio streams.:$
-VLC Multimedia Plugin (compatible Totem 2.32.0):$
-20
-0:application/x-vlc-plugin:VLC Multimedia Plugin::$
-1:application/vlc:VLC Multimedia Plugin::$
-2:video/x-google-vlc-plugin:VLC Multimedia Plugin::$
-3:application/x-ogg:Ogg multimedia file:ogg:$
-4:application/ogg:Ogg multimedia file:ogg:$
-5:audio/ogg:Ogg Audio:oga:$
-6:audio/x-ogg:Ogg Audio:ogg:$
-7:video/ogg:Ogg Video:ogv:$
-8:video/x-ogg:Ogg Video:ogg:$
-9:application/annodex:Annodex exchange format:anx:$
-10:audio/annodex:Annodex Audio:axa:$
-11:video/annodex:Annodex Video:axv:$
-12:video/mpeg:MPEG video:mpg, mpeg, mpe:$
-13:audio/wav:WAV audio:wav:$
-14:audio/x-wav:WAV audio:wav:$
-15:audio/mpeg:MP3 audio:mp3:$
-16:application/x-nsv-vp3-mp3:NullSoft video:nsv:$
-17:video/flv:Flash video:flv:$
-18:video/webm:WebM video:webm:$
-19:application/x-totem-plugin:Totem Multimedia plugin::$
-npwrapper.libflashplayer.so:$
-/usr/lib/nspluginwrapper/plugins/npwrapper.libflashplayer.so:$
-:$
--1:1:13:$
-Shockwave Flash 10.0 r32:$
-Shockwave Flash:$
+0|application/java-deployment-toolkit|||$
+npjp2.dll|$
+C:\Program Files (x86)\Java\jre6\bin\new_plugin\npjp2.dll|$
+6.0.240.7|$
+1302686810434|1|1|$
+Next Generation Java Plug-in 1.6.0_24 for Mozilla browsers|$
+Java(TM) Platform SE 6 U24|$
+34
+0|application/x-java-applet|Java Applet||$
+1|application/x-java-bean|JavaBeans||$
+2|application/x-java-vm|||$
+3|application/x-java-applet;version=1.1.1|||$
+4|application/x-java-bean;version=1.1.1|||$
+5|application/x-java-applet;version=1.1|||$
+6|application/x-java-bean;version=1.1|||$
+7|application/x-java-applet;version=1.2|||$
+8|application/x-java-bean;version=1.2|||$
+9|application/x-java-applet;version=1.1.3|||$
+10|application/x-java-bean;version=1.1.3|||$
+11|application/x-java-applet;version=1.1.2|||$
+12|application/x-java-bean;version=1.1.2|||$
+13|application/x-java-applet;version=1.3|||$
+14|application/x-java-bean;version=1.3|||$
+15|application/x-java-applet;version=1.2.2|||$
+16|application/x-java-bean;version=1.2.2|||$
+17|application/x-java-applet;version=1.2.1|||$
+18|application/x-java-bean;version=1.2.1|||$
+19|application/x-java-applet;version=1.3.1|||$
+20|application/x-java-bean;version=1.3.1|||$
+21|application/x-java-applet;version=1.4|||$
+22|application/x-java-bean;version=1.4|||$
+23|application/x-java-applet;version=1.4.1|||$
+24|application/x-java-bean;version=1.4.1|||$
+25|application/x-java-applet;version=1.4.2|||$
+26|application/x-java-bean;version=1.4.2|||$
+27|application/x-java-applet;version=1.5|||$
+28|application/x-java-bean;version=1.5|||$
+29|application/x-java-applet;version=1.6|||$
+30|application/x-java-bean;version=1.6|||$
+31|application/x-java-applet;jpi-version=1.6.0_24|||$
+32|application/x-java-bean;jpi-version=1.6.0_24|||$
+33|application/x-java-vm-npruntime|||$
+NPSWF32.dll|$
+C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll|$
+10.3.181.14|$
+1305793974190|1|1|$
+Shockwave Flash 10.3 r181|$
+Shockwave Flash|$
 2
-0:application/x-shockwave-flash:Shockwave Flash:swf:$
-1:application/futuresplash:FutureSplash Player:spl:$
-nppdf.so:$
-/usr/lib/firefox-addons/plugins/nppdf.so:$
-:$
--1:1:13:$
-The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
-Adobe Reader 9.1:$
-5
-0:application/pdf:Portable Document Format:pdf:$
-1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
-2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
-3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
-4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
-nppdf.so:$
-/home/alt/.mozilla/plugins/nppdf.so:$
-:$
--1:1:13:$
-The Adobe Reader plugin is used to enable viewing of PDF and FDF files from within the browser.:$
-Adobe Reader 9.1:$
-5
-0:application/pdf:Portable Document Format:pdf:$
-1:application/vnd.fdf:Acrobat Forms Data Format:fdf:$
-2:application/vnd.adobe.xfdf:XML Version of Acrobat Forms Data Format:xfdf:$
-3:application/vnd.adobe.xdp+xml:Acrobat XML Data Package:xdp:$
-4:application/vnd.adobe.xfd+xml:Adobe FormFlow99 Data File:xfd:$
+0|application/x-shockwave-flash|Adobe Flash movie|swf|$
+1|application/futuresplash|FutureSplash movie|spl|$
+npGoogleUpdate3.dll|$
+C:\Users\Alendit\AppData\Local\Google\Update\1.3.21.57\npGoogleUpdate3.dll|$
+1.3.21.57|$
+1306912643351|1|1|$
+Google Update|$
+Google Update|$
+2
+0|application/x-vnd.google.update3webcontrol.3|||$
+1|application/x-vnd.google.oneclickctrl.9|||$
 
 [INVALID]

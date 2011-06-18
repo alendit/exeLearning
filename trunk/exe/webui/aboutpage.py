@@ -84,6 +84,8 @@ class AboutPage(RenderableResource):
         xul += u'      <description id="copyright">'
         xul += u'Copyright 2004-2008 eXe Project,<html:br/>'
         xul += u'       http://eXeLearning.org/<html:br/>\n'
+        xul += u'TUM fork  2008-2010, <html:br/>'
+        xul += u'       https://github.com/alendit/exeLearning<html:br/>'
         xul += u'<html:br/>\n'
         xul += u'email: exe@exelearning.org\n'
         xul += u'      </description>\n'
